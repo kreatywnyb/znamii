@@ -22,6 +22,7 @@ export default {
         lightGrey: "#e3e3e3",
         ultraLightGray: "#f8f8fa",
         errorRed: "#ef3b4a",
+        background: "#F5F5F5"
       },
       boxShadow: {},
       fontFamily: {
@@ -31,5 +32,3 @@ export default {
   },
   plugins: [forms, typography],
 } satisfies Config;
-
-import type { Config } from "tailwindcss";
