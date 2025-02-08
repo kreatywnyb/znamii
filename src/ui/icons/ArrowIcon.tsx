@@ -1,6 +1,6 @@
 import React from "react";
 
-const Arrow = (props: React.SVGProps<SVGSVGElement>) => {
+const ArrowIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="12"
@@ -18,4 +18,4 @@ const Arrow = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export default Arrow;
+export default ArrowIcon;
