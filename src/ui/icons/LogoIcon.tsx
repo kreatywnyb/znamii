@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logo = (props: React.SVGProps<SVGSVGElement>) => {
+const LogoIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="92"
@@ -44,4 +44,4 @@ const Logo = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
-export default Logo;
+export default LogoIcon;
