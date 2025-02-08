@@ -5,7 +5,7 @@ import YoutubeIcon from "../icons/YoutubeIcon";
 
 const Footer = () => {
 	return (
-		<footer className="container h-96 mt-32">
+		<footer className="container h-96 fixed bottom-0 w-screen left-1/2 -translate-x-1/2 -z-10">
 			<div className="grid grid-cols-3 justify-end font-medium ">
 				<h3 className="text-[40px]">Poklikasz?</h3>
 				<div className="flex items-end text-[21px] leading-[33.6px]">
@@ -16,7 +16,7 @@ const Footer = () => {
 			<div className="grid grid-cols-3 py-4 font-medium">
 				<div></div>
 				<div className="text-[21px] leading-[33.6px]">+48 694 211 577</div>
-				<div className="flex gap-2 justify-end">
+				<div className="flex gap-8 justify-end">
 					<a href="" className="border-[#00000022] border p-[13px]">
 						<InstagramIcon />
 					</a>
@@ -25,7 +25,7 @@ const Footer = () => {
 					</a>
 				</div>
 			</div>
-			<div className="border-lightGray grid grid-cols-3 border-t border-[#00000022] py-4">
+			<div className="border-lightGray grid grid-cols-3 border-t border-[#00000022] py-4 font-geist">
 				<a className="block uppercase" href="">
 					Studio
 				</a>
@@ -36,7 +36,7 @@ const Footer = () => {
 					Projekty
 				</a>
 			</div>
-			<div className="grid grid-cols-3 border-t border-[#00000022] py-4">
+			<div className="grid grid-cols-3 border-t border-[#00000022] py-4 font-geist">
 				<div className="block uppercase">©2025</div>
 				<div className="block uppercase">ul. okulickiego 18, rzeszów</div>
 				<a className="block text-right uppercase" href="">

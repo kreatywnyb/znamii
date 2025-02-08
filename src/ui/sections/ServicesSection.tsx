@@ -66,7 +66,7 @@ const ServicesSection = () => {
             <div className="order-6" />
           </div>
         </div>
-        <div className="mt-10">slider</div>
+        <div className="mt-10 mb-32">slider</div>
       </div>
     </section>
   );
