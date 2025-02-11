@@ -2,18 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: "Roobert";
+	src:
+		url("/fonts/Roobert.woff2") format("woff2"),
+		url("/fonts/Roobert.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
-  --background:#F5F5F5;
+	--background: #f5f5f5;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: "Roobert", sans-serif;
 }
 
 @layer base {
-  h1 {
-    @apply text-[48px] leading-[60px] lg:text-[58px] lg:leading-[72.5px] font-bold;
-  }
+	h1 {
+		@apply text-[48px] font-medium leading-[60px] lg:text-[58px] lg:leading-[72.5px];
+	}
 }
