@@ -11,12 +11,12 @@ import Link from "next/link";
 
 export default function Home() {
 	const caseStudies: CaseStudy[] = [
-        { name: "Pienińska przystań", image: case1.src, cols: 2, category: "Branding", slug: "pieninska-przystan" },
-        { name: "PRO100", image: case2.src, cols: 1, category: "Branding", slug: "pro100" },
+        { name: "Pienińska przystań", image: case1.src, cols: 2, category: "Zdjęcia", slug: "pieninska-przystan" },
+        { name: "PRO100", image: case2.src, cols: 1, category: "Zdjęcia", slug: "pro100" },
         { name: "AW-Sport", image: case3.src, cols: 1, category: "Branding", slug: "aw-sport" },
         { name: "The Big Thing", image: case4.src, cols: 2, category: "Branding", slug: "the-big-thing" },
-        { name: "Future Mind", image: case5.src, cols: 2, category: "Branding", slug: "future-mind" },
-        { name: "ONDE", image: case6.src, cols: 1, category: "Branding", slug: "onde" },
+        { name: "Future Mind", image: case5.src, cols: 2, category: "Video", slug: "future-mind" },
+        { name: "ONDE", image: case6.src, cols: 1, category: "Video", slug: "onde" },
         
 	];
 

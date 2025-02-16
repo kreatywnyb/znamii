@@ -12,18 +12,15 @@
 	font-display: swap;
 }
 
-:root {
-	--background: #f5f5f5;
-}
-
 body {
-	color: var(--foreground);
-	background: var(--background);
 	font-family: "Roobert", sans-serif;
 }
 
 @layer base {
 	h1 {
 		@apply text-[48px] font-medium leading-[60px] lg:text-[58px] lg:leading-[72.5px];
+	}
+  :root {
+		--radius: 0.5rem;
 	}
 }

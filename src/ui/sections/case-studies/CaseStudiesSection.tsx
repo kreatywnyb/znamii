@@ -29,7 +29,7 @@ const CaseStudiesSection: React.FC = () => {
 			<CaseStudiesList caseStudies={caseStudies} />
 
 			<div className="flex justify-center py-16">
-				<CTAButton href="" variant="white">
+				<CTAButton href="/case-studies" variant="white">
 					Zobacz wszystkie realizacje
 				</CTAButton>
 			</div>
