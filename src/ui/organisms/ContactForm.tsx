@@ -6,6 +6,7 @@ import { Checkbox } from "@/ui/molecules/Checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ButtonPrimary } from "../molecules/ButtonPrimary";
+import Link from 'next/link';
 
 type FormData = {
 	name: string;
@@ -34,7 +35,7 @@ const ContactForm: React.FC = () => {
 	};
 
 	return (
-		<div className="rounded-lg bg-lightGrey p-8 shadow-lg">
+		<div className="bg-lightGrey p-8 shadow-lg">
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 				<div>
 					<p className="mb-4 text-[17px] text-basicDark">W czym możemy Ci pomóc?</p>
@@ -58,24 +59,31 @@ const ContactForm: React.FC = () => {
 				</div>
 
 				<div>
-					<label className="mb-4 block text-[17px] font-medium text-basicDark">
-						Jak się do ciebie zwracać?
-					</label>
+					<div className="flex justify-between mb-3">
+						<label className="block text-[17px] font-medium text-basicDark">
+							Jak się do ciebie zwracać
+						</label>
+						{errors.name && <p className="text-[17px] text-errorRed">{errors.name.message}</p>}
+					</div>
 					<Input
-						{...register("name", { required: "To pole jest wymagane" })}
+						{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
 						className="mt-1 w-full"
 						placeholder="IMIĘ"
 					/>
-					{errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
 				</div>
 
 				<div>
-					<label className="block text-sm font-medium text-basicDark">Email do kontaktu</label>
+					<div className="flex justify-between mb-3">
+						<label className="block text-[17px] font-medium text-basicDark">
+							Email do kontaktu
+						</label>
+						{errors.email && <p className="text-[17px] text-errorRed">{errors.email.message}</p>}
+					</div>
 					<Input
 						placeholder="E-MAIL"
 						type="email"
 						{...register("email", {
-							required: "To pole jest wymagane",
+							required: "*Wpisz swój adres e-mail",
 							pattern: {
 								value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 								message: "Nieprawidłowy adres email",
@@ -83,20 +91,27 @@ const ContactForm: React.FC = () => {
 						})}
 						className="mt-1 w-full"
 					/>
-					{errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
 				</div>
 
 				<div>
-					<label className="mb-4 block text-[17px] text-sm font-medium text-basicDark">
+				<div className="flex justify-between mb-3">
+						<label className="block text-[17px] font-medium text-basicDark">
 						Opowiedz co cię sprowadza
-					</label>
+						</label>
+						{errors.message && <p className="text-[17px] text-errorRed">{errors.message.message}</p>}
+					</div>
 					<Textarea
-                    	placeholder="OPISZ FIRME I PROJEKT ..."
-						{...register("message", { required: "To pole jest wymagane" })}
+						placeholder="OPISZ FIRME I PROJEKT ..."
+						{...register("message", { required: "*Opisz firmę i projekt" })}
 						className="mt-1 w-full"
 					/>
-					{errors.message && <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>}
 				</div>
+				<Checkbox
+					id="policy"
+				/>
+				<label htmlFor="policy" className="cursor-pointert text-sm font-medium text-darkGrey -mt-2 ml-2"> 
+					Zapoznałem się z <Link href="/policy" className="underline">Polityką Prywatności</Link>
+				</label>
 
 				<ButtonPrimary type="submit" className="w-full">
 					Działamy z projektem

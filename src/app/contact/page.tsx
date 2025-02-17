@@ -10,7 +10,7 @@ export default function Home() {
 		<main className="bg-background">
 			<section className="bg-basicDark pb-96 pt-20">
 				<div className="container grid grid-cols-2 gap-16 text-white">
-					<div className="flex flex-col gap-16">
+					<div className="flex flex-col gap-16 pr-32">
 						<h1 className="text-[58px] text-white">
 							Zrealizuj projekt <br /> razem z nami!
 						</h1>
