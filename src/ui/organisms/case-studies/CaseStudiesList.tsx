@@ -25,7 +25,8 @@ const CaseStudiesList: React.FC<CaseStudiesListProps> = ({ caseStudies, filters 
 
 			<div className="mt-12 grid w-full grid-cols-3 gap-4">
 				{filteredItems.map((item, index) => (
-					<Link href={`case-studies/${item.slug}`}
+					<Link
+						href={`realizacje/${item.slug}`}
 						key={index}
 						className={`${
 							item.cols === 2 ? "col-span-2" : "col-span-1"

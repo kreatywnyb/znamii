@@ -1,3 +1,4 @@
+import { contactMail } from "@/constants";
 import EmailIcon from "@/ui/icons/EmailIcon";
 import PhoneIcon from "@/ui/icons/PhoneIcon";
 import { Checkbox } from "@/ui/molecules/Checkbox";
@@ -23,7 +24,7 @@ export default function Home() {
 								<PhoneIcon /> <p>+48 694 211 577</p>
 							</div>
 							<div className="text-medium flex items-center justify-start gap-8 text-[40px]">
-								<EmailIcon /> <p>kontakt@znami.co</p>
+								<EmailIcon /> <p>{contactMail}</p>
 							</div>
 						</div>
 						<div className="flex w-full justify-between">
@@ -36,7 +37,6 @@ export default function Home() {
 					</div>
 					<div>
 						<ContactForm></ContactForm>
-						
 					</div>
 				</div>
 			</section>

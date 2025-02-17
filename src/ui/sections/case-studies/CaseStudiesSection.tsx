@@ -10,14 +10,25 @@ import case5 from "@public/case-5.webp";
 import case6 from "@public/case-6.webp";
 
 const CaseStudiesSection: React.FC = () => {
-
 	const caseStudies: CaseStudy[] = [
-		{ name: "Pienińska przystań", image: case1.src, cols: 2, category: "Branding", slug: "pieninska-przystan" },
+		{
+			name: "Pienińska przystań",
+			image: case1.src,
+			cols: 2,
+			category: "Branding",
+			slug: "pieninska-przystan",
+		},
 		{ name: "PRO100", image: case2.src, cols: 1, category: "Branding", slug: "pro100" },
 		{ name: "AW-Sport", image: case3.src, cols: 1, category: "Branding", slug: "aw-sport" },
-		{ name: "The Big Thing", image: case4.src, cols: 2, category: "Branding", slug: "the-big-thing" },
+		{
+			name: "The Big Thing",
+			image: case4.src,
+			cols: 2,
+			category: "Branding",
+			slug: "the-big-thing",
+		},
 		{ name: "Future Mind", image: case5.src, cols: 2, category: "Branding", slug: "future-mind" },
-		{ name: "ONDE", image: case6.src, cols: 1, category: "Branding", slug: "onde" },	
+		{ name: "ONDE", image: case6.src, cols: 1, category: "Branding", slug: "onde" },
 	];
 
 	return (
@@ -25,11 +36,11 @@ const CaseStudiesSection: React.FC = () => {
 			<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
 				Zobacz nasze realizacje. Są w pytkę.
 			</h2>
-			
+
 			<CaseStudiesList caseStudies={caseStudies} />
 
 			<div className="flex justify-center py-16">
-				<CTAButton href="/case-studies" variant="white">
+				<CTAButton href="/realizacje" variant="white">
 					Zobacz wszystkie realizacje
 				</CTAButton>
 			</div>
