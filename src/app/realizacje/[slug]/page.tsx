@@ -25,7 +25,7 @@ const CaseStudyPage = async ({ params }: PageProps) => {
 	if (!caseStudy) return notFound();
 
 	return (
-		<main className="bg-background">
+		<main className="bg-background border-t border-darkGrey">
 			<CaseStudyHeroSection
 				title="Nazwa klienta"
 				video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"

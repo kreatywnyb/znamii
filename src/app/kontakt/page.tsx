@@ -1,21 +1,21 @@
 import { contactMail } from "@/constants";
 import EmailIcon from "@/ui/icons/EmailIcon";
 import PhoneIcon from "@/ui/icons/PhoneIcon";
-import { Checkbox } from "@/ui/molecules/Checkbox";
 import ContactForm from "@/ui/organisms/ContactForm";
 import imagePawel from "@public/pawel.jpg";
 import Image from "next/image";
+import AddressSection from '../../ui/sections/contact/AddressSection';
 
 export default function Home() {
 	return (
-		<main className="bg-background">
-			<section className="bg-basicDark pb-96 pt-20">
-				<div className="container grid grid-cols-2 gap-16 text-white">
-					<div className="flex flex-col gap-16 pr-32">
+		<main className="bg-background border-t border-darkGrey mb-[30rem]">
+			<section className="bg-basicDark pb-48 pt-20 ">
+				<div className="container px-4 grid grid-cols-2 gap-16 text-white">
+					<div className="flex flex-col gap-16 pr-24">
 						<h1 className="text-[58px] text-white">
 							Zrealizuj projekt <br /> razem z nami!
 						</h1>
-						<p className="text-[17px]">
+						<p className="text-[17px] pr-20">
 							Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
 							wideo posłużą Ci na lata.
 						</p>
@@ -40,6 +40,7 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+			<AddressSection></AddressSection>
 		</main>
 	);
 }

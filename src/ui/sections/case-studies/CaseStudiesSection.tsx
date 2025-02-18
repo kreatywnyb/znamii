@@ -32,7 +32,7 @@ const CaseStudiesSection: React.FC = () => {
 	];
 
 	return (
-		<section className="container relative z-10 -mt-28 bg-white px-16 py-16">
+		<section className="container relative z-10 -mt-28 bg-white px-16 py-16 ">
 			<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
 				Zobacz nasze realizacje. Są w pytkę.
 			</h2>
