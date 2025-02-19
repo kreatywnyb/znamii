@@ -32,18 +32,20 @@ const CaseStudiesSection: React.FC = () => {
 	];
 
 	return (
-		<section className="container relative z-10 -mt-16 md:-mt-28 max-w-[1360px] px-2">
-			<div className="bg-white py-8 md:py-12 md:px-16 px-4">
-				<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
-					Zobacz nasze realizacje. <br className="md:hidden" /> Są w pytkę.
-				</h2>
+		<section className="relative z-40 flex justify-center px-4">
+			<div className="-mt-64 mb-40 w-full max-w-[1700px] bg-white py-40">
+				<div className="container">
+					<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
+						Zobacz nasze realizacje. <br className="md:hidden" /> Są w pytkę.
+					</h2>
 
-				<CaseStudiesList caseStudies={caseStudies} />
+					<CaseStudiesList caseStudies={caseStudies} />
 
-				<div className="flex justify-center py-16">
-					<CTAButton href="/realizacje" variant="white">
-						Zobacz wszystkie realizacje
-					</CTAButton>
+					<div className="flex justify-center py-16">
+						<CTAButton href="/realizacje" variant="white">
+							Zobacz wszystkie realizacje
+						</CTAButton>
+					</div>
 				</div>
 			</div>
 		</section>

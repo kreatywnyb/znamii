@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import ChevronIcon from "../icons/ChevronIcon";
-import { cn } from "@/lib/utlis";
+import { cn } from "@/lib/utils";
 
 export type NavItemExpandedProps = {
 	main: {
