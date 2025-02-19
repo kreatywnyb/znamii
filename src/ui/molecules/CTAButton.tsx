@@ -6,13 +6,14 @@ export type CTAButton = {
 	children: ReactNode;
 	href: string;
 	variant?: "primary" | "white";
+	className?:string
 };
 
-export const CTAButton = ({ children, href, variant = "primary" }: CTAButton) => {
+export const CTAButton = ({ children, href, variant = "primary",className }: CTAButton) => {
 	return (
 		<Link
 			href={href}
-			className={`flex w-fit items-center justify-center space-x-[0.625rem] ${variant == "primary" ? "bg-primary" : "border border-bg bg-white"} px-8 py-4 font-geist font-medium uppercase text-basicDark`}
+			className={` flex w-fit items-center justify-center space-x-[0.625rem] ${variant == "primary" ? "bg-primary" : "border border-bg bg-white"} px-8 py-4 font-geist font-medium uppercase text-basicDark ${className}`}
 		>
 			<span>{children}</span>
 			<ArrowIcon className="h-4 w-4" />

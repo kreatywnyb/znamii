@@ -2,7 +2,12 @@
 import React from "react";
 import Slider from "react-slick";
 import Image, { StaticImageData } from "next/image";
-import author from "@public/author.webp";
+import krzysztofImage from "@public/krzysztof-winiarski.webp";
+import magdaImage from "@public/magda-plaskacz.webp";
+import grzegorzImage from "@public/grzegorz-sowa.webp";
+import grzegorzMikulaImage from "@public/grzegorz-mikula.webp";
+import bartekImage from "@public/bartek-les.webp";
+import kamilImage from "@public/kamil-pormbinski.webp";
 import testimonial from "@public/testimonial.webp";
 
 interface Opinion {
@@ -18,7 +23,7 @@ const opinions: Opinion[] = [
 	{
 		id: 1,
 		author: "Krzysztof Winiarski",
-		authorImg: author,
+		authorImg: krzysztofImage,
 		company: "AW-SPORT",
 		src: testimonial.src,
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
@@ -26,7 +31,7 @@ const opinions: Opinion[] = [
 	{
 		id: 2,
 		author: "Magda Plaskacz",
-		authorImg: author,
+		authorImg: magdaImage,
 		company: "DR SNOW",
 		src: testimonial.src,
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
@@ -34,21 +39,60 @@ const opinions: Opinion[] = [
 	{
 		id: 3,
 		author: "Grzegorz Sowa",
-		authorImg: author,
+		authorImg: grzegorzImage,
 		company: "DR SNOW",
 		src: testimonial.src,
 		text: "Dziękujemy jako klub koszykarski Resovii Rzeszów za profesjonalnie wykonaną sesję zawodników Resovii, zdjęcia grupowe i indywidualne. Pełen profesjonalizm i terminowość!",
+	},
+	{
+		id: 4,
+		author: "Grzegorz Mikuła",
+		authorImg: grzegorzMikulaImage,
+		company: "hiFOOD",
+		src: testimonial.src,
+		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+	},
+	{
+		id: 5,
+		author: "Raphael Sheffield",
+		authorImg: grzegorzImage,
+		company: "Safran aircraft engines poland",
+		src: testimonial.src,
+		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+	},
+	{
+		id: 6,
+		author: "Bartek Leś",
+		authorImg: bartekImage,
+		company: "recovery lab",
+		src: testimonial.src,
+		text: "Zrobili dla mojej firmy całą stronę internetową (od brandu, przez materiały foto/wideo aż do kodowania i wypuszczenia jej w świat). Jestem bardzo zadowolony ze współpracy!",
+	},
+	{
+		id: 7,
+		author: "Kamil Porembiński",
+		authorImg: kamilImage,
+		company: "podcast spod wody",
+		src: testimonial.src,
+		text: "Paweł i jego ekipa to idealny wybór jeżeli szukasz realizacji związanych z wideo. Zawsze pomocni, mega merytoryczni i kreatywni! Polecam :)",
 	},
 ];
 
 const settings = {
 	infinite: true,
-	speed: 1000,
+	speed: 1500,
 	slidesToShow: 3,
 	autoplay: true,
 	slidesToScroll: 1,
 	arrows: false,
 	responsive: [
+		{
+			breakpoint: 1000,
+			dots: true,
+			settings: {
+				slidesToShow: 2,
+			},
+		},
 		{
 			breakpoint: 720,
 			dots: true,
@@ -56,6 +100,7 @@ const settings = {
 				slidesToShow: 1,
 			},
 		},
+
 	],
 };
 
@@ -70,7 +115,7 @@ const TestimonialsSlider = () => {
 					return (
 						<div key={`${idx}-${id}`} className="group border border-basicDark text-white">
 							<div
-								className="relative h-[24rem]"
+								className="relative md:h-[24rem] h-[28rem]"
 								style={{
 									backgroundImage: `url(${src})`,
 									backgroundSize: "cover",
@@ -78,14 +123,14 @@ const TestimonialsSlider = () => {
 									backgroundRepeat: "no-repeat",
 								}}
 							>
-								<div className="absolute bottom-0 h-full bg-background p-4 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
+								<div className="absolute bottom-0 h-full bg-background md:p-4 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
 									<div className="h-full overflow-hidden p-8 transition-all duration-500">
 										<p className="text-[21px] font-medium group-hover:text-white">{text}</p>
 									</div>
 
 									<div className="absolute bottom-8 left-12 flex gap-4 items-end">
-										<div className="relative">
-											<Image src={authorImg} alt="author" />
+										<div className="relative bg-primary w-[60px] h-[60px]">
+											<Image src={authorImg}  alt="author" />
 											<div className="absolute font-medium -left-4 h-4 w-4 bg-primary"></div>
 										</div>
 										<div className="group-hover:text-white">

@@ -16,6 +16,10 @@ body {
 	font-family: "Roobert", sans-serif;
 }
 
+/* *{
+	outline: 1px solid red;
+} */
+
 @layer base {
 	h1 {
 		@apply text-[48px] font-medium leading-[60px] lg:text-[58px] lg:leading-[72.5px];
