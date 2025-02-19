@@ -8,6 +8,7 @@ import case3 from "@public/case-3.webp";
 import case4 from "@public/case-4.webp";
 import case5 from "@public/case-5.webp";
 import case6 from "@public/case-6.webp";
+import WhiteBox from "@/ui/organisms/WhiteBox";
 
 const CaseStudiesSection: React.FC = () => {
 	const caseStudies: CaseStudy[] = [
@@ -32,23 +33,21 @@ const CaseStudiesSection: React.FC = () => {
 	];
 
 	return (
-		<section className="relative z-40 flex justify-center px-4">
-			<div className="-mt-64 mb-40 w-full max-w-[1700px] bg-white py-40">
-				<div className="container">
-					<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
-						Zobacz nasze realizacje. <br className="md:hidden" /> Są w pytkę.
-					</h2>
+		<WhiteBox className="[&>div]:-mt-64">
+			<div className="container">
+				<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
+					Zobacz nasze realizacje. <br className="md:hidden" /> Są w pytkę.
+				</h2>
 
-					<CaseStudiesList caseStudies={caseStudies} />
+				<CaseStudiesList caseStudies={caseStudies} />
 
-					<div className="flex justify-center py-16">
-						<CTAButton href="/realizacje" variant="white">
-							Zobacz wszystkie realizacje
-						</CTAButton>
-					</div>
+				<div className="flex justify-center py-16">
+					<CTAButton href="/realizacje" variant="white">
+						Zobacz wszystkie realizacje
+					</CTAButton>
 				</div>
 			</div>
-		</section>
+		</WhiteBox>
 	);
 };
 

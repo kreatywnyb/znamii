@@ -42,7 +42,7 @@ export const TextGenerateEffect = ({
 		}, totalAnimationTime);
 
 		return () => clearTimeout(timer);
-	}, [scope, wordsArray.length]);
+	}, [scope, wordsArray.length, animate]);
 
 	// 🔹 Renderowanie dużych słów (spadają z góry)
 	const renderWords = () => {
@@ -93,7 +93,7 @@ export const TextGenerateEffect = ({
 									visible: {
 										opacity: 1,
 										transition: {
-											staggerChildren: 0.05, // 🔥 Litery pojawiają się po kolei w słowie
+											staggerChildren: 0.04, // 🔥 Litery pojawiają się po kolei w słowie
 										},
 									},
 								}}

@@ -28,6 +28,16 @@ const ServicesSection = () => {
 							<li className="cursor-pointer transition-transform hover:translate-x-2">
 								identyfikacje wizualne
 							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								Strony internetowe
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">Naming</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								projekty do druku
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								obsługa abonamentowa
+							</li>
 						</ul>
 					</div>
 					<div className="">
@@ -50,6 +60,15 @@ const ServicesSection = () => {
 							<li className="cursor-pointer transition-transform hover:translate-x-2">
 								filmy Korporacyjne
 							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								Webinary & podcasty
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								SPOTY SPOŁECZNE
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								obsługa abonamentowa
+							</li>
 						</ul>
 					</div>
 					<div className="">
@@ -69,33 +88,45 @@ const ServicesSection = () => {
 							<li className="cursor-pointer transition-transform hover:translate-x-2">
 								Eventy & konfererencje
 							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								sesje Biznesowe
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								fotografia produktowa
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								zdjęcia z drona
+							</li>
+							<li className="cursor-pointer transition-transform hover:translate-x-2">
+								obsługa abonamentowa
+							</li>
 						</ul>
 					</div>
 				</div>
 				<div className="mt-36 flex flex-col max-lg:space-y-20 lg:flex-row">
 					<div className="flex flex-1 flex-col justify-between">
-						<p className="mb-12 max-w-[600px] text-[40px] font-medium leading-[50px]">
+						<p className="mb-12 max-w-[600px] text-3xl font-medium lg:text-[40px] lg:leading-[50px]">
 							Wierzymy, że najlepsze pomysły rodzą się w atmosferze swobody. Dlatego działamy luźno,
 							a tworzymy sztywniutko.
 						</p>
 						<ButtonSecondary href={links.contactPage}>poznaj się z nami</ButtonSecondary>
 					</div>
-					<div className="grid flex-1 grid-cols-3 grid-rows-2">
-						<div className="order-1 flex flex-col justify-between rounded-sm border border-darkGrey p-5">
+					<div className="grid flex-1 grid-cols-1 grid-rows-3 max-md:space-y-2 md:grid-cols-3 md:grid-rows-2">
+						<div className="order-1 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:mt-auto">
 							<PrecisionIcon className="self-end" />
 							<span className="text-[21px] font-medium leading-[33px]">Precyzja</span>
 						</div>
-						<div className="order-3 flex flex-col justify-between rounded-sm border border-darkGrey p-5">
+						<div className="order-3 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
 							<EmpathyIcon className="self-end" />
 							<span className="text-[21px] font-medium leading-[33px]">Empatia</span>
 						</div>
-						<div className="order-5 flex aspect-square flex-col justify-between rounded-sm border border-darkGrey p-5">
+						<div className="order-5 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5">
 							<OpennessIcon className="self-end" />
 							<span className="text-[21px] font-medium leading-[33px]">Otwartość</span>
 						</div>
-						<div className="order-2" />
-						<div className="order-4" />
-						<div className="order-6" />
+						<div className="order-2 hidden md:block" />
+						<div className="order-4 hidden md:block" />
+						<div className="order-6 hidden md:block" />
 					</div>
 				</div>
 				<div className="mb-32 mt-10">

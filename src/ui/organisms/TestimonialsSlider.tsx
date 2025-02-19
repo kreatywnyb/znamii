@@ -100,7 +100,6 @@ const settings = {
 				slidesToShow: 1,
 			},
 		},
-
 	],
 };
 
@@ -113,9 +112,12 @@ const TestimonialsSlider = () => {
 			>
 				{opinions.map(({ text, id, author, authorImg, src, company }, idx) => {
 					return (
-						<div key={`${idx}-${id}`} className="group border border-basicDark text-white">
+						<div
+							key={`${idx}-${id}`}
+							className="group aspect-square border border-basicDark text-white"
+						>
 							<div
-								className="relative md:h-[24rem] h-[28rem]"
+								className="relative h-full"
 								style={{
 									backgroundImage: `url(${src})`,
 									backgroundSize: "cover",
@@ -123,19 +125,19 @@ const TestimonialsSlider = () => {
 									backgroundRepeat: "no-repeat",
 								}}
 							>
-								<div className="absolute bottom-0 h-full bg-background md:p-4 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
+								<div className="absolute bottom-0 h-full bg-background text-basicDark transition-all duration-500 group-hover:bg-opacity-0 md:p-4">
 									<div className="h-full overflow-hidden p-8 transition-all duration-500">
 										<p className="text-[21px] font-medium group-hover:text-white">{text}</p>
 									</div>
 
-									<div className="absolute bottom-8 left-12 flex gap-4 items-end">
-										<div className="relative bg-primary w-[60px] h-[60px]">
-											<Image src={authorImg}  alt="author" />
-											<div className="absolute font-medium -left-4 h-4 w-4 bg-primary"></div>
+									<div className="absolute bottom-8 left-12 flex items-end gap-4">
+										<div className="relative h-[60px] w-[60px] bg-primary">
+											<Image src={authorImg} alt="author" />
+											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
 										</div>
 										<div className="group-hover:text-white">
 											<p className="text-[21px] font-medium">{author}</p>
-											<p className="text-[12px] font-geist font-medium">{company}</p>
+											<p className="font-geist text-[12px] font-medium">{company}</p>
 										</div>
 									</div>
 								</div>

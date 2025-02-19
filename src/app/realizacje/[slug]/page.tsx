@@ -6,7 +6,7 @@ import CtaSection from "@/ui/sections/CtaSection";
 import CtaBgImg from "@public/cta-poster-3.webp";
 import CaseStudyAboutSection from "@/ui/sections/case-studies/CaseStudyAboutSection";
 
-const CaseStudyPage = async ({ params }: PageProps) => {
+const CaseStudyPage = async ({}: PageProps) => {
 	// const { slug } = await params;
 	// const caseStudy = await API.caseStudies.getCaseStudy(slug);
 
@@ -25,7 +25,7 @@ const CaseStudyPage = async ({ params }: PageProps) => {
 	if (!caseStudy) return notFound();
 
 	return (
-		<main className="bg-background border-t border-darkGrey">
+		<main className="border-t border-darkGrey bg-background">
 			<CaseStudyHeroSection
 				title="Nazwa klienta"
 				video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"

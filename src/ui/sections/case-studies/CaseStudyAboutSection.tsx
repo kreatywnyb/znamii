@@ -1,7 +1,8 @@
 import React from "react";
 import { CTAButton } from "../../molecules/CTAButton";
-import Image from 'next/image';
-import placeholderImage from '@public/case-study-material.webp'
+import Image from "next/image";
+import placeholderImage from "@public/case-study-material.webp";
+import WhiteBox from "@/ui/organisms/WhiteBox";
 
 interface CaseStudyAboutSectionProps {
 	leftDescription: string;
@@ -15,8 +16,9 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 	rightDescription2,
 }) => {
 	return (
-		<section className="container my-8 bg-white p-16">
-			<div className="flex justify-between">
+		// <section className="container my-8 bg-white p-16">
+		<WhiteBox className="my-8 [&>div]:p-16">
+			<div className="container flex justify-between">
 				<div className="flex max-w-[380px] flex-col justify-between">
 					<p className="text-[21px]">{leftDescription}</p>
 					<CTAButton href="">Zrealizuj projekt z nami</CTAButton>
@@ -26,9 +28,10 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 					<p>{rightDescription2}</p>
 				</div>
 			</div>
-			<Image src={placeholderImage} alt="alt" className="mt-32"/>
-			<Image src={placeholderImage} alt="alt"/>
-		</section>
+			<Image src={placeholderImage} alt="alt" className="mt-32" />
+			<Image src={placeholderImage} alt="alt" />
+		</WhiteBox>
+		// </section>
 	);
 };
 
