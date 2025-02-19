@@ -9,9 +9,15 @@ const geistMono = Geist_Mono({
 	subsets: ["latin"],
 });
 
+const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
+
 export const metadata: Metadata = {
 	title: "Znamii - Studio kreatywne",
 	description: "Znamii",
+	robots: {
+		index: isProduction ? true : false,
+		follow: isProduction ? true : false,
+	},
 };
 
 export default function RootLayout({
