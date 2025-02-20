@@ -9,16 +9,28 @@ import CaseStudy from "@/models/caseStudy";
 import CaseStudiesList from "@/ui/organisms/case-studies/CaseStudiesList";
 import Link from "next/link";
 import HeroSectionWithText from "@/ui/sections/HeroSectionWIthText";
+import WhiteBox from "@/ui/organisms/WhiteBox";
 
 export default function Home() {
 	const caseStudies: CaseStudy[] = [
-        { name: "Pienińska przystań", image: case1.src, cols: 2, category: "Zdjęcia", slug: "pieninska-przystan" },
-        { name: "PRO100", image: case2.src, cols: 1, category: "Zdjęcia", slug: "pro100" },
-        { name: "AW-Sport", image: case3.src, cols: 1, category: "Branding", slug: "aw-sport" },
-        { name: "The Big Thing", image: case4.src, cols: 2, category: "Branding", slug: "the-big-thing" },
-        { name: "Future Mind", image: case5.src, cols: 2, category: "Video", slug: "future-mind" },
-        { name: "ONDE", image: case6.src, cols: 1, category: "Video", slug: "onde" },
-        
+		{
+			name: "Pienińska przystań",
+			image: case1.src,
+			cols: 2,
+			category: "Zdjęcia",
+			slug: "pieninska-przystan",
+		},
+		{ name: "PRO100", image: case2.src, cols: 1, category: "Zdjęcia", slug: "pro100" },
+		{ name: "AW-Sport", image: case3.src, cols: 1, category: "Branding", slug: "aw-sport" },
+		{
+			name: "The Big Thing",
+			image: case4.src,
+			cols: 2,
+			category: "Branding",
+			slug: "the-big-thing",
+		},
+		{ name: "Future Mind", image: case5.src, cols: 2, category: "Video", slug: "future-mind" },
+		{ name: "ONDE", image: case6.src, cols: 1, category: "Video", slug: "onde" },
 	];
 
 	const filters: string[] = ["All", "Branding", "Video", "Zdjęcia"];
@@ -26,13 +38,17 @@ export default function Home() {
 	return (
 		<main className="bg-background">
 			<HeroSectionWithText headingText="Fachuuura! W sensie nasze portfolio" />
-			<section className="container relative z-10 -mt-64 mb-[30rem] max-w-[1700px] bg-white px-20 py-20">
-				<CaseStudiesList caseStudies={caseStudies} filters={filters} />
-				<p className="mt-16 text-[21px]">
-					+ Wiele, wiele więcej. Dlatego jeśli nie znalazłeś tego czego szukasz -{" "}
-					<Link href={""}>odezwij się do nas!</Link>
-				</p>
-			</section>
+			{/* <section className="container relative z-10 -mt-64 mb-[30rem] max-w-[1700px] bg-white px-20 py-20"> */}
+			<WhiteBox className="relative z-10 mb-[30rem] [&>div]:-mt-64">
+				<div className="container">
+					<CaseStudiesList caseStudies={caseStudies} filters={filters} />
+					<p className="mt-16 text-[21px]">
+						+ Wiele, wiele więcej. Dlatego jeśli nie znalazłeś tego czego szukasz -{" "}
+						<Link href={""}>odezwij się do nas!</Link>
+					</p>
+				</div>
+			</WhiteBox>
+			{/* </section> */}
 		</main>
 	);
 }

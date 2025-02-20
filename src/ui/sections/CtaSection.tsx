@@ -21,7 +21,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ title, text, image }) => {
 					{" "}
 					{text || "Zrealizujemy projekty, które do tej pory były wyłącznie w Twojej głowie."}{" "}
 				</p>
-				<CTAButton href="" className="text-center max-md:w-full">
+				<CTAButton href="" className="whitespace-nowrap text-center max-md:w-full max-sm:text-sm">
 					Zrealizuj projekt z nami
 				</CTAButton>
 			</div>

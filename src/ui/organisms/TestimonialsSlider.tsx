@@ -81,13 +81,20 @@ const opinions: Opinion[] = [
 const settings = {
 	infinite: true,
 	speed: 1500,
-	slidesToShow: 3,
+	slidesToShow: 4,
 	autoplay: true,
 	slidesToScroll: 1,
 	arrows: false,
 	responsive: [
 		{
-			breakpoint: 1000,
+			breakpoint: 1500,
+			dots: true,
+			settings: {
+				slidesToShow: 3,
+			},
+		},
+		{
+			breakpoint: 1100,
 			dots: true,
 			settings: {
 				slidesToShow: 2,
@@ -108,13 +115,13 @@ const TestimonialsSlider = () => {
 		<div className="overflow-hidden">
 			<Slider
 				{...settings}
-				className="cursor-pointer py-16 [&_.slick-track]:flex [&_.slick-track]:gap-4"
+				className="h-full cursor-pointer py-16 [&_.slick-track]:flex [&_.slick-track]:gap-4"
 			>
 				{opinions.map(({ text, id, author, authorImg, src, company }, idx) => {
 					return (
 						<div
 							key={`${idx}-${id}`}
-							className="group aspect-square border border-basicDark text-white"
+							className="group h-full flex-1 border border-basicDark text-white sm:aspect-square"
 						>
 							<div
 								className="relative h-full"
@@ -125,12 +132,12 @@ const TestimonialsSlider = () => {
 									backgroundRepeat: "no-repeat",
 								}}
 							>
-								<div className="absolute bottom-0 h-full bg-background text-basicDark transition-all duration-500 group-hover:bg-opacity-0 md:p-4">
-									<div className="h-full overflow-hidden p-8 transition-all duration-500">
+								<div className="flex h-full flex-col justify-between bg-background p-8 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
+									<div className="transition-all duration-500">
 										<p className="text-[21px] font-medium group-hover:text-white">{text}</p>
 									</div>
 
-									<div className="absolute bottom-8 left-12 flex items-end gap-4">
+									<div className="flex items-end gap-4 max-md:mt-4">
 										<div className="relative h-[60px] w-[60px] bg-primary">
 											<Image src={authorImg} alt="author" />
 											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
