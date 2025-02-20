@@ -50,7 +50,7 @@ const opinions: Opinion[] = [
 		authorImg: grzegorzMikulaImage,
 		company: "hiFOOD",
 		src: testimonial.src,
-		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 	},
 	{
 		id: 5,
@@ -58,7 +58,7 @@ const opinions: Opinion[] = [
 		authorImg: grzegorzImage,
 		company: "Safran aircraft engines poland",
 		src: testimonial.src,
-		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 	},
 	{
 		id: 6,
