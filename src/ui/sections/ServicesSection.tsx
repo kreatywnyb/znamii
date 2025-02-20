@@ -111,12 +111,12 @@ const ServicesSection = () => {
 						</p>
 						<ButtonSecondary href={links.contactPage}>poznaj się z nami</ButtonSecondary>
 					</div>
-					<div className="grid flex-1 grid-cols-1 grid-rows-3 max-md:space-y-2 md:grid-cols-3 md:grid-rows-2">
+					<div className="grid flex-1 grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
 						<div className="order-1 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:mt-auto">
 							<PrecisionIcon className="self-end" />
 							<span className="text-[21px] font-medium leading-[33px]">Precyzja</span>
 						</div>
-						<div className="order-3 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
+						<div className="order-3 flex aspect-square h-full w-full max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
 							<EmpathyIcon className="self-end" />
 							<span className="text-[21px] font-medium leading-[33px]">Empatia</span>
 						</div>
