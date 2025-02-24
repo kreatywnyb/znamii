@@ -38,7 +38,7 @@ const NavItemExpanded = ({ main, subMenu }: NavItemExpandedProps) => {
 				)}
 			</div>
 			{isOpen && (
-				<div className="absolute left-1/2 top-full z-20 flex w-24 -translate-x-1/2 flex-col space-y-2 bg-basicDark px-4 py-4">
+				<div className="left-1/2 top-full z-20 flex w-24 flex-col space-y-2 bg-basicDark px-4 py-4 md:absolute md:-translate-x-1/2">
 					{subMenu.map((item, idx) => (
 						<Link key={idx} href={item.href} className="transition-colors hover:text-primary">
 							{item.text}

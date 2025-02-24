@@ -75,7 +75,7 @@ export const TextGenerateEffect = ({
 					visible: {
 						opacity: 1,
 						transition: {
-							staggerChildren: 0.5, // 🔥 Każde słowo pojawia się po kolei
+							staggerChildren: 0.25, // 🔥 Każde słowo pojawia się po kolei
 						},
 					},
 				}}
@@ -93,7 +93,7 @@ export const TextGenerateEffect = ({
 									visible: {
 										opacity: 1,
 										transition: {
-											staggerChildren: 0.04, // 🔥 Litery pojawiają się po kolei w słowie
+											staggerChildren: 0.025, // 🔥 Litery pojawiają się po kolei w słowie
 										},
 									},
 								}}
@@ -103,7 +103,7 @@ export const TextGenerateEffect = ({
 									<motion.span
 										key={`${letter}-${letterIdx}`}
 										variants={{
-											hidden: { opacity: 0, y: -10 },
+											hidden: { opacity: 0 },
 											visible: { opacity: 1, y: 0 },
 										}}
 										transition={{ duration: 0.3 }}

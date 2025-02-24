@@ -8,7 +8,7 @@ const HeroSectionWithText = ({ headingText }: HeroSectionWithTextProps) => {
 	return (
 		<section className="bg-basicDark pb-96 pt-20">
 			<div className="container">
-				<h1 className="text-[58px] text-white">{headingText}</h1>
+				<h1 className="text-4xl text-white lg:text-[58px]">{headingText}</h1>
 			</div>
 		</section>
 	);

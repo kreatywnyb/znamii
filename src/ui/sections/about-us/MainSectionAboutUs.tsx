@@ -11,11 +11,11 @@ const MainSectionAboutUs = () => {
 	// const videoRef = useRef(null);
 
 	return (
-		<WhiteBox className="z-50 [&>div]:-mt-64">
+		<WhiteBox className="z-20 [&>div]:-mt-64">
 			<div className="container">
 				<div className="flex flex-col justify-between gap-4 lg:flex-row">
 					<div className="flex-1">
-						<h2 className="text-[40px] font-medium leading-[50px]">
+						<h2 className="text-3xl font-medium lg:text-[40px] lg:leading-[50px]">
 							Jak do tego doszło, <br /> nie wiem?
 						</h2>
 					</div>
