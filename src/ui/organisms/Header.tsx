@@ -20,7 +20,9 @@ const Header = () => {
 					<Navigation />
 				</div>
 				<div className="hidden flex-1 justify-end md:flex">
-					<CTAButton href={links.contactPage}>Zralizuj projekt</CTAButton>
+					<CTAButton className="!text-xs" href={links.contactPage}>
+						Zrealizuj projekt
+					</CTAButton>
 				</div>
 				<MobileNav />
 			</div>

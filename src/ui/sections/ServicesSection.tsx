@@ -24,18 +24,22 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer transition-transform hover:translate-x-2">Logo</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+								Logo
+							</li>
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								identyfikacje wizualne
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								Strony internetowe
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">Naming</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+								Naming
+							</li>
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								projekty do druku
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								obsługa abonamentowa
 							</li>
 						</ul>
@@ -51,22 +55,22 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								filmy Reklamowe
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								Eventy & Konferencje
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								filmy Korporacyjne
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								Webinary & podcasty
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								SPOTY SPOŁECZNE
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								obsługa abonamentowa
 							</li>
 						</ul>
@@ -82,22 +86,22 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								sesje Wizerunkowe
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								Eventy & konfererencje
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								sesje Biznesowe
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								fotografia produktowa
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								zdjęcia z drona
 							</li>
-							<li className="cursor-pointer transition-transform hover:translate-x-2">
+							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
 								obsługa abonamentowa
 							</li>
 						</ul>

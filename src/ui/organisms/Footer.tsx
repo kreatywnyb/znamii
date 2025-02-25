@@ -16,7 +16,7 @@ const Footer = () => {
 			</div>
 			<div className="max-md:place-items-left grid grid-cols-1 py-4 font-medium md:grid-cols-3">
 				<div className="hidden md:block"></div>
-				<div className="text-[21px] leading-[33.6px]">+48 694 211 577</div>
+				<div className="flex items-center text-[21px]">+48 694 211 577</div>
 				<div className="mt-4 flex gap-2 md:mt-0 md:justify-end md:gap-8">
 					<a href="" className="border border-[#00000022] p-[13px]">
 						<InstagramIcon />
