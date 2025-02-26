@@ -8,15 +8,15 @@ const Footer = () => {
 	return (
 		<footer className="max-w-screen container fixed bottom-0 left-1/2 -z-10 -translate-x-1/2 md:h-96">
 			<div className="max-md:place-items-left grid grid-cols-1 font-medium md:grid-cols-3">
-				<h3 className="text-[40px]">Poklikasz?</h3>
-				<div className="flex items-end text-[21px] leading-[33.6px]">
+				<h3 className="text-[2.5rem]">Poklikasz?</h3>
+				<div className="test-[1.313rem] flex items-end leading-[33.6px]">
 					<div>{contactMail}</div>
 					<CopyIcon className="mb-2 ml-2" />
 				</div>
 			</div>
 			<div className="max-md:place-items-left grid grid-cols-1 py-4 font-medium md:grid-cols-3">
 				<div className="hidden md:block"></div>
-				<div className="flex items-center text-[21px]">+48 694 211 577</div>
+				<div className="test-[1.313rem] flex items-center">+48 694 211 577</div>
 				<div className="mt-4 flex gap-2 md:mt-0 md:justify-end md:gap-8">
 					<a href="" className="border border-[#00000022] p-[13px]">
 						<InstagramIcon />

@@ -20,11 +20,19 @@ body {
 	outline: 1px solid red;
 } */
 
+@layer utilities {
+	@media (min-width: 2100px) {
+		html {
+			font-size: 130%;
+		}
+	}
+}
+
 @layer base {
 	h1 {
 		@apply text-[48px] font-medium leading-[60px] lg:text-[58px] lg:leading-[72.5px];
 	}
-  :root {
+	:root {
 		--radius: 0.5rem;
 	}
 }

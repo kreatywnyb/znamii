@@ -47,7 +47,7 @@ const TeamSectionAboutUs = () => {
 	return (
 		<WhiteBox>
 			<div className="container py-20">
-				<h2 className="mb-20 text-[40px] leading-[50px]">Aleście ekipę zmontowali</h2>
+				<h2 className="mb-20 text-[2.5rem] leading-[50px]">Aleście ekipę zmontowali</h2>
 				<div className="flex flex-col">
 					{team.map((item, idx) => (
 						<div
@@ -56,7 +56,7 @@ const TeamSectionAboutUs = () => {
 						>
 							<div className="flex flex-col md:flex-row md:items-center md:space-x-6">
 								<Image alt="Paweł Ciupak" src={item.img} />
-								<span className="inline-block whitespace-nowrap text-[21px] leading-[33px]">
+								<span className="test-[1.313rem] inline-block whitespace-nowrap leading-[33px]">
 									{item.name}
 								</span>
 							</div>

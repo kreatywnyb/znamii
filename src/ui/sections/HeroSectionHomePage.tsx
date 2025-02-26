@@ -7,7 +7,7 @@ const HeroSectionHomePage = () => {
 				<div className="relative z-10 flex w-full flex-1 flex-col items-center justify-center">
 					<TextGenerateEffect
 						bigWords={"Zbuduj wizerunek marki"}
-						classNameOne="text-6xl lg:text-[103px]"
+						classNameOne="text-6xl lg:text-[6.438rem]"
 						smallWords={
 							"Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
 						}

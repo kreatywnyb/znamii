@@ -15,18 +15,18 @@ const MainSectionAboutUs = () => {
 			<div className="container">
 				<div className="flex flex-col justify-between gap-4 lg:flex-row">
 					<div className="flex-1">
-						<h2 className="text-3xl font-medium lg:text-[40px] lg:leading-[50px]">
+						<h2 className="text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px]">
 							Jak do tego doszło, <br /> nie wiem?
 						</h2>
 					</div>
 					<div className="flex-1">
-						<p className="max-w-[320px] text-[17px] font-medium leading-[27px]">
+						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[27px]">
 							Tutaj jakaś ckliwa historia jak pomogliśmy innym markom przekształcić ich pomysły w
 							rzeczywistość prawdź jak pomogliśmy innym markom przekształcić ich itede ite
 						</p>
 					</div>
 					<div className="flex-1">
-						<p className="max-w-[320px] text-[17px] font-medium leading-[27px]">
+						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[27px]">
 							Sprawdź jak pomogliśmy innym markom przekształc pomysły w rzeczywistość prawdź jak
 							pomogliśmy innym markom przekształcić ich pomysły.
 						</p>
@@ -56,9 +56,9 @@ const MainSectionAboutUs = () => {
 								<span>
 									<PrecisionIcon className="h-[30px] w-[30px] [&>path]:stroke-basicDark" />
 								</span>
-								<h3 className="text-[40px] leading-[50px]">Precyzja</h3>
+								<h3 className="text-[2.5rem] leading-[50px]">Precyzja</h3>
 							</div>
-							<p className="text-[17px] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
 								Przesuwamy piksele z prawa na lewo, dopóki wszystko nie wygląda tak, jak powinno.
 								Poprawiamy każdą niedoskonałość na zdjęciu czy filmie, bo wiemy, że to właśnie
 								detale robią różnicę. Czasami wracamy do projektu wiele razy, żeby upewnić się, że
@@ -71,9 +71,9 @@ const MainSectionAboutUs = () => {
 								<span>
 									<OpennessIcon className="h-[30px] w-[30px] [&>path]:stroke-basicDark" />
 								</span>
-								<h3 className="text-[40px] leading-[50px]">Otwartość</h3>
+								<h3 className="text-[2.5rem] leading-[50px]">Otwartość</h3>
 							</div>
-							<p className="text-[17px] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
 								Jesteśmy jak stacja benzynowa – otwarci. Zmieniasz wizję w trakcie projektu? Żaden
 								problem, zrobimy poprawki, zmiksujemy pomysły i działamy dalej. Pomysły z kosmosu,
 								klienci z nietypowych branż czy niestandardowe zlecenia? Uwielbiamy takie wyzwania.
@@ -86,9 +86,9 @@ const MainSectionAboutUs = () => {
 								<span>
 									<EmpathyIcon className="h-[30px] w-[30px] [&>path]:stroke-basicDark" />
 								</span>
-								<h3 className="text-[40px] leading-[50px]">Empatia</h3>
+								<h3 className="text-[2.5rem] leading-[50px]">Empatia</h3>
 							</div>
-							<p className="text-[17px] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
 								Rozumiemy, że Twój projekt to coś więcej niż tylko zadanie – to Twój pomysł, wizja a
 								często także kawałek serca. Dlatego zawsze staramy się znaleźć czas, nawet gdy dzień
 								wydaje się za krótki. Utożsamiamy się z Twoimi celami, bo wiemy, że sukces Twojej

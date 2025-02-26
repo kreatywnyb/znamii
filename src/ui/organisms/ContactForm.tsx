@@ -37,7 +37,7 @@ const ContactForm: React.FC = () => {
 
 	const onSubmit = (data: FormData) => {
 		console.log("assssssssssssssssss");
-		
+
 		setError("services", { message: "Wybierz przynajmniej jedną usługę" });
 		console.log({ ...data, services: selectedServices });
 	};
@@ -52,11 +52,13 @@ const ContactForm: React.FC = () => {
 		<div className="relative bg-ultraLightGray p-8 shadow-lg after:absolute after:-right-4 after:-top-4 after:h-4 after:w-4 after:bg-primary">
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 				<div>
-				<div className="mb-3 flex justify-between">
-						<label className="block text-[17px] font-medium text-basicDark">
+					<div className="mb-3 flex justify-between">
+						<label className="block text-[1.063rem] font-medium text-basicDark">
 							W czym możemy ci pomóc?
 						</label>
-						{errors.services && <p className="text-[17px] text-errorRed">{errors.services.message}</p>}
+						{errors.services && (
+							<p className="text-[1.063rem] text-errorRed">{errors.services.message}</p>
+						)}
 					</div>
 					<div className="mt-2 grid grid-cols-4 gap-2">
 						{services.map((service) => (
@@ -79,10 +81,10 @@ const ContactForm: React.FC = () => {
 
 				<div>
 					<div className="mb-3 flex justify-between">
-						<label className="block text-[17px] font-medium text-basicDark">
+						<label className="block text-[1.063rem] font-medium text-basicDark">
 							Jak się do ciebie zwracać
 						</label>
-						{errors.name && <p className="text-[17px] text-errorRed">{errors.name.message}</p>}
+						{errors.name && <p className="text-[1.063rem] text-errorRed">{errors.name.message}</p>}
 					</div>
 					<Input
 						{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
@@ -93,10 +95,12 @@ const ContactForm: React.FC = () => {
 
 				<div>
 					<div className="mb-3 flex justify-between">
-						<label className="block text-[17px] font-medium text-basicDark">
+						<label className="block text-[1.063rem] font-medium text-basicDark">
 							Email do kontaktu
 						</label>
-						{errors.email && <p className="text-[17px] text-errorRed">{errors.email.message}</p>}
+						{errors.email && (
+							<p className="text-[1.063rem] text-errorRed">{errors.email.message}</p>
+						)}
 					</div>
 					<Input
 						placeholder="E-MAIL"
@@ -118,11 +122,11 @@ const ContactForm: React.FC = () => {
 
 				<div>
 					<div className="mb-3 flex justify-between">
-						<label className="block text-[17px] font-medium text-basicDark">
+						<label className="block text-[1.063rem] font-medium text-basicDark">
 							Opowiedz co cię sprowadza
 						</label>
 						{errors.message && (
-							<p className="text-[17px] text-errorRed">{errors.message.message}</p>
+							<p className="text-[1.063rem] text-errorRed">{errors.message.message}</p>
 						)}
 					</div>
 					<Textarea
@@ -154,7 +158,9 @@ const ContactForm: React.FC = () => {
 						</Link>
 					</label>
 
-					{errors.policy && <p className="text-[17px] text-errorRed">{errors.policy.message}</p>}
+					{errors.policy && (
+						<p className="text-[1.063rem] text-errorRed">{errors.policy.message}</p>
+					)}
 				</div>
 
 				<ButtonPrimary type="submit" className="w-full">

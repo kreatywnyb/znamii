@@ -15,7 +15,7 @@ const ServicesSection = () => {
 				<div className="flex flex-col justify-between max-md:space-y-14 md:flex-row">
 					<div className="">
 						<Link
-							className="group relative mb-10 inline-block pr-8 text-[40px] leading-[40px]"
+							className="group relative mb-10 inline-block pr-8 text-[2.5rem] leading-[40px]"
 							href={`${links.services.main}${links.services.branding}`}
 						>
 							Branding
@@ -46,7 +46,7 @@ const ServicesSection = () => {
 					</div>
 					<div className="">
 						<Link
-							className="group relative mb-10 inline-block pr-8 text-[40px] leading-[40px]"
+							className="group relative mb-10 inline-block pr-8 text-[2.5rem] leading-[40px]"
 							href={`${links.services.main}${links.services.video}`}
 						>
 							Video
@@ -77,7 +77,7 @@ const ServicesSection = () => {
 					</div>
 					<div className="">
 						<Link
-							className="group relative mb-10 inline-block pr-8 text-[40px] leading-[40px]"
+							className="group relative mb-10 inline-block pr-8 text-[2.5rem] leading-[40px]"
 							href={`${links.services.main}${links.services.photo}`}
 						>
 							Zdjęcia
@@ -109,7 +109,7 @@ const ServicesSection = () => {
 				</div>
 				<div className="mt-36 flex flex-col max-lg:space-y-20 lg:flex-row">
 					<div className="flex flex-1 flex-col justify-between">
-						<p className="mb-12 max-w-[600px] text-3xl font-medium lg:text-[40px] lg:leading-[50px]">
+						<p className="mb-12 max-w-[600px] text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px]">
 							Wierzymy, że najlepsze pomysły rodzą się w atmosferze swobody. Dlatego działamy luźno,
 							a tworzymy sztywniutko.
 						</p>
@@ -118,15 +118,15 @@ const ServicesSection = () => {
 					<div className="grid flex-1 grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
 						<div className="order-1 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:mt-auto">
 							<PrecisionIcon className="self-end" />
-							<span className="text-[21px] font-medium leading-[33px]">Precyzja</span>
+							<span className="test-[1.313rem] font-medium leading-[33px]">Precyzja</span>
 						</div>
 						<div className="order-3 flex aspect-square h-full w-full max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
 							<EmpathyIcon className="self-end" />
-							<span className="text-[21px] font-medium leading-[33px]">Empatia</span>
+							<span className="test-[1.313rem] font-medium leading-[33px]">Empatia</span>
 						</div>
 						<div className="order-5 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5">
 							<OpennessIcon className="self-end" />
-							<span className="text-[21px] font-medium leading-[33px]">Otwartość</span>
+							<span className="test-[1.313rem] font-medium leading-[33px]">Otwartość</span>
 						</div>
 						<div className="order-2 hidden md:block" />
 						<div className="order-4 hidden md:block" />

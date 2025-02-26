@@ -6,16 +6,16 @@ const AddressSection: React.FC = () => {
 	return (
 		<section className="container relative z-10 -mt-28 bg-white px-16 py-16">
 			<div className="grid grid-cols-2 gap-8">
-				<h2 className="mb-4 text-left text-4xl font-medium text-basicDark">
-					Wpadnij na kawkę ☕
-				</h2>
+				<h2 className="mb-4 text-left text-4xl font-medium text-basicDark">Wpadnij na kawkę ☕</h2>
 				<div>
-					<p className="text-[17px] mb-4 tracking-[2%]">
+					<p className="mb-4 text-[1.063rem] tracking-[2%]">
 						Jak dojechać? No nie ma łatwo, bo kilka budynków w okolicy ma przypisany ten sam numer.
 						Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać np. po...
 						dużym szyldzie Znami.
 					</p>
-					<p className="font-geist uppercase text-darkGrey py-6">ul. okulickiego 18, 35-202 rzeszów</p>
+					<p className="py-6 font-geist uppercase text-darkGrey">
+						ul. okulickiego 18, 35-202 rzeszów
+					</p>
 				</div>
 				<div>
 					<iframe
@@ -25,7 +25,7 @@ const AddressSection: React.FC = () => {
 						loading="lazy"
 					></iframe>
 				</div>
-                <Image src={interiorImage} alt="asd"></Image>
+				<Image src={interiorImage} alt="asd"></Image>
 			</div>
 		</section>
 	);

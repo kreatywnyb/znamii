@@ -42,7 +42,7 @@ export default function Home() {
 			<WhiteBox className="relative z-10 mb-[30rem] [&>div]:-mt-64">
 				<div className="container">
 					<CaseStudiesList caseStudies={caseStudies} filters={filters} />
-					<p className="mt-16 text-[21px]">
+					<p className="test-[1.313rem] mt-16">
 						+ Wiele, wiele więcej. Dlatego jeśli nie znalazłeś tego czego szukasz -{" "}
 						<Link href={""}>odezwij się do nas!</Link>
 					</p>

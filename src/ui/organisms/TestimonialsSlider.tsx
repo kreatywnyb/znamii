@@ -134,7 +134,7 @@ const TestimonialsSlider = () => {
 							>
 								<div className="flex h-full flex-col justify-between bg-background p-8 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
 									<div className="transition-all duration-500">
-										<p className="text-[21px] font-medium group-hover:text-white">{text}</p>
+										<p className="test-[1.313rem] font-medium group-hover:text-white">{text}</p>
 									</div>
 
 									<div className="flex items-end gap-4 max-md:mt-4">
@@ -143,8 +143,8 @@ const TestimonialsSlider = () => {
 											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
 										</div>
 										<div className="group-hover:text-white">
-											<p className="text-[21px] font-medium">{author}</p>
-											<p className="font-geist text-[12px] font-medium">{company}</p>
+											<p className="test-[1.313rem] font-medium">{author}</p>
+											<p className="font-geist text-[0.75rem] font-medium">{company}</p>
 										</div>
 									</div>
 								</div>

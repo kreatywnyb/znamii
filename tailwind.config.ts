@@ -14,8 +14,12 @@ export default {
 		container: {
 			center: true,
 			padding: "1rem",
+			// screens: {
+			// 	xxl: "2100px",
+			// },
 		},
 		extend: {
+			screens: { xxl: "2100px" },
 			colors: {
 				primary: "#FFB217",
 				basicDark: "#08080a",
