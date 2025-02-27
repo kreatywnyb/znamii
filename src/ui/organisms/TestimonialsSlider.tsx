@@ -8,14 +8,15 @@ import grzegorzImage from "@public/grzegorz-sowa.webp";
 import grzegorzMikulaImage from "@public/grzegorz-mikula.webp";
 import bartekImage from "@public/bartek-les.webp";
 import kamilImage from "@public/kamil-pormbinski.webp";
-import testimonial from "@public/testimonial.webp";
+import kasiaImage from "@public/kasia-wlodarczyk.webp";
+import raphaelImage from "@public/raphael-sheffield.webp";
 
 interface Opinion {
 	id: number;
 	author: string;
 	authorImg: StaticImageData;
 	company: string;
-	src: string;
+	src?: string;
 	text: string;
 }
 
@@ -25,7 +26,7 @@ const opinions: Opinion[] = [
 		author: "Krzysztof Winiarski",
 		authorImg: krzysztofImage,
 		company: "AW-SPORT",
-		src: testimonial.src,
+		src: "/person-speaking.mp4",
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
 	},
 	{
@@ -33,7 +34,6 @@ const opinions: Opinion[] = [
 		author: "Magda Plaskacz",
 		authorImg: magdaImage,
 		company: "DR SNOW",
-		src: testimonial.src,
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
 	},
 	{
@@ -41,40 +41,51 @@ const opinions: Opinion[] = [
 		author: "Grzegorz Sowa",
 		authorImg: grzegorzImage,
 		company: "DR SNOW",
-		src: testimonial.src,
 		text: "Dziękujemy jako klub koszykarski Resovii Rzeszów za profesjonalnie wykonaną sesję zawodników Resovii, zdjęcia grupowe i indywidualne. Pełen profesjonalizm i terminowość!",
 	},
 	{
 		id: 4,
-		author: "Grzegorz Mikuła",
-		authorImg: grzegorzMikulaImage,
-		company: "hiFOOD",
-		src: testimonial.src,
-		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+		author: "Kasia Włodarczyk",
+		authorImg: kasiaImage,
+		company: "fundacja Generaacja",
+		src: "/person-speaking.mp4",
+		text: "XYZ",
 	},
 	{
 		id: 5,
-		author: "Raphael Sheffield",
-		authorImg: grzegorzImage,
-		company: "Safran aircraft engines poland",
-		src: testimonial.src,
+		author: "Grzegorz Mikuła",
+		authorImg: grzegorzMikulaImage,
+		company: "hiFOOD",
 		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 	},
 	{
 		id: 6,
-		author: "Bartek Leś",
-		authorImg: bartekImage,
-		company: "recovery lab",
-		src: testimonial.src,
-		text: "Zrobili dla mojej firmy całą stronę internetową (od brandu, przez materiały foto/wideo aż do kodowania i wypuszczenia jej w świat). Jestem bardzo zadowolony ze współpracy!",
+		author: "Raphael Sheffield",
+		authorImg: raphaelImage,
+		company: "Safran aircraft engines poland",
+		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 	},
 	{
 		id: 7,
+		author: "Bartek Leś",
+		authorImg: bartekImage,
+		company: "recovery lab",
+		src: "/person-speaking.mp4",
+		text: "Zrobili dla mojej firmy całą stronę internetową (od brandu, przez materiały foto/wideo aż do kodowania i wypuszczenia jej w świat). Jestem bardzo zadowolony ze współpracy!",
+	},
+	{
+		id: 8,
 		author: "Kamil Porembiński",
 		authorImg: kamilImage,
 		company: "podcast spod wody",
-		src: testimonial.src,
 		text: "Paweł i jego ekipa to idealny wybór jeżeli szukasz realizacji związanych z wideo. Zawsze pomocni, mega merytoryczni i kreatywni! Polecam :)",
+	},
+	{
+		id: 9,
+		author: "Natalia Boniecka",
+		authorImg: kamilImage,
+		company: "blawesome",
+		text: "Super profesjonaliści! Mega robota z zaprojektowaniem identyfikacji wizualnej dla Blawesome! 💛Polecam z całego serduszka!",
 	},
 ];
 
@@ -121,30 +132,38 @@ const TestimonialsSlider = () => {
 					return (
 						<div
 							key={`${idx}-${id}`}
-							className="group h-full flex-1 border border-basicDark text-white sm:aspect-square"
+							className="relative min-h-[24rem] h-full flex-1 border border-basicDark text-white"
 						>
-							<div
-								className="relative h-full"
-								style={{
-									backgroundImage: `url(${src})`,
-									backgroundSize: "cover",
-									backgroundPosition: "center",
-									backgroundRepeat: "no-repeat",
-								}}
-							>
-								<div className="flex h-full flex-col justify-between bg-background p-8 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
-									<div className="transition-all duration-500">
-										<p className="test-[1.313rem] font-medium group-hover:text-white">{text}</p>
+							<div className="h-full">
+								{src && (
+									<div className="after:absolute after:h-full after:w-full after:bg-black after:bg-opacity-50">
+										<video
+											className="absolute inset-0 h-full w-full object-cover"
+											autoPlay
+											muted
+											loop
+											playsInline
+										>
+											<source src={src} type="video/mp4" />
+										</video>
 									</div>
+								)}
+
+								<div className="absolute flex h-full flex-col justify-between p-8 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
+									<p
+										className={`text-[1.313rem] font-medium ${src ? "text-white" : "text-basicDark"}`}
+									>
+										{text}
+									</p>
 
 									<div className="flex items-end gap-4 max-md:mt-4">
 										<div className="relative h-[60px] w-[60px] bg-primary">
-											<Image src={authorImg} alt="author" />
+											<Image src={authorImg} className="h-full" alt="author" />
 											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
 										</div>
-										<div className="group-hover:text-white">
-											<p className="test-[1.313rem] font-medium">{author}</p>
-											<p className="font-geist text-[0.75rem] font-medium">{company}</p>
+										<div className={`${src ? "text-white" : "text-basicDark"}`}>
+											<p className="text-[1.313rem] font-medium">{author}</p>
+											<p className="font-geist text-[0.75rem] font-medium uppercase">{company}</p>
 										</div>
 									</div>
 								</div>

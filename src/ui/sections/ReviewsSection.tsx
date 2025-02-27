@@ -7,7 +7,7 @@ const PortfolioSection = () => {
 	return (
 		<section className="container relative z-10 -mt-16 pb-32 pt-48">
 			<div className="flex flex-wrap items-center justify-between">
-				<h2 className="text-medium order-1 mb-4 mt-8 text-left text-4xl text-[2.5rem] font-bold text-basicDark">
+				<h2 className="font-medium order-1 mb-4 mt-8 text-left text-4xl text-[2.5rem] text-basicDark">
 					Dobrze robią, dobry przekaz leci.
 				</h2>
 				<p className="order-1 mb-4 text-[1.063rem] font-medium text-[#474747] lg:hidden">

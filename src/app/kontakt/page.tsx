@@ -20,10 +20,10 @@ export default function Home() {
 							wideo posłużą Ci na lata.
 						</p>
 						<div>
-							<div className="text-medium flex items-center gap-8 text-[2.5rem]">
+							<div className="font-medium flex items-center gap-8 text-[2.5rem]">
 								<PhoneIcon /> <p>+48 694 211 577</p>
 							</div>
-							<div className="text-medium flex items-center justify-start gap-8 text-[2.5rem]">
+							<div className="font-medium flex items-center justify-start gap-8 text-[2.5rem]">
 								<EmailIcon /> <p>{contactMail}</p>
 							</div>
 						</div>
