@@ -1,3 +1,4 @@
+import KnowledgeSharing from "@/ui/sections/about-us/KnowledgeSharing";
 import MainSectionAboutUs from "@/ui/sections/about-us/MainSectionAboutUs";
 import PhotosSectionAboutUs from "@/ui/sections/about-us/PhotosSectionAboutUs";
 import TeamSectionAboutUs from "@/ui/sections/about-us/TeamSectionAboutUs";
@@ -12,6 +13,7 @@ export default function AboutUsPage() {
 			<MainSectionAboutUs />
 			<PhotosSectionAboutUs />
 			<TeamSectionAboutUs />
+			<KnowledgeSharing />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);

@@ -21,7 +21,7 @@ body {
 } */
 
 @layer utilities {
-	@media (min-width: 2100px) {
+	@media (min-width: 2000px) {
 		html {
 			font-size: 130%;
 		}

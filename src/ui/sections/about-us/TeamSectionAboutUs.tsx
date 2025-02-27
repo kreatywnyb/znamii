@@ -7,6 +7,7 @@ import KbLogoIcon from "@/ui/icons/KbLogoIcon";
 import { twMerge } from "tailwind-merge";
 import { JSX } from "react";
 import WhiteBox from "@/ui/organisms/WhiteBox";
+import { cn } from "@/lib/utils";
 
 const team: {
 	img: StaticImageData;
@@ -46,8 +47,8 @@ const team: {
 const TeamSectionAboutUs = () => {
 	return (
 		<WhiteBox>
-			<div className="container py-20">
-				<h2 className="mb-20 text-[2.5rem] leading-[50px]">Aleście ekipę zmontowali</h2>
+			<div className="container py-10 lg:py-20">
+				<h2 className="mb-0 text-[2.5rem] leading-[50px] lg:mb-0">Aleście ekipę zmontowali</h2>
 				<div className="flex flex-col">
 					{team.map((item, idx) => (
 						<div
@@ -56,7 +57,7 @@ const TeamSectionAboutUs = () => {
 						>
 							<div className="flex flex-col md:flex-row md:items-center md:space-x-6">
 								<Image alt="Paweł Ciupak" src={item.img} />
-								<span className="test-[1.313rem] inline-block whitespace-nowrap leading-[33px]">
+								<span className="inline-block whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-2">
 									{item.name}
 								</span>
 							</div>
@@ -75,7 +76,14 @@ const TeamSectionAboutUs = () => {
 										</span>
 									))}
 								</div>
-								<a href={item.socials.link} target="_blank" className="max-md:pt-10 md:pl-28">
+								<a
+									href={item.socials.link}
+									target="_blank"
+									className={cn(
+										"inline-block w-fit p-2 max-md:mt-10 md:ml-28",
+										idx !== 2 && "rounded-[0.125rem] border border-lightGrey",
+									)}
+								>
 									{item.socials.icon()}
 								</a>
 							</div>

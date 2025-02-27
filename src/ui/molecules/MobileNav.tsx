@@ -17,7 +17,7 @@ const MobileNav = () => {
 	}, [pathname]);
 
 	return (
-		<div className="flex h-full items-center md:hidden">
+		<div className="flex h-full items-center text-xs md:hidden">
 			<div
 				className="relative z-20 flex h-6 cursor-pointer flex-col justify-center space-y-2"
 				onClick={() => setIsOpen((prev) => !prev)}

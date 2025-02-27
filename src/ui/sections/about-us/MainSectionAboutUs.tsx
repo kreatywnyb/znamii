@@ -3,9 +3,8 @@ import EmpathyIcon from "@/ui/icons/EmpathyIcon";
 import OpennessIcon from "@/ui/icons/OpennessIcon";
 // import PlayVideoIcon from "@/ui/icons/PlayVideoIcon";
 import PrecisionIcon from "@/ui/icons/PrecisionIcon";
+import ImageSlider from "@/ui/organisms/about-us/ImageSlider";
 import WhiteBox from "@/ui/organisms/WhiteBox";
-import photo from "@public/case-1.webp";
-import Image from "next/image";
 
 const MainSectionAboutUs = () => {
 	// const videoRef = useRef(null);
@@ -42,7 +41,8 @@ const MainSectionAboutUs = () => {
 						<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
 							<PlayVideoIcon />
 						</span> */}
-					<Image src={photo} alt="" className="w-full" />
+					{/* <Image src={photo} alt="" className="w-full" /> */}
+					<ImageSlider />
 				</div>
 				<div className="mt-32 flex flex-col justify-between md:flex-row">
 					<div className="md:pl-6">

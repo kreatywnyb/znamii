@@ -115,18 +115,18 @@ const ServicesSection = () => {
 						</p>
 						<ButtonSecondary href={links.contactPage}>poznaj się z nami</ButtonSecondary>
 					</div>
-					<div className="grid flex-1 grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
+					<div className="grid max-w-[750px] flex-1 grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
 						<div className="order-1 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:mt-auto">
 							<PrecisionIcon className="self-end" />
-							<span className="test-[1.313rem] font-medium leading-[33px]">Precyzja</span>
+							<span className="text-[1.313rem] font-medium leading-[33px]">Precyzja</span>
 						</div>
 						<div className="order-3 flex aspect-square h-full w-full max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
 							<EmpathyIcon className="self-end" />
-							<span className="test-[1.313rem] font-medium leading-[33px]">Empatia</span>
+							<span className="text-[1.313rem] font-medium leading-[33px]">Empatia</span>
 						</div>
 						<div className="order-5 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5">
 							<OpennessIcon className="self-end" />
-							<span className="test-[1.313rem] font-medium leading-[33px]">Otwartość</span>
+							<span className="text-[1.313rem] font-medium leading-[33px]">Otwartość</span>
 						</div>
 						<div className="order-2 hidden md:block" />
 						<div className="order-4 hidden md:block" />

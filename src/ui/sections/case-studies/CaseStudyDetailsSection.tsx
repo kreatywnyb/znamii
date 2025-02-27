@@ -16,15 +16,15 @@ const CaseStudyDetailsSection: React.FC<CaseStudyDetailsSectionProps> = ({
 		<WhiteBox className="">
 			<div className="container flex flex-col">
 				<div className="flex justify-between border-b border-[#e3e3e3] py-8">
-					<p className="test-[1.313rem] font-medium">Branża</p>
+					<p className="text-[1.313rem] font-medium">Branża</p>
 					<p className="font-geist text-[0.75rem]">{industry}</p>
 				</div>
 				<div className="flex justify-between border-b border-[#e3e3e3] py-8">
-					<p className="test-[1.313rem] font-medium">Zakres wykonanych prac</p>
+					<p className="text-[1.313rem] font-medium">Zakres wykonanych prac</p>
 					<p className="font-geist text-[0.75rem] uppercase">{workScope}</p>
 				</div>
 				<div className="flex justify-between border-[#e3e3e3] py-8">
-					<p className="test-[1.313rem] font-medium">Rok realizacji</p>
+					<p className="text-[1.313rem] font-medium">Rok realizacji</p>
 					<p className="font-geist text-[0.75rem] uppercase">{year}</p>
 				</div>
 			</div>

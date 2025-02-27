@@ -20,17 +20,17 @@ export default function Home() {
 							wideo posłużą Ci na lata.
 						</p>
 						<div>
-							<div className="font-medium flex items-center gap-8 text-[2.5rem]">
+							<div className="flex items-center gap-8 text-[2.5rem] font-medium">
 								<PhoneIcon /> <p>+48 694 211 577</p>
 							</div>
-							<div className="font-medium flex items-center justify-start gap-8 text-[2.5rem]">
+							<div className="flex items-center justify-start gap-8 text-[2.5rem] font-medium">
 								<EmailIcon /> <p>{contactMail}</p>
 							</div>
 						</div>
 						<div className="flex w-full justify-between">
 							<div className="relative">
 								<Image src={imagePawel} alt="" className="border border-white"></Image>
-								<p className="test-[1.313rem] absolute bottom-1 left-2">Paweł</p>
+								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
 							</div>
 							<div className="h-[174px] w-[174px] bg-primary"></div>
 						</div>

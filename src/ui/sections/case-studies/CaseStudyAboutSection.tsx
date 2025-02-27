@@ -20,7 +20,7 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 		<WhiteBox className="my-8 [&>div]:p-16">
 			<div className="container flex justify-between">
 				<div className="flex max-w-[380px] flex-col justify-between">
-					<p className="test-[1.313rem]">{leftDescription}</p>
+					<p className="text-[1.313rem]">{leftDescription}</p>
 					<CTAButton href="">Zrealizuj projekt z nami</CTAButton>
 				</div>
 				<div className="max-w-[482px]">

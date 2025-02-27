@@ -15,7 +15,7 @@ export const CTAButton = ({ children, href, variant = "primary", className }: CT
 		<Link
 			href={href}
 			className={cn(
-				`group relative flex w-fit items-center justify-center overflow-hidden ${variant == "primary" ? "bg-primary" : "border-bg border bg-white"} px-8 py-4 font-geist font-medium uppercase text-basicDark ${className}`,
+				`group relative flex w-fit items-center justify-center overflow-hidden ${variant == "primary" ? "bg-primary" : "border-bg border bg-white"} px-8 py-4 font-geist text-xs font-medium uppercase text-basicDark ${className}`,
 			)}
 		>
 			<span className="relative z-20">{children}</span>

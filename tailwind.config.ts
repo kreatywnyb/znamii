@@ -15,11 +15,11 @@ export default {
 			center: true,
 			padding: "1rem",
 			// screens: {
-			// 	xxl: "2100px",
+			// 	xxl: "1900px",
 			// },
 		},
 		extend: {
-			screens: { xxl: "2100px" },
+			screens: { xxl: "2000px" },
 			colors: {
 				primary: "#FFB217",
 				basicDark: "#08080a",
