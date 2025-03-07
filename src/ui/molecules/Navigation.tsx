@@ -7,7 +7,7 @@ const Navigation = () => {
 		<nav className="hidden w-full lg:block">
 			<ul className="flex justify-between font-geist text-xs uppercase text-white">
 				<li>
-					<NavItem href={links.homePage}>Studio znami</NavItem>
+					<NavItem href={links.aboutUs}>Studio znami</NavItem>
 				</li>
 				<li>
 					<NavItemExpanded
@@ -18,9 +18,9 @@ const Navigation = () => {
 						// 	{ href: "/uslugi/branding", text: "Branding" },
 						// ]}
 						subMenu={[
-							{ href: "/", text: "Video" },
-							{ href: "/", text: "Zdjęcia" },
-							{ href: "/", text: "Branding" },
+							{ href: `${links.services.main}/${links.services.video}`, text: "Video" },
+							{ href: `${links.services.main}/${links.services.photo}`, text: "Zdjęcia" },
+							{ href: `${links.services.main}/${links.services.branding}`, text: "Branding" },
 						]}
 					/>
 				</li>

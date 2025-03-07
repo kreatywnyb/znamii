@@ -54,7 +54,7 @@ const ContactSection: React.FC = () => {
 				: prevServices.filter((s) => s !== service);
 
 			setValue("services", updatedServices);
-			console.log(updatedServices);
+
 			return updatedServices;
 		});
 	};
@@ -69,21 +69,22 @@ const ContactSection: React.FC = () => {
 
 	return (
 		<section className="bg-basicDark pb-48 pt-20">
-			<div className="container grid grid-cols-2 gap-16 px-4 text-white">
-				<div className="flex flex-col gap-16 pr-24">
-					<h1 className="text-[3.625rem] text-white">
+			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
+				<div className="flex flex-col gap-16 lg:pr-24">
+					<h1 className="text-white">
 						Zrealizuj projekt <br /> razem z nami!
 					</h1>
 					<p className="pr-20 text-[1.063rem]">
 						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
 						wideo posłużą Ci na lata.
 					</p>
-					<div>
-						<div className="flex items-center gap-8 text-[2.5rem] font-medium">
-							<PhoneIcon /> <p>+48 694 211 577</p>
+					<div className="text-xl lg:text-[2.5rem]">
+						<div className="flex items-center gap-4 font-medium lg:gap-8">
+							<PhoneIcon className="max-lg:size-6" />{" "}
+							<p className="whitespace-nowrap">+48 694 211 577</p>
 						</div>
-						<div className="flex items-center justify-start gap-8 text-[2.5rem] font-medium">
-							<EmailIcon /> <p>{contactMail}</p>
+						<div className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8">
+							<EmailIcon className="max-lg:size-6" /> <p>{contactMail}</p>
 						</div>
 					</div>
 					<div className="flex w-full justify-between">
@@ -106,7 +107,7 @@ const ContactSection: React.FC = () => {
 					</div>
 				</div>
 				<div>
-					<div className="relative bg-ultraLightGray p-8 shadow-lg after:absolute after:-right-4 after:-top-4 after:h-4 after:w-4 after:bg-primary">
+					<div className="relative bg-ultraLightGray p-8 shadow-lg after:absolute after:-right-4 after:-top-4 after:h-4 after:w-4 after:bg-primary max-md:mx-2 max-md:px-4">
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div>
 								<div className="mb-3 flex justify-between">
@@ -117,7 +118,7 @@ const ContactSection: React.FC = () => {
 										<p className="text-[1.063rem] text-errorRed">{errors.services.message}</p>
 									)}
 								</div>
-								<div className="mt-2 grid grid-cols-4 gap-2">
+								<div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-4">
 									{services.map((service) => (
 										<div key={service} className="flex items-center space-x-2">
 											<Checkbox

@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const AddressSection: React.FC = () => {
 	return (
-		<section className="container relative z-10 -mt-28 bg-white px-16 py-16">
-			<div className="grid grid-cols-2 gap-8">
+		<section className="container relative z-10 -mt-28 bg-white py-16 lg:px-16">
+			<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 				<h2 className="mb-4 text-left text-4xl font-medium text-basicDark">Wpadnij na kawkę ☕</h2>
 				<div>
 					<p className="mb-4 text-[1.063rem] tracking-[2%]">

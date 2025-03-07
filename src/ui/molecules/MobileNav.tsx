@@ -48,20 +48,15 @@ const MobileNav = () => {
 			>
 				<ul className="flex flex-col space-y-4">
 					<li>
-						<NavItem href={links.homePage}>Studio znami</NavItem>
+						<NavItem href={links.aboutUs}>Studio znami</NavItem>
 					</li>
 					<li>
 						<NavItemExpanded
 							main={{ text: "Usługi" }}
-							// subMenu={[
-							// 	{ href: "/uslugi/video", text: "Video" },
-							// 	{ href: "/uslugi/zdjecia", text: "Zdjęcia" },
-							// 	{ href: "/uslugi/branding", text: "Branding" },
-							// ]}
 							subMenu={[
-								{ href: "/", text: "Video" },
-								{ href: "/", text: "Zdjęcia" },
-								{ href: "/", text: "Branding" },
+								{ href: `${links.services.main}/${links.services.video}`, text: "Video" },
+								{ href: `${links.services.main}/${links.services.photo}`, text: "Zdjęcia" },
+								{ href: `${links.services.main}/${links.services.branding}`, text: "Branding" },
 							]}
 						/>
 					</li>

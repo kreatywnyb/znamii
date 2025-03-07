@@ -17,15 +17,20 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 }) => {
 	return (
 		// <section className="container my-8 bg-white p-16">
-		<WhiteBox className="my-8 [&>div]:p-16">
-			<div className="container flex justify-between">
+		<WhiteBox className="my-8 [&>div]:md:p-16">
+			<div className="container flex flex-col justify-between lg:flex-row">
 				<div className="flex max-w-[380px] flex-col justify-between">
 					<p className="text-[1.313rem]">{leftDescription}</p>
-					<CTAButton href="">Zrealizuj projekt z nami</CTAButton>
+					<span className="hidden md:block">
+						<CTAButton href="">Zrealizuj projekt z nami</CTAButton>
+					</span>
 				</div>
-				<div className="max-w-[482px]">
+				<div className="max-w-[482px] max-md:mt-20">
 					<p className="mb-12">{rightDescription}</p>
 					<p>{rightDescription2}</p>
+					<span className="mt-10 block md:hidden">
+						<CTAButton href="">Zrealizuj projekt z nami</CTAButton>
+					</span>
 				</div>
 			</div>
 			<Image src={placeholderImage} alt="alt" className="mt-32" />

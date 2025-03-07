@@ -23,7 +23,7 @@ export const CTAButton = ({ children, href, variant = "primary", className }: CT
 			<div
 				className={cn(
 					"absolute left-0 h-full w-full -translate-x-full -translate-y-full transition-transform duration-200 group-hover:translate-x-0 group-hover:translate-y-0",
-					variant === "primary" ? "bg-white" : "bg-primary",
+					variant === "primary" ? "border border-primary bg-white" : "bg-primary",
 				)}
 			/>
 		</Link>
