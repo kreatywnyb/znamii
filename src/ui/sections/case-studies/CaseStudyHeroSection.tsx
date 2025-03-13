@@ -14,7 +14,7 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 				</div>
 			</div>
 			<div className="container -mt-96">
-				<video className="w-full" src={video} controls></video>
+				<video muted autoPlay className="w-full" src={video} controls></video>
 			</div>
 		</section>
 	);

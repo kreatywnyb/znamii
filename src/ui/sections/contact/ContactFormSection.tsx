@@ -84,11 +84,11 @@ const ContactSection: React.FC = () => {
 							<p className="whitespace-nowrap">+48 694 211 577</p>
 						</div>
 						<div className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8">
-							<EmailIcon className="max-lg:size-6" /> <p>{contactMail}</p>
+							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
 						</div>
 					</div>
 					<div className="flex w-full justify-between">
-						<div className="flex w-full justify-between">
+						<div className="flex w-full justify-between max-w-[522px]">
 							<div className="relative h-[174px] w-[174px]">
 								<Image src={imagePawel} alt="" className="border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
@@ -130,7 +130,7 @@ const ContactSection: React.FC = () => {
 											/>
 											<label
 												htmlFor={service}
-												className="cursor-pointer font-geist text-sm font-medium uppercase text-basicDark"
+												className="cursor-pointer font-geist text-sm font-base uppercase text-basicDark"
 											>
 												{service}
 											</label>

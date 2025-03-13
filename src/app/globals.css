@@ -12,13 +12,22 @@
 	font-display: swap;
 }
 
+:root {
+	--primary:#FFB217
+}
+
 body {
 	font-family: "Roobert", sans-serif;
 }
 
-/* *{
-	outline: 1px solid red;
-} */
+::-moz-selection { /* Code for Firefox */
+	background: var(--primary);
+  }
+  
+::selection {
+background: var(--primary);
+}
+
 
 @layer utilities {
 	@media (min-width: 2000px) {

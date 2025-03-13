@@ -92,7 +92,7 @@ const opinions: Opinion[] = [
 const settings = {
 	infinite: true,
 	speed: 1500,
-	slidesToShow: 4,
+	slidesToShow: 3,
 	autoplay: true,
 	slidesToScroll: 1,
 	arrows: false,

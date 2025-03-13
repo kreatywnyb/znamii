@@ -12,3 +12,4 @@ export const links = {
 };
 
 export const contactMail = "kontakt@znami.co";
+export const phoneNumber = "+48 694 211 577";
