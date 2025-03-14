@@ -50,7 +50,7 @@ const MainSectionAboutUs = () => {
 							Wartości, jakimi <br /> się kierujemy
 						</p>
 					</div>
-					<div className="flex w-full max-w-[879px] flex-1 flex-col max-md:mt-10 md:pr-[200px]">
+					<div className="flex w-full max-w-[879px] flex-1 flex-col max-md:mt-10 md:pr-[200px] xxl:max-w-[60%]">
 						<div>
 							<div className="mb-5 flex items-center space-x-5">
 								<span>

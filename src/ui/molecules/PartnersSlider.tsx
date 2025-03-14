@@ -53,7 +53,7 @@ const PartnersSlider = () => {
 			>
 				{sliderData.map((item, idx) => (
 					<div key={idx} className="">
-						<Image src={item.img} alt={item.alt} className="max-w-[120px]" />
+						<Image src={item.img} alt={item.alt} className="max-w-[140px] xxl:max-w-[180px]" />
 					</div>
 				))}
 			</Slider>

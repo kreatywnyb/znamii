@@ -24,22 +24,28 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Logo
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								identyfikacje wizualne
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Strony internetowe
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Naming
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								projekty do druku
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								obsługa abonamentowa
 							</li>
 						</ul>
@@ -55,22 +61,28 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								filmy Reklamowe
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Eventy & Konferencje
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								filmy Korporacyjne
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Webinary & podcasty
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								SPOTY SPOŁECZNE
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								obsługa abonamentowa
 							</li>
 						</ul>
@@ -86,22 +98,28 @@ const ServicesSection = () => {
 							</span>
 						</Link>
 						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								sesje Wizerunkowe
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								Eventy & konfererencje
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								sesje Biznesowe
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								fotografia produktowa
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								zdjęcia z drona
 							</li>
-							<li className="cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-2">
+							<li className="group relative cursor-pointer font-geist tracking-[0.05em] transition-transform hover:translate-x-4">
+								<span className="absolute -left-4 top-1/2 h-2 w-2 -translate-y-1/2 scale-0 transform bg-primary opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100" />
 								obsługa abonamentowa
 							</li>
 						</ul>
