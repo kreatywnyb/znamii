@@ -37,7 +37,7 @@ const ScrollParallaxImages = () => {
 	}, []);
 
 	return (
-		<section ref={sectionRef} className="relative overflow-hidden">
+		<section ref={sectionRef} className="relative overflow-hidden py-20">
 			<div className="container relative grid grid-cols-1 gap-20 pb-20 pt-20 md:grid-cols-3 md:pb-40">
 				{[
 					{ speed: 0.4, img: photo1 },
