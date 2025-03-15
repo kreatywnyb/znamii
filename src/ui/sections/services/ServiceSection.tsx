@@ -3,8 +3,11 @@ import { CTAButton } from "@/ui/molecules/CTAButton";
 import Image, { StaticImageData } from "next/image";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import React from "react";
+import servImg1 from "@public/serv-img-1.webp";
+import servImg2 from "@public/serv-img-2.webp";
 import StarIcon from "@/ui/icons/StarIcon";
 import GoogleIcon from "@/ui/icons/GoogleIcon";
+import SubServices, { ScrollableSectionInterface } from "@/ui/organisms/SubServices";
 
 export type ServiceSectionProps = {
 	name: string;
@@ -17,6 +20,111 @@ export type ServiceSectionProps = {
 		text: string;
 	};
 };
+
+const sections: ScrollableSectionInterface[] = [
+	{
+		id: 1,
+		title: "Naming",
+		slug: "naming",
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+	},
+	{
+		id: 2,
+		title: "Logo",
+		slug: "logo",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+	},
+	{
+		id: 3,
+		title: "Identyfikacja wizualna",
+		slug: "identyfikacja-wizualna",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+	},
+	{
+		id: 4,
+		title: "Web Design",
+		slug: "web-design",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+	},
+	{
+		id: 5,
+		title: "Projekty do druku",
+		slug: "projekty-do-druku",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+	},
+	{
+		id: 6,
+		title: "Usługi abonamentowe",
+		slug: "uslugi-abonamentowe",
+		imageLeft: {
+			alt: "",
+			src: servImg1,
+		},
+		imageRight: {
+			alt: "",
+			src: servImg2,
+		},
+		textTop:
+			"Dobra nazwa to coś więcej niż zlepek liter – to pierwsze wrażenie, jakie robisz na kliencie. Powinna być chwytliwa, unikalna i budzić zamierzone emocje. W naszym procesie tworzenia nazw łączymy kreatywność z analitycznym podejściem, dzięki czemu powstają nazwy, które zostają w głowie i mają szansę stać się silnym fundamentem Twojej marki.",
+		textBottom:
+			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie budować swoją markę od samego początku.",
+	},
+];
 
 const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSectionProps) => {
 	return (
@@ -65,6 +173,7 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 						</div>
 					</div>
 				</div>
+				<SubServices sections={sections} />
 			</WhiteBox>
 		</section>
 	);

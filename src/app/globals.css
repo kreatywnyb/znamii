@@ -13,21 +13,21 @@
 }
 
 :root {
-	--primary:#FFB217
+	--primary: #ffb217;
 }
 
 body {
 	font-family: "Roobert", sans-serif;
 }
 
-::-moz-selection { /* Code for Firefox */
+::-moz-selection {
+	/* Code for Firefox */
 	background: var(--primary);
-  }
-  
-::selection {
-background: var(--primary);
 }
 
+::selection {
+	background: var(--primary);
+}
 
 @layer utilities {
 	@media (min-width: 2000px) {
@@ -38,6 +38,9 @@ background: var(--primary);
 }
 
 @layer base {
+	.font-geist {
+		letter-spacing: 0.05em;
+	}
 	h1 {
 		@apply text-[48px] font-medium leading-[60px] lg:text-[58px] lg:leading-[72.5px];
 	}
