@@ -128,7 +128,7 @@ const SubServices = ({ sections }: SubServicesProps) => {
 		const sectionHeight = containerHeight / sections.length; // 🔥 Dynamiczna wysokość sekcji
 
 		// 🔄 Nowa precyzyjna pozycja scrolla
-		const scrollTarget = containerTop + (sectionHeight / 6) * 5 * index;
+		const scrollTarget = containerTop + (sectionHeight / 6) * 6 * index;
 
 		// 📌 Smooth scroll
 		window.scrollTo({
@@ -138,11 +138,11 @@ const SubServices = ({ sections }: SubServicesProps) => {
 	};
 
 	return (
-		<div ref={containerRef} className="relative my-20 h-[300vh] border-b border-t border-lightGrey">
+		<div ref={containerRef} className="relative my-20 h-[10000px]">
 			{/* Sticky container z widoczną zawartością */}
-			<div className="sticky top-0 flex items-center">
+			<div className="sticky top-0 flex items-center border-b border-t border-lightGrey lg:top-[calc(50vh-425px)] xxl:top-[calc(50vh-570px)]">
 				<div className="container mx-auto px-4">
-					<div className={`flex flex-col ${isMobile ? "" : "md:flex-row"} items-start`}>
+					<div className={`flex flex-col ${isMobile ? "" : "md:flex-row"} items-center`}>
 						{/* Nawigacja (na górze w mobile, po lewej w desktop) */}
 						<div className={`${isMobile ? "w-full" : "md:w-1/4"}`}>
 							<nav>
@@ -198,7 +198,7 @@ const SubServices = ({ sections }: SubServicesProps) => {
 						{/* Zawartość slajdu (na dole w mobile, po prawej w desktop) */}
 						<div className={`${isMobile ? "w-full" : "border-l border-lightGrey pl-14 md:w-3/4"}`}>
 							<div
-								className={`relative overflow-hidden md:!my-[3.75rem] ${isMobile ? "min-h-screen" : "min-h-screen"}`}
+								className={`relative overflow-hidden md:!my-[3.75rem] ${isMobile ? "min-h-screen" : "h-[730px] xxl:h-[1000px]"}`}
 							>
 								{sections.map((section, index) => (
 									<div
@@ -207,7 +207,7 @@ const SubServices = ({ sections }: SubServicesProps) => {
 											activeSlide === index
 												? "translate-x-0 opacity-100"
 												: "translate-x-20 opacity-0"
-										} ${isMobile ? "flex flex-col" : "flex md:flex-col"}`}
+										} ${isMobile ? "flex flex-col" : "flex justify-center md:flex-col"}`}
 									>
 										<div className={` ${isMobile ? "mb-4" : "md:pr-8"}`}>
 											<h2 className="mb-5 text-3xl font-medium max-md:hidden md:text-[2.5rem]">

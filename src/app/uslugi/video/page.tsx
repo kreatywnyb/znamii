@@ -1,5 +1,6 @@
 import CtaSection from "@/ui/sections/CtaSection";
 import HeroSectionServicesPage from "@/ui/sections/services/HeroSectionServicesPage";
+import ProcessSection from "@/ui/sections/services/ProcessSection";
 import ServiceSection from "@/ui/sections/services/ServiceSection";
 import CtaBgImg from "@public/cta-poster-1.webp";
 import authorImg from "@public/kamil-pormbinski.webp";
@@ -7,7 +8,7 @@ import React from "react";
 
 const VideoPage = () => {
 	return (
-		<main>
+		<main className="bg-background">
 			<HeroSectionServicesPage />
 			<ServiceSection
 				name="Video"
@@ -21,6 +22,7 @@ const VideoPage = () => {
 					text: "Paweł i jego ekipa to idealny wybór jeżeli szukasz realizacji związanych z wideo.Zawsze pomocni, mega merytoryczni i kreatywni! Polecam :)",
 				}}
 			/>
+			<ProcessSection />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);

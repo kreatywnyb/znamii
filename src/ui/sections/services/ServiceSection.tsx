@@ -8,6 +8,7 @@ import servImg2 from "@public/serv-img-2.webp";
 import StarIcon from "@/ui/icons/StarIcon";
 import GoogleIcon from "@/ui/icons/GoogleIcon";
 import SubServices, { ScrollableSectionInterface } from "@/ui/organisms/SubServices";
+import ServiceCTA from "@/ui/organisms/ServiceCTA";
 
 export type ServiceSectionProps = {
 	name: string;
@@ -128,15 +129,17 @@ const sections: ScrollableSectionInterface[] = [
 
 const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSectionProps) => {
 	return (
-		<section>
+		<section className="">
 			<WhiteBox className="relative z-10 [&>div]:-mt-64">
 				<div className="container flex flex-col justify-between lg:flex-row">
 					<div className="max-w-[780px] flex-1">
 						<h1>{name}</h1>
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
-						<div className="mt-11 flex space-x-16">
-							<CTAButton href={links.contactPage}>Zrealizuj projekt z nami</CTAButton>
+						<div className="mt-11 flex flex-col-reverse md:flex-row md:space-x-16">
+							<CTAButton className="max-md:mt-6" href={links.contactPage}>
+								Zrealizuj projekt z nami
+							</CTAButton>
 							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white p-4">
 								<GoogleIcon />
 								<div className="flex gap-0.5">
@@ -150,7 +153,7 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 							</div>
 						</div>
 					</div>
-					<div className="max-w-[23.75rem] flex-1">
+					<div className="max-w-[23.75rem] flex-1 max-md:mt-10">
 						<div className="relative h-full min-h-[24rem] flex-1 border border-basicDark text-white">
 							<div className="h-full">
 								<div className="absolute flex h-full flex-col justify-between p-8 text-basicDark transition-all duration-500 group-hover:bg-opacity-0">
@@ -174,6 +177,7 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 					</div>
 				</div>
 				<SubServices sections={sections} />
+				<ServiceCTA />
 			</WhiteBox>
 		</section>
 	);
