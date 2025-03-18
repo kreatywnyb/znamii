@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
 import Image, { StaticImageData } from "next/image";
 import krzysztofImage from "@public/krzysztof-winiarski.webp";
@@ -93,6 +93,7 @@ const settings = {
 	infinite: true,
 	speed: 1500,
 	slidesToShow: 3,
+	autoplaySpeed: 3500,
 	autoplay: true,
 	slidesToScroll: 1,
 	arrows: false,
@@ -122,17 +123,20 @@ const settings = {
 };
 
 const TestimonialsSlider = () => {
+	const sliderRef = useRef<Slider | null>(null);
+
 	return (
-		<div className="overflow-hidden">
+		<div className="relative overflow-hidden -mx-[.4rem]">
 			<Slider
+				ref={sliderRef}
 				{...settings}
-				className="h-full cursor-pointer py-16 [&_.slick-track]:flex [&_.slick-track]:gap-4"
+				className="h-full cursor-pointer py-16 pb-8 [&_.slick-track]:flex [&_.slick-track]:gap-4 "
 			>
 				{opinions.map(({ text, id, author, authorImg, src, company }, idx) => {
 					return (
 						<div
 							key={`${idx}-${id}`}
-							className="relative min-h-[24rem] h-full flex-1 border border-basicDark text-white"
+							className="relative h-full min-h-[24rem] flex-1 border border-basicDark text-white"
 						>
 							<div className="h-full">
 								{src && (
@@ -172,6 +176,49 @@ const TestimonialsSlider = () => {
 					);
 				})}
 			</Slider>
+
+			<div className="flex justify-end gap-2 p-[11px]">
+				<button
+					className="flex h-10 w-10 items-center justify-center border border-basicDark text-basicDark transition-colors hover:bg-[#00000011]"
+					onClick={() => sliderRef.current?.slickPrev()}
+				>
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M10.5 3.5L5.5 8L10.5 12.5"
+							stroke="currentColor"
+							strokeWidth="1.5"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+				</button>
+				<button
+					className="flex h-10 w-10 items-center justify-center border border-basicDark text-basicDark transition-colors hover:bg-[#00000011]"
+					onClick={() => sliderRef.current?.slickNext()}
+				>
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M5.5 3.5L10.5 8L5.5 12.5"
+							stroke="currentColor"
+							strokeWidth="1.5"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
+				</button>
+			</div>
 		</div>
 	);
 };

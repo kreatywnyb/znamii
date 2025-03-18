@@ -1,19 +1,21 @@
 import React from "react";
 import interiorImage from "@public/interior.webp";
 import Image from "next/image";
+import WhiteBox from "@/ui/organisms/WhiteBox";
 
 const AddressSection: React.FC = () => {
 	return (
-		<section className="container relative z-10 -mt-28 bg-white py-16 lg:px-16">
+		<WhiteBox className="z-20 [&>div]:-mt-32 ">
+			<div className="container py-6">
 			<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 				<h2 className="mb-4 text-left text-4xl font-medium text-basicDark">Wpadnij na kawkę ☕</h2>
 				<div>
-					<p className="mb-4 text-[1.063rem] tracking-[2%]">
+					<p className="mb-4 text-[1.063rem] tracking-[0.02em]">
 						Jak dojechać? No nie ma łatwo, bo kilka budynków w okolicy ma przypisany ten sam numer.
 						Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać np. po...
 						dużym szyldzie Znami.
 					</p>
-					<p className="py-6 font-geist uppercase text-darkGrey">
+					<p className="py-6 font-geist uppercase text-darkGrey text-xs tracking-[0.05em]">
 						ul. okulickiego 18, 35-202 rzeszów
 					</p>
 				</div>
@@ -27,7 +29,8 @@ const AddressSection: React.FC = () => {
 				</div>
 				<Image src={interiorImage} alt="asd"></Image>
 			</div>
-		</section>
+			</div>
+		</WhiteBox>
 	);
 };
 

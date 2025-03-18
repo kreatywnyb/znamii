@@ -1,8 +1,9 @@
 import React from "react";
 import InstagramIcon from "../icons/InstagramIcon";
 import YoutubeIcon from "../icons/YoutubeIcon";
-import { contactMail, phoneNumber } from "@/constants";
+import { contactMail, links, phoneNumber } from "@/constants";
 import CopyButton from "../molecules/CopyButton";
+import Link from "next/link";
 
 const Footer = () => {
 
@@ -31,18 +32,18 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="border-lightGray max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs md:grid-cols-3">
-				<a className="block uppercase" href="">
+				<Link className="block uppercase" href={links.aboutUs}>
 					Studio
-				</a>
-				<a className="block uppercase" href="">
+				</Link>
+				<Link className="block uppercase" href={links.contactPage}>
 					Kontakt
-				</a>
-				<a className="block uppercase md:text-right" href="">
+				</Link>
+				<Link className="block uppercase md:text-right" href={links.portfolio}>
 					Projekty
-				</a>
-				<a className="block uppercase md:hidden md:text-right" href="">
+				</Link>
+				<Link className="block uppercase md:hidden md:text-right" href="">
 					Polityka prywatności
-				</a>
+				</Link>
 			</div>
 			<div className="max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs md:grid-cols-3">
 				<div className="block uppercase max-md:order-2 max-md:mt-4">©2025</div>

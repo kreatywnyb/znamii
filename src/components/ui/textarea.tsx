@@ -60,7 +60,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         `}</style>
         <div
           ref={highlightRef}
-          className="absolute border border-transparent font-geist top-[4px] left-[-1px] w-full p-4 text-darkGrey whitespace-pre-wrap break-words overflow-y-auto text-xs"
+          className="absolute border border-transparent font-geist top-[4px] left-[-1px] w-full p-4  text-darkGrey whitespace-pre-wrap break-words overflow-y-auto text-xs"
           style={{ 
             pointerEvents: "none", 
             minHeight: "60px",
@@ -77,7 +77,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           onScroll={handleScroll}
 		  maxLength={maxCharacters+40}
           className={cn(
-            "w-full border border-basicDark bg-transparent font-geist p-4 t text-darkGrey shadow-sm placeholder:font-geist placeholder:text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 resize-none text-xs invisible-scrollbar scrollbar-gutter",
+            "w-full border border-basicDark bg-transparent font-geist p-4 bg-white text-darkGrey shadow-sm placeholder:font-geist placeholder:text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 resize-none text-xs invisible-scrollbar scrollbar-gutter",
             className
           )}
           value={inputValue}

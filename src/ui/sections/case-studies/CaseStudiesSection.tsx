@@ -9,6 +9,7 @@ import case4 from "@public/case-4.webp";
 import case5 from "@public/case-5.webp";
 import case6 from "@public/case-6.webp";
 import WhiteBox from "@/ui/organisms/WhiteBox";
+import { FlipWords } from "@/ui/molecules/FlipWords";
 
 const CaseStudiesSection: React.FC = () => {
 	const caseStudies: CaseStudy[] = [
@@ -35,9 +36,10 @@ const CaseStudiesSection: React.FC = () => {
 	return (
 		<WhiteBox className="[&>div]:-mt-64">
 			<div className="container">
-				<h2 className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark">
-					Zobacz nasze realizacje. <br className="md:hidden" /> Są w pytkę.
-				</h2>
+				<FlipWords
+					word="Zobacz nasze realizacje. Są w pytkę."
+					className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark"
+				></FlipWords>
 
 				<CaseStudiesList caseStudies={caseStudies} />
 
