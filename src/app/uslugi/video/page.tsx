@@ -1,10 +1,25 @@
+import CaseStudy from "@/models/caseStudy";
+import SmallCaseStudiesSection from "@/ui/sections/case-studies/SmallCaseStudiesSection";
 import CtaSection from "@/ui/sections/CtaSection";
+import FAQSection from "@/ui/sections/FAQSection";
 import HeroSectionServicesPage from "@/ui/sections/services/HeroSectionServicesPage";
 import ProcessSection from "@/ui/sections/services/ProcessSection";
 import ServiceSection from "@/ui/sections/services/ServiceSection";
+import case1 from "@public/case-1.webp";
+import case2 from "@public/case-2.webp";
 import CtaBgImg from "@public/cta-poster-1.webp";
 import authorImg from "@public/kamil-pormbinski.webp";
-import React from "react";
+
+const caseStudies: CaseStudy[] = [
+	{
+		name: "Pienińska przystań",
+		image: case1.src,
+		cols: 2,
+		category: "Branding",
+		slug: "pieninska-przystan",
+	},
+	{ name: "PRO100", image: case2.src, cols: 1, category: "Branding", slug: "pro100" },
+];
 
 const VideoPage = () => {
 	return (
@@ -23,6 +38,8 @@ const VideoPage = () => {
 				}}
 			/>
 			<ProcessSection />
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<FAQSection />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);

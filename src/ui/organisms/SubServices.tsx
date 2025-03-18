@@ -205,8 +205,8 @@ const SubServices = ({ sections }: SubServicesProps) => {
 										key={`content-${section.id}`}
 										className={`absolute h-full w-full transition-all duration-500 ${
 											activeSlide === index
-												? "translate-x-0 opacity-100"
-												: "translate-x-20 opacity-0"
+												? "translate-y-0 opacity-100"
+												: "translate-y-20 opacity-0"
 										} ${isMobile ? "flex flex-col" : "flex justify-center md:flex-col"}`}
 									>
 										<div className={` ${isMobile ? "mb-4" : "md:pr-8"}`}>

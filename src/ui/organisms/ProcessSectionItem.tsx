@@ -31,7 +31,7 @@ const ProgressSection: React.FC = () => {
 	});
 
 	return (
-		<div ref={sectionRef} className="container relative flex space-x-20">
+		<div ref={sectionRef} className="container relative flex space-x-4 md:space-x-20">
 			{/* Pasek progresu */}
 			<div className="relative">
 				<div
@@ -49,16 +49,27 @@ const ProgressSection: React.FC = () => {
 			</div>
 
 			{/* Treść sekcji */}
-			<div className="transparent mb-20 ml-20 flex flex-1 space-x-[1.875rem] text-[1.313rem] text-basicDark">
-				<div className="relative aspect-square max-h-[17.5rem] w-full max-w-[17.5rem] bg-red-500">
+
+			<div className="transparent mb-20 ml-2 flex flex-1 flex-col space-y-6 text-[1.313rem] text-basicDark md:ml-10 md:flex-row md:space-x-4 md:space-y-0 lg:ml-20 lg:space-x-[1.875rem]">
+				<div className="relative aspect-square w-full max-w-full md:max-w-[15rem] lg:max-w-[17.5rem]">
 					<Image src={img1} alt="" className="h-full w-full object-cover object-center" />
 				</div>
-				<div className="max-w-[45rem] flex-1 bg-white px-10 py-11">
-					<h3>1. Rozmawiamy o Twoich potrzebach</h3>
-					<p className="my-10 text-[1.063rem] text-darkGrey">
+				<div className="flex-1 bg-white px-4 py-6 md:px-6 md:py-8 lg:px-10 lg:py-11">
+					<h3 className="text-xl md:text-[1.313rem]">1. Rozmawiamy o Twoich potrzebach</h3>
+					<p className="my-4 text-base text-darkGrey md:my-5 md:text-[1.063rem]">
 						Chcemy poznać Twoją markę oraz cele jakie ma do osiągnięcia. Dzięki temu będziemy w
 						stanie dostosować ofertę specjalnie dla Ciebie.
 					</p>
+					<ul className="list-sq">
+						<li className="relative pl-3 text-base md:text-[1.063rem]">
+							<span className="absolute left-0 top-1/2 h-[0.313rem] w-[0.313rem] -translate-y-1/2 bg-basicDark" />
+							Przeprowadzamy briefing kreatywny i przygotowujemy ofertę
+						</li>
+						<li className="relative pl-3 text-base md:text-[1.063rem]">
+							<span className="absolute left-0 top-1/2 h-[0.313rem] w-[0.313rem] -translate-y-1/2 bg-basicDark" />
+							Opracowujemy harmonogram prac
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

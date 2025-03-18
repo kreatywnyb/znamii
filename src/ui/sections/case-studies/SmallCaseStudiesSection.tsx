@@ -2,17 +2,20 @@ import React from "react";
 import { CTAButton } from "../../molecules/CTAButton";
 import CaseStudy from "@/models/caseStudy";
 import CaseStudiesList from "../../organisms/case-studies/CaseStudiesList";
-import WhiteBox from "@/ui/organisms/WhiteBox";
+
 import { FlipWords } from "@/ui/molecules/FlipWords";
 
-export type CaseStudiesSectionProps = {
+export type SmallCaseStudiesSectionProps = {
 	title: string;
 	caseStudies: CaseStudy[];
 };
 
-const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ title, caseStudies }) => {
+const SmallCaseStudiesSection: React.FC<SmallCaseStudiesSectionProps> = ({
+	title,
+	caseStudies,
+}) => {
 	return (
-		<WhiteBox className="[&>div]:-mt-64">
+		<section className="my-20">
 			<div className="container">
 				<FlipWords
 					word={title}
@@ -31,8 +34,8 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ title, caseStud
 					</CTAButton>
 				</div>
 			</div>
-		</WhiteBox>
+		</section>
 	);
 };
 
-export default CaseStudiesSection;
+export default SmallCaseStudiesSection;

@@ -17,7 +17,7 @@ const CaseStudyDetailsSection: React.FC<CaseStudyDetailsSectionProps> = ({
 			<div className="container flex flex-col">
 				<div className="flex flex-col justify-between border-b border-[#e3e3e3] py-8 max-md:space-y-4 md:flex-row">
 					<p className="text-[1.313rem] font-medium">Branża</p>
-					<p className="font-geist text-[0.75rem]">{industry}</p>
+					<p className="font-geist text-[0.75rem] uppercase">{industry}</p>
 				</div>
 				<div className="flex flex-col justify-between border-b border-[#e3e3e3] py-8 max-md:space-y-4 md:flex-row">
 					<p className="text-[1.313rem] font-medium">Zakres wykonanych prac</p>
