@@ -7,7 +7,7 @@ const AddressSection: React.FC = () => {
 	return (
 		<WhiteBox className="z-20 [&>div]:-mt-32 ">
 			<div className="container py-6">
-			<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+		<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 				<h2 className="mb-4 text-left text-4xl font-medium text-basicDark">Wpadnij na kawkę ☕</h2>
 				<div>
 					<p className="mb-4 text-[1.063rem] tracking-[0.02em]">
