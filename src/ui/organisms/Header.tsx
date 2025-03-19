@@ -26,7 +26,7 @@ const Header = () => {
 					<Navigation />
 				</div>
 				<div className="hidden flex-1 justify-end md:flex">
-					<CTAButton className="!text-xs" href={links.contactPage}>
+					<CTAButton className="!text-xs" href={links.contactPage} variant="primary">
 						Zrealizuj projekt
 					</CTAButton>
 				</div>

@@ -1,13 +1,14 @@
-import { contactMail, links } from "@/constants";
-import Image, { StaticImageData } from "next/image";
-import LinkedinIcon from "@/ui/icons/LinkedinIcon";
-import pawelImg from "@public/pawel.webp";
-import { CTAButton } from "@/ui/molecules/CTAButton";
-import KbLogoIcon from "@/ui/icons/KbLogoIcon";
-import { twMerge } from "tailwind-merge";
-import { JSX } from "react";
-import WhiteBox from "@/ui/organisms/WhiteBox";
+import { links } from "@/constants";
 import { cn } from "@/lib/utils";
+import KbLogoIcon from "@/ui/icons/KbLogoIcon";
+import LinkedinIcon from "@/ui/icons/LinkedinIcon";
+import { CTAButton } from "@/ui/molecules/CTAButton";
+import WhiteBox from "@/ui/organisms/WhiteBox";
+import pawelImg from "@public/pawel.webp";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import { JSX } from "react";
+import { twMerge } from "tailwind-merge";
 
 const team: {
 	img: StaticImageData;
@@ -93,9 +94,9 @@ const TeamSectionAboutUs = () => {
 				<div className="mt-20 flex flex-col items-center justify-between max-md:space-y-8 md:flex-row">
 					<p className="font-geist text-xs uppercase max-md:text-center">
 						Zainteresowany współpracą? <br className="hidden max-md:block" />
-						<a href={`mailto:${contactMail}`} className="underline">
+						<Link href={links.contactPage} className="underline">
 							odezwij się do nas na maila!
-						</a>
+						</Link>
 					</p>
 					<CTAButton href={links.contactPage}>Zrealizuj projekt z nami</CTAButton>
 				</div>

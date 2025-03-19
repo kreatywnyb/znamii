@@ -4,6 +4,7 @@ import CaseStudy from "@/models/caseStudy";
 import CaseStudiesList from "../../organisms/case-studies/CaseStudiesList";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import { FlipWords } from "@/ui/molecules/FlipWords";
+import { links } from "@/constants";
 
 export type CaseStudiesSectionProps = {
 	title: string;
@@ -23,8 +24,8 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ title, caseStud
 
 				<div className="flex justify-center py-16">
 					<CTAButton
-						href="/realizacje"
-						variant="white"
+						href={links.portfolio}
+						variant="secondary"
 						className="whitespace-nowrap max-sm:text-sm"
 					>
 						Zobacz wszystkie realizacje

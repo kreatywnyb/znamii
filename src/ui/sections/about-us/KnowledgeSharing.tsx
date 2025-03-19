@@ -4,6 +4,8 @@ import sharing1Img from "@public/sharing-1.webp";
 import sharing2Img from "@public/sharing-2.webp";
 import sharing3Img from "@public/sharing-3.webp";
 import wsizImg from "@public/WSIZ-logo.webp";
+import Link from "next/link";
+import { links } from "@/constants";
 
 const KnowledgeSharing = () => {
 	return (
@@ -18,9 +20,9 @@ const KnowledgeSharing = () => {
 						<p className="text-[1.313rem]">
 							Prowadzimy prelekcje i szkolenia dla uczelni oraz firm, łącząc nasze doświadczenie z
 							pasją do przekazywania wiedzy.{" "}
-							<a href="mailto:kontakt@znami.co" className="text-primary underline">
+							<Link href={links.contactPage} className="text-primary underline">
 								Napisz do nas
-							</a>{" "}
+							</Link>{" "}
 							jeśli chcesz żebyśmy pojawili się także u Ciebie.
 						</p>
 					</div>
