@@ -7,14 +7,14 @@ const PortfolioSection = () => {
 	return (
 		<section className="container relative z-10 -mt-16 pb-32 pt-48">
 			<div className="flex flex-wrap items-center justify-between">
-				<h2 className="font-medium order-1 mb-4 mt-8 text-left text-4xl text-[2.5rem] text-basicDark">
+				<h2 className="order-1 mb-4 mt-8 text-left text-4xl text-[2.5rem] font-medium text-basicDark">
 					Dobrze robią, dobry przekaz leci.
 				</h2>
 				<p className="order-1 mb-4 text-[1.063rem] font-medium text-[#474747] lg:hidden">
 					Przeczytaj opinie, które wystalili nam nasi klienci.
 				</p>
-				<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white p-4">
-					<GoogleIcon />
+				<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white px-[1.313rem] py-[0.813rem]">
+					<GoogleIcon className="h-[1.125rem] w-[1.125rem]" />
 					<div className="flex gap-0.5">
 						<StarIcon />
 						<StarIcon />
@@ -22,7 +22,7 @@ const PortfolioSection = () => {
 						<StarIcon />
 						<StarIcon />
 					</div>
-					<div className="font-geist font-medium">5.0</div>
+					<div className="font-geist text-sm font-medium">5.0</div>
 				</div>
 			</div>
 			<p className="order-1 hidden text-[1.063rem] font-medium text-[#474747] lg:block">

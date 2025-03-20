@@ -4,7 +4,7 @@ import { links } from "@/constants";
 
 const ServiceCTA = () => {
 	return (
-		<div className="container relative my-20">
+		<div className="container relative mt-20">
 			<div className="flex flex-col items-center justify-between bg-basicDark md:flex-row">
 				<div className="py-[3.75rem] max-md:px-4 md:pl-16">
 					<h3 className="text-[2.5rem] leading-tight text-white">

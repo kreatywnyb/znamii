@@ -140,8 +140,8 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 							<CTAButton className="max-md:mt-6" href={links.contactPage}>
 								Zrealizuj projekt z nami
 							</CTAButton>
-							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white p-4">
-								<GoogleIcon />
+							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white py-[0.875rem] pl-[1.375rem] pr-[1.188rem]">
+								<GoogleIcon className="h-[1.125rem] w-[1.125rem]" />
 								<div className="flex gap-0.5">
 									<StarIcon />
 									<StarIcon />
@@ -149,7 +149,7 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 									<StarIcon />
 									<StarIcon />
 								</div>
-								<div className="font-geist font-medium">5.0</div>
+								<div className="font-geist text-sm font-medium">5.0</div>
 							</div>
 						</div>
 					</div>

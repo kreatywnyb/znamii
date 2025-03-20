@@ -11,7 +11,7 @@ const Navigation = () => {
 				</li>
 				<li>
 					<NavItemExpanded
-						main={{ text: "Usługi", href: "uslugi" }}
+						main={{ text: "Usługi" }}
 						// subMenu={[
 						// 	{ href: "/uslugi/video", text: "Video" },
 						// 	{ href: "/uslugi/zdjecia", text: "Zdjęcia" },

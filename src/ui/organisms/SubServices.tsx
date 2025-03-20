@@ -142,10 +142,10 @@ const SubServices = ({ sections }: SubServicesProps) => {
 			{/* Sticky container z widoczną zawartością */}
 			<div className="sticky top-0 flex items-center border-b border-t border-lightGrey lg:top-[calc(50vh-425px)] xxl:top-[calc(50vh-570px)]">
 				<div className="container mx-auto px-4">
-					<div className={`flex flex-col ${isMobile ? "" : "md:flex-row"} items-center`}>
+					<div className={`flex flex-col ${isMobile ? "" : "md:flex-row"} `}>
 						{/* Nawigacja (na górze w mobile, po lewej w desktop) */}
 						<div className={`${isMobile ? "w-full" : "md:w-1/4"}`}>
-							<nav>
+							<nav className="h-full">
 								{isMobile ? (
 									// Mobilna nawigacja - tylko aktywny element
 									<div className="relative w-full py-2">
@@ -172,25 +172,26 @@ const SubServices = ({ sections }: SubServicesProps) => {
 										</div>
 									</div>
 								) : (
-									// Desktopowa nawigacja - pełna lista
-									<ul className="flex flex-col py-[3.75rem] md:space-y-[3.75rem]">
-										{sections.map((section, index) => (
-											<li
-												key={section.id}
-												className={`cursor-pointer font-geist text-xs uppercase transition-all duration-300 ${
-													activeSlide === index ? "font-bold text-primary" : "text-basicDark"
-												}`}
-												onClick={() => scrollToSection(index)}
-											>
-												{`0${section.id} ${section.title.toUpperCase()}`}
-											</li>
-										))}
-										<li>
-											<CTAButton className="mt-5 max-md:hidden" href={links.contactPage}>
+									<div className="flex h-full flex-col justify-between py-[4rem] xxl:py-[5.5rem]">
+										<ul className="flex flex-col md:space-y-[3.75rem]">
+											{sections.map((section, index) => (
+												<li
+													key={section.id}
+													className={`cursor-pointer font-geist text-xs uppercase transition-all duration-300 ${
+														activeSlide === index ? "font-bold text-primary" : "text-basicDark"
+													}`}
+													onClick={() => scrollToSection(index)}
+												>
+													{`0${section.id} ${section.title.toUpperCase()}`}
+												</li>
+											))}
+										</ul>
+										<div className="mt-auto inline-block pb-10">
+											<CTAButton className="max-md:hidden" href={links.contactPage}>
 												zrealizuj projekt
 											</CTAButton>
-										</li>
-									</ul>
+										</div>
+									</div>
 								)}
 							</nav>
 						</div>
