@@ -14,18 +14,18 @@ const MainSectionAboutUs = () => {
 			<div className="container">
 				<div className="flex flex-col justify-between gap-4 lg:flex-row">
 					<div className="flex-1">
-						<h2 className="text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px]">
+						<h2 className="text-3xl font-medium lg:text-[2.5rem] lg:leading-[125%]">
 							Jak do tego doszło, <br /> nie wiem?
 						</h2>
 					</div>
 					<div className="flex-1">
-						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[27px]">
+						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
 							Tutaj jakaś ckliwa historia jak pomogliśmy innym markom przekształcić ich pomysły w
 							rzeczywistość prawdź jak pomogliśmy innym markom przekształcić ich itede ite
 						</p>
 					</div>
 					<div className="flex-1">
-						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[27px]">
+						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
 							Sprawdź jak pomogliśmy innym markom przekształc pomysły w rzeczywistość prawdź jak
 							pomogliśmy innym markom przekształcić ich pomysły.
 						</p>
@@ -44,7 +44,7 @@ const MainSectionAboutUs = () => {
 					{/* <Image src={photo} alt="" className="w-full" /> */}
 					<ImageSlider />
 				</div>
-				<div className="mt-32 flex flex-col justify-between md:flex-row">
+				<div className="mt-32 flex flex-col justify-between md:flex-row lg:pb-10">
 					<div className="md:pl-6">
 						<p className="font-geist text-xs uppercase">
 							Wartości, jakimi <br /> się kierujemy
@@ -58,7 +58,7 @@ const MainSectionAboutUs = () => {
 								</span>
 								<h3 className="text-[2.5rem] leading-[50px]">Precyzja</h3>
 							</div>
-							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[160%] tracking-[0.02em]">
 								Przesuwamy piksele z prawa na lewo, dopóki wszystko nie wygląda tak, jak powinno.
 								Poprawiamy każdą niedoskonałość na zdjęciu czy filmie, bo wiemy, że to właśnie
 								detale robią różnicę. Czasami wracamy do projektu wiele razy, żeby upewnić się, że
@@ -73,7 +73,7 @@ const MainSectionAboutUs = () => {
 								</span>
 								<h3 className="text-[2.5rem] leading-[50px]">Otwartość</h3>
 							</div>
-							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[160%] tracking-[0.02em]">
 								Jesteśmy jak stacja benzynowa – otwarci. Zmieniasz wizję w trakcie projektu? Żaden
 								problem, zrobimy poprawki, zmiksujemy pomysły i działamy dalej. Pomysły z kosmosu,
 								klienci z nietypowych branż czy niestandardowe zlecenia? Uwielbiamy takie wyzwania.
@@ -88,7 +88,7 @@ const MainSectionAboutUs = () => {
 								</span>
 								<h3 className="text-[2.5rem] leading-[50px]">Empatia</h3>
 							</div>
-							<p className="text-[1.063rem] leading-[27px] tracking-[0.02em]">
+							<p className="text-[1.063rem] leading-[160%] tracking-[0.02em]">
 								Rozumiemy, że Twój projekt to coś więcej niż tylko zadanie – to Twój pomysł, wizja a
 								często także kawałek serca. Dlatego zawsze staramy się znaleźć czas, nawet gdy dzień
 								wydaje się za krótki. Utożsamiamy się z Twoimi celami, bo wiemy, że sukces Twojej

@@ -19,7 +19,7 @@ const team: {
 	{
 		img: pawelImg,
 		name: "Paweł “Puciak” Ciupak",
-		roles: ["co-founder", "fotograf", "Videographer"],
+		roles: ["współzałożyciel", "fotograf", "Videographer"],
 		socials: {
 			link: "https://www.linkedin.com/in/puciak/",
 			icon: LinkedinIcon,
@@ -28,7 +28,7 @@ const team: {
 	{
 		img: pawelImg,
 		name: "Maks Myśliwiec",
-		roles: ["co-founder", "Brand Designer"],
+		roles: ["współzałożyciel", "Brand Designer"],
 		socials: {
 			link: "https://www.linkedin.com/in/maksymilian-mysliwiec/",
 			icon: LinkedinIcon,
@@ -48,7 +48,7 @@ const team: {
 const TeamSectionAboutUs = () => {
 	return (
 		<WhiteBox>
-			<div className="container py-10 lg:py-20">
+			<div className="container">
 				<h2 className="mb-0 text-[2.5rem] leading-[50px] lg:mb-0">Aleście ekipę zmontowali</h2>
 				<div className="flex flex-col">
 					{team.map((item, idx) => (
@@ -67,7 +67,7 @@ const TeamSectionAboutUs = () => {
 									{item.roles.map((role, idx) => (
 										<span
 											className={twMerge(
-												"relative inline-block whitespace-nowrap",
+												"relative inline-block whitespace-nowrap uppercase",
 												item.roles.length !== idx + 1 &&
 													"mr-4 pr-4 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:bg-basicDark max-md:after:hidden",
 											)}
@@ -81,7 +81,7 @@ const TeamSectionAboutUs = () => {
 									href={item.socials.link}
 									target="_blank"
 									className={cn(
-										"inline-block w-fit p-2 max-md:mt-10 md:ml-28",
+										"inline-block w-fit p-2 max-md:mt-10 md:ml-[8.375rem]",
 										idx !== 2 && "rounded-[0.125rem] border border-lightGrey",
 									)}
 								>

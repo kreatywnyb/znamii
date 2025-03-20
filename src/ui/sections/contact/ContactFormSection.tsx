@@ -70,11 +70,11 @@ const ContactSection: React.FC = () => {
 	return (
 		<section className="bg-basicDark pb-48 pt-20">
 			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
-				<div className="flex flex-col gap-16 lg:pr-24">
-					<h1 className="text-white">
+				<div className="flex flex-col lg:pr-24">
+					<h1 className="leading-[125%] text-white">
 						Zrealizuj projekt <br /> razem z nami!
 					</h1>
-					<p className="pr-20 text-[1.063rem]">
+					<p className="pb-[3.75rem] pr-20 pt-5 text-[1.063rem] leading-[160%]">
 						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
 						wideo posłużą Ci na lata.
 					</p>
@@ -87,17 +87,17 @@ const ContactSection: React.FC = () => {
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
 						</div>
 					</div>
-					<div className="flex w-full justify-between">
-						<div className="flex w-full justify-between max-w-[522px]">
-							<div className="relative h-[174px] w-[174px]">
-								<Image src={imagePawel} alt="" className="border border-white" />
+					<div className="mt-auto flex w-full justify-between">
+						<div className="flex w-full max-w-[32.625rem] justify-between">
+							<div className="relative h-[10.875rem] w-[10.875rem]">
+								<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
 								<div
 									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity ${selectedServices.includes("Video") || selectedServices.includes("Zdjęcia") || selectedServices.includes("Współpraca") ? "opacity-0" : "opacity-100"}`}
 								/>
 							</div>
-							<div className="relative h-[174px] w-[174px]">
-								<Image src={maksImage} alt="" className="border border-white" />
+							<div className="relative h-[10.875rem] w-[10.875rem]">
+								<Image src={maksImage} alt="" className="h-full w-full border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
 								<div
 									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity ${selectedServices.includes("Branding") || selectedServices.includes("Współpraca") ? "opacity-0" : "opacity-100"}`}
@@ -110,7 +110,7 @@ const ContactSection: React.FC = () => {
 					<div className="relative bg-ultraLightGray p-8 shadow-lg after:absolute after:-right-4 after:-top-4 after:h-4 after:w-4 after:bg-primary max-md:mx-2 max-md:px-4">
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div>
-								<div className="mb-3 flex justify-between">
+								<div className="mb-5 flex justify-between">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
 										W czym możemy ci pomóc?
 									</label>
@@ -118,7 +118,8 @@ const ContactSection: React.FC = () => {
 										<p className="text-[1.063rem] text-errorRed">{errors.services.message}</p>
 									)}
 								</div>
-								<div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-4">
+								{/* <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-4"> */}
+								<div className="mt-2 flex flex-col justify-between max-md:space-y-4 md:flex-row">
 									{services.map((service) => (
 										<div key={service} className="flex items-center space-x-2">
 											<Checkbox
@@ -130,7 +131,7 @@ const ContactSection: React.FC = () => {
 											/>
 											<label
 												htmlFor={service}
-												className="cursor-pointer font-geist text-sm font-base uppercase text-basicDark"
+												className="font-base cursor-pointer font-geist text-sm uppercase text-basicDark"
 											>
 												{service}
 											</label>
@@ -150,7 +151,7 @@ const ContactSection: React.FC = () => {
 								</div>
 								<Input
 									{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
-									className={`mt-1 w-full ${errors.name ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									className={`mt-1 w-full rounded-[2px] ${errors.name ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
 									placeholder="IMIĘ"
 								/>
 							</div>
@@ -174,7 +175,7 @@ const ContactSection: React.FC = () => {
 											message: "Nieprawidłowy adres email",
 										},
 									})}
-									className={`mt-1 w-full ${errors.email ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									className={`mt-1 w-full rounded-[2px] ${errors.email ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
 								/>
 								<div className="mt-2 flex w-full items-center justify-end gap-1 text-darkGrey">
 									<SecurityIcon />
@@ -194,7 +195,7 @@ const ContactSection: React.FC = () => {
 								<Textarea
 									placeholder="OPISZ FIRME I PROJEKT ..."
 									{...register("message", { required: "*Opisz firmę i projekt" })}
-									className={`mt-1 w-full ${errors.message ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									className={`mt-1 w-full rounded-[2px] ${errors.message ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
 								/>
 								<div
 									className={`mt-2 flex w-full items-center justify-end gap-1 ${isOverLimit ? "text-errorRed" : "text-darkGrey"}`}

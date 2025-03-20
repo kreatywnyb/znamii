@@ -155,7 +155,7 @@ const ServicesSection = () => {
 						<div className="order-6 hidden md:block" />
 					</div>
 				</div>
-				<div className="mb-32 mt-10">
+				<div className="mb-56 mt-10">
 					<PartnersSlider />
 				</div>
 			</div>
