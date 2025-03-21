@@ -9,7 +9,7 @@ const Footer = () => {
 	return (
 		<footer className="max-w-screen container fixed bottom-0 left-1/2 -z-10 -translate-x-1/2 md:h-96">
 			<div className="max-md:place-items-left grid grid-cols-1 font-medium md:grid-cols-3">
-				<h3 className="text-[2.5rem]">Poklikasz?</h3>
+				<h3 className="text-[2.5rem] max-md:mb-2">Poklikasz?</h3>
 				<div className="flex items-end text-[1.313rem] leading-[160%]">
 					<div>{contactMail}</div>
 					<div>
@@ -17,14 +17,14 @@ const Footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className="max-md:place-items-left mb-10 mt-1 grid grid-cols-1 font-medium md:grid-cols-3">
+			<div className="max-md:place-items-left mb-4 mt-2 grid grid-cols-1 font-medium md:mb-10 md:mt-1 md:grid-cols-3">
 				<div className="hidden md:block"></div>
 				<div className="mt-auto flex items-center text-[1.313rem] leading-[160%]">
 					<a href={`tel:${phoneNumber}`} className="-mb-[7px]">
 						{phoneNumber}
 					</a>
 				</div>
-				<div className="mt-4 flex gap-2 md:mt-0 md:justify-end md:gap-8">
+				<div className="mt-6 flex gap-2 md:mt-0 md:justify-end md:gap-8">
 					<a
 						href=""
 						className="border border-[#00000022] p-[13px] transition-colors hover:bg-gray-200"
@@ -39,7 +39,7 @@ const Footer = () => {
 					</a>
 				</div>
 			</div>
-			<div className="border-lightGray max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs md:grid-cols-3">
+			<div className="border-lightGray max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs max-md:space-y-3 md:grid-cols-3">
 				<Link className="block uppercase" href={links.aboutUs}>
 					Studio
 				</Link>

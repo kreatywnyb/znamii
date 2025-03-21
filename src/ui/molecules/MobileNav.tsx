@@ -36,17 +36,12 @@ const MobileNav = () => {
 				></span>
 			</div>
 			<div
-				// className={cn(
-				// 	"container absolute left-0 right-0 top-full z-0 w-full border-b border-primary bg-basicDark py-4 text-white transition-transform",
-				// 	!isOpen && "-translate-y-[250%]",
-				// )}
-
 				className={cn(
 					"container absolute left-0 top-14 w-full border-b border-primary bg-basicDark py-4 text-white transition-transform duration-200 md:hidden",
 					!isOpen && "z-0 -translate-y-[150%]",
 				)}
 			>
-				<ul className="flex flex-col space-y-4">
+				<ul className="flex flex-col space-y-4 text-base">
 					<li>
 						<NavItem href={links.aboutUs}>Studio znami</NavItem>
 					</li>
@@ -68,8 +63,8 @@ const MobileNav = () => {
 					</li>
 				</ul>
 				<div className="mt-4 flex">
-					<CTAButton className="!px-4 !py-2" href={links.contactPage}>
-						Zralizuj projekt
+					<CTAButton className="!px-4 !py-2 text-base" href={links.contactPage} variant="primary">
+						Zrealizuj projekt
 					</CTAButton>
 				</div>
 			</div>

@@ -38,7 +38,7 @@ const settings: Settings = {
 		{
 			breakpoint: 480,
 			settings: {
-				slidesToShow: 1,
+				slidesToShow: 2.3,
 			},
 		},
 	],
@@ -47,14 +47,18 @@ const settings: Settings = {
 const PartnersSlider = () => {
 	return (
 		<div className="overflow-hidden">
-			<div className="overflow-hidden py-32 md:-mx-36">
+			<div className="overflow-hidden py-32 max-md:pt-20 md:-mx-36">
 				<Slider
 					{...settings}
 					className="[&_.slick-slide]:flex [&_.slick-slide]:justify-center [&_.slick-track]:flex [&_.slick-track]:items-center [&_.slick-track]:justify-between"
 				>
 					{sliderData.map((item, idx) => (
 						<div key={idx} className="">
-							<Image src={item.img} alt={item.alt} className="max-w-[140px] xxl:max-w-[180px]" />
+							<Image
+								src={item.img}
+								alt={item.alt}
+								className="max-w-[140px] max-md:max-w-[100px] xxl:max-w-[180px]"
+							/>
 						</div>
 					))}
 				</Slider>

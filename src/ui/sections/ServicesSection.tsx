@@ -138,15 +138,15 @@ const ServicesSection = () => {
 						</CTAButton>
 					</div>
 					<div className="grid max-w-[750px] flex-1 grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2">
-						<div className="order-1 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:mt-auto">
+						<div className="order-1 -mr-[1px] flex aspect-square max-w-[250px] flex-col justify-between self-end rounded-sm rounded-br-none border border-darkGrey p-5 max-md:mt-auto">
 							<PrecisionIcon className="self-end" />
 							<span className="text-[1.313rem] font-medium leading-[33px]">Precyzja</span>
 						</div>
-						<div className="order-3 flex aspect-square h-full w-full max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5 max-md:ml-auto">
+						<div className="order-3 -ml-[1px] flex aspect-square h-full w-full max-w-[250px] flex-col justify-between rounded-sm rounded-bl-none border border-darkGrey p-5 max-md:-mt-[1px] max-md:ml-auto max-md:rounded-tl-none">
 							<EmpathyIcon className="self-end" />
 							<span className="text-[1.313rem] font-medium leading-[33px]">Empatia</span>
 						</div>
-						<div className="order-5 flex aspect-square max-w-[250px] flex-col justify-between rounded-sm border border-darkGrey p-5">
+						<div className="order-5 -mt-[1px] flex aspect-square max-w-[250px] flex-col justify-between rounded-sm rounded-t-none border border-darkGrey p-5 max-md:-mt-[2px]">
 							<OpennessIcon className="self-end" />
 							<span className="text-[1.313rem] font-medium leading-[33px]">Otwartość</span>
 						</div>
