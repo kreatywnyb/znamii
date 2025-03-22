@@ -91,7 +91,7 @@ const TeamSectionAboutUs = () => {
 						</div>
 					))}
 				</div>
-				<div className="mt-20 flex flex-col items-center justify-between max-md:space-y-8 md:flex-row">
+				<div className="mt-10 flex flex-col items-center justify-between max-md:space-y-8 md:mt-20 md:flex-row">
 					<p className="font-geist text-xs uppercase max-md:text-center">
 						Zainteresowany współpracą? <br className="hidden max-md:block" />
 						<Link href={links.contactPage} className="underline">

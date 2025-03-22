@@ -5,7 +5,7 @@ import TestimonialsSlider from "../organisms/TestimonialsSlider";
 
 const PortfolioSection = () => {
 	return (
-		<section className="container relative z-10 -mt-16 pb-32 pt-48">
+		<section className="container relative z-10 -mt-16 pb-32 pt-32 lg:pt-48">
 			<div className="flex flex-wrap items-center justify-between">
 				<h2 className="order-1 mb-4 mt-8 text-left text-4xl text-[2.5rem] font-medium text-basicDark">
 					Dobrze robią, dobry przekaz leci.

@@ -47,4 +47,16 @@ body {
 	:root {
 		--radius: 0.5rem;
 	}
+
+	input:focus,
+	textarea:focus {
+		outline: none;
+		border-color: transparent;
+		box-shadow: none;
+	}
+
+	input[type="email"]:focus {
+		outline: none;
+		border-color: transparent;
+	}
 }

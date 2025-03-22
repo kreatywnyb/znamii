@@ -88,7 +88,7 @@ const ContactSection: React.FC = () => {
 						</div>
 					</div>
 					<div className="mt-auto flex w-full justify-between">
-						<div className="flex w-full max-w-[32.625rem] justify-between">
+						<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
 							<div className="relative h-[10.875rem] w-[10.875rem]">
 								<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
@@ -152,7 +152,7 @@ const ContactSection: React.FC = () => {
 								<Input
 									{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
 									className={`mt-1 w-full rounded-[2px] ${errors.name ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
-									placeholder="IMIĘ"
+									placeholder="Imię"
 								/>
 							</div>
 
@@ -166,7 +166,7 @@ const ContactSection: React.FC = () => {
 									)}
 								</div>
 								<Input
-									placeholder="E-MAIL"
+									placeholder="e-mail"
 									type="email"
 									{...register("email", {
 										required: "*Wpisz swój adres e-mail",
@@ -193,7 +193,7 @@ const ContactSection: React.FC = () => {
 									)}
 								</div>
 								<Textarea
-									placeholder="OPISZ FIRME I PROJEKT ..."
+									placeholder="Opisz firmę i projekt ..."
 									{...register("message", { required: "*Opisz firmę i projekt" })}
 									className={`mt-1 w-full rounded-[2px] ${errors.message ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
 								/>
