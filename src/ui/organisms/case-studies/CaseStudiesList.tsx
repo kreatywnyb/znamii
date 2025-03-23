@@ -23,7 +23,7 @@ const CaseStudiesList: React.FC<CaseStudiesListProps> = ({ caseStudies, filters 
         <CaseStudiesFilters filters={filters} onFilterChange={setSelectedFilter} />
       )}
 
-      <div className="mt-12 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="mt-12 grid w-full grid-cols-1 gap-8 md:grid-cols-3">
         {filteredItems.map((item, index) => (
           <CaseStudyCard key={index} caseStudy={item} />
         ))}

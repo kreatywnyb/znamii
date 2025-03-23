@@ -14,9 +14,10 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 	return (
 		<Link
 			href={`${links.portfolio}/${caseStudy.slug}`}
-			className={`${
-				caseStudy.cols === 2 ? "md:col-span-2" : "md:col-span-1"
-			} group relative flex h-[380px] items-center justify-center bg-cover bg-center text-2xl font-medium text-white transition-all`}
+			className={`
+				${caseStudy.cols === 2 ? "md:col-span-2" : "md:col-span-1"} 
+				group relative min-h-[23.75rem] flex items-center justify-center bg-cover bg-center font-medium text-white transition-all
+			`}
 			style={{ backgroundImage: `url(${caseStudy.image})` }}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}

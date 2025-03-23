@@ -15,7 +15,7 @@ import CaseStudy from "@/models/caseStudy";
 
 const caseStudies: CaseStudy[] = [
 	{
-		name: "Pienińska przystań",
+		name: "Pienińska Przystań",
 		image: case1.src,
 		cols: 2,
 		category: "Branding",
