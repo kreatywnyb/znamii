@@ -125,7 +125,7 @@ const FAQSection: React.FC = () => {
 						>
 							<button
 								onClick={() => toggleFaq(faq.id)}
-								className="flex w-full cursor-pointer items-center justify-between py-5 text-left text-lg font-medium text-gray-900 md:text-[1.313rem] md:text-xl"
+								className="flex w-full cursor-pointer items-center justify-between py-5 text-left text-[1.313rem] font-medium text-gray-900 md:text-[1.313rem] md:text-xl"
 								aria-expanded={openFaq === faq.id}
 								aria-controls={`faq-content-${faq.id}`}
 							>
@@ -177,7 +177,7 @@ const FAQSection: React.FC = () => {
 								aria-hidden={openFaq !== faq.id}
 							>
 								<div
-									className="prose prose-blue translate-y-4 transform pb-6 pt-2 text-sm leading-[160%] text-darkGrey opacity-0 transition-all delay-100 duration-500 ease-in-out md:text-[1.063rem] lg:max-w-[80%]"
+									className="prose prose-blue translate-y-4 transform pb-6 pt-2 text-[1.063rem] leading-[160%] text-darkGrey opacity-0 transition-all delay-100 duration-500 ease-in-out md:text-[1.063rem] lg:max-w-[80%]"
 									style={{
 										opacity: openFaq === faq.id ? 1 : 0,
 										transform: openFaq === faq.id ? "translateY(0)" : "translateY(1rem)",
