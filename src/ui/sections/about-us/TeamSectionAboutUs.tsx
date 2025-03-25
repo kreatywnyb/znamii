@@ -15,6 +15,11 @@ const team: {
 	roles: string[];
 	name: string;
 	socials: { link: string; icon: (props?: React.SVGProps<SVGSVGElement>) => JSX.Element };
+	description: {
+		title: string;
+		desc: string;
+		hobbies: string[];
+	};
 }[] = [
 	{
 		img: pawelImg,
@@ -23,6 +28,18 @@ const team: {
 		socials: {
 			link: "https://www.linkedin.com/in/puciak/",
 			icon: LinkedinIcon,
+		},
+		description: {
+			title: "Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
+			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			hobbies: [
+				"futbol amerykański",
+				"formuła 1",
+				"zimowe slalomy i hopki",
+				"lubi w playstation",
+				"czarna kawa",
+				"czarny humor",
+			],
 		},
 	},
 	{
@@ -33,6 +50,18 @@ const team: {
 			link: "https://www.linkedin.com/in/maksymilian-mysliwiec/",
 			icon: LinkedinIcon,
 		},
+		description: {
+			title: "Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
+			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			hobbies: [
+				"futbol amerykański",
+				"formuła 1",
+				"zimowe slalomy i hopki",
+				"lubi w playstation",
+				"czarna kawa",
+				"czarny humor",
+			],
+		},
 	},
 	{
 		img: pawelImg,
@@ -41,6 +70,18 @@ const team: {
 		socials: {
 			link: "",
 			icon: KbLogoIcon,
+		},
+		description: {
+			title: "Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
+			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			hobbies: [
+				"futbol amerykański",
+				"formuła 1",
+				"zimowe slalomy i hopki",
+				"lubi w playstation",
+				"czarna kawa",
+				"czarny humor",
+			],
 		},
 	},
 ];
@@ -53,14 +94,29 @@ const TeamSectionAboutUs = () => {
 				<div className="flex flex-col">
 					{team.map((item, idx) => (
 						<div
-							className="flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
+							className="group flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
 							key={`${item.name}-${idx}`}
 						>
 							<div className="flex flex-col md:flex-row md:items-center md:space-x-6">
 								<Image alt="Paweł Ciupak" src={item.img} />
-								<span className="inline-block whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-2">
-									{item.name}
-								</span>
+								<div className="relative flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-2">
+									<span className="text-[1.313rem]">{item.name}</span>
+									<div className="absolute left-full top-full z-20 hidden w-[45rem] flex-col rounded-[0.188rem] border border-basicDark bg-white p-[3.125rem] md:group-hover:flex">
+										<span className="absolute -left-4 -top-4 h-4 w-4 bg-primary" />
+										<span className="text-[1.313rem]">{item.description.title}</span>
+										<p className="overflow-wrap-normal mb-[1.875rem] mt-[0.938rem] whitespace-normal break-words text-[1.063rem] leading-[160%] text-darkGrey">
+											{item.description.desc}
+										</p>
+										<span>Miłośnik tego i owego</span>
+										<div className="mt-4 flex flex-wrap gap-4">
+											{item.description.hobbies.map((item, idx) => (
+												<div key={idx} className="bg-background p-4 font-geist text-sm uppercase">
+													{item}
+												</div>
+											))}
+										</div>
+									</div>
+								</div>
 							</div>
 							<div className="flex flex-col md:flex-row md:items-center">
 								<div className="flex flex-col font-geist text-xs max-md:space-y-4 md:flex-row">
