@@ -49,7 +49,8 @@ const ScrollParallaxImages = () => {
 						className={cn(
 							"relative flex-1 overflow-hidden",
 							index === 1 && "lg:mt-20",
-							(index === 2 || index === 0) && "lg:-mt-40",
+							index === 0 && "lg:-mt-40",
+							index === 2 && "lg:mt-20",
 						)}
 						style={{
 							transform: isDesktop

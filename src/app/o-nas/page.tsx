@@ -11,9 +11,11 @@ export default function AboutUsPage() {
 		<main className="bg-background">
 			<HeroSectionWithText headingText={"Cześć! Czy to twój kasztan? 😏"} />
 			<MainSectionAboutUs />
-			<PhotosSectionAboutUs />
-			<TeamSectionAboutUs />
-			<KnowledgeSharing />
+			<div className="overflow-hidden">
+				<PhotosSectionAboutUs />
+				<TeamSectionAboutUs />
+				<KnowledgeSharing />
+			</div>
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);

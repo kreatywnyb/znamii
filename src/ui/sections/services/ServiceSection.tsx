@@ -130,14 +130,14 @@ const sections: ScrollableSectionInterface[] = [
 const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSectionProps) => {
 	return (
 		<section className="">
-			<WhiteBox className="relative z-10 [&>div]:-mt-64">
+			<WhiteBox className="relative z-10 [&>div]:-mt-[25rem]">
 				<div className="container flex flex-col justify-between lg:flex-row">
 					<div className="max-w-[780px] flex-1">
 						<h1>{name}</h1>
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
 						<div className="mt-11 flex flex-col-reverse md:flex-row md:space-x-16">
-							<CTAButton className="max-md:mt-6" href={links.contactPage}>
+							<CTAButton variant="primaryv2" className="max-md:mt-6" href={links.contactPage}>
 								Zrealizuj projekt z nami
 							</CTAButton>
 							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white py-[0.875rem] pl-[1.375rem] pr-[1.188rem]">

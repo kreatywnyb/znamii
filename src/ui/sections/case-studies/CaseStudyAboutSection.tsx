@@ -23,14 +23,18 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 				<div className="flex max-w-[28rem] flex-col justify-between">
 					<p className="text-[1.313rem]">{leftDescription}</p>
 					<span className="hidden md:block">
-						<CTAButton href={links.contactPage}>Zrealizuj projekt z nami</CTAButton>
+						<CTAButton variant="primaryv2" href={links.contactPage}>
+							Zrealizuj projekt z nami
+						</CTAButton>
 					</span>
 				</div>
 				<div className="max-w-[40rem] max-md:mt-20">
 					<p className="mb-12">{rightDescription}</p>
 					<p>{rightDescription2}</p>
 					<span className="mt-10 block md:hidden">
-						<CTAButton href={links.contactPage}>Zrealizuj projekt z nami</CTAButton>
+						<CTAButton variant="primaryv2" href={links.contactPage}>
+							Zrealizuj projekt z nami
+						</CTAButton>
 					</span>
 				</div>
 			</div>

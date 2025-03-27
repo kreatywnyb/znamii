@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
 
 export const metadata: Metadata = {
-	title: "Znamii - Studio kreatywne",
-	description: "Znamii",
+	title: "Znami Studio - Branding, video i zdjęcia",
+	description: "Znami Studio - Branding, video i zdjęcia",
 	robots: {
 		index: isProduction ? true : false,
 		follow: isProduction ? true : false,
