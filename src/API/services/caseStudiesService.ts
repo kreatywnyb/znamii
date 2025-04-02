@@ -1,17 +1,16 @@
-import CaseStudy from "@/models/caseStudy";
-import axios from "axios";
 import apiRoutes from "../apiRoutes";
-import CaseStudyDetails from "@/models/caseStudyDetails";
-
-const baseRoute = apiRoutes.caseStudies;
+import { CaseStudyDetailsResponse, CaseStudyParams, CaseStudyResponse } from "../models/caseStudies";
+import httpClient from "../httpClient";
 
 const getCaseStudy = (slug: string) => {
-	return axios.get<CaseStudyDetails>(`${baseRoute}/${slug}`);
+	return httpClient.get<CaseStudyDetailsResponse[]>(`${apiRoutes.caseStudiesDetails}${slug}`);
 };
 
-const getCaseStudies = (filter: string) => {
-	return axios.get<CaseStudy>(baseRoute, { params: { filter } });
-};
+const getCaseStudies = (params?: CaseStudyParams) => {
+	return httpClient.get<CaseStudyResponse[]>(apiRoutes.caseStudiesList, { 
+	  params 
+	});
+  };
 
 const caseStudiesService = {
 	getCaseStudies,

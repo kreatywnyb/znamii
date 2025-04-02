@@ -1,14 +1,13 @@
 import React from "react";
 import { CTAButton } from "../../molecules/CTAButton";
-import CaseStudy from "@/models/caseStudy";
 import CaseStudiesList from "../../organisms/case-studies/CaseStudiesList";
-
 import { FlipWords } from "@/ui/molecules/FlipWords";
 import { links } from "@/constants";
+import { CaseStudyResponse } from "@/API/models/caseStudies";
 
 export type SmallCaseStudiesSectionProps = {
 	title: string;
-	caseStudies: CaseStudy[];
+	caseStudies: CaseStudyResponse[];
 };
 
 const SmallCaseStudiesSection: React.FC<SmallCaseStudiesSectionProps> = ({

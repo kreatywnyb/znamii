@@ -1,11 +1,21 @@
+import API from "@/API";
+import { CaseStudyResponse } from "@/API/models/caseStudies";
 import CtaSection from "@/ui/sections/CtaSection";
+import FAQSection from "@/ui/sections/FAQSection";
+import SmallCaseStudiesSection from "@/ui/sections/case-studies/SmallCaseStudiesSection";
 import HeroSectionServicesPage from "@/ui/sections/services/HeroSectionServicesPage";
 import ServiceSection from "@/ui/sections/services/ServiceSection";
 import CtaBgImg from "@public/cta-poster-1.webp";
 import authoImg from "@public/grzegorz-mikula.webp";
 import React from "react";
 
-const BrandingPage = () => {
+const BrandingPage = async () => {
+	const response = await API.caseStudies.getCaseStudies({
+		showOnServicePage: true,
+		category: "branding",
+	});
+	const caseStudies: CaseStudyResponse[] = response.data;
+
 	return (
 		<main>
 			<HeroSectionServicesPage />
@@ -21,6 +31,8 @@ const BrandingPage = () => {
 					text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja Nie wyobrażamy sobie współpracować z nikim innym.",
 				}}
 			/>
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<FAQSection />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);

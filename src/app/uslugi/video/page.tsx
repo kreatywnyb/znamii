@@ -1,27 +1,21 @@
-import CaseStudy from "@/models/caseStudy";
+import API from "@/API";
+import { CaseStudyResponse } from "@/API/models/caseStudies";
 import SmallCaseStudiesSection from "@/ui/sections/case-studies/SmallCaseStudiesSection";
 import CtaSection from "@/ui/sections/CtaSection";
 import FAQSection from "@/ui/sections/FAQSection";
 import HeroSectionServicesPage from "@/ui/sections/services/HeroSectionServicesPage";
 import ProcessSection from "@/ui/sections/services/ProcessSection";
 import ServiceSection from "@/ui/sections/services/ServiceSection";
-import case1 from "@public/case-1.webp";
-import case2 from "@public/case-2.webp";
 import CtaBgImg from "@public/cta-poster-1.webp";
 import authorImg from "@public/kamil-pormbinski.webp";
 
-const caseStudies: CaseStudy[] = [
-	{
-		name: "Pienińska przystań",
-		image: case1.src,
-		cols: 2,
-		category: "Branding",
-		slug: "pieninska-przystan",
-	},
-	{ name: "PRO100", image: case2.src, cols: 1, category: "Branding", slug: "pro100" },
-];
+const VideoPage = async () => {
+	const response = await API.caseStudies.getCaseStudies({
+		showOnServicePage: true,
+		category: "video",
+	});
+	const caseStudies: CaseStudyResponse[] = response.data;
 
-const VideoPage = () => {
 	return (
 		<main className="bg-background">
 			<HeroSectionServicesPage />

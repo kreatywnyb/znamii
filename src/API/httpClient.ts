@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL + "/json";
+const baseURL = "https://api.znami.usermd.net//wp-json/";
 
 const httpClient = axios.create({
 	baseURL: baseURL,

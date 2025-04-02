@@ -15,15 +15,17 @@ import Image from "next/image";
 import { ButtonPrimary } from "@/ui/molecules/ButtonPrimary";
 import InfoIcon from "@/ui/icons/InfoIcon";
 import SecurityIcon from "@/ui/icons/SecurityIcon";
+import Toast from "@/ui/molecules/Toast";
+import API from "@/API";
+import { ContactFormData } from "@/API/models/contactFormData";
 
 const MAX_MESSAGE_LENGTH = 360;
 
-type FormData = {
-	services: string[];
-	name: string;
-	email: string;
+type ToastState = {
+	show: boolean;
+	type: "success" | "error";
 	message: string;
-	policy: boolean;
+	subMessage?: string;
 };
 
 const ContactSection: React.FC = () => {
@@ -33,18 +35,58 @@ const ContactSection: React.FC = () => {
 		formState: { errors },
 		watch,
 		setValue,
-	} = useForm<FormData>();
+		reset,
+	} = useForm<ContactFormData>();
 	const [selectedServices, setSelectedServices] = useState<string[]>([]);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [toast, setToast] = useState<ToastState>({
+		show: false,
+		type: "success",
+		message: "",
+	});
 
 	const services = ["Branding", "Video", "Zdjęcia", "Współpraca"];
 	const message = watch("message", "");
 	const remainingChars = MAX_MESSAGE_LENGTH - message.length;
 	const isOverLimit = remainingChars < 0;
 
-	const onSubmit = (data: FormData) => {
+	const onSubmit = async (data: ContactFormData) => {
+		if (isOverLimit) return;
+		
+		setIsSubmitting(true);
 		data.services = selectedServices;
-		console.log(data);
-		return;
+		
+		try {
+			const result = await API.contact.send(data);
+			
+			if (result.status < 300) {
+				setToast({
+					show: true,
+					type: "success",
+					message: "Wiadomość wysłana",
+					subMessage: "Zwykle odpisujemy w 24h",
+				});
+				reset();
+				setSelectedServices([]);
+			} else {
+				setToast({
+					show: true,
+					type: "error",
+					message: "Coś poszło nie tak",
+					subMessage: "Prosimy skontakować się telefonicznie lub mailowo",
+				});
+			}
+		} catch (error) {
+			console.error("Form submission error:", error);
+			setToast({
+				show: true,
+				type: "error",
+				message: "Coś poszło nie tak",
+				subMessage: "Prosimy skontakować się telefonicznie lub mailowo",
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const handleCheckboxChange = (service: string, checked: boolean) => {
@@ -69,6 +111,15 @@ const ContactSection: React.FC = () => {
 
 	return (
 		<section className="bg-basicDark pb-48 pt-20">
+			{toast.show && (
+				<Toast
+					message={toast.message}
+					subMessage={toast.subMessage}
+					type={toast.type}
+					onClose={() => setToast({ ...toast, show: false })}
+				/>
+			)}
+			
 			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
 				<div className="flex flex-col lg:pr-24">
 					<h1 className="leading-[125%] text-white">
@@ -118,7 +169,6 @@ const ContactSection: React.FC = () => {
 										<p className="text-[1.063rem] text-errorRed">{errors.services.message}</p>
 									)}
 								</div>
-								{/* <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-4"> */}
 								<div className="mt-2 flex flex-col justify-between max-md:space-y-4 md:flex-row">
 									{services.map((service) => (
 										<div key={service} className="flex items-center space-x-2">
@@ -128,10 +178,11 @@ const ContactSection: React.FC = () => {
 												onCheckedChange={(checked) =>
 													handleCheckboxChange(service, checked ? true : false)
 												}
+												disabled={isSubmitting}
 											/>
 											<label
 												htmlFor={service}
-												className="font-base cursor-pointer font-geist text-sm uppercase text-basicDark"
+												className={`font-base cursor-pointer font-geist text-sm uppercase text-basicDark ${isSubmitting ? "opacity-70" : ""}`}
 											>
 												{service}
 											</label>
@@ -153,6 +204,7 @@ const ContactSection: React.FC = () => {
 									{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
 									className={`mt-1 w-full rounded-[2px] ${errors.name ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
 									placeholder="Imię"
+									disabled={isSubmitting}
 								/>
 							</div>
 
@@ -176,6 +228,7 @@ const ContactSection: React.FC = () => {
 										},
 									})}
 									className={`mt-1 w-full rounded-[2px] ${errors.email ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									disabled={isSubmitting}
 								/>
 								<div className="mt-2 flex w-full items-center justify-end gap-1 text-darkGrey">
 									<SecurityIcon />
@@ -196,6 +249,7 @@ const ContactSection: React.FC = () => {
 									placeholder="Opisz firmę i projekt ..."
 									{...register("message", { required: "*Opisz firmę i projekt" })}
 									className={`mt-1 w-full rounded-[2px] ${errors.message ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									disabled={isSubmitting}
 								/>
 								<div
 									className={`mt-2 flex w-full items-center justify-end gap-1 ${isOverLimit ? "text-errorRed" : "text-darkGrey"}`}
@@ -210,10 +264,11 @@ const ContactSection: React.FC = () => {
 								<Checkbox
 									{...register("policy", { required: "*Zapoznaj się z polityka prywatności" })}
 									id="policy"
+									disabled={isSubmitting}
 								/>
 								<label
 									htmlFor="policy"
-									className="cursor-pointert ml-2 text-sm font-medium text-darkGrey"
+									className={`cursor-pointert ml-2 text-sm font-medium text-darkGrey ${isSubmitting ? "opacity-70" : ""}`}
 								>
 									Zapoznałem się z{" "}
 									<Link href="/policy" className="underline">
@@ -226,7 +281,7 @@ const ContactSection: React.FC = () => {
 								)}
 							</div>
 
-							<ButtonPrimary type="submit" className="w-full">
+							<ButtonPrimary type="submit" className="w-full" isLoading={isSubmitting}>
 								Działamy z projektem
 							</ButtonPrimary>
 						</form>

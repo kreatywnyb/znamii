@@ -1,44 +1,41 @@
-import { notFound } from "next/navigation";
-import { PageProps } from "../../../../.next/types/app/page";
 import CaseStudyDetailsSection from "@/ui/sections/case-studies/CaseStudyDetailsSection";
 import CaseStudyHeroSection from "@/ui/sections/case-studies/CaseStudyHeroSection";
 import CtaSection from "@/ui/sections/CtaSection";
 import CtaBgImg from "@public/cta-poster-3.webp";
 import CaseStudyAboutSection from "@/ui/sections/case-studies/CaseStudyAboutSection";
+import API from "@/API";
+import { PageProps } from "../../../../.next/types/app/page";
 
-const CaseStudyPage = async ({}: PageProps) => {
-	// const { slug } = await params;
-	// const caseStudy = await API.caseStudies.getCaseStudy(slug);
+export async function generateStaticParams() {
+	const response = await API.caseStudies.getCaseStudies();
+	const caseStudies = response.data;
 
-	const caseStudy = {
-		industry: "IT ⬝  Marketing",
-		workScope: "identyfikacja wizualna  ⬝  design strony internetowej",
-		year: "2024",
-		leftDescription:
-			"Lorem ipsum dolor sit amet consectetur. Nibh nullam sit laoreet est quisque cursus posuere nunc",
-		rigthDescription:
-			"Lorem ipsum dolor sit amet consectetur. Nibh nullam sit laoreet est quisque cursus posuere nunc a. Vitae scelerisque commodo adipiscing est feugiat neque lobortis. Pretium in luctus augue cursus vehicula dapibus. Ultrices sed mauris mattis id erat sed eget amet commodo.",
-		rightDescription2:
-			" Quam mauris tempor sit aliquet. Vitae tortor orci natoque egestas amet feugiat tortor bibendum. Venenatis cum velit sapien justo purus placerat fermentum. Id dictumst dolor ante amet montes volutpat sed. Magna senectus massa ridiculus facilisis tristique non aliquam sed etiam.",
-	};
+	return caseStudies.map((caseStudy) => ({
+		slug: caseStudy.slug,
+	}));
+}
 
-	if (!caseStudy) return notFound();
+const CaseStudyPage = async ({ params }: PageProps) => {
+	const { slug } =  await params;
+	const response = await API.caseStudies.getCaseStudy(slug);
+	const caseStudy = response.data[0].caseStudyData;
 
 	return (
 		<main className="border-t border-darkGrey bg-background">
 			<CaseStudyHeroSection
-				title="Nazwa klienta"
-				video="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+				title={caseStudy.company}
+				video={caseStudy.mainVideo.url}
 			></CaseStudyHeroSection>
 			<CaseStudyDetailsSection
-				industry={caseStudy.industry}
-				workScope={caseStudy.workScope}
+				industry={caseStudy.industryArray}
+				workScope={caseStudy.scopeArray}
 				year={caseStudy.year}
 			/>
 			<CaseStudyAboutSection
-				leftDescription={caseStudy.leftDescription}
-				rightDescription={caseStudy.rigthDescription}
-				rightDescription2={caseStudy.rightDescription2}
+				leftDescription={caseStudy.descriptionLeft}
+				rightDescription={caseStudy.descriptionRight}
+				photos={caseStudy.gallery}
+				videos={caseStudy.videos}
 			></CaseStudyAboutSection>
 			<CtaSection image={CtaBgImg.src}></CtaSection>
 		</main>

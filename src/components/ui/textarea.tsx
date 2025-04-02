@@ -57,14 +57,21 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 					.scrollbar-gutter {
 						scrollbar-gutter: stable; /* Modern browsers */
 					}
+					
+					/* Desktop-only extra padding for scrollbar width */
+					@media (min-width: 768px) {
+						.desktop-scrollbar-padding {
+							padding-right: calc(1rem + 14px) !important; /* Extra padding for scrollbar width on desktop */
+						}
+					}
 				`}</style>
 				<div
 					ref={highlightRef}
-					className="absolute left-[-1px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 text-[1.063rem] text-darkGrey"
+					className="absolute left-[0px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 text-[1.063rem] text-darkGrey leading-[1.5rem] tracking-normal invisible-scrollbar desktop-scrollbar-padding"
 					style={{
 						pointerEvents: "none",
 						minHeight: "60px",
-						height: "calc(100% - 8px)", // Account for the top offset
+						height: "calc(100% - 12px)", // Account for the top offset
 						maxHeight: props.style?.height
 							? `${parseInt(props.style.height as string) - 8}px`
 							: undefined,
@@ -79,13 +86,13 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 					onScroll={handleScroll}
 					maxLength={maxCharacters + 40}
 					className={cn(
-						"invisible-scrollbar scrollbar-gutter w-full resize-none border border-basicDark bg-transparent bg-white p-4 text-[1.063rem] text-darkGrey shadow-sm placeholder:text-[1.063rem] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
+						"scrollbar-gutter w-full resize-none border border-basicDark bg-transparent bg-white p-4 text-[1.063rem] text-darkGrey shadow-sm placeholder:text-[1.063rem] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
 						className,
 					)}
 					value={inputValue}
 					onChange={handleChange}
 					style={{
-						color: "transparent",
+						color: "red",
 						caretColor: "black",
 						...props.style,
 					}}

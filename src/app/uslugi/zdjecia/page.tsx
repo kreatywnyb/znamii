@@ -4,8 +4,18 @@ import ServiceSection from "@/ui/sections/services/ServiceSection";
 import React from "react";
 import authorImg from "@public/krzysztof-winiarski.webp";
 import CtaBgImg from "@public/cta-poster-1.webp";
+import API from "@/API";
+import { CaseStudyResponse } from "@/API/models/caseStudies";
+import SmallCaseStudiesSection from "@/ui/sections/case-studies/SmallCaseStudiesSection";
+import FAQSection from "@/ui/sections/FAQSection";
 
-const FotoPage = () => {
+const FotoPage = async () => {
+	const response = await API.caseStudies.getCaseStudies({
+		showOnServicePage: true,
+		category: "branding",
+	});
+	const caseStudies: CaseStudyResponse[] = response.data;
+
 	return (
 		<main>
 			<HeroSectionServicesPage />
@@ -20,6 +30,8 @@ const FotoPage = () => {
 					text: "Wszystko poszło sprawnie, atmosfera była na luzie, a zdjęcia wyszły świetnie. Widać, że pełen profesjonalizm, ale bez sztywności. Na pewno jeszcze wrócę!",
 				}}
 			/>
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<FAQSection />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
 	);
