@@ -49,9 +49,9 @@ const MobileNav = () => {
 						<NavItemExpanded
 							main={{ text: "Usługi" }}
 							subMenu={[
+								{ href: `${links.services.main}/${links.services.branding}`, text: "Branding" },
 								{ href: `${links.services.main}/${links.services.video}`, text: "Video" },
 								{ href: `${links.services.main}/${links.services.photo}`, text: "Zdjęcia" },
-								{ href: `${links.services.main}/${links.services.branding}`, text: "Branding" },
 							]}
 						/>
 					</li>

@@ -14,7 +14,7 @@ export default async function CaseStudiesPage() {
   const response = await API.caseStudies.getCaseStudies();
   const caseStudies: CaseStudyResponse[] = response.data;
   
-  const filters: string[] = ["All", "Branding", "Video", "Zdjęcia"];
+  const filters: string[] = ["Wszystkie", "Branding", "Video", "Zdjęcia"];
 
   return (
     <main className="bg-background">

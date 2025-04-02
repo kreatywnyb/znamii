@@ -1,34 +1,3 @@
-// import Link from "next/link";
-// import React, { ReactNode } from "react";
-// import ArrowIcon from "../icons/ArrowIcon";
-// import { cn } from "@/lib/utils";
-
-// export type CTAButton = {
-// 	children: ReactNode;
-// 	href: string;
-// 	variant?: "primary" | "white";
-// 	className?: string;
-// };
-
-// export const CTAButton = ({ children, href, variant = "primary", className }: CTAButton) => {
-// 	return (
-// 		<Link
-// 			href={href}
-// 			className={cn(
-// 				`group relative flex w-fit items-center justify-center overflow-hidden ${variant == "primary" ? "bg-primary" : "border-bg border bg-white"} px-8 py-4 font-geist text-xs font-medium uppercase text-basicDark ${className}`,
-// 			)}
-// 		>
-// 			<span className="relative z-20">{children}</span>
-// 			<ArrowIcon className="relative z-20 ml-[0.625rem] h-4 w-4 transition-transform group-hover:rotate-45" />
-// 			<div
-// 				className={cn(
-// 					"absolute left-0 h-full w-full -translate-x-full -translate-y-full transition-transform duration-200 group-hover:translate-x-0 group-hover:translate-y-0",
-// 					variant === "primary" ? "border border-primary bg-white" : "bg-primary",
-// 				)}
-// 			/>
-// 		</Link>
-// 	);
-// };
 "use client";
 
 import Link from "next/link";
@@ -40,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 export type CTAButton = {
 	children: ReactNode;
 	href: string;
-	variant?: "primary" | "secondary" | "tertiary";
+	variant?: "primary" | "secondary" | "tertiary" | "primaryv2";
 	className?: string;
 	pixelSize?: number;
 };
@@ -89,6 +58,8 @@ export const CTAButton = ({
 				pixel.style.backgroundColor = "black"; // Zastąp swoim rzeczywistym kolorem
 			} else if (variant === "tertiary") {
 				pixel.style.backgroundColor = "white"; // Zastąp swoim rzeczywistym kolorem
+			} else if (variant === "primaryv2") {
+				pixel.style.backgroundColor = "black";
 			}
 			pixel.style.transitionDelay = `${Math.random() * 500}ms`;
 			pixel.style.transitionDuration = "200ms";
@@ -131,13 +102,9 @@ export const CTAButton = ({
 					"border border-basicDark bg-transparent text-basicDark hover:text-white",
 				variant === "tertiary" &&
 					"border border-white bg-transparent text-white hover:text-basicDark",
+				variant === "primaryv2" && "bg-primary text-basicDark hover:text-white",
 				className,
 			)}
-			// className={cn(
-			// 	`group relative flex w-fit items-center justify-center overflow-hidden ${
-			// 		variant === "primary" ? "bg-primary" : "border-bg border bg-white"
-			// 	} px-8 py-4 font-geist text-xs font-medium uppercase text-basicDark ${className}`,
-			// )}
 		>
 			{/* Pixel grid container */}
 			<div ref={pixelGridRef} className="absolute inset-0 z-10" style={{ pointerEvents: "none" }} />
@@ -149,6 +116,7 @@ export const CTAButton = ({
 					"relative z-20 ml-[0.625rem] h-3 w-3 transition-transform group-hover:rotate-45",
 					variant === "tertiary" && "[&>path]:stroke-white group-hover:[&>path]:stroke-basicDark",
 					variant === "secondary" && "group-hover:[&>path]:stroke-white",
+					variant === "primaryv2" && "group-hover:[&>path]:stroke-white",
 				)}
 			/>
 		</Link>

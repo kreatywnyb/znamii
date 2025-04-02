@@ -11,10 +11,10 @@ interface CaseStudiesListProps {
 }
 
 const CaseStudiesList: React.FC<CaseStudiesListProps> = ({ caseStudies, filters }) => {
-  const [selectedFilter, setSelectedFilter] = useState<string>(filters?.[0] || "All");
+	const [selectedFilter, setSelectedFilter] = useState<string>(filters?.[0] || "All");
 
   const filteredItems = filters
-    ? caseStudies.filter((item) => selectedFilter === "All" || item.category.some(x => x.name === selectedFilter))
+    ? caseStudies.filter((item) => selectedFilter === "Wszystkie" || item.category.some(x => x.name === selectedFilter))
     : caseStudies;
 
   const getSpanClass = (index: number) => {
