@@ -41,7 +41,7 @@ const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
 			className={twMerge("w-fit rounded-md font-geist text-xs font-normal uppercase", styles)}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			transition={{ duration: 1 }}
+			transition={{ duration: 0.1 }}
 		>
 			<span dangerouslySetInnerHTML={{ __html: displayedText }} />
 		</motion.div>

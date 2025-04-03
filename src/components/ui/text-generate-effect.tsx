@@ -125,18 +125,28 @@ export const TextGenerateEffect = ({
 			<div className={cn("overflow-hidden", classNameOne)}>
 				<div>{renderWords()}</div>
 			</div>
-			{/* <div className={cn("mt-4 text-center font-geist uppercase")}>
-				<div className="h-5">{renderSmallWords()}</div>
-			</div> */}
-			<div className="mt-4 flex h-10 justify-center">
-				{startSecondAnimation && (
-					<TerminalText
-						speed={30}
-						text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
-						styles="text-center h-10  flex "
-						// styles={`text-center h-10 ${startSecondAnimation ? "flex" : "hidden"}`}
-					/>
-				)}
+
+			<div className="flex w-full justify-center">
+				<div className="mt-4 flex h-10 md:w-[29.5rem]">
+					{startSecondAnimation && (
+						<>
+							<span className="hidden md:inline-block">
+								<TerminalText
+									speed={30}
+									text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
+									styles=" h-10  flex text-center"
+								/>
+							</span>
+							<span className="inline-block md:hidden">
+								<TerminalText
+									speed={30}
+									text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
+									styles=" h-10  flex text-center"
+								/>
+							</span>
+						</>
+					)}
+				</div>
 			</div>
 		</div>
 	);

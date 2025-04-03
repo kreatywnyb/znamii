@@ -1,8 +1,7 @@
+import ClientLayout from "@/ui/layouts/clientLayout";
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/ui/organisms/Header";
-import Footer from "@/ui/organisms/Footer";
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
@@ -28,9 +27,7 @@ export default function RootLayout({
 	return (
 		<html lang="pl" suppressHydrationWarning>
 			<body className={` ${geistMono.variable} bg-background antialiased`}>
-				<Header />
-				{children}
-				<Footer />
+				<ClientLayout>{children}</ClientLayout>
 			</body>
 		</html>
 	);

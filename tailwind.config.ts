@@ -38,6 +38,15 @@ export default {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
 			},
+			animation: {
+				fadeIn: "fadeIn 1s ease-in-out forwards",
+			},
+			keyframes: {
+				fadeIn: {
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
+			},
 		},
 	},
 	plugins: [forms, typography, require("tailwindcss-animate")],
