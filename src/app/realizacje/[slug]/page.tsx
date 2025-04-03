@@ -6,6 +6,8 @@ import CaseStudyAboutSection from "@/ui/sections/case-studies/CaseStudyAboutSect
 import API from "@/API";
 import { PageProps } from "../../../../.next/types/app/page";
 
+export const revalidate = 30;
+
 export async function generateStaticParams() {
 	const response = await API.caseStudies.getCaseStudies();
 	const caseStudies = response.data;
@@ -16,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 const CaseStudyPage = async ({ params }: PageProps) => {
-	const { slug } =  await params;
+	const { slug } = await params;
 	const response = await API.caseStudies.getCaseStudy(slug);
 	const caseStudy = response.data[0].caseStudyData;
 

@@ -41,7 +41,9 @@ const ProgressSectionCtaButton: React.FC = () => {
 
 			{/* Treść sekcji */}
 			<div className="transparent mb-20 flex flex-1 space-x-[1.875rem] text-[1.313rem] text-basicDark md:ml-20">
-				<CTAButton href={links.contactPage}>zrealizuj projekt z nami</CTAButton>
+				<CTAButton variant="primaryv2" href={links.contactPage}>
+					zrealizuj projekt z nami
+				</CTAButton>
 			</div>
 		</div>
 	);

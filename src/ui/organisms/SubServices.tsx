@@ -187,7 +187,11 @@ const SubServices = ({ sections }: SubServicesProps) => {
 											))}
 										</ul>
 										<div className="mt-auto inline-block pb-10">
-											<CTAButton className="max-md:hidden" href={links.contactPage}>
+											<CTAButton
+												className="max-md:hidden"
+												href={links.contactPage}
+												variant="primaryv2"
+											>
 												zrealizuj projekt
 											</CTAButton>
 										</div>

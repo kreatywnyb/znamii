@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 import React from "react";
+import TerminalText from "@/ui/atoms/TerminalText";
 
 export const TextGenerateEffect = ({
 	bigWords,
-	smallWords,
+
 	classNameOne,
-	classNameTwo,
 }: {
 	bigWords: string;
-	smallWords: string;
+	smallWords?: string;
 	classNameOne?: string;
 	classNameTwo?: string;
 }) => {
@@ -19,7 +19,6 @@ export const TextGenerateEffect = ({
 	const [startSecondAnimation, setStartSecondAnimation] = useState(false);
 
 	const wordsArray = bigWords.split(" ");
-	const smallWordsArray = smallWords.split(" ");
 
 	// 🔹 Animacja dla dużych słów (spadają jedno po drugim)
 	useEffect(() => {
@@ -64,70 +63,80 @@ export const TextGenerateEffect = ({
 	};
 
 	// 🔹 Renderowanie małych słów (słowo po słowie, litera po literze)
-	const renderSmallWords = () => {
-		return (
-			<motion.div
-				className={cn("flex flex-wrap justify-center space-x-2", classNameTwo)}
-				initial="hidden"
-				animate={startSecondAnimation ? "visible" : "hidden"}
-				variants={{
-					hidden: { opacity: 0 },
-					visible: {
-						opacity: 1,
-						transition: {
-							staggerChildren: 0.25, // 🔥 Każde słowo pojawia się po kolei
-						},
-					},
-				}}
-			>
-				{smallWordsArray.map((word, wordIdx) => {
-					const letters = word.split("");
+	// const renderSmallWords = () => {
+	// 	return (
+	// 		<motion.div
+	// 			className={cn("flex flex-wrap justify-center space-x-2", classNameTwo)}
+	// 			initial="hidden"
+	// 			animate={startSecondAnimation ? "visible" : "hidden"}
+	// 			variants={{
+	// 				hidden: { opacity: 0 },
+	// 				visible: {
+	// 					opacity: 1,
+	// 					transition: {
+	// 						staggerChildren: 0.25, // 🔥 Każde słowo pojawia się po kolei
+	// 					},
+	// 				},
+	// 			}}
+	// 		>
+	// 			{smallWordsArray?.map((word, wordIdx) => {
+	// 				const letters = word.split("");
 
-					return (
-						<React.Fragment key={`${word}-${wordIdx}`}>
-							<motion.div
-								// key={`${word}-${wordIdx}`}
-								className="inline-block"
-								variants={{
-									hidden: { opacity: 0 },
-									visible: {
-										opacity: 1,
-										transition: {
-											staggerChildren: 0.025, // 🔥 Litery pojawiają się po kolei w słowie
-										},
-									},
-								}}
-							>
-								{/* 🔹 Animacja litera po literze */}
-								{letters.map((letter, letterIdx) => (
-									<motion.span
-										key={`${letter}-${letterIdx}`}
-										variants={{
-											hidden: { opacity: 0 },
-											visible: { opacity: 1, y: 0 },
-										}}
-										transition={{ duration: 0.3 }}
-										className="inline-block"
-									>
-										{letter}
-									</motion.span>
-								))}
-							</motion.div>
-							{word === "firmy" && <div className="md:w-full" />}
-						</React.Fragment>
-					);
-				})}
-			</motion.div>
-		);
-	};
+	// 				return (
+	// 					<React.Fragment key={`${word}-${wordIdx}`}>
+	// 						<motion.div
+	// 							// key={`${word}-${wordIdx}`}
+	// 							className="inline-block"
+	// 							variants={{
+	// 								hidden: { opacity: 0 },
+	// 								visible: {
+	// 									opacity: 1,
+	// 									transition: {
+	// 										staggerChildren: 0.025, // 🔥 Litery pojawiają się po kolei w słowie
+	// 									},
+	// 								},
+	// 							}}
+	// 						>
+	// 							{/* 🔹 Animacja litera po literze */}
+	// 							{letters.map((letter, letterIdx) => (
+	// 								<motion.span
+	// 									key={`${letter}-${letterIdx}`}
+	// 									variants={{
+	// 										hidden: { opacity: 0 },
+	// 										visible: { opacity: 1, y: 0 },
+	// 									}}
+	// 									transition={{ duration: 0.3 }}
+	// 									className="inline-block"
+	// 								>
+	// 									{letter}
+	// 								</motion.span>
+	// 							))}
+	// 						</motion.div>
+	// 						{word === "firmy" && <div className="md:w-full" />}
+	// 					</React.Fragment>
+	// 				);
+	// 			})}
+	// 		</motion.div>
+	// 	);
+	// };
 
 	return (
 		<div>
 			<div className={cn("overflow-hidden", classNameOne)}>
 				<div>{renderWords()}</div>
 			</div>
-			<div className={cn("mt-4 text-center font-geist uppercase")}>
+			{/* <div className={cn("mt-4 text-center font-geist uppercase")}>
 				<div className="h-5">{renderSmallWords()}</div>
+			</div> */}
+			<div className="mt-4 flex h-10 justify-center">
+				{startSecondAnimation && (
+					<TerminalText
+						speed={30}
+						text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
+						styles="text-center h-10  flex "
+						// styles={`text-center h-10 ${startSecondAnimation ? "flex" : "hidden"}`}
+					/>
+				)}
 			</div>
 		</div>
 	);

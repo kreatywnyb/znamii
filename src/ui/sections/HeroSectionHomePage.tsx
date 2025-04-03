@@ -1,20 +1,82 @@
+// import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+// const HeroSectionHomePage = () => {
+// 	return (
+// 		<section className="bg-basicDark text-white">
+// 			<div className="container relative flex h-full min-h-[720px] w-full xxl:min-h-[920px]">
+// 				<div className="relative z-10 flex w-full flex-1 flex-col items-center justify-center">
+// 					<TextGenerateEffect
+// 						bigWords={"Zbuduj wizerunek marki"}
+// 						classNameOne="text-6xl lg:text-[6.438rem]"
+// 						smallWords={
+// 							"Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
+// 						}
+// 						classNameTwo="mt-4 text-center text-sm  font-geist uppercase"
+// 					/>
+// 				</div>
+// 				<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:w-full">
+// 					<video
+// 						src="/hero-video-min.mp4"
+// 						className="h-fit max-md:w-full"
+// 						autoPlay
+// 						loop
+// 						muted
+// 						playsInline
+// 						poster="/hero-poster.png"
+// 					/>
+// 				</div>
+// 			</div>
+// 		</section>
+// 	);
+// };
+
+// export default HeroSectionHomePage;
+
+"use client";
+
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { motion } from "framer-motion";
+
+const textVariants = {
+	initial: { opacity: 0, y: 20 },
+	animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const videoVariants = {
+	initial: { opacity: 0 },
+	animate: { opacity: 1, transition: { duration: 1.2, ease: "easeOut" } },
+};
 
 const HeroSectionHomePage = () => {
 	return (
 		<section className="bg-basicDark text-white">
 			<div className="container relative flex h-full min-h-[720px] w-full xxl:min-h-[920px]">
 				<div className="relative z-10 flex w-full flex-1 flex-col items-center justify-center">
-					<TextGenerateEffect
-						bigWords={"Zbuduj wizerunek marki"}
-						classNameOne="text-6xl lg:text-[6.438rem]"
-						smallWords={
-							"Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
-						}
-						classNameTwo="mt-4 text-center text-sm  font-geist uppercase"
-					/>
+					<motion.div variants={textVariants} initial="initial" animate="animate">
+						<TextGenerateEffect
+							bigWords={"Zbuduj wizerunek marki"}
+							classNameOne="text-6xl lg:text-[6.438rem]"
+							// smallWords={
+							// 	"Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
+							// }
+							// classNameTwo="mt-4 text-center text-sm font-geist uppercase"
+						/>
+						{/* <div className="flex justify-center">
+							<TerminalText
+								speed={30}
+								text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
+								styles="text-center h-10  flex "
+							/>
+						</div> */}
+					</motion.div>
 				</div>
-				<div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:w-full">
+
+				<motion.div
+					className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-md:w-full"
+					variants={videoVariants}
+					initial="initial"
+					animate="animate"
+				>
 					<video
 						src="/hero-video-min.mp4"
 						className="h-fit max-md:w-full"
@@ -24,7 +86,7 @@ const HeroSectionHomePage = () => {
 						playsInline
 						poster="/hero-poster.png"
 					/>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
