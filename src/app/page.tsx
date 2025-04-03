@@ -7,19 +7,17 @@ import CaseStudiesSection from "@/ui/sections/case-studies/CaseStudiesSection";
 import API from "@/API";
 import { CaseStudyResponse } from "@/API/models/caseStudies";
 
-export default async function Home() {
+export const revalidate = 30;
 
-	const response = await API.caseStudies.getCaseStudies({showOnHomePage:true});
+export default async function Home() {
+	const response = await API.caseStudies.getCaseStudies({ showOnHomePage: true });
 	const caseStudies: CaseStudyResponse[] = response.data;
 
 	return (
 		<main className="bg-background">
 			<HeroSectionHomePage />
 			<ServicesSection />
-			<CaseStudiesSection
-				caseStudies={caseStudies}
-				title="Zobacz nasze realizacje. Są w pytkę."
-			/>
+			<CaseStudiesSection caseStudies={caseStudies} title="Zobacz nasze realizacje. Są w pytkę." />
 			<ReviewsSection />
 			<CtaSection image={CtaBgImg.src} />
 		</main>
