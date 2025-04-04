@@ -127,7 +127,7 @@ export const TextGenerateEffect = ({
 			</div>
 
 			<div className="flex w-full justify-center">
-				<div className="mt-4 flex h-10 md:w-[29.5rem]">
+				<div className="mt-4 flex h-10 w-full md:w-[29.5rem]">
 					{startSecondAnimation && (
 						<>
 							<span className="hidden md:inline-block">
