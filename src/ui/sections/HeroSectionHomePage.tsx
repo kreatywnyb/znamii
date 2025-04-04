@@ -1,33 +1,71 @@
 // "use client";
 
-// import { useEffect, useState } from "react";
+// import { useEffect, useState, useRef } from "react";
 // import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 // const HeroSectionHomePage = () => {
 // 	const [showVideo, setShowVideo] = useState(false);
 // 	const [showText, setShowText] = useState(false);
 // 	const [revealPage, setRevealPage] = useState(false);
+// 	// const [useImageFallback, setUseImageFallback] = useState(false);
+// 	const videoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+// 	const hasAnimationPlayed = sessionStorage?.getItem("heroAnimationPlayed");
 
 // 	useEffect(() => {
-// 		// Start animation sequence after component mounts
-// 		const videoTimer = setTimeout(() => {
+// 		// Check if animation has already played in this session
+
+// 		if (hasAnimationPlayed) {
+// 			// Skip animation if it has already played
 // 			setShowVideo(true);
-// 		}, 0); // Show video immediately
+// 			setShowText(true);
+// 			setRevealPage(true);
+// 		} else {
+// 			// Start animation sequence after component mounts
+// 			setTimeout(() => {
+// 				setShowVideo(true);
+// 			}, 0); // Show video immediately
+
+// 			// Set a 3-second timeout for video loading
+// 			videoTimeoutRef.current = setTimeout(() => {
+// 				// If this timeout fires, video didn't load in time
+// 				// setUseImageFallback(true);
+// 				setShowText(true);
+
+// 				// Still need to reveal page after some time
+// 				setTimeout(() => {
+// 					setRevealPage(true);
+// 					// Mark animation as played
+// 					sessionStorage.setItem("heroAnimationPlayed", "true");
+// 				}, 4000);
+// 			}, 3000);
+// 		}
 
 // 		return () => {
-// 			clearTimeout(videoTimer);
-// 			// clearTimeout(pageTimer);
+// 			if (videoTimeoutRef.current) {
+// 				clearTimeout(videoTimeoutRef.current);
+// 			}
 // 		};
-// 	}, []);
+// 	}, [hasAnimationPlayed]);
 
-// 	// Kiedy wideo się załaduje, uruchamiamy timer do wyświetlenia tekstu
+// 	// When video loads successfully
 // 	const handleVideoLoaded = () => {
-// 		setTimeout(() => {
-// 			setShowText(true);
-// 		}, 500); // Pokaż tekst 0.5s po załadowaniu wideo
-// 		setTimeout(() => {
-// 			setRevealPage(true);
-// 		}, 6000); // Reveal page after 4 seconds
+// 		// Clear the 3-second timeout since video loaded successfully
+// 		if (videoTimeoutRef.current) {
+// 			clearTimeout(videoTimeoutRef.current);
+// 		}
+
+// 		// Only proceed with animation if it hasn't already played
+// 		if (!sessionStorage.getItem("heroAnimationPlayed")) {
+// 			setTimeout(() => {
+// 				setShowText(true);
+// 			}, 500); // Show text 0.5s after video loads
+
+// 			setTimeout(() => {
+// 				setRevealPage(true);
+// 				// Mark animation as played
+// 				sessionStorage.setItem("heroAnimationPlayed", "true");
+// 			}, 6000); // Reveal page after 6 seconds
+// 		}
 // 	};
 
 // 	const overlayStyle: React.CSSProperties = {
@@ -48,7 +86,7 @@
 // 			<div style={overlayStyle} className="flex items-center justify-center text-white">
 // 				<div className="container relative flex h-full min-h-[720px] w-full xxl:min-h-[920px]">
 // 					<div className="relative z-[200] flex w-full flex-1 flex-col items-center justify-center">
-// 						{showText && (
+// 						{showText && !hasAnimationPlayed && (
 // 							<div>
 // 								<TextGenerateEffect
 // 									bigWords={"Zbuduj wizerunek marki"}
@@ -59,7 +97,7 @@
 // 					</div>
 
 // 					<div className="absolute left-1/2 top-1/2 z-[120] -translate-x-1/2 -translate-y-1/2 max-md:w-full">
-// 						{showVideo && (
+// 						{showVideo && !hasAnimationPlayed && (
 // 							<video
 // 								src="/hero-video-min.mp4"
 // 								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
@@ -69,9 +107,17 @@
 // 								muted
 // 								playsInline
 // 								poster="/hero-poster.png"
-// 								onLoadedData={handleVideoLoaded} // <- Reaguje na załadowanie wideo
+// 								onLoadedData={handleVideoLoaded}
 // 							/>
 // 						)}
+// 						{/* {useImageFallback && (
+// 							<img
+// 								src="/hero-poster.png"
+// 								alt="Hero Background"
+// 								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
+// 								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
+// 							/>
+// 						)} */}
 // 					</div>
 // 				</div>
 // 			</div>
@@ -100,9 +146,17 @@
 // 								muted
 // 								playsInline
 // 								poster="/hero-poster.png"
-// 								onPlay={handleVideoLoaded} // <- Reaguje na załadowanie wideo
+// 								onLoadedData={handleVideoLoaded} // Changed from onPlay to be consistent
 // 							/>
 // 						)}
+// 						{/* {useImageFallback && (
+// 							<img
+// 								src="/hero-poster.png"
+// 								alt="Hero Background"
+// 								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
+// 								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
+// 							/>
+// 						)} */}
 // 					</div>
 // 				</div>
 // 			</section>
@@ -121,14 +175,20 @@ const HeroSectionHomePage = () => {
 	const [showVideo, setShowVideo] = useState(false);
 	const [showText, setShowText] = useState(false);
 	const [revealPage, setRevealPage] = useState(false);
+	const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
 	// const [useImageFallback, setUseImageFallback] = useState(false);
-	const videoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-	const hasAnimationPlayed = sessionStorage.getItem("heroAnimationPlayed");
+	const videoTimeoutRef = useRef(null);
 
 	useEffect(() => {
-		// Check if animation has already played in this session
+		// Check if animation has already played in this session (safely)
+		const animationPlayed =
+			typeof window !== "undefined" ? window.sessionStorage?.getItem("heroAnimationPlayed") : null;
 
-		if (hasAnimationPlayed) {
+		setHasAnimationPlayed(!!animationPlayed);
+
+		let videoTimeout = null;
+
+		if (animationPlayed) {
 			// Skip animation if it has already played
 			setShowVideo(true);
 			setShowText(true);
@@ -140,7 +200,7 @@ const HeroSectionHomePage = () => {
 			}, 0); // Show video immediately
 
 			// Set a 3-second timeout for video loading
-			videoTimeoutRef.current = setTimeout(() => {
+			videoTimeout = setTimeout(() => {
 				// If this timeout fires, video didn't load in time
 				// setUseImageFallback(true);
 				setShowText(true);
@@ -148,18 +208,20 @@ const HeroSectionHomePage = () => {
 				// Still need to reveal page after some time
 				setTimeout(() => {
 					setRevealPage(true);
-					// Mark animation as played
-					sessionStorage.setItem("heroAnimationPlayed", "true");
+					// Mark animation as played (safely)
+					if (typeof window !== "undefined") {
+						window.sessionStorage?.setItem("heroAnimationPlayed", "true");
+					}
 				}, 4000);
 			}, 3000);
 		}
 
 		return () => {
-			if (videoTimeoutRef.current) {
-				clearTimeout(videoTimeoutRef.current);
+			if (videoTimeout) {
+				clearTimeout(videoTimeout);
 			}
 		};
-	}, [hasAnimationPlayed]);
+	}, []); // empty dependency array
 
 	// When video loads successfully
 	const handleVideoLoaded = () => {
@@ -169,15 +231,17 @@ const HeroSectionHomePage = () => {
 		}
 
 		// Only proceed with animation if it hasn't already played
-		if (!sessionStorage.getItem("heroAnimationPlayed")) {
+		if (!hasAnimationPlayed) {
 			setTimeout(() => {
 				setShowText(true);
 			}, 500); // Show text 0.5s after video loads
 
 			setTimeout(() => {
 				setRevealPage(true);
-				// Mark animation as played
-				sessionStorage.setItem("heroAnimationPlayed", "true");
+				// Mark animation as played (safely)
+				if (typeof window !== "undefined") {
+					window.sessionStorage?.setItem("heroAnimationPlayed", "true");
+				}
 			}, 6000); // Reveal page after 6 seconds
 		}
 	};
@@ -224,14 +288,6 @@ const HeroSectionHomePage = () => {
 								onLoadedData={handleVideoLoaded}
 							/>
 						)}
-						{/* {useImageFallback && (
-							<img
-								src="/hero-poster.png"
-								alt="Hero Background"
-								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
-								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
-							/>
-						)} */}
 					</div>
 				</div>
 			</div>
@@ -263,14 +319,6 @@ const HeroSectionHomePage = () => {
 								onLoadedData={handleVideoLoaded} // Changed from onPlay to be consistent
 							/>
 						)}
-						{/* {useImageFallback && (
-							<img
-								src="/hero-poster.png"
-								alt="Hero Background"
-								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
-								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
-							/>
-						)} */}
 					</div>
 				</div>
 			</section>
