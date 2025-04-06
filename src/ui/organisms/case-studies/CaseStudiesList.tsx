@@ -25,8 +25,6 @@ const CaseStudiesList: React.FC<CaseStudiesListProps> = ({ caseStudies, filters 
 		const isEvenRow = rowPosition % 2 === 0;
 		const isFirstInRow = index % 2 === 0;
 
-		// For even rows (0, 2, 4...): first card is 2-col wide, second is 1-col wide
-		// For odd rows (1, 3, 5...): first card is 1-col wide, second is 2-col wide
 		if ((isEvenRow && isFirstInRow) || (!isEvenRow && !isFirstInRow)) {
 			return "md:col-span-2";
 		} else {

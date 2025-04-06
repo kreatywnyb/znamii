@@ -79,6 +79,7 @@
 "use client";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { FlipWords } from "../molecules/FlipWords";
 
 interface FAQ {
 	id: number;
@@ -111,7 +112,7 @@ const FAQSection: React.FC = () => {
 	return (
 		<section className="container my-20">
 			<div>
-				<h2 className="text-[2.5rem]">Fekju, fakju, FAQ. Czy jakoś tak...</h2>
+				<FlipWords as="h2" className="text-[2.5rem]" word="Fekju, fakju, FAQ. Czy jakoś tak..."></FlipWords>
 			</div>
 			<section className="mt-14 space-y-4">
 				{faqs.map((faq, idx) => (

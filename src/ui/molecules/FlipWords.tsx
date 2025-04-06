@@ -2,17 +2,20 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import React from "react";
 
 export const FlipWords = ({
 	word,
 	className,
 	animationDuration = 0.2,
-	staggerDelay = 0.1,
+	staggerDelay = 0.07,
+	as: Component = "h2", // Default to h2 but allow overriding
 }: {
 	word: string;
 	className?: string;
 	animationDuration?: number;
 	staggerDelay?: number;
+	as?: React.ElementType; // Accept any valid HTML element or component
 }) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -21,10 +24,10 @@ export const FlipWords = ({
 	});
 
 	return (
-		<div ref={ref}>
+		<div ref={ref} className="min-h-16">
 			<AnimatePresence>
 				{inView && (
-					<h2 className={cn("perspective-500 relative z-10 inline-block", className)}>
+					<Component className={cn("perspective-500 relative z-10 inline-block", className)}>
 						{word.split(/(\s+)/g).map((chunk: string, index: number) =>
 							chunk.trim() === "" ? (
 								<span key={word + index}>{chunk}</span>
@@ -44,7 +47,7 @@ export const FlipWords = ({
 								</motion.span>
 							),
 						)}
-					</h2>
+					</Component>
 				)}
 			</AnimatePresence>
 		</div>

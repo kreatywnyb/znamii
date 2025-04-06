@@ -2,6 +2,7 @@
 import React, { useState, useRef, JSX } from "react";
 import Image, { StaticImageData } from "next/image";
 import { twMerge } from "tailwind-merge";
+import { motion, useInView } from "framer-motion";
 
 const TeamMember = ({
 	item,
@@ -23,6 +24,7 @@ const TeamMember = ({
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	const [isHovering, setIsHovering] = useState(false);
 	const memberRef = useRef<HTMLDivElement | null>(null);
+	const isInView = useInView(memberRef, { once: true, amount: 0.3 });
 
 	// Handle mouse movement
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
@@ -36,14 +38,31 @@ const TeamMember = ({
 		}
 	};
 
+	// Animation variants
+	const slideInVariants = {
+		hidden: { x: -100, opacity: 0 },
+		visible: { 
+			x: 0, 
+			opacity: 1,
+			transition: { 
+				duration: 0.6, 
+				ease: "easeOut",
+				delay: idx * 0.1 // Stagger effect based on index
+			}
+		}
+	};
+
 	return (
-		<div
+		<motion.div
 			className="group relative flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
 			key={`${item.name}-${idx}`}
 			ref={memberRef}
 			onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
 			onMouseEnter={() => setIsHovering(true)}
 			onMouseLeave={() => setIsHovering(false)}
+			initial="hidden"
+			animate={isInView ? "visible" : "hidden"}
+			variants={slideInVariants}
 		>
 			<div className="flex flex-col md:flex-row md:items-center md:space-x-6">
 				<Image alt={item.name} src={item.img} />
@@ -100,7 +119,7 @@ const TeamMember = ({
 					{item.socials.icon()}
 				</a>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

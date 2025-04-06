@@ -1,5 +1,5 @@
 "use client";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useInView } from "framer-motion";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
@@ -7,6 +7,9 @@ import img1 from "@public/serv-img-1.webp";
 
 const ProgressSection: React.FC = () => {
 	const sectionRef = useRef<HTMLDivElement>(null);
+	const contentRef = useRef<HTMLDivElement>(null);
+	const isInView = useInView(contentRef, { once: false, amount: 0.3 });
+	
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
 		offset: ["start 50%", "end 50%"], // Animacja zaczyna się w połowie sekcji
@@ -30,6 +33,33 @@ const ProgressSection: React.FC = () => {
 		}
 	});
 
+	// Animation variants for the slide-in effect
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+			},
+		},
+	};
+
+	const slideInVariants = {
+		hidden: { 
+			x: -100,
+			opacity: 0,
+		},
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				type: "spring",
+				damping: 25,
+				stiffness: 100
+			}
+		},
+	};
+
 	return (
 		<div ref={sectionRef} className="container relative flex space-x-4 md:space-x-20">
 			{/* Pasek progresu */}
@@ -49,12 +79,23 @@ const ProgressSection: React.FC = () => {
 			</div>
 
 			{/* Treść sekcji */}
-
-			<div className="transparent mb-20 ml-2 flex flex-1 flex-col space-y-6 text-[1.313rem] text-basicDark md:ml-10 md:flex-row md:space-x-4 md:space-y-0 lg:ml-20 lg:space-x-[1.875rem]">
-				<div className="relative aspect-square w-full max-w-full md:max-w-[15rem] lg:max-w-[17.5rem]">
+			<motion.div 
+				ref={contentRef}
+				variants={containerVariants}
+				initial="hidden"
+				animate={isInView ? "visible" : "hidden"}
+				className="transparent mb-20 ml-2 flex flex-1 flex-col space-y-6 text-[1.313rem] text-basicDark md:ml-10 md:flex-row md:space-x-4 md:space-y-0 lg:ml-20 lg:space-x-[1.875rem]"
+			>
+				<motion.div 
+					variants={slideInVariants}
+					className="relative aspect-square w-full max-w-full md:max-w-[15rem] lg:max-w-[17.5rem]"
+				>
 					<Image src={img1} alt="" className="h-full w-full object-cover object-center" />
-				</div>
-				<div className="flex-1 bg-white px-4 py-6 md:px-6 md:py-8 lg:px-10 lg:py-11">
+				</motion.div>
+				<motion.div 
+					variants={slideInVariants}
+					className="flex-1 bg-white px-4 py-6 md:px-6 md:py-8 lg:px-10 lg:py-11"
+				>
 					<h3 className="text-xl md:text-[1.313rem]">1. Rozmawiamy o Twoich potrzebach</h3>
 					<p className="my-4 text-base text-darkGrey md:my-5 md:text-[1.063rem]">
 						Chcemy poznać Twoją markę oraz cele jakie ma do osiągnięcia. Dzięki temu będziemy w
@@ -70,8 +111,8 @@ const ProgressSection: React.FC = () => {
 							Opracowujemy harmonogram prac
 						</li>
 					</ul>
-				</div>
-			</div>
+				</motion.div>
+			</motion.div>
 		</div>
 	);
 };

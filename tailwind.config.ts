@@ -40,11 +40,21 @@ export default {
 			},
 			animation: {
 				fadeIn: "fadeIn 1s ease-in-out forwards",
+				"overlay-hide": "overlay-hide 0.8s ease-in-out forwards",
+				"image-zoom": "image-zoom 1.2s ease-out 0.7s forwards",
 			},
 			keyframes: {
 				fadeIn: {
 					"0%": { opacity: "0" },
 					"100%": { opacity: "1" },
+				},
+				"overlay-hide": {
+					"0%": { transform: "scaleY(1)" },
+					"100%": { transform: "scaleY(0)" },
+				},
+				"image-zoom": {
+					"0%": { transform: "scale(1)" },
+					"100%": { transform: "scale(1.05)" },
 				},
 			},
 		},

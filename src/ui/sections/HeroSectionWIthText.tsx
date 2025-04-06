@@ -1,4 +1,5 @@
 import React from "react";
+import { FlipWords } from "../molecules/FlipWords";
 
 export type HeroSectionWithTextProps = {
 	headingText: string;
@@ -8,7 +9,7 @@ const HeroSectionWithText = ({ headingText }: HeroSectionWithTextProps) => {
 	return (
 		<section className="bg-basicDark pb-96 pt-20">
 			<div className="container">
-				<h1 className="text-4xl text-white lg:text-[3.625rem]">{headingText}</h1>
+				<FlipWords as="h1" className="text-4xl text-white lg:text-[3.625rem]" word={headingText}></FlipWords>
 			</div>
 		</section>
 	);

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ExpandingLabel from "@/ui/molecules/ExpandingLabel";
 import { links } from "@/constants";
 import { CaseStudyResponse } from "@/API/models/caseStudies";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface CaseStudyCardProps {
 	caseStudy: CaseStudyResponse;
@@ -10,21 +13,53 @@ interface CaseStudyCardProps {
 
 const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 	const [isHovered, setIsHovered] = useState(false);
+	const [ref, inView] = useInView({
+		triggerOnce: true,
+		threshold: .7,
+	});
+
+	const cardVariants = {
+		hidden: { 
+			opacity: 0, 
+			scale:0.95
+		},
+		visible: { 
+			opacity: 1,
+			scale:1, 
+			transition: {
+				duration: 1,
+				ease: "easeOut"
+			}
+		}
+	};
 
 	return (
-		<Link
-			href={`${links.portfolio}/${caseStudy.slug}`}
-			className="group relative flex h-full min-h-[23.75rem] w-full items-center justify-center overflow-hidden bg-cover bg-center font-medium text-white transition-all"
-			// style={{ backgroundImage: `url(${caseStudy.mainPhoto.url})` }}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
+		<motion.div
+			ref={ref}
+			initial="hidden"
+			animate={inView ? "visible" : "hidden"}
+			variants={cardVariants}
+			className="h-full w-full"
 		>
-			<div
-				style={{ backgroundImage: `url(${caseStudy.mainPhoto.url})` }}
-				className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-			/>
-			<ExpandingLabel text={caseStudy.title} isHovered={isHovered} />
-		</Link>
+			<Link
+				href={`${links.portfolio}/${caseStudy.slug}`}
+				className="group relative flex h-full min-h-[23.75rem] w-full items-center justify-center overflow-hidden font-medium text-white transition-all"
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+			>
+				<div className="absolute inset-0 h-full w-full overflow-hidden">
+					<Image
+						src={caseStudy.mainPhoto.url}
+						alt={caseStudy.title}
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+						priority={false}
+					/>
+				</div>
+				<ExpandingLabel text={caseStudy.title} isHovered={isHovered} />
+			</Link>
+		</motion.div>
 	);
 };
 

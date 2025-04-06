@@ -18,6 +18,8 @@ import SecurityIcon from "@/ui/icons/SecurityIcon";
 import Toast from "@/ui/molecules/Toast";
 import API from "@/API";
 import { ContactFormData } from "@/API/models/contactFormData";
+import { motion } from "framer-motion";
+import { FlipWords } from "../../molecules/FlipWords";
 
 const MAX_MESSAGE_LENGTH = 360;
 
@@ -52,13 +54,13 @@ const ContactSection: React.FC = () => {
 
 	const onSubmit = async (data: ContactFormData) => {
 		if (isOverLimit) return;
-		
+
 		setIsSubmitting(true);
 		data.services = selectedServices;
-		
+
 		try {
 			const result = await API.contact.send(data);
-			
+
 			if (result.status < 300) {
 				setToast({
 					show: true,
@@ -109,8 +111,48 @@ const ContactSection: React.FC = () => {
 		validate: (value) => value.length > 0 || "*Wybierz przynajmniej jedną usługę",
 	});
 
+	// Animation variants
+	const containerVariants = {
+		hidden: { opacity: 1 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+				delayChildren: 0.3,
+			},
+		},
+	};
+
+	const itemVariants = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: { duration: 0.5, ease: "easeOut" },
+		},
+	};
+
+
+	const formVariants = {
+		hidden: { x: 100, opacity: 0 },
+		visible: {
+			x: 0,
+			opacity: 1,
+			transition: { duration: 0.7, ease: "easeOut", delay: 0.2 },
+		},
+	};
+
+	const imageHoverVariants = {
+		hover: { scale: 1.05, transition: { duration: 0.3 } },
+	};
+
 	return (
-		<section className="bg-basicDark pb-48 pt-20">
+		<motion.section
+			className="bg-basicDark pb-48 pt-20"
+			initial="hidden"
+			animate="visible"
+			variants={containerVariants}
+		>
 			{toast.show && (
 				<Toast
 					message={toast.message}
@@ -119,46 +161,93 @@ const ContactSection: React.FC = () => {
 					onClose={() => setToast({ ...toast, show: false })}
 				/>
 			)}
-			
+
 			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
-				<div className="flex flex-col lg:pr-24">
-					<h1 className="leading-[125%] text-white">
-						Zrealizuj projekt <br /> razem z nami!
-					</h1>
-					<p className="pb-[3.75rem] pr-20 pt-5 text-[1.063rem] leading-[160%]">
+				<motion.div className="flex flex-col lg:pr-24" variants={containerVariants}>
+						<FlipWords as="h1" className="leading-[125%] text-white max-w-96" word="Zrealizuj projekt razem z nami!">
+						</FlipWords>
+
+					<motion.p
+						className="pb-[3.75rem] pr-20 pt-5 text-[1.063rem] leading-[160%]"
+						variants={itemVariants}
+					>
 						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
 						wideo posłużą Ci na lata.
-					</p>
-					<div className="text-xl lg:text-[2.5rem]">
-						<div className="flex items-center gap-4 font-medium lg:gap-8">
+					</motion.p>
+					<motion.div className="text-xl lg:text-[2.5rem]" variants={itemVariants}>
+						<motion.div
+							className="flex items-center gap-4 font-medium lg:gap-8"
+							whileHover={{ x: 10 }}
+							transition={{ type: "spring", stiffness: 400 }}
+						>
 							<PhoneIcon className="max-lg:size-6" />{" "}
 							<p className="whitespace-nowrap">+48 694 211 577</p>
-						</div>
-						<div className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8">
+						</motion.div>
+						<motion.div
+							className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8"
+							whileHover={{ x: 10 }}
+							transition={{ type: "spring", stiffness: 400 }}
+						>
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
-						</div>
-					</div>
-					<div className="mt-auto flex w-full justify-between">
+						</motion.div>
+					</motion.div>
+					<motion.div className="mt-auto flex w-full justify-between" variants={itemVariants}>
 						<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
-							<div className="relative h-[10.875rem] w-[10.875rem]">
+							<motion.div
+								className="relative h-[10.875rem] w-[10.875rem]"
+								whileHover="hover"
+								variants={imageHoverVariants}
+							>
 								<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
-								<div
-									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity ${selectedServices.includes("Video") || selectedServices.includes("Zdjęcia") || selectedServices.includes("Współpraca") ? "opacity-0" : "opacity-100"}`}
+								<motion.div
+									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity`}
+									animate={{
+										opacity:
+											selectedServices.includes("Video") ||
+											selectedServices.includes("Zdjęcia") ||
+											selectedServices.includes("Współpraca")
+												? 0
+												: 1,
+									}}
+									transition={{ duration: 0.5 }}
 								/>
-							</div>
-							<div className="relative h-[10.875rem] w-[10.875rem]">
+							</motion.div>
+							<motion.div
+								className="relative h-[10.875rem] w-[10.875rem]"
+								whileHover="hover"
+								variants={imageHoverVariants}
+							>
 								<Image src={maksImage} alt="" className="h-full w-full border border-white" />
 								<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
-								<div
-									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity ${selectedServices.includes("Branding") || selectedServices.includes("Współpraca") ? "opacity-0" : "opacity-100"}`}
+								<motion.div
+									className={`absolute left-0 top-0 h-full w-full bg-primary`}
+									animate={{
+										opacity:
+											selectedServices.includes("Branding") ||
+											selectedServices.includes("Współpraca")
+												? 0
+												: 1,
+									}}
+									transition={{ duration: 0.5 }}
 								/>
-							</div>
+							</motion.div>
 						</div>
-					</div>
-				</div>
-				<div>
-					<div className="relative bg-ultraLightGray p-8 shadow-lg after:absolute after:-right-4 after:-top-4 after:h-4 after:w-4 after:bg-primary max-md:mx-2 max-md:px-4">
+					</motion.div>
+				</motion.div>
+				<motion.div variants={formVariants}>
+					<motion.div
+						className="relative bg-ultraLightGray p-8 shadow-lg max-md:mx-2 max-md:px-4"
+						initial={{ boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)" }}
+						whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }}
+						transition={{ duration: 0.3 }}
+					>
+						<motion.div
+							className="absolute -right-4 -top-4 h-4 w-4 bg-primary"
+							initial={{ scale: 0 }}
+							animate={{ scale: 1, rotate: 180 }}
+							transition={{ delay: 0.7, duration: 0.5 }}
+						/>
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div>
 								<div className="mb-5 flex justify-between">
@@ -281,14 +370,16 @@ const ContactSection: React.FC = () => {
 								)}
 							</div>
 
-							<ButtonPrimary type="submit" className="w-full" isLoading={isSubmitting}>
-								Działamy z projektem
-							</ButtonPrimary>
+							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+								<ButtonPrimary type="submit" className="w-full" isLoading={isSubmitting}>
+									Działamy z projektem
+								</ButtonPrimary>
+							</motion.div>
 						</form>
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 

@@ -9,6 +9,7 @@ import StarIcon from "@/ui/icons/StarIcon";
 import GoogleIcon from "@/ui/icons/GoogleIcon";
 import SubServices, { ScrollableSectionInterface } from "@/ui/organisms/SubServices";
 import ServiceCTA from "@/ui/organisms/ServiceCTA";
+import { FlipWords } from "@/ui/molecules/FlipWords";
 
 export type ServiceSectionProps = {
 	name: string;
@@ -133,7 +134,7 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 			<WhiteBox className="relative z-10 [&>div]:-mt-[30%]">
 				<div className="container flex flex-col justify-between lg:flex-row">
 					<div className="max-w-[780px] flex-1">
-						<h1>{name}</h1>
+						<FlipWords word={name} as="h1"></FlipWords>
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
 						<div className="mt-11 flex flex-col-reverse md:flex-row md:space-x-16">
