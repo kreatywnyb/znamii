@@ -7,14 +7,20 @@
 // 	const [showVideo, setShowVideo] = useState(false);
 // 	const [showText, setShowText] = useState(false);
 // 	const [revealPage, setRevealPage] = useState(false);
+// 	const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
 // 	// const [useImageFallback, setUseImageFallback] = useState(false);
-// 	const videoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-// 	const hasAnimationPlayed = sessionStorage?.getItem("heroAnimationPlayed");
+// 	const videoTimeoutRef = useRef(null);
 
 // 	useEffect(() => {
-// 		// Check if animation has already played in this session
+// 		// Check if animation has already played in this session (safely)
+// 		const animationPlayed =
+// 			typeof window !== "undefined" ? window.sessionStorage?.getItem("heroAnimationPlayed") : null;
 
-// 		if (hasAnimationPlayed) {
+// 		setHasAnimationPlayed(!!animationPlayed);
+
+// 		let videoTimeout = null;
+
+// 		if (animationPlayed) {
 // 			// Skip animation if it has already played
 // 			setShowVideo(true);
 // 			setShowText(true);
@@ -26,7 +32,7 @@
 // 			}, 0); // Show video immediately
 
 // 			// Set a 3-second timeout for video loading
-// 			videoTimeoutRef.current = setTimeout(() => {
+// 			videoTimeout = setTimeout(() => {
 // 				// If this timeout fires, video didn't load in time
 // 				// setUseImageFallback(true);
 // 				setShowText(true);
@@ -34,18 +40,20 @@
 // 				// Still need to reveal page after some time
 // 				setTimeout(() => {
 // 					setRevealPage(true);
-// 					// Mark animation as played
-// 					sessionStorage.setItem("heroAnimationPlayed", "true");
+// 					// Mark animation as played (safely)
+// 					if (typeof window !== "undefined") {
+// 						window.sessionStorage?.setItem("heroAnimationPlayed", "true");
+// 					}
 // 				}, 4000);
 // 			}, 3000);
 // 		}
 
 // 		return () => {
-// 			if (videoTimeoutRef.current) {
-// 				clearTimeout(videoTimeoutRef.current);
+// 			if (videoTimeout) {
+// 				clearTimeout(videoTimeout);
 // 			}
 // 		};
-// 	}, [hasAnimationPlayed]);
+// 	}, []); // empty dependency array
 
 // 	// When video loads successfully
 // 	const handleVideoLoaded = () => {
@@ -55,15 +63,17 @@
 // 		}
 
 // 		// Only proceed with animation if it hasn't already played
-// 		if (!sessionStorage.getItem("heroAnimationPlayed")) {
+// 		if (!hasAnimationPlayed) {
 // 			setTimeout(() => {
 // 				setShowText(true);
 // 			}, 500); // Show text 0.5s after video loads
 
 // 			setTimeout(() => {
 // 				setRevealPage(true);
-// 				// Mark animation as played
-// 				sessionStorage.setItem("heroAnimationPlayed", "true");
+// 				// Mark animation as played (safely)
+// 				if (typeof window !== "undefined") {
+// 					window.sessionStorage?.setItem("heroAnimationPlayed", "true");
+// 				}
 // 			}, 6000); // Reveal page after 6 seconds
 // 		}
 // 	};
@@ -110,14 +120,6 @@
 // 								onLoadedData={handleVideoLoaded}
 // 							/>
 // 						)}
-// 						{/* {useImageFallback && (
-// 							<img
-// 								src="/hero-poster.png"
-// 								alt="Hero Background"
-// 								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
-// 								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
-// 							/>
-// 						)} */}
 // 					</div>
 // 				</div>
 // 			</div>
@@ -149,14 +151,6 @@
 // 								onLoadedData={handleVideoLoaded} // Changed from onPlay to be consistent
 // 							/>
 // 						)}
-// 						{/* {useImageFallback && (
-// 							<img
-// 								src="/hero-poster.png"
-// 								alt="Hero Background"
-// 								className="h-fit animate-fadeIn opacity-0 max-md:w-full"
-// 								style={{ animationFillMode: "forwards", animationDuration: "1s" }}
-// 							/>
-// 						)} */}
 // 					</div>
 // 				</div>
 // 			</section>
@@ -176,7 +170,6 @@ const HeroSectionHomePage = () => {
 	const [showText, setShowText] = useState(false);
 	const [revealPage, setRevealPage] = useState(false);
 	const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-	// const [useImageFallback, setUseImageFallback] = useState(false);
 	const videoTimeoutRef = useRef(null);
 
 	useEffect(() => {
@@ -202,17 +195,10 @@ const HeroSectionHomePage = () => {
 			// Set a 3-second timeout for video loading
 			videoTimeout = setTimeout(() => {
 				// If this timeout fires, video didn't load in time
-				// setUseImageFallback(true);
 				setShowText(true);
 
-				// Still need to reveal page after some time
-				setTimeout(() => {
-					setRevealPage(true);
-					// Mark animation as played (safely)
-					if (typeof window !== "undefined") {
-						window.sessionStorage?.setItem("heroAnimationPlayed", "true");
-					}
-				}, 4000);
+				// We're no longer setting revealPage on timeout here
+				// Instead, it will be set when TerminalText animation completes
 			}, 3000);
 		}
 
@@ -236,13 +222,19 @@ const HeroSectionHomePage = () => {
 				setShowText(true);
 			}, 500); // Show text 0.5s after video loads
 
-			setTimeout(() => {
-				setRevealPage(true);
-				// Mark animation as played (safely)
-				if (typeof window !== "undefined") {
-					window.sessionStorage?.setItem("heroAnimationPlayed", "true");
-				}
-			}, 6000); // Reveal page after 6 seconds
+			// We're no longer setting revealPage on timeout here
+			// Instead, it will be set when TerminalText animation completes
+		}
+	};
+
+	// Handle terminal text animation completion
+	const handleTerminalTextComplete = () => {
+		// Set reveal page when terminal text animation completes
+		setRevealPage(true);
+
+		// Mark animation as played (safely)
+		if (typeof window !== "undefined") {
+			window.sessionStorage?.setItem("heroAnimationPlayed", "true");
 		}
 	};
 
@@ -269,6 +261,7 @@ const HeroSectionHomePage = () => {
 								<TextGenerateEffect
 									bigWords={"Zbuduj wizerunek marki"}
 									classNameOne="text-6xl lg:text-[6.438rem]"
+									onTerminalTextComplete={handleTerminalTextComplete}
 								/>
 							</div>
 						)}
@@ -300,6 +293,7 @@ const HeroSectionHomePage = () => {
 								<TextGenerateEffect
 									bigWords={"Zbuduj wizerunek marki"}
 									classNameOne="text-6xl lg:text-[6.438rem]"
+									onTerminalTextComplete={handleTerminalTextComplete}
 								/>
 							</div>
 						)}
@@ -316,7 +310,7 @@ const HeroSectionHomePage = () => {
 								muted
 								playsInline
 								poster="/hero-poster.png"
-								onLoadedData={handleVideoLoaded} // Changed from onPlay to be consistent
+								onLoadedData={handleVideoLoaded}
 							/>
 						)}
 					</div>
