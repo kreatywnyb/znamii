@@ -114,7 +114,7 @@ const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
 		} else if (onAnimationComplete && currentIndex === text.length) {
 			setTimeout(() => {
 				onAnimationComplete();
-			}, 1000);
+			}, 500);
 		}
 	}, [currentIndex, text, speed, loop, shouldAnimate, onAnimationComplete]);
 

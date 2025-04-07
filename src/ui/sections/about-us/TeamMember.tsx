@@ -41,30 +41,32 @@ const TeamMember = ({
 	// Animation variants
 	const slideInVariants = {
 		hidden: { x: -100, opacity: 0 },
-		visible: { 
-			x: 0, 
+		visible: {
+			x: 0,
 			opacity: 1,
-			transition: { 
-				duration: 0.6, 
+			transition: {
+				duration: 0.6,
 				ease: "easeOut",
-				delay: idx * 0.1 // Stagger effect based on index
-			}
-		}
+				delay: idx * 0.1, // Stagger effect based on index
+			},
+		},
 	};
 
 	return (
 		<motion.div
-			className="group relative flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
+			className="group flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
 			key={`${item.name}-${idx}`}
-			ref={memberRef}
-			onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
-			onMouseEnter={() => setIsHovering(true)}
-			onMouseLeave={() => setIsHovering(false)}
 			initial="hidden"
 			animate={isInView ? "visible" : "hidden"}
 			variants={slideInVariants}
 		>
-			<div className="flex flex-col md:flex-row md:items-center md:space-x-6">
+			<div
+				className="relative flex flex-col md:w-[40rem] md:flex-row md:items-center md:space-x-6"
+				ref={memberRef}
+				onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
+				onMouseEnter={() => setIsHovering(true)}
+				onMouseLeave={() => setIsHovering(false)}
+			>
 				<Image alt={item.name} src={item.img} />
 				<div className="flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-2">
 					<span className="text-[1.313rem]">{item.name}</span>

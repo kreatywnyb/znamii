@@ -253,7 +253,7 @@ const HeroSectionHomePage = () => {
 
 	return (
 		<>
-			<div style={overlayStyle} className="flex items-center justify-center text-white">
+			<div style={overlayStyle} className="flex items-center justify-center pt-4 text-white">
 				<div className="container relative flex h-full min-h-[720px] w-full xxl:min-h-[920px]">
 					<div className="relative z-[200] flex w-full flex-1 flex-col items-center justify-center">
 						{showText && !hasAnimationPlayed && (

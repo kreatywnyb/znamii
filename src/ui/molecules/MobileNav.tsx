@@ -37,7 +37,7 @@ const MobileNav = () => {
 			</div>
 			<div
 				className={cn(
-					"container absolute left-0 top-14 w-full border-b border-primary bg-basicDark py-4 text-white transition-transform duration-200 md:hidden",
+					"container absolute left-0 top-12 w-full border-b border-primary bg-basicDark py-4 text-white transition-transform duration-200 md:hidden",
 					!isOpen && "z-0 -translate-y-[150%]",
 				)}
 			>
