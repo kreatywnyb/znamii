@@ -43,7 +43,7 @@ const MainSectionAboutUs = () => {
 
 	return (
 		<WhiteBox className="z-20 [&>div]:-mt-64">
-			<div className="container">
+			<div className="container overflow-x-hidden">
 				<motion.div
 					className="flex flex-col justify-between gap-4 lg:flex-row"
 					initial="hidden"
@@ -58,21 +58,21 @@ const MainSectionAboutUs = () => {
 						},
 					}}
 				>
-					<motion.div className="flex-1 basis-2/5" variants={textFadeIn}>
+					<motion.div className="flex-1 md:basis-2/5" variants={textFadeIn}>
 						<FlipWords
 							word="Jak do tego doszło, nie wiem?"
 							as="h2"
 							className="max-w-96 text-3xl font-medium lg:text-[2.5rem] lg:leading-[125%]"
 						></FlipWords>
 					</motion.div>
-					<motion.div className="ml-auto flex-1 basis-1/4" variants={textFadeIn}>
-						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
+					<motion.div className="ml-auto flex-1 md:basis-1/4" variants={textFadeIn}>
+						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
 							Tutaj jakaś ckliwa historia jak pomogliśmy innym markom przekształcić ich pomysły w
 							rzeczywistość prawdź jak pomogliśmy innym markom przekształcić ich itede ite
 						</p>
 					</motion.div>
-					<motion.div className="flex-1 basis-1/4" variants={textFadeIn}>
-						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
+					<motion.div className="flex-1 md:basis-1/4" variants={textFadeIn}>
+						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
 							Sprawdź jak pomogliśmy innym markom przekształc pomysły w rzeczywistość prawdź jak
 							pomogliśmy innym markom przekształcić ich pomysły.
 						</p>
@@ -99,7 +99,7 @@ const MainSectionAboutUs = () => {
 						<TerminalText text="Wartości, jakimi się kierujemy" animateWhenInView />
 					</motion.div>
 
-					<div className="flex w-full max-w-[55rem] flex-1 flex-col pl-8 max-md:mt-10 md:pr-[12.5rem]">
+					<div className="flex w-full max-w-[55rem] flex-1 flex-col max-md:mt-10 md:pl-8 md:pr-[12.5rem]">
 						<motion.div
 							ref={precisionRef}
 							initial="hidden"
