@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://api.znami.usermd.net//wp-json/";
+const baseURL = "https://api.znami.usermd.net/wp-json/";
 
 const httpClient = axios.create({
 	baseURL: baseURL,

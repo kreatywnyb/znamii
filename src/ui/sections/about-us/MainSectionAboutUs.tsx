@@ -21,6 +21,24 @@ const MainSectionAboutUs = () => {
 		}
 	};
 
+	const firstParaFadeIn = {
+		hidden: { opacity: 0, y: 20 },
+		visible: { 
+			opacity: 1, 
+			y: 0,
+			transition: { duration: 0.6, delay: 1.5 } 
+		}
+	};
+
+	const secondParaFadeIn = {
+		hidden: { opacity: 0, y: 20 },
+		visible: { 
+			opacity: 1, 
+			y: 0,
+			transition: { duration: 0.6, delay: 1.8 }
+		}
+	};
+
 	const slideFromRight = {
 		hidden: { x: 100, opacity: 0 },
 		visible: { 
@@ -59,16 +77,16 @@ const MainSectionAboutUs = () => {
 					}}
 				>
 					<motion.div className="flex-1" variants={textFadeIn}>
-						<FlipWords word="Jak do tego doszło, nie wiem?" as="h2" className="text-3xl font-medium lg:text-[2.5rem] lg:leading-[125%] max-w-96">
+						<FlipWords word="Jak do tego doszło, nie wiem?" as="h2" delay={1} className="text-3xl font-medium lg:text-[2.5rem] lg:leading-[125%] max-w-96">
 						</FlipWords>
 					</motion.div>
-					<motion.div className="flex-1" variants={textFadeIn}>
+					<motion.div className="flex-1" variants={firstParaFadeIn}>
 						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
 							Tutaj jakaś ckliwa historia jak pomogliśmy innym markom przekształcić ich pomysły w
 							rzeczywistość prawdź jak pomogliśmy innym markom przekształcić ich itede ite
 						</p>
 					</motion.div>
-					<motion.div className="flex-1" variants={textFadeIn}>
+					<motion.div className="flex-1" variants={secondParaFadeIn}>
 						<p className="max-w-[320px] text-[1.063rem] font-medium leading-[160%]">
 							Sprawdź jak pomogliśmy innym markom przekształc pomysły w rzeczywistość prawdź jak
 							pomogliśmy innym markom przekształcić ich pomysły.
@@ -93,7 +111,7 @@ const MainSectionAboutUs = () => {
 						animate={isValuesInView ? { opacity: 1 } : { opacity: 0 }}
 						transition={{ duration: 0.6 }}
 					>
-						<TerminalText text="Wartości, jakimi się kierujemy" animateWhenInView />
+						<TerminalText text="Wartości, jakimi się kierujemy" styles="max-w-32" animateWhenInView />
 					</motion.div>
 					
 					<div className="flex w-full max-w-[879px] flex-1 flex-col max-md:mt-10 md:pr-[200px] xxl:max-w-[60%]">

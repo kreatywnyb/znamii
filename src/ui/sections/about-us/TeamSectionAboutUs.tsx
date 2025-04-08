@@ -4,10 +4,12 @@ import KbLogoIcon from "@/ui/icons/KbLogoIcon";
 import LinkedinIcon from "@/ui/icons/LinkedinIcon";
 import { CTAButton } from "@/ui/molecules/CTAButton";
 import WhiteBox from "@/ui/organisms/WhiteBox";
+import TerminalText from "@/ui/atoms/TerminalText";
 import pawelImg from "@public/pawel.webp";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
-import { JSX } from "react";
+import { JSX, useRef } from "react";
+import { useInView } from "framer-motion";
 import TeamMember from "./TeamMember";
 
 const team: {
@@ -87,8 +89,10 @@ const team: {
 ];
 
 const TeamSectionAboutUs = () => {
+	const terminalRef = useRef(null);
+	const isTerminalInView = useInView(terminalRef, { once: true, amount: 0.3 });
+
 	return (
-		// <div className="relative overflow-x-hidden overflow-y-visible">
 		<WhiteBox>
 			<div className="container">
 				<h2 className="mb-0 text-[2.5rem] leading-[50px] lg:mb-0">Aleście ekipę zmontowali</h2>
@@ -98,19 +102,44 @@ const TeamSectionAboutUs = () => {
 					))}
 				</div>
 				<div className="mt-10 flex flex-col items-center justify-between max-md:space-y-8 md:mt-20 md:flex-row">
-					<p className="font-geist text-xs uppercase max-md:text-center">
-						Zainteresowany współpracą? <br className="hidden max-md:block" />
-						<Link href={links.contactPage} className="underline">
-							odezwij się do nas na maila!
-						</Link>
-					</p>
+					<div ref={terminalRef} className="font-geist text-xs uppercase max-md:text-center">
+						<TerminalText
+							text="Zainteresowany współpracą?"
+							animateWhenInView={true}
+							styles="inline-block"
+						/>
+						<br className="hidden max-md:block" />
+						{isTerminalInView && (
+							<Link
+								href={links.contactPage}
+								className="underline ml-2"
+								style={{
+									opacity: 0,
+									animation: "fadeIn .5s ease-in-out 1.5s forwards",
+								}}
+							>
+								odezwij się do nas na maila!
+							</Link>
+						)}
+						<style jsx>{`
+							@keyframes fadeIn {
+								from {
+									opacity: 0;
+									transform: translateY(10px);
+								}
+								to {
+									opacity: 1;
+									transform: translateY(0px);
+								}
+							}
+						`}</style>
+					</div>
 					<CTAButton href={links.contactPage} variant="primaryv2">
 						Zrealizuj projekt z nami
 					</CTAButton>
 				</div>
 			</div>
 		</WhiteBox>
-		// </div>
 	);
 };
 

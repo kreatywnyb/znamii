@@ -9,12 +9,14 @@ export const FlipWords = ({
 	className,
 	animationDuration = 0.2,
 	staggerDelay = 0.07,
+	delay = 0, // Added optional delay prop with default value of 0
 	as: Component = "h2", // Default to h2 but allow overriding
 }: {
 	word: string;
 	className?: string;
 	animationDuration?: number;
 	staggerDelay?: number;
+	delay?: number; // Type definition for the delay prop
 	as?: React.ElementType; // Accept any valid HTML element or component
 }) => {
 	const { ref, inView } = useInView({
@@ -38,7 +40,7 @@ export const FlipWords = ({
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: 20 }}
 									transition={{
-										delay: index * staggerDelay,
+										delay: delay + (index * staggerDelay), // Apply base delay plus stagger delay
 										duration: animationDuration,
 									}}
 									className="inline-block origin-bottom transform-gpu"

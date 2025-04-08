@@ -8,6 +8,7 @@ import wsizImg from "@public/WSIZ-logo.webp";
 import Link from "next/link";
 import { links } from "@/constants";
 import { FlipWords } from "@/ui/molecules/FlipWords";
+import TerminalTextEffect from "@/ui/atoms/TerminalText";
 
 const KnowledgeSharing = () => {
 	const [offsetY, setOffsetY] = useState(0);
@@ -59,9 +60,9 @@ const KnowledgeSharing = () => {
 						</p>
 					</div>
 					<div className="max-md:mt-8">
-						<span className="mb-10 inline-block font-geist text-[0.75rem] uppercase">
-							Jesteśmy partnerem:
-						</span>
+						<TerminalTextEffect text="Jesteśmy partnerem:" animateWhenInView styles="mb-10 inline-block font-geist text-[0.75rem] uppercase">
+
+						</TerminalTextEffect>
 						<Image alt="WSIZ Logo" src={wsizImg} width={800} height={800} className="h-20 w-auto" />
 					</div>
 				</div>

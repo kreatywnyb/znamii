@@ -21,7 +21,7 @@ const CaseStudiesFilters: React.FC<CaseStudiesFiltersProps> = ({ filters, onFilt
 				<button
 					key={filter}
 					className={`border px-4 py-2 ${
-						selectedFilter === filter ? "bg-black text-white" : "border-black text-black"
+						selectedFilter === filter ? "bg-black text-white" : "border-black text-black hover:bg-gray-100"
 					} transition`}
 					onClick={() => handleFilterClick(filter)}
 				>

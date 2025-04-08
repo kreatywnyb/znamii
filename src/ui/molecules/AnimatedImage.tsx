@@ -18,27 +18,23 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({
   src, 
   alt, 
   className,
-  maxZoom = 1.2, // Default max zoom of 20%
-  showOverlay = true, // Overlay is shown by default
-  overlayColor = "bg-slate-50", // Default color
-  overlayDuration = 0.8 // Default duration
+  maxZoom = 1.2,
+  showOverlay = true, 
+  overlayColor = "bg-slate-50",
+  overlayDuration = 0.8 
 }) => {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 }); // Trigger earlier
+  const isInView = useInView(ref, { once: true, amount: 0.5 }); 
   
-  // Get scroll progress relative to the component
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
   
-  // Transform scroll progress to zoom scale
-  // This maps from 1 (no zoom) to maxZoom as user scrolls through the component
   const scale = useTransform(scrollYProgress, [0, 1], [1, maxZoom]);
   
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className || ""}`}>
-      {/* White overlay that animates from bottom to top - only if showOverlay is true */}
+    <div ref={ref} className={`relative overflow-hidden`}>
       {showOverlay && (
         <motion.div 
           className={`absolute inset-0 ${overlayColor} z-10 origin-top`}
@@ -48,12 +44,11 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({
         />
       )}
       
-      {/* Image with scroll-controlled zoom effect */}
       <motion.div style={{ scale }}>
         <Image 
           src={src} 
           alt={alt}
-          className="w-full h-auto"
+          className={`w-full h-auto ${className || ""}`}
         />
       </motion.div>
     </div>

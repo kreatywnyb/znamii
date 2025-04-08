@@ -2,105 +2,114 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 interface TextareaProps extends React.ComponentProps<"textarea"> {
-	value?: string;
-	onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-	maxCharacters?: number;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  maxCharacters?: number;
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-	({ className, value = "", onChange, maxCharacters = 360, ...props }, ref) => {
-		const [inputValue, setInputValue] = React.useState<string>(value || "");
-		const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-		const highlightRef = React.useRef<HTMLDivElement>(null);
-		const combinedRef = (node: HTMLTextAreaElement) => {
-			textareaRef.current = node;
-			if (typeof ref === "function") ref(node);
-			else if (ref) ref.current = node;
-		};
+  ({ className, value = "", onChange, maxCharacters = 360, ...props }, ref) => {
+    const [inputValue, setInputValue] = React.useState<string>(value || "");
+    const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+    const highlightRef = React.useRef<HTMLDivElement>(null);
+    const combinedRef = (node: HTMLTextAreaElement) => {
+      textareaRef.current = node;
+      if (typeof ref === "function") ref(node);
+      else if (ref) ref.current = node;
+    };
 
-		React.useEffect(() => {
-			setInputValue(value || "");
-		}, [value]);
+    React.useEffect(() => {
+      setInputValue(value || "");
+    }, [value]);
 
-		const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-			setInputValue(e.target.value);
-			if (onChange) onChange(e);
-		};
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setInputValue(e.target.value);
+      if (onChange) onChange(e);
+    };
 
-		const handleScroll = () => {
-			if (textareaRef.current && highlightRef.current) {
-				highlightRef.current.scrollTop = textareaRef.current.scrollTop;
-			}
-		};
+    const handleScroll = () => {
+      if (textareaRef.current && highlightRef.current) {
+        highlightRef.current.scrollTop = textareaRef.current.scrollTop;
+      }
+    };
 
-		const getHighlightedText = (text: string) => {
-			return text.split("").map((char, index) => (
-				<span key={index} style={{ color: index >= maxCharacters ? "red" : "inherit" }}>
-					{char}
-				</span>
-			));
-		};
+    const getHighlightedText = (text: string) => {
+      if (text.length <= maxCharacters) {
+        return text; // No need for highlighting if under the limit
+      }
+      
+      // Split text only at the boundary between regular and highlighted text
+      const regularText = text.substring(0, maxCharacters);
+      const highlightedText = text.substring(maxCharacters);
+      
+      return (
+        <>
+          {regularText}
+          <span style={{ color: "red" }}>{highlightedText}</span>
+        </>
+      );
+    };
 
-		return (
-			<div className="relative w-full">
-				<style jsx>{`
-					.invisible-scrollbar {
-						scrollbar-width: none; /* Firefox */
-						-ms-overflow-style: none; /* IE and Edge */
-					}
+    return (
+      <div className="relative w-full">
+        <style jsx>{`
+          .invisible-scrollbar {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
 
-					.invisible-scrollbar::-webkit-scrollbar {
-						display: none; /* Chrome, Safari, Opera */
-					}
+          .invisible-scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
 
-					/* For preserving scrollbar layout space */
-					.scrollbar-gutter {
-						scrollbar-gutter: stable; /* Modern browsers */
-					}
-					
-					/* Desktop-only extra padding for scrollbar width */
-					@media (min-width: 768px) {
-						.desktop-scrollbar-padding {
-							padding-right: calc(1rem + 14px) !important; /* Extra padding for scrollbar width on desktop */
-						}
-					}
-				`}</style>
-				<div
-					ref={highlightRef}
-					className="absolute left-[0px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 text-[1.063rem] text-darkGrey leading-[1.5rem] tracking-normal invisible-scrollbar desktop-scrollbar-padding"
-					style={{
-						pointerEvents: "none",
-						minHeight: "60px",
-						height: "calc(100% - 12px)", // Account for the top offset
-						maxHeight: props.style?.height
-							? `${parseInt(props.style.height as string) - 8}px`
-							: undefined,
-					}}
-				>
-					{getHighlightedText(inputValue)}
-				</div>
+          /* For preserving scrollbar layout space */
+          .scrollbar-gutter {
+            scrollbar-gutter: stable; /* Modern browsers */
+          }
+          
+          /* Desktop-only extra padding for scrollbar width */
+          @media (min-width: 768px) {
+            .desktop-scrollbar-padding {
+              padding-right: calc(1rem + 14px) !important; /* Extra padding for scrollbar width on desktop */
+            }
+          }
+        `}</style>
+        <div
+          ref={highlightRef}
+          className="absolute left-[0px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 text-[1.063rem] text-darkGrey leading-[1.5rem] tracking-normal invisible-scrollbar desktop-scrollbar-padding"
+          style={{
+            pointerEvents: "none",
+            minHeight: "60px",
+            height: "calc(100% - 12px)", // Account for the top offset
+            maxHeight: props.style?.height
+              ? `${parseInt(props.style.height as string) - 8}px`
+              : undefined,
+          }}
+        >
+          {getHighlightedText(inputValue)}
+        </div>
 
-				<textarea
-					rows={6}
-					ref={combinedRef}
-					onScroll={handleScroll}
-					maxLength={maxCharacters + 40}
-					className={cn(
-						"scrollbar-gutter w-full resize-none border border-basicDark bg-transparent bg-white p-4 text-[1.063rem] text-darkGrey shadow-sm placeholder:text-[1.063rem] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
-						className,
-					)}
-					value={inputValue}
-					onChange={handleChange}
-					style={{
-						color: "red",
-						caretColor: "black",
-						...props.style,
-					}}
-					{...props}
-				/>
-			</div>
-		);
-	},
+        <textarea
+          rows={6}
+          ref={combinedRef}
+          onScroll={handleScroll}
+          maxLength={maxCharacters + 40}
+          className={cn(
+            "scrollbar-gutter w-full resize-none border border-basicDark bg-transparent bg-white p-4 text-[1.063rem] text-darkGrey shadow-sm placeholder:text-[1.063rem] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50",
+            className,
+          )}
+          value={inputValue}
+          onChange={handleChange}
+          style={{
+            color: "transparent",
+            caretColor: "black",
+            ...props.style,
+          }}
+          {...props}
+        />
+      </div>
+    );
+  },
 );
 
 Textarea.displayName = "Textarea";

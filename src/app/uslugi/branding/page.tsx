@@ -17,7 +17,7 @@ const BrandingPage = async () => {
 	const caseStudies: CaseStudyResponse[] = response.data;
 
 	return (
-		<main>
+		<main className="bg-background">
 			<HeroSectionServicesPage />
 			<ServiceSection
 				name="Branding"

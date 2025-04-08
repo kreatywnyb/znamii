@@ -38,6 +38,7 @@ const CaseStudyPage = async ({ params }: PageProps) => {
 				rightDescription={caseStudy.descriptionRight}
 				photos={caseStudy.gallery}
 				videos={caseStudy.videos}
+				doubleImageSectionsIndexes={caseStudy.doubleImageSectionsIndexes}
 			></CaseStudyAboutSection>
 			<CtaSection image={CtaBgImg.src}></CtaSection>
 		</main>

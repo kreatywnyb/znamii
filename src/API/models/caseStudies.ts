@@ -3,8 +3,7 @@ export interface Media {
 	url: string;
 	width: number | null;
 	height: number | null;
-
-    
+	description: string;
 	alt: string;
 }
 
@@ -53,6 +52,7 @@ export interface CaseStudyDetailsResponse {
 		category: Category[];
 		descriptionLeft: string;
 		descriptionRight: string;
+		doubleImageSectionsIndexes: number[];
 		meta: Meta;
 	};
 }

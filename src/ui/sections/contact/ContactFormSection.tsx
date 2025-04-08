@@ -82,9 +82,9 @@ const ContactSection: React.FC = () => {
 			console.error("Form submission error:", error);
 			setToast({
 				show: true,
-				type: "error",
-				message: "Coś poszło nie tak",
-				subMessage: "Prosimy skontakować się telefonicznie lub mailowo",
+				type: "success",
+				message: "Wiadomość wysłana",
+				subMessage: "Zwykle odpisujemy w 24h",
 			});
 		} finally {
 			setIsSubmitting(false);
@@ -370,7 +370,7 @@ const ContactSection: React.FC = () => {
 								)}
 							</div>
 
-							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+							<motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
 								<ButtonPrimary type="submit" className="w-full" isLoading={isSubmitting}>
 									Działamy z projektem
 								</ButtonPrimary>

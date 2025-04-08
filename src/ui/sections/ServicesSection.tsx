@@ -8,6 +8,7 @@ import PrecisionIcon from "../icons/PrecisionIcon";
 import SmallYellowArrowIcon from "../icons/SmallYellowArrowIcon";
 import { CTAButton } from "../molecules/CTAButton";
 import PartnersSlider from "../molecules/PartnersSlider";
+import { FlipWords } from "../molecules/FlipWords";
 
 // Interface for the IntersectionObserver options
 interface UseInViewOptions extends IntersectionObserverInit {
@@ -192,18 +193,13 @@ const ServicesSection: React.FC = () => {
         </div>
         <div className="mt-36 flex flex-col max-lg:space-y-20 lg:flex-row">
           <div className="flex flex-1 flex-col justify-between">
-            <p 
-              ref={taglineRef as React.RefObject<HTMLParagraphElement>}
-              className={`mb-12 max-w-[600px] text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px] ${
-                taglineInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ 
-                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-              }}
+            <FlipWords 
+              className={`mb-12 max-w-[600px] text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px]`}
+              word="Wierzymy, że najlepsze pomysły rodzą się w atmosferze swobody. Dlatego działamy luźno,
+              a tworzymy sztywniutko."
             >
-              Wierzymy, że najlepsze pomysły rodzą się w atmosferze swobody. Dlatego działamy luźno,
-              a tworzymy sztywniutko.
-            </p>
+
+            </FlipWords>
             <div
               className={`${taglineInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ 
