@@ -59,4 +59,77 @@ body {
 		outline: none;
 		border-color: transparent;
 	}
+	.desktop-burger-menu {
+		position: relative;
+	}
+
+	/* Dropdown menu rozwijane w LEWĄ stronę z taką samą nawigacją jak oryginalna */
+	.desktop-nav-dropdown {
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-20px);
+		transition:
+			opacity 0.3s ease,
+			visibility 0.3s ease,
+			transform 0.3s ease;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+		min-width: 320px;
+		border-radius: 4px;
+		overflow: hidden;
+		right: 0; /* Pozycjonowanie od prawej, żeby rozwijać się w lewo */
+		top: calc(100% + 16px);
+	}
+
+	/* Kiedy hover nad burger menu, pokazujemy dropdown */
+	.desktop-burger-menu:hover .desktop-nav-dropdown {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(0);
+	}
+
+	/* Animacja linii w burger icon */
+	.burger-icon span {
+		display: block;
+		transition:
+			transform 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	/* Styl dla full-width nawigacji */
+	.desktop-nav-dropdown ul {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.desktop-nav-dropdown .nav-container {
+		width: 100%;
+	}
+
+	/* Styl dla submenu w dropdownie */
+	.desktop-nav-dropdown nav > ul > li:hover ul {
+		display: block;
+	}
+
+	.desk {
+		pointer-events: auto;
+	}
+
+	.desk > div,
+	.desk span {
+		pointer-events: none;
+	}
+
+	/* Zapewniamy, że dropdown będzie miał wystarczającą szerokość */
+	@media (min-width: 768px) {
+		.desktop-nav-dropdown {
+			min-width: 500px;
+		}
+
+		/* Poprawka żeby dropdown nie wychodził poza ekran */
+		.desktop-burger-menu {
+			position: static;
+		}
+	}
 }

@@ -164,7 +164,7 @@ const ContactSection: React.FC = () => {
 
 			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
 				<motion.div className="flex flex-col lg:pr-24" variants={containerVariants}>
-						<FlipWords as="h1" className="leading-[125%] text-white max-w-96" word="Zrealizuj projekt razem z nami!">
+						<FlipWords as="h1" className="leading-[125%] text-white max-w-[28rem]" word="Zrealizuj projekt razem z nami!">
 						</FlipWords>
 
 					<motion.p
