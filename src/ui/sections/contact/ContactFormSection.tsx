@@ -307,7 +307,7 @@ const ContactSection: React.FC = () => {
 									)}
 								</div>
 								<Input
-									placeholder="e-mail"
+									placeholder="E-mail"
 									type="email"
 									{...register("email", {
 										required: "*Wpisz swój adres e-mail",
