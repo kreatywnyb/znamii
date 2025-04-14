@@ -41,7 +41,12 @@ import { useEffect, useState } from "react";
 import Header from "@/ui/organisms/Header";
 import Footer from "@/ui/organisms/Footer";
 import Lenis from "lenis";
-import Loader from "../atoms/Loader";
+
+import dynamic from "next/dynamic";
+
+const Loader = dynamic(() => import("../atoms/Loader"), {
+	ssr: false, // To kluczowe - wyłącza SSR dla tego komponentu
+});
 
 export default function ClientLayout({
 	children,
