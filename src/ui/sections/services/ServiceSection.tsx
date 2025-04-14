@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import React from "react";
 import servImg1 from "@public/serv-img-1.webp";
-import servImg2 from "@public/serv-img-2.webp";
+import servImg2 from "@public/case-4.webp";
 import StarIcon from "@/ui/icons/StarIcon";
 import GoogleIcon from "@/ui/icons/GoogleIcon";
 import SubServices, { ScrollableSectionInterface } from "@/ui/organisms/SubServices";

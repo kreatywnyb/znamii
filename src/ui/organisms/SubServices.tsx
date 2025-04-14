@@ -2,7 +2,7 @@
 import { links } from "@/constants";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
-import ArrowIcon from "../icons/ArrowIcon";
+
 import { CTAButton } from "../molecules/CTAButton";
 
 export interface ScrollableSectionInterface {
@@ -25,230 +25,210 @@ export type SubServicesProps = {
 	sections: ScrollableSectionInterface[];
 };
 
-const SubServices = ({ sections }: SubServicesProps) => {
-	const [activeSlide, setActiveSlide] = useState<number>(0);
-	const containerRef = useRef<HTMLDivElement>(null);
-	const [isMobile, setIsMobile] = useState<boolean>(false);
-	const initialLoad = useRef<boolean>(true);
+export default function ScrollableSections({ sections }: SubServicesProps) {
+	const [activeSlug, setActiveSlug] = useState<string>("");
+	const [sectionPositions, setSectionPositions] = useState<Record<string, number>>({});
 
+	const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+	// Zapisywanie pozycji wszystkich sekcji przy pierwszym renderze
+	// i obsługa hasha URL w jednym useEffect
 	useEffect(() => {
-		const checkIfMobile = () => {
-			setIsMobile(window.innerWidth < 768); // Breakpoint 768px dla urządzeń mobilnych
-		};
+		// Funkcja obliczająca pozycje wszystkich sekcji
+		const calculateSectionPositions = () => {
+			const positions: Record<string, number> = {};
 
-		// Sprawdź przy pierwszym renderowaniu
-		checkIfMobile();
+			sections.forEach((section) => {
+				const element = sectionRefs.current[section.slug];
+				if (element) {
+					// Obliczamy pozycję z uwzględnieniem offsetu nagłówka (64px)
+					const position = element.getBoundingClientRect().top + window.scrollY - 64;
+					positions[section.slug] = position;
+				}
+			});
 
-		// Dodaj event listener dla zmian rozmiaru okna
-		window.addEventListener("resize", checkIfMobile);
+			console.log("Zapisane pozycje sekcji:", positions);
+			setSectionPositions(positions);
 
-		// Cleanup
-		return () => {
-			window.removeEventListener("resize", checkIfMobile);
-		};
-	}, []);
-
-	useEffect(() => {
-		if (initialLoad.current && typeof window !== "undefined") {
-			// Pobierz fragment URL (bez znaku #)
+			// Po zapisaniu pozycji, sprawdzamy czy jest hash w URL
 			const hash = window.location.hash.replace("#", "");
+			if (hash && positions[hash] !== undefined) {
+				// Przewijamy do zapisanej pozycji dla tego hasha
+				window.scrollTo({
+					top: positions[hash],
+					behavior: "smooth",
+				});
+				setActiveSlug(hash);
+			}
+		};
 
-			if (hash) {
-				// Znajdź indeks sekcji na podstawie sluga
-				const sectionIndex = sections.findIndex((section) => section.slug === hash);
+		// Dajemy komponentom czas na wyrenderowanie
+		const timer = setTimeout(() => {
+			calculateSectionPositions();
+		}, 500);
 
-				if (sectionIndex !== -1) {
-					// Ustaw aktywny slajd i przewiń do odpowiedniej sekcji
-					console.log("Znaleziono sekcję dla hash:", hash, "indeks:", sectionIndex);
-					setActiveSlide(sectionIndex);
+		return () => clearTimeout(timer);
+	}, [sections]);
 
-					// Daj chwilę na wyrenderowanie komponentu przed przewinięciem
-					setTimeout(() => {
-						scrollToSection(sectionIndex);
-					}, 300);
+	// Funkcja aktualizująca URL z aktywną sekcją
+	// const updateUrlHash = (slug: string) => {
+	// 	if (!slug) return;
+	// 	// Aktualizujemy URL bez przewijania strony
+	// 	window.history.replaceState(null, "", `#${slug}`);
+	// 	console.log(`URL zaktualizowany do #${slug}`);
+	// };
+
+	// Śledzenie aktywnej sekcji na podstawie pozycji scrollowania
+	useEffect(() => {
+		// Funkcja określająca, która sekcja jest aktywna na podstawie aktualnej pozycji scrollowania
+		const handleScroll = () => {
+			// Aktualna pozycja scrollowania z uwzględnieniem offsetu nagłówka
+			const scrollPosition = window.scrollY + 64; // Dodajemy offset dla lepszego wykrywania
+
+			// Przetwarzamy sectionPositions, aby znaleźć najbliższą sekcję
+			const sortedSlugs = Object.keys(sectionPositions).sort(
+				(a, b) => sectionPositions[a] - sectionPositions[b],
+			);
+
+			// Znajdź najbliższą sekcję, która jest nad obecną pozycją scrollowania
+			let activeSection = sortedSlugs[0]; // Domyślnie pierwsza sekcja
+
+			for (let i = 0; i < sortedSlugs.length; i++) {
+				const slug = sortedSlugs[i];
+				// Jeśli sekcja jest powyżej aktualnej pozycji scrollowania
+				if (sectionPositions[slug] <= scrollPosition) {
+					activeSection = slug;
+				} else {
+					// Przerywamy pętlę, gdy znajdziemy pierwszą sekcję poniżej pozycji scrollowania
+					break;
 				}
 			}
 
-			// Oznacz, że pierwsze ładowanie zostało zakończone
-			initialLoad.current = false;
-		}
-	}, [sections]);
-
-	// Użyj zdarzenia scroll do detekcji aktywnej sekcji
-	useEffect(() => {
-		// Wysokość viewportu
-		const viewportHeight = window.innerHeight;
-
-		// Funkcja obliczająca aktualną sekcję na podstawie przewinięcia
-		const handleScroll = (): void => {
-			if (!containerRef.current) return;
-
-			// Pobierz pozycję kontenera względem viewportu
-			const containerTop = containerRef.current.getBoundingClientRect().top;
-			const containerHeight = containerRef.current.offsetHeight;
-
-			// Oblicz, jak daleko użytkownik przewinął w kontenerze (jako proporcja)
-			// Od 0 (góra) do 1 (dół)
-			let scrollProgress = -containerTop / (containerHeight - viewportHeight);
-
-			// Ogranicz zakres od 0 do 1
-			scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-
-			// Oblicz indeks aktywnego slajdu na podstawie postępu przewijania
-			// Podziel zakres 0-1 na sections.length przedziałów
-			const newActiveIndex = Math.min(
-				Math.floor(scrollProgress * sections.length),
-				sections.length - 1,
-			);
-
-			// Aktualizuj tylko, jeśli indeks się zmienił
-			if (newActiveIndex !== activeSlide) {
-				setActiveSlide(newActiveIndex);
+			// Aktualizuj aktywną sekcję tylko jeśli się zmieniła
+			if (activeSection && activeSection !== activeSlug) {
+				setActiveSlug(activeSection);
+				// updateUrlHash(activeSection);
 			}
 		};
 
-		// Zarejestruj listener zdarzenia scroll
-		window.addEventListener("scroll", handleScroll);
+		// Dodaj nasłuchiwanie na zdarzenie scroll
+		window.addEventListener("scroll", handleScroll, { passive: true });
 
-		// Wywołaj raz na początku, aby ustawić początkowy stan
-		handleScroll();
+		// Wywołaj raz, aby ustawić początkową aktywną sekcję
+		if (Object.keys(sectionPositions).length > 0) {
+			handleScroll();
+		}
 
-		// Cleanup
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, [activeSlide, sections.length]);
+	}, [sectionPositions, activeSlug]);
 
-	// Funkcja do przewijania do określonej sekcji po kliknięciu na menu
-	const scrollToSection = (index: number): void => {
-		if (!containerRef.current) return;
+	// Funkcja przewijająca do zapisanej pozycji sekcji
+	const handleClickNav = (slug: string) => {
+		console.log(slug);
 
-		const containerTop = containerRef.current.getBoundingClientRect().top + window.scrollY;
-		const containerHeight = containerRef.current.offsetHeight;
-		const sectionHeight = containerHeight / sections.length; // 🔥 Dynamiczna wysokość sekcji
+		// Używamy zapisanej pozycji zamiast obliczać ją na nowo
+		if (sectionPositions[slug] !== undefined) {
+			console.log(`Przewijanie do zapisanej pozycji sekcji ${slug}: ${sectionPositions[slug]}px`);
 
-		// 🔄 Nowa precyzyjna pozycja scrolla
-		const scrollTarget = containerTop + (sectionHeight / 6) * 6 * index;
+			window.scrollTo({
+				top: sectionPositions[slug],
+				behavior: "smooth",
+			});
 
-		// 📌 Smooth scroll
-		window.scrollTo({
-			top: scrollTarget,
-			behavior: "smooth",
-		});
+			// Aktualizacja URL i aktywnego sluga
+			window.history.pushState(null, "", `#${slug}`);
+			setActiveSlug(slug);
+		} else {
+			console.warn(`Nie znaleziono zapisanej pozycji dla sekcji ${slug}`);
+		}
 	};
 
 	return (
-		<div ref={containerRef} className="relative my-20 h-[10000px]">
-			{/* Sticky container z widoczną zawartością */}
-			<div className="sticky top-0 flex items-center border-b border-t border-lightGrey lg:top-[calc(50vh-425px)] xxl:top-[calc(50vh-570px)]">
-				<div className="container mx-auto px-4">
-					<div className={`flex flex-col ${isMobile ? "" : "md:flex-row"} `}>
-						{/* Nawigacja (na górze w mobile, po lewej w desktop) */}
-						<div className={`${isMobile ? "w-full" : "md:w-1/4"}`}>
-							<nav className="h-full">
-								{isMobile ? (
-									// Mobilna nawigacja - tylko aktywny element
-									<div className="relative w-full py-2">
-										<div className="flex items-center justify-between">
-											<h3 className="font-geist font-bold uppercase text-black">
-												{sections[activeSlide].title}
-											</h3>
-											<div className="flex space-x-3">
-												<button
-													className="p-2 disabled:opacity-50"
-													disabled={activeSlide === 0}
-													onClick={() => scrollToSection(activeSlide - 1)}
-												>
-													<ArrowIcon className="-rotate-[135deg]" />
-												</button>
-												<button
-													className="p-2 disabled:opacity-50"
-													disabled={activeSlide === sections.length - 1}
-													onClick={() => scrollToSection(activeSlide + 1)}
-												>
-													<ArrowIcon className="rotate-45" />
-												</button>
-											</div>
-										</div>
-									</div>
-								) : (
-									<div className="flex h-full flex-col justify-between py-[4rem] xxl:py-[5.5rem]">
-										<ul className="flex flex-col md:space-y-[3.75rem]">
-											{sections.map((section, index) => (
-												<li
-													key={section.id}
-													className={`cursor-pointer font-geist text-xs uppercase transition-all duration-300 ${
-														activeSlide === index ? "font-bold text-primary" : "text-basicDark"
-													}`}
-													onClick={() => scrollToSection(index)}
-												>
-													{`0${section.id} ${section.title.toUpperCase()}`}
-												</li>
-											))}
-										</ul>
-										<div className="mt-auto inline-block pb-10">
-											<CTAButton
-												className="max-md:hidden"
-												href={links.contactPage}
-												variant="primaryv2"
-											>
-												zrealizuj projekt
-											</CTAButton>
-										</div>
-									</div>
-								)}
-							</nav>
-						</div>
-
-						{/* Zawartość slajdu (na dole w mobile, po prawej w desktop) */}
-						<div className={`${isMobile ? "w-full" : "border-l border-lightGrey pl-14 md:w-3/4"}`}>
-							<div
-								className={`relative overflow-hidden md:!my-[3.75rem] ${isMobile ? "min-h-screen" : "h-[730px] xxl:h-[1000px]"}`}
-							>
-								{sections.map((section, index) => (
-									<div
-										key={`content-${section.id}`}
-										className={`absolute h-full w-full transition-all duration-500 ${
-											activeSlide === index
-												? "translate-y-0 opacity-100"
-												: "translate-y-20 opacity-0"
-										} ${isMobile ? "flex flex-col" : "flex justify-center md:flex-col"}`}
-									>
-										<div className={` ${isMobile ? "mb-4" : "md:pr-8"}`}>
-											<h2 className="mb-5 text-3xl font-medium max-md:hidden md:text-[2.5rem]">
-												{section.title}
-											</h2>
-											<p className="text-lg leading-normal md:text-[1.313rem]">{section.textTop}</p>
-											<p className="mt-5 text-base leading-normal text-darkGrey md:text-[1.063rem]">
-												{section.textBottom}
-											</p>
-										</div>
-										<div
-											className={`${isMobile ? "h-40 w-full" : "mt-14 flex w-full justify-between space-x-10 pb-10"}`}
+		<div className="relative my-20 flex min-h-screen flex-col border-b border-t border-lightGrey md:flex-row">
+			{/* Left Navigation Column */}
+			<div className="sticky top-[4rem] hidden h-screen w-1/4 overflow-auto pl-4 md:flex min-[1536px]:pl-[64px]">
+				<div className="z-20 w-full">
+					<nav className="flex h-full items-center">
+						<div className="mr-5 flex h-[42rem] w-full flex-col justify-between pt-4">
+							<ul className="flex flex-col md:space-y-[3.75rem]">
+								{sections.map((section) => (
+									<li key={section.id}>
+										<span
+											onClick={() => handleClickNav(section.slug)}
+											className={`relative cursor-pointer whitespace-nowrap font-geist text-xs uppercase text-basicDark transition-all duration-300 ${
+												activeSlug === section.slug ? "pl-4" : ""
+											}`}
 										>
-											<div>
-												<Image alt={section.imageLeft.alt} src={section.imageLeft.src} />
-											</div>
-											<div className="">
-												<Image
-													alt={section.imageRight.alt}
-													src={section.imageRight.src}
-													className="max-md:hidden"
-												/>
-												<CTAButton className="mt-10 md:hidden" href={links.contactPage}>
-													zrealizuj projekt
-												</CTAButton>
-											</div>
-										</div>
-									</div>
+											<span
+												className={`absolute left-0 top-1/2 h-2 w-2 -translate-y-1/2 transform bg-primary transition-all duration-300 ease-in-out ${activeSlug === section.slug ? "scale-100" : "scale-0"}`}
+											/>
+
+											{`0${section.id} ${section.title.toUpperCase()}`}
+										</span>
+									</li>
 								))}
+							</ul>
+							<div className="mt-auto inline-block">
+								<CTAButton className="max-md:hidden" href={links.contactPage} variant="primaryv2">
+									zrealizuj projekt
+								</CTAButton>
 							</div>
 						</div>
-					</div>
+					</nav>
 				</div>
+			</div>
+
+			{/* Main Content */}
+			<div className="flex-1 border-lightGrey">
+				{sections.map((section) => (
+					<div
+						key={section.id}
+						id={section.slug}
+						// ref={(el) => (sectionRefs.current[section.slug] = el)}
+						ref={(el) => {
+							sectionRefs.current[section.slug] = el;
+						}}
+						className="sticky top-[4rem] -mt-[1px] flex min-h-screen flex-col justify-start border-l border-t border-lightGrey bg-white max-md:px-4 max-md:pt-6 md:justify-center md:pl-10"
+					>
+						<div className="flex h-[42rem] w-full flex-col transition-opacity duration-500 ease-in-out">
+							<div className="mb-6 md:mb-10 md:pr-8">
+								<h2 className="mb-5 text-2xl font-medium md:text-3xl md:text-[2.5rem]">
+									{section.title}
+								</h2>
+								<p className="text-base leading-normal md:text-[1.313rem] md:text-lg">
+									{section.textTop}
+								</p>
+								<p className="mt-4 text-sm leading-normal text-darkGrey md:mt-5 md:text-[1.063rem] md:text-base">
+									{section.textBottom}
+								</p>
+							</div>
+
+							<div className="mt-auto flex w-full flex-col pr-8 md:flex-row md:justify-between md:space-x-10">
+								<div className="mb-4 w-full flex-1 md:mb-0">
+									<Image
+										alt={section.imageLeft.alt}
+										src={section.imageLeft.src}
+										className="h-auto w-full object-cover object-center md:w-auto"
+									/>
+								</div>
+								<div className="w-full flex-1 bg-blue-500">
+									<Image
+										alt={section.imageRight.alt}
+										src={section.imageRight.src}
+										className="hidden h-full !w-full object-cover object-center md:inline-block"
+									/>
+								</div>
+							</div>
+
+							<CTAButton className="mt-6 w-full md:hidden" href={links.contactPage}>
+								zrealizuj projekt
+							</CTAButton>
+						</div>
+					</div>
+				))}
 			</div>
 		</div>
 	);
-};
-
-export default SubServices;
+}

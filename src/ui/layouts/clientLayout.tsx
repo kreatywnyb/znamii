@@ -1,36 +1,107 @@
+// "use client";
+// // ClientLayout.tsx
+// import { useEffect } from "react";
+// import Header from "@/ui/organisms/Header";
+// import Footer from "@/ui/organisms/Footer";
+// import Lenis from "lenis";
+
+// export default function ClientLayout({
+// 	children,
+// }: Readonly<{
+// 	children: React.ReactNode;
+// }>) {
+// 	useEffect(() => {
+// 		const lenis = new Lenis();
+
+// 		function raf(time: number) {
+// 			lenis.raf(time);
+// 			requestAnimationFrame(raf);
+// 		}
+
+// 		requestAnimationFrame(raf);
+
+// 		// Usuń instancję Lenis przy odmontowaniu komponentu
+// 		return () => {
+// 			lenis.destroy();
+// 		};
+// 	}, []);
+
+// 	return (
+// 		<>
+// 			<Header />
+// 			{children}
+// 			<Footer />
+// 		</>
+// 	);
+// }
+
 "use client";
 // ClientLayout.tsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/ui/organisms/Header";
 import Footer from "@/ui/organisms/Footer";
 import Lenis from "lenis";
+import Loader from "../atoms/Loader";
 
 export default function ClientLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const [showLoader, setShowLoader] = useState(false);
+	const [appReady, setAppReady] = useState(false);
+
 	useEffect(() => {
-		const lenis = new Lenis();
+		// Sprawdź, czy animacja była już odtworzona w tej sesji
+		const hasAnimationPlayed =
+			typeof window !== "undefined"
+				? window.sessionStorage?.getItem("heroAnimationPlayed") === "true"
+				: false;
 
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
+		if (hasAnimationPlayed) {
+			// Jeśli animacja była już odtworzona, od razu pokaż stronę
+			setAppReady(true);
+		} else {
+			// W przeciwnym razie pokaż loader
+			setShowLoader(true);
 		}
-
-		requestAnimationFrame(raf);
-
-		// Usuń instancję Lenis przy odmontowaniu komponentu
-		return () => {
-			lenis.destroy();
-		};
 	}, []);
+
+	useEffect(() => {
+		// Inicjalizuj Lenis tylko jeśli aplikacja jest gotowa
+		if (appReady) {
+			const lenis = new Lenis();
+
+			function raf(time: number) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			// Usuń instancję Lenis przy odmontowaniu komponentu
+			return () => {
+				lenis.destroy();
+			};
+		}
+	}, [appReady]);
+
+	const handleAnimationComplete = () => {
+		// Gdy animacja zakończy się, ukryj loader i pokaż stronę
+		setShowLoader(false);
+		setAppReady(true);
+	};
 
 	return (
 		<>
-			<Header />
-			{children}
-			<Footer />
+			{showLoader && <Loader onAnimationComplete={handleAnimationComplete} />}
+			{appReady && (
+				<>
+					<Header />
+					{children}
+					<Footer />
+				</>
+			)}
 		</>
 	);
 }

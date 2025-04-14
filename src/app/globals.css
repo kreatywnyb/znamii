@@ -121,6 +121,42 @@ body {
 		pointer-events: none;
 	}
 
+	/* Optional additional styles for ScrollableSections component */
+
+	/* Active navigation indicator animation */
+	.nav-indicator {
+		transition: transform 0.3s ease;
+	}
+
+	/* Section transitions */
+	.section-transition {
+		transition: opacity 0.5s ease;
+	}
+
+	/* Hover effects for section images */
+	.section-image:hover {
+		transform: scale(1.05);
+		transition: transform 0.5s ease;
+	}
+
+	/* Custom scrollbar styling */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #888;
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+
 	/* Zapewniamy, że dropdown będzie miał wystarczającą szerokość */
 	@media (min-width: 768px) {
 		.desktop-nav-dropdown {

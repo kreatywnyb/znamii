@@ -6,29 +6,55 @@
 // import { CTAButton } from "../molecules/CTAButton";
 // import MobileNav from "../molecules/MobileNav";
 // import Navigation from "../molecules/Navigation";
-// import { useEffect, useState } from "react";
+// import { useEffect, useState, useRef } from "react";
 
 // const Header = () => {
 // 	const [isSticky, setIsSticky] = useState(false);
-// 	const [isHover, setIsHover] = useState(false);
+// 	const [isHover, setIsHover] = useState(true);
+// 	const [isMouseOverHeader, setIsMouseOverHeader] = useState(false);
+// 	const headerRef = useRef(null);
+
+// 	// Handle mouse over/out on header
+// 	const handleMouseEnterHeader = () => {
+// 		setIsMouseOverHeader(true);
+// 	};
+
+// 	const handleMouseLeaveHeader = () => {
+// 		setIsMouseOverHeader(false);
+// 		if (isSticky && isHover) {
+// 			setIsHover(false);
+// 		}
+// 	};
 
 // 	// Handle scroll events
 // 	useEffect(() => {
 // 		const handleScroll = () => {
-// 			// Set sticky when scroll position is > 100px
-// 			setIsSticky(window.scrollY > 100);
+// 			if (window.scrollY === 0) return;
+// 			// Only update the sticky state if mouse is not over header
+// 			if (!isMouseOverHeader) {
+// 				// Set sticky when scroll position is > 100px
+// 				setIsSticky(window.scrollY > 100);
+
+// 				// Also reset hover state when scrolling and mouse is not over header
+// 				if (isHover) {
+// 					setIsHover(false);
+// 				}
+// 			}
 // 		};
 
 // 		window.addEventListener("scroll", handleScroll);
 // 		return () => window.removeEventListener("scroll", handleScroll);
-// 	}, []);
+// 	}, [isMouseOverHeader, isHover]);
 
 // 	return (
 // 		<header
+// 			ref={headerRef}
 // 			className={cn(
-// 				"fixed top-0 z-50 w-full bg-basicDark transition-all duration-300",
-// 				isSticky && !isHover ? "py-5" : "py-5",
+// 				"fixed top-0 z-50 w-full bg-basicDark py-5 transition-all duration-300",
+// 				isSticky && !isHover ? "md:py-2" : "py-5",
 // 			)}
+// 			onMouseEnter={handleMouseEnterHeader}
+// 			onMouseLeave={handleMouseLeaveHeader}
 // 		>
 // 			<div className="container relative z-20 flex h-full items-center justify-between">
 // 				{/* Logo */}
@@ -39,10 +65,7 @@
 // 				</div>
 
 // 				{/* Center section with moving navigation */}
-// 				<div
-// 					className="relative hidden h-full flex-1 py-2 md:block"
-// 					onMouseLeave={() => isSticky && setIsHover(false)}
-// 				>
+// 				<div className="relative hidden h-full flex-1 py-2 md:block">
 // 					<div
 // 						className={cn(
 // 							"nav-container transition-all duration-500 ease-in-out",
@@ -101,12 +124,14 @@ import { CTAButton } from "../molecules/CTAButton";
 import MobileNav from "../molecules/MobileNav";
 import Navigation from "../molecules/Navigation";
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
 	const [isSticky, setIsSticky] = useState(false);
 	const [isHover, setIsHover] = useState(true);
 	const [isMouseOverHeader, setIsMouseOverHeader] = useState(false);
 	const headerRef = useRef(null);
+	const pathname = usePathname(); // Get current pathname for URL change detection
 
 	// Handle mouse over/out on header
 	const handleMouseEnterHeader = () => {
@@ -120,9 +145,23 @@ const Header = () => {
 		}
 	};
 
+	// Reset header state when URL changes
+	useEffect(() => {
+		// Reset states when URL changes
+		setIsSticky(false);
+		setIsHover(true);
+	}, [pathname]);
+
 	// Handle scroll events
 	useEffect(() => {
 		const handleScroll = () => {
+			if (window.scrollY === 0) {
+				// When at top, always reset to initial state
+				setIsSticky(false);
+				setIsHover(true);
+				return;
+			}
+
 			// Only update the sticky state if mouse is not over header
 			if (!isMouseOverHeader) {
 				// Set sticky when scroll position is > 100px
@@ -134,6 +173,9 @@ const Header = () => {
 				}
 			}
 		};
+
+		// Initialize scroll position check
+		handleScroll();
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
