@@ -8,8 +8,8 @@ import img1 from "@public/serv-img-1.webp";
 const ProgressSection: React.FC = () => {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
-	const isInView = useInView(contentRef, { once: false, amount: 0.3 });
-	
+	const isInView = useInView(contentRef, { once: true, amount: 0.3 });
+
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
 		offset: ["start 50%", "end 50%"], // Animacja zaczyna się w połowie sekcji
@@ -45,8 +45,8 @@ const ProgressSection: React.FC = () => {
 	};
 
 	const slideInVariants = {
-		hidden: { 
-			x: -100,
+		hidden: {
+			x: -30,
 			opacity: 0,
 		},
 		visible: {
@@ -55,8 +55,8 @@ const ProgressSection: React.FC = () => {
 			transition: {
 				type: "spring",
 				damping: 25,
-				stiffness: 100
-			}
+				stiffness: 100,
+			},
 		},
 	};
 
@@ -79,20 +79,20 @@ const ProgressSection: React.FC = () => {
 			</div>
 
 			{/* Treść sekcji */}
-			<motion.div 
+			<motion.div
 				ref={contentRef}
 				variants={containerVariants}
 				initial="hidden"
 				animate={isInView ? "visible" : "hidden"}
 				className="transparent mb-20 ml-2 flex flex-1 flex-col space-y-6 text-[1.313rem] text-basicDark md:ml-10 md:flex-row md:space-x-4 md:space-y-0 lg:ml-20 lg:space-x-[1.875rem]"
 			>
-				<motion.div 
+				<motion.div
 					variants={slideInVariants}
 					className="relative aspect-square w-full max-w-full md:max-w-[15rem] lg:max-w-[17.5rem]"
 				>
 					<Image src={img1} alt="" className="h-full w-full object-cover object-center" />
 				</motion.div>
-				<motion.div 
+				<motion.div
 					variants={slideInVariants}
 					className="flex-1 bg-white px-4 py-6 md:px-6 md:py-8 lg:px-10 lg:py-11"
 				>

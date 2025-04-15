@@ -3,38 +3,37 @@ import React from "react";
 import { CTAButton } from "../../molecules/CTAButton";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import { links } from "@/constants";
-import { MediaItem, Video } from "@/API/models/caseStudies";
+import { MediaItem, Video, CombinedMediaItem, isImage } from "@/API/models/caseStudies";
 import Image from "next/image";
 
 interface CaseStudyAboutSectionProps {
 	leftDescription: string;
 	rightDescription?: string;
 	rightDescription2?: string;
+	// You can accept either separate arrays or a combined media array
+	media?: CombinedMediaItem[];
+	// Or keep supporting the old interface for backward compatibility
 	photos?: MediaItem[];
 	videos?: Video[];
 	doubleImageSectionsIndexes?: number[];
 }
 
-type PhotoMedia = MediaItem & { type: "photo" };
-type VideoMedia = Video & { type: "video" };
-type CombinedMediaItem = PhotoMedia | VideoMedia;
-
-const isPhotoMedia = (media: CombinedMediaItem): media is PhotoMedia => {
-	return media.type === "photo";
-};
-
 const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 	leftDescription,
 	rightDescription,
 	rightDescription2,
+	media = [],
 	photos = [],
 	videos = [],
 	doubleImageSectionsIndexes = [],
 }) => {
-	const allMedia: CombinedMediaItem[] = [
-		...photos.map((photo) => ({ ...photo, type: "photo" as const })),
-		...videos.map((video) => ({ ...video, type: "video" as const })),
-	];
+	// Combine media items if separate arrays are provided
+	const allMedia: CombinedMediaItem[] = media.length > 0 
+		? media 
+		: [
+			...photos.map(photo => ({ ...photo, type: photo.type || "image" })),
+			...videos.map(video => ({ ...video, type: video.type || "video" })),
+		];
 
 	const isDoubleImageSection = (index: number) => {
 		return doubleImageSectionsIndexes.includes(index);
@@ -56,21 +55,31 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						const nextMedia = allMedia[index + 1];
 
 						return (
-							<div key={`double-${index}`} className="mb-4">
-								{isPhotoMedia(currentMedia) && currentMedia.description && (
+							<div key={`double-${index}`} className="md:mb-4">
+								{currentMedia.description && (
 									<div className="my-16 text-lg md:pr-2 md:max-w-[50%] mx-4">{currentMedia.description}</div>
 								)}
 
 								<div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0">
 									<div className="md:w-1/2">
-										{isPhotoMedia(currentMedia) ? (
+										{isImage(currentMedia) ? (
 											<Image
 												src={currentMedia.url}
 												alt={currentMedia.alt || "Case study image"}
+												width={currentMedia.width || undefined}
+												height={currentMedia.height || undefined}
 												className="h-full w-full object-cover"
 											/>
 										) : (
-											<video controls className="w-full" title={currentMedia.title}>
+											<video 
+												className="w-full" 
+												title={currentMedia.title}
+												controls={!currentMedia.noControls}
+												muted={currentMedia.muted}
+												loop={currentMedia.loop}
+												autoPlay={currentMedia.autoplay}
+												playsInline={currentMedia.playsInline}
+											>
 												<source src={currentMedia.url} type={currentMedia.mime} />
 												Your browser does not support the video tag.
 											</video>
@@ -78,14 +87,24 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 									</div>
 
 									<div className="md:w-1/2">
-										{isPhotoMedia(nextMedia) ? (
+										{isImage(nextMedia) ? (
 											<Image
 												src={nextMedia.url}
 												alt={nextMedia.alt || "Case study image"}
 												className="w-full object-cover"
+												width={nextMedia.width || undefined}
+												height={nextMedia.height || undefined}
 											/>
 										) : (
-											<video controls className="w-full" title={nextMedia.title}>
+											<video 
+												className="w-full" 
+												title={nextMedia.title}
+												controls={!nextMedia.noControls}
+												muted={nextMedia.muted}
+												loop={nextMedia.loop}
+												autoPlay={nextMedia.autoplay}
+												playsInline={nextMedia.playsInline}
+											>
 												<source src={nextMedia.url} type={nextMedia.mime} />
 												Your browser does not support the video tag.
 											</video>
@@ -99,18 +118,26 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 
 						return (
 							<div key={`single-${index}`} className="w-full last:mb-0">
-								{isPhotoMedia(media) && media.description && (
+								{media.description && (
 									<div className="my-16 text-lg md:max-w-[50%] mx-4">{media.description}</div>
 								)}
 
-								{isPhotoMedia(media) ? (
+								{isImage(media) ? (
 									<img
 										src={media.url}
 										alt={media.alt || "Case study image"}
 										className="max-h-[800px] w-full object-cover"
 									/>
 								) : (
-									<video controls className="w-full" title={media.title}>
+									<video 
+										className="w-full" 
+										title={media.title}
+										controls={!media.noControls}
+										muted={media.muted}
+										loop={media.loop}
+										autoPlay={media.autoplay}
+										playsInline={media.playsInline}
+									>
 										<source src={media.url} type={media.mime} />
 										Your browser does not support the video tag.
 									</video>

@@ -1,9 +1,9 @@
 import caseStudiesService from "./services/caseStudiesService";
-import { emailService } from "./services/contactService";
+import contactService from "./services/contactService";
 
 const API = {
 	caseStudies: caseStudiesService,
-	contact: emailService,
+	contact: contactService,
 };
 
 export default API;

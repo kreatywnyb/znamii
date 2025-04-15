@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { Checkbox } from "@/ui/molecules/Checkbox";
 import { Input } from "@/components/ui/input";
@@ -38,7 +38,13 @@ const ContactSection: React.FC = () => {
 		watch,
 		setValue,
 		reset,
-	} = useForm<ContactFormData>();
+		control,
+	} = useForm<ContactFormData>({
+		defaultValues: {
+			policy: false,
+			services: [],
+		},
+	});
 	const [selectedServices, setSelectedServices] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [toast, setToast] = useState<ToastState>({
@@ -82,9 +88,9 @@ const ContactSection: React.FC = () => {
 			console.error("Form submission error:", error);
 			setToast({
 				show: true,
-				type: "success",
-				message: "Wiadomość wysłana",
-				subMessage: "Zwykle odpisujemy w 24h",
+				type: "error",
+				message: "Coś poszło nie tak",
+				subMessage: "Prosimy skontakować się telefonicznie lub mailowo",
 			});
 		} finally {
 			setIsSubmitting(false);
@@ -108,7 +114,7 @@ const ContactSection: React.FC = () => {
 	}, [setValue]);
 
 	register("services", {
-		validate: (value) => value.length > 0 || "*Wybierz przynajmniej jedną usługę",
+		validate: (value) => value.length > 0 || "*Wybierz minimum 1 usługę",
 	});
 
 	// Animation variants
@@ -131,7 +137,6 @@ const ContactSection: React.FC = () => {
 			transition: { duration: 0.5, ease: "easeOut" },
 		},
 	};
-
 
 	const formVariants = {
 		hidden: { x: 100, opacity: 0 },
@@ -164,8 +169,11 @@ const ContactSection: React.FC = () => {
 
 			<div className="container grid grid-cols-1 gap-16 px-4 text-white lg:grid-cols-2">
 				<motion.div className="flex flex-col lg:pr-24" variants={containerVariants}>
-						<FlipWords as="h1" className="leading-[125%] text-white max-w-[28rem]" word="Zrealizuj projekt razem z nami!">
-						</FlipWords>
+					<FlipWords
+						as="h1"
+						className="max-w-[28rem] leading-[125%] text-white"
+						word="Zrealizuj projekt razem z nami!"
+					></FlipWords>
 
 					<motion.p
 						className="pb-[3.75rem] pr-20 pt-5 text-[1.063rem] leading-[160%]"
@@ -175,19 +183,11 @@ const ContactSection: React.FC = () => {
 						wideo posłużą Ci na lata.
 					</motion.p>
 					<motion.div className="text-xl lg:text-[2.5rem]" variants={itemVariants}>
-						<motion.div
-							className="flex items-center gap-4 font-medium lg:gap-8"
-							whileHover={{ x: 10 }}
-							transition={{ type: "spring", stiffness: 400 }}
-						>
+						<motion.div className="flex items-center gap-4 font-medium lg:gap-8">
 							<PhoneIcon className="max-lg:size-6" />{" "}
 							<p className="whitespace-nowrap">+48 694 211 577</p>
 						</motion.div>
-						<motion.div
-							className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8"
-							whileHover={{ x: 10 }}
-							transition={{ type: "spring", stiffness: 400 }}
-						>
+						<motion.div className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8">
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
 						</motion.div>
 					</motion.div>
@@ -237,7 +237,7 @@ const ContactSection: React.FC = () => {
 				</motion.div>
 				<motion.div variants={formVariants}>
 					<motion.div
-						className="relative bg-ultraLightGray p-8 shadow-lg max-md:mx-2 max-md:px-4"
+						className="relative bg-ultraLightGray p-8 shadow-lg max-md:px-4"
 						initial={{ boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)" }}
 						whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }}
 						transition={{ duration: 0.3 }}
@@ -250,7 +250,7 @@ const ContactSection: React.FC = () => {
 						/>
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div>
-								<div className="mb-5 flex justify-between">
+								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
 										W czym możemy ci pomóc?
 									</label>
@@ -281,7 +281,7 @@ const ContactSection: React.FC = () => {
 							</div>
 
 							<div>
-								<div className="mb-3 flex justify-between">
+								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
 										Jak się do ciebie zwracać
 									</label>
@@ -298,7 +298,7 @@ const ContactSection: React.FC = () => {
 							</div>
 
 							<div>
-								<div className="mb-3 flex justify-between">
+								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
 										Email do kontaktu
 									</label>
@@ -326,7 +326,7 @@ const ContactSection: React.FC = () => {
 							</div>
 
 							<div>
-								<div className="mb-3 flex justify-between">
+								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
 										Opowiedz co cię sprowadza
 									</label>
@@ -349,25 +349,32 @@ const ContactSection: React.FC = () => {
 								</div>
 							</div>
 
-							<div className="flex items-center">
-								<Checkbox
-									{...register("policy", { required: "*Zapoznaj się z polityka prywatności" })}
-									id="policy"
-									disabled={isSubmitting}
-								/>
-								<label
-									htmlFor="policy"
-									className={`cursor-pointert ml-2 text-sm font-medium text-darkGrey ${isSubmitting ? "opacity-70" : ""}`}
-								>
-									Zapoznałem się z{" "}
-									<Link href="/policy" className="underline">
-										Polityką Prywatności
-									</Link>
-								</label>
-
-								{errors.policy && (
-									<p className="text-[1.063rem] text-errorRed">{errors.policy.message}</p>
-								)}
+							<div className="mb-3 flex flex-col items-center justify-between md:flex-row">
+								<div className="flex items-start">
+									<Controller
+										name="policy"
+										control={control}
+										rules={{ required: "*Zapoznaj się z polityką prywatności" }}
+										render={({ field }) => (
+											<Checkbox
+												checked={field.value}
+												onCheckedChange={field.onChange}
+												id="policy"
+												disabled={isSubmitting}
+											/>
+										)}
+									/>
+									<label
+										htmlFor="policy"
+										className={`ml-2 cursor-pointer text-sm font-medium text-darkGrey ${isSubmitting ? "opacity-70" : ""}`}
+									>
+										Zapoznałem się z{" "}
+										<Link href="/policy" className="underline">
+											Polityką Prywatności
+										</Link>
+									</label>
+								</div>
+								{errors.policy && <p className="text-[1.063rem] text-errorRed mt-2 md:-mt-1">{errors.policy.message}</p>}
 							</div>
 
 							<motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
