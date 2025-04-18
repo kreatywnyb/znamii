@@ -53,24 +53,24 @@ export default function ClientLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const [showLoader, setShowLoader] = useState(false);
+	const [showLoader, setShowLoader] = useState(true);
 	const [appReady, setAppReady] = useState(false);
 
-	useEffect(() => {
-		// Sprawdź, czy animacja była już odtworzona w tej sesji
-		const hasAnimationPlayed =
-			typeof window !== "undefined"
-				? window.sessionStorage?.getItem("heroAnimationPlayed") === "true"
-				: false;
+	// useEffect(() => {
+	// 	// Sprawdź, czy animacja była już odtworzona w tej sesji
+	// 	const hasAnimationPlayed =
+	// 		typeof window !== "undefined"
+	// 			? window.sessionStorage?.getItem("heroAnimationPlayed") === "true"
+	// 			: false;
 
-		if (hasAnimationPlayed) {
-			// Jeśli animacja była już odtworzona, od razu pokaż stronę
-			setAppReady(true);
-		} else {
-			// W przeciwnym razie pokaż loader
-			setShowLoader(true);
-		}
-	}, []);
+	// 	if (hasAnimationPlayed) {
+	// 		// Jeśli animacja była już odtworzona, od razu pokaż stronę
+	// 		setAppReady(true);
+	// 	} else {
+	// 		// W przeciwnym razie pokaż loader
+	// 		setShowLoader(true);
+	// 	}
+	// }, []);
 
 	useEffect(() => {
 		// Inicjalizuj Lenis tylko jeśli aplikacja jest gotowa
