@@ -131,7 +131,7 @@ const sections: ScrollableSectionInterface[] = [
 const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSectionProps) => {
 	return (
 		<section className="">
-			<WhiteBox className="relative z-10 [&>div]:-mt-[30%]">
+			<WhiteBox className="relative z-10 md:[&>div]:-mt-[10%]">
 				<div className="container flex flex-col justify-between lg:flex-row">
 					<div className="max-w-[780px] flex-1">
 						<FlipWords word={name} as="h1"></FlipWords>
