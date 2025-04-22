@@ -1,29 +1,37 @@
 "use client"
 import React from "react";
-import Image from "next/image";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-interface AnimatedImageProps {
-  src: string | StaticImport;
-  alt: string;
+interface AnimatedMediaProps {
+  children: React.ReactNode;
   className?: string;
   maxZoom?: number; // Maximum zoom level (e.g. 1.2 = 20% zoom)
   showOverlay?: boolean; // Whether to show the animated overlay
   overlayColor?: string; // Color of the overlay
   overlayDuration?: number; // Duration of the overlay animation in seconds
+  animateDesktop?: boolean; // Control animations on desktop
+  animateMobile?: boolean; // Control animations on mobile
 }
 
-const AnimatedImage: React.FC<AnimatedImageProps> = ({ 
-  src, 
-  alt, 
+const AnimatedMedia: React.FC<AnimatedMediaProps> = ({ 
+  children, 
   className,
   maxZoom = 1.2,
   showOverlay = true, 
   overlayColor = "bg-slate-50",
-  overlayDuration = 0.8 
+  overlayDuration = 0.8,
+  animateDesktop = true,
+  animateMobile = true
 }) => {
   const ref = React.useRef(null);
+  const [shouldAnimate, setShouldAnimate] = React.useState(true);
+  
+  // Check device type on mount
+  React.useEffect(() => {
+    const isMobile = window.innerWidth < 768; // Common breakpoint for mobile
+    setShouldAnimate(isMobile ? animateMobile : animateDesktop);
+  }, [animateDesktop, animateMobile]);
+  
   const isInView = useInView(ref, { once: true, amount: 0.5 }); 
   
   const { scrollYProgress } = useScroll({
@@ -34,8 +42,8 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({
   const scale = useTransform(scrollYProgress, [0, 1], [1, maxZoom]);
   
   return (
-    <div ref={ref} className={`relative overflow-hidden`}>
-      {showOverlay && (
+    <div ref={ref} className={`relative overflow-hidden ${className || ""}`}>
+      {shouldAnimate && showOverlay && (
         <motion.div 
           className={`absolute inset-0 ${overlayColor} z-10 origin-top`}
           initial={{ scaleY: 1 }}
@@ -44,15 +52,15 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({
         />
       )}
       
-      <motion.div style={{ scale }}>
-        <Image 
-          src={src} 
-          alt={alt}
-          className={`w-full h-auto ${className || ""}`}
-        />
-      </motion.div>
+      {shouldAnimate ? (
+        <motion.div style={{ scale }}>
+          {children}
+        </motion.div>
+      ) : (
+        <>{children}</>
+      )}
     </div>
   );
 };
 
-export default AnimatedImage;
+export default AnimatedMedia;

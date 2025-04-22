@@ -5,6 +5,7 @@ import WhiteBox from "@/ui/organisms/WhiteBox";
 import { links } from "@/constants";
 import { MediaItem, Video, CombinedMediaItem, isImage } from "@/API/models/caseStudies";
 import Image from "next/image";
+import AnimatedMedia from "@/ui/molecules/AnimatedImage";
 
 interface CaseStudyAboutSectionProps {
 	leftDescription: string;
@@ -55,60 +56,74 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						const nextMedia = allMedia[index + 1];
 
 						return (
-							<div key={`double-${index}`} className="md:mb-4">
+							<div key={`double-${index}`}>
 								{currentMedia.description && (
 									<div className="my-16 text-lg md:pr-2 md:max-w-[50%] mx-4">{currentMedia.description}</div>
 								)}
 
 								<div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0">
-									<div className="md:w-1/2">
-										{isImage(currentMedia) ? (
-											<Image
-												src={currentMedia.url}
-												alt={currentMedia.alt || "Case study image"}
-												width={currentMedia.width || undefined}
-												height={currentMedia.height || undefined}
-												className="h-full w-full object-cover"
-											/>
-										) : (
-											<video 
-												className="w-full" 
-												title={currentMedia.title}
-												controls={!currentMedia.noControls}
-												muted={currentMedia.muted}
-												loop={currentMedia.loop}
-												autoPlay={currentMedia.autoplay}
-												playsInline={currentMedia.playsInline}
-											>
-												<source src={currentMedia.url} type={currentMedia.mime} />
-												Your browser does not support the video tag.
-											</video>
-										)}
+									<div className="mb-4 flex-grow">
+										<AnimatedMedia
+											animateDesktop={currentMedia.animateDesktop ?? true}
+											animateMobile={currentMedia.animateMobile ?? false}
+											maxZoom={1.1}
+											showOverlay={true}
+										>
+											{isImage(currentMedia) ? (
+												<Image
+													src={currentMedia.url}
+													alt={currentMedia.alt || "Case study image"}
+													width={currentMedia.width || 800}
+													height={currentMedia.height || 600}
+													className="h-full w-full object-cover"
+												/>
+											) : (
+												<video 
+													className="w-full" 
+													title={currentMedia.title}
+													controls={!currentMedia.noControls}
+													muted={currentMedia.muted}
+													loop={currentMedia.loop}
+													autoPlay={currentMedia.autoplay}
+													playsInline={currentMedia.playsInline}
+												>
+													<source src={currentMedia.url} type={currentMedia.mime} />
+													Your browser does not support the video tag.
+												</video>
+											)}
+										</AnimatedMedia>
 									</div>
 
-									<div className="md:w-1/2">
-										{isImage(nextMedia) ? (
-											<Image
-												src={nextMedia.url}
-												alt={nextMedia.alt || "Case study image"}
-												className="w-full object-cover"
-												width={nextMedia.width || undefined}
-												height={nextMedia.height || undefined}
-											/>
-										) : (
-											<video 
-												className="w-full" 
-												title={nextMedia.title}
-												controls={!nextMedia.noControls}
-												muted={nextMedia.muted}
-												loop={nextMedia.loop}
-												autoPlay={nextMedia.autoplay}
-												playsInline={nextMedia.playsInline}
-											>
-												<source src={nextMedia.url} type={nextMedia.mime} />
-												Your browser does not support the video tag.
-											</video>
-										)}
+									<div className="mb-4 flex-grow">
+										<AnimatedMedia
+											animateDesktop={nextMedia.animateDesktop ?? true}
+											animateMobile={nextMedia.animateMobile ?? false}
+											maxZoom={1.1}
+											showOverlay={true}
+										>
+											{isImage(nextMedia) ? (
+												<Image
+													src={nextMedia.url}
+													alt={nextMedia.alt || "Case study image"}
+													className="w-full object-cover h-full"
+													width={nextMedia.width || 800}
+													height={nextMedia.height || 600}
+												/>
+											) : (
+												<video 
+													className="w-full h-full" 
+													title={nextMedia.title}
+													controls={!nextMedia.noControls}
+													muted={nextMedia.muted}
+													loop={nextMedia.loop}
+													autoPlay={nextMedia.autoplay}
+													playsInline={nextMedia.playsInline}
+												>
+													<source src={nextMedia.url} type={nextMedia.mime} />
+													Your browser does not support the video tag.
+												</video>
+											)}
+										</AnimatedMedia>
 									</div>
 								</div>
 							</div>
@@ -117,31 +132,40 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						displayedIndices.add(index);
 
 						return (
-							<div key={`single-${index}`} className="w-full last:mb-0">
+							<div key={`single-${index}`} className="w-full last:mb-0 mb-4">
 								{media.description && (
 									<div className="my-16 text-lg md:max-w-[50%] mx-4">{media.description}</div>
 								)}
 
-								{isImage(media) ? (
-									<img
-										src={media.url}
-										alt={media.alt || "Case study image"}
-										className="max-h-[800px] w-full object-cover"
-									/>
-								) : (
-									<video 
-										className="w-full" 
-										title={media.title}
-										controls={!media.noControls}
-										muted={media.muted}
-										loop={media.loop}
-										autoPlay={media.autoplay}
-										playsInline={media.playsInline}
-									>
-										<source src={media.url} type={media.mime} />
-										Your browser does not support the video tag.
-									</video>
-								)}
+								<AnimatedMedia
+									animateDesktop={media.animateDesktop ?? true}
+									animateMobile={media.animateMobile ?? false}
+									maxZoom={1.1}
+									showOverlay={true}
+								>
+									{isImage(media) ? (
+										<Image
+											src={media.url}
+											alt={media.alt || "Case study image"}
+											width={media.width || 800}
+											height={media.height || 600}
+											className="h-full w-full object-cover"
+										/>
+									) : (
+										<video 
+											className="w-full h-full object-cover" 
+											title={media.title}
+											controls={!media.noControls}
+											muted={media.muted}
+											loop={media.loop}
+											autoPlay={media.autoplay}
+											playsInline={media.playsInline}
+										>
+											<source src={media.url} type={media.mime} />
+											Your browser does not support the video tag.
+										</video>
+									)}
+								</AnimatedMedia>
 							</div>
 						);
 					}

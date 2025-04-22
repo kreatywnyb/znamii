@@ -34,16 +34,19 @@ const ContactSection: React.FC = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 		watch,
 		setValue,
 		reset,
 		control,
+		trigger,
+		clearErrors,
 	} = useForm<ContactFormData>({
 		defaultValues: {
 			policy: false,
 			services: [],
 		},
+		mode: "onChange", // Changed from default 'onSubmit' to 'onChange'
 	});
 	const [selectedServices, setSelectedServices] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,8 +77,27 @@ const ContactSection: React.FC = () => {
 					message: "Wiadomość wysłana",
 					subMessage: "Zwykle odpisujemy w 24h",
 				});
-				reset();
+				// Reset form with complete options to ensure all state is cleared
+				reset(
+					{
+						policy: false,
+						services: [],
+						name: "",
+						email: "",  
+						message: "",
+					},
+					{
+						keepErrors: false,
+						keepDirty: false,
+						keepIsSubmitted: false,
+						keepTouched: false,
+						keepIsValid: false,
+						keepSubmitCount: false,
+					}
+				);
 				setSelectedServices([]);
+				// Explicitly clear all errors
+				clearErrors();
 			} else {
 				setToast({
 					show: true,
@@ -104,6 +126,14 @@ const ContactSection: React.FC = () => {
 				: prevServices.filter((s) => s !== service);
 
 			setValue("services", updatedServices);
+			
+			// Clear the services error if at least one service is selected
+			if (updatedServices.length > 0) {
+				clearErrors("services");
+			} else {
+				// Trigger validation to show error when all services are unselected
+				trigger("services");
+			}
 
 			return updatedServices;
 		});
@@ -112,7 +142,15 @@ const ContactSection: React.FC = () => {
 	useEffect(() => {
 		setValue("services", []);
 	}, [setValue]);
+	
+	// Clear errors when submission is successful
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			clearErrors();
+		}
+	}, [isSubmitSuccessful, clearErrors]);
 
+	// Register the services field for validation
 	register("services", {
 		validate: (value) => value.length > 0 || "*Wybierz minimum 1 usługę",
 	});
@@ -351,14 +389,20 @@ const ContactSection: React.FC = () => {
 
 							<div className="mb-3 flex flex-col items-center justify-between md:flex-row">
 								<div className="flex items-start">
-									<Controller
+																			<Controller
 										name="policy"
 										control={control}
-										rules={{ required: "*Zapoznaj się z polityką prywatności" }}
+										rules={{ 
+											validate: value => value === true || "*Zapoznaj się z polityką prywatności" 
+										}}
 										render={({ field }) => (
 											<Checkbox
 												checked={field.value}
-												onCheckedChange={field.onChange}
+												onCheckedChange={(checked) => {
+													field.onChange(checked);
+													// Always trigger validation immediately when changed
+													trigger("policy");
+												}}
 												id="policy"
 												disabled={isSubmitting}
 											/>
@@ -374,7 +418,7 @@ const ContactSection: React.FC = () => {
 										</Link>
 									</label>
 								</div>
-								{errors.policy && <p className="text-[1.063rem] text-errorRed mt-2 md:-mt-1">{errors.policy.message}</p>}
+								{errors.policy && !isSubmitSuccessful && <p className="text-[1.063rem] text-errorRed mt-2 md:-mt-1">{errors.policy.message}</p>}
 							</div>
 
 							<motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>

@@ -4,6 +4,7 @@ import photo1 from "@public/case-1.webp";
 import photo2 from "@public/case-2.webp";
 import photo3 from "@public/case-3.webp";
 import AnimatedImage from "@/ui/molecules/AnimatedImage";
+import Image from "next/image";
 
 const photos = [photo1, photo2, photo3];
 
@@ -23,10 +24,10 @@ const ImageSlider = () => {
 	return (
 		<div>
 			<AnimatedImage showOverlay={false}
-				src={photos[activeIndex]}
-				alt=""
 				className="aspect-video w-full object-cover object-center"
-			/>
+			>
+				<Image src={photos[activeIndex]} alt="About us image"></Image>
+			</AnimatedImage>
 		</div>
 	);
 };

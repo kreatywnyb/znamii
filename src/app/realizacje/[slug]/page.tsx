@@ -26,7 +26,8 @@ const CaseStudyPage = async ({ params }: PageProps) => {
 		<main className="border-t border-darkGrey bg-background">
 			<CaseStudyHeroSection
 				title={caseStudy.company}
-				video={caseStudy.mainVideo.url}
+				video={caseStudy.mainVideo?.url}
+				image={caseStudy.mainPhoto.url}
 			></CaseStudyHeroSection>
 			<CaseStudyDetailsSection
 				industry={caseStudy.industryArray}

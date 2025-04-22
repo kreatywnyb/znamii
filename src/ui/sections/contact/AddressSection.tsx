@@ -4,6 +4,7 @@ import WhiteBox from "@/ui/organisms/WhiteBox";
 import AnimatedImage from "@/ui/molecules/AnimatedImage";
 import TerminalText from '@/ui/atoms/TerminalText';
 import { FlipWords } from "@/ui/molecules/FlipWords";
+import Image from 'next/image';
 
 const AddressSection: React.FC = () => {
 	return (
@@ -30,10 +31,13 @@ const AddressSection: React.FC = () => {
 						></iframe>
 					</div>
 					{/* Using the new AnimatedImage component */}
-					<AnimatedImage 
-						src={interiorImage} 
-						alt="Biuro znami" 
-					/>
+					<AnimatedImage  
+						animateDesktop
+						animateMobile 
+					>
+						<Image src={interiorImage} alt="Biuro znami"></Image>
+
+					</AnimatedImage>
 				</div>
 			</div>
 		</WhiteBox>

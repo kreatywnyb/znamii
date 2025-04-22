@@ -6,6 +6,8 @@ export interface Media {
 	description?: string;
 	alt?: string;
 	caption?: string;
+	animateDesktop: boolean;
+	animateMobile:boolean;
 }
 
 export interface MediaItem extends Media {
@@ -27,6 +29,8 @@ export interface Video {
     autoplay?: boolean;
     playsInline?: boolean;
     description?: string;
+	animateDesktop: boolean;
+	animateMobile:boolean;
 }
 
 // Combined media type for unified handling
