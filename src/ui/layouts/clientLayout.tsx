@@ -109,7 +109,12 @@ import Header from "@/ui/organisms/Header";
 import Lenis from "lenis";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Loader from "../atoms/Loader";
+
+import dynamic from "next/dynamic";
+
+const Loader = dynamic(() => import("../atoms/Loader"), {
+	ssr: false,
+});
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
 	const [showLoader, setShowLoader] = useState(true);

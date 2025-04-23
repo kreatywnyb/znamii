@@ -15,7 +15,6 @@ const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 	const { setAnimationFinished } = useLoader();
 
 	const handleAnimationComplete = useCallback(() => {
-		console.log("Animacja zakończona");
 		if (typeof window !== "undefined") {
 			sessionStorage.setItem("heroAnimationPlayed", "true");
 		}
@@ -24,7 +23,9 @@ const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 	}, [onAnimationComplete, setAnimationFinished]);
 
 	useEffect(() => {
-		sessionStorage.setItem("heroAnimationPlayed", "false");
+		if (typeof window !== "undefined") {
+			sessionStorage.setItem("heroAnimationPlayed", "false");
+		}
 
 		const animationTimeout = setTimeout(() => {
 			if (!containerRef.current) return;
