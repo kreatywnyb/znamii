@@ -10,6 +10,7 @@
 // 	loop?: boolean;
 // 	styles?: string;
 // 	animateWhenInView?: boolean;
+// 	onAnimationComplete?: () => void; // Add callback prop
 // }
 
 // const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
@@ -18,6 +19,7 @@
 // 	loop = false,
 // 	styles,
 // 	animateWhenInView = false,
+// 	onAnimationComplete,
 // }) => {
 // 	const [displayedText, setDisplayedText] = useState("");
 // 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,8 +43,12 @@
 // 				setDisplayedText("");
 // 				setCurrentIndex(0);
 // 			}, 1000);
+// 		} else if (onAnimationComplete && currentIndex === text.length) {
+// 			setTimeout(() => {
+// 				onAnimationComplete();
+// 			}, 500);
 // 		}
-// 	}, [currentIndex, text, speed, loop, shouldAnimate]);
+// 	}, [currentIndex, text, speed, loop, shouldAnimate, onAnimationComplete]);
 
 // 	// Reset state when text changes
 // 	useEffect(() => {
@@ -65,7 +71,6 @@
 
 // export default TerminalTextEffect;
 
-// Updated TerminalTextEffect.tsx
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -78,7 +83,7 @@ interface TerminalTextEffectProps {
 	loop?: boolean;
 	styles?: string;
 	animateWhenInView?: boolean;
-	onAnimationComplete?: () => void; // Add callback prop
+	onAnimationComplete?: () => void;
 }
 
 const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
@@ -96,7 +101,6 @@ const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
 	const shouldAnimate = animateWhenInView ? isInView : true;
 
 	useEffect(() => {
-		// Only start animation if shouldAnimate is true
 		if (!shouldAnimate) return;
 
 		if (currentIndex < text.length) {
@@ -118,7 +122,6 @@ const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
 		}
 	}, [currentIndex, text, speed, loop, shouldAnimate, onAnimationComplete]);
 
-	// Reset state when text changes
 	useEffect(() => {
 		setDisplayedText("");
 		setCurrentIndex(0);
@@ -127,12 +130,15 @@ const TerminalTextEffect: React.FC<TerminalTextEffectProps> = ({
 	return (
 		<motion.div
 			ref={ref}
-			className={twMerge("w-fit rounded-md font-geist text-xs font-normal uppercase", styles)}
+			className={twMerge(
+				"w-fit whitespace-pre-line rounded-md font-geist text-xs font-normal uppercase", // 👈 DODANE
+				styles,
+			)}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.1 }}
 		>
-			<span dangerouslySetInnerHTML={{ __html: displayedText }} />
+			{displayedText}
 		</motion.div>
 	);
 };

@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+
+import React, { useEffect, useRef, useCallback } from "react";
 import lottie, { AnimationItem } from "lottie-web";
-import animationData from "@public/loader-animation.json"; // Dostosuj ścieżkę
+import animationData from "@public/loader-animation.json";
 
 interface LoaderProps {
 	onAnimationComplete: () => void;
@@ -11,90 +12,45 @@ const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationRef = useRef<AnimationItem | null>(null);
 
+	const handleAnimationComplete = useCallback(() => {
+		console.log("Animacja zakończona");
+		if (typeof window !== "undefined") {
+			sessionStorage.setItem("heroAnimationPlayed", "true");
+		}
+		onAnimationComplete();
+	}, [onAnimationComplete]);
+
 	useEffect(() => {
-		// Opóźnij inicjalizację animacji o 0.5 sekundy
+		sessionStorage.setItem("heroAnimationPlayed", "false");
+
 		const animationTimeout = setTimeout(() => {
-			if (containerRef.current) {
-				// Inicjalizacja animacji Lottie
-				animationRef.current = lottie.loadAnimation({
-					container: containerRef.current,
-					renderer: "svg",
-					loop: false,
-					autoplay: true,
-					animationData: animationData,
-				});
+			if (!containerRef.current) return;
 
-				// Nasłuchuj zakończenia animacji
-				animationRef.current.addEventListener("complete", () => {
-					console.log("Animacja zakończona");
-					// Ustaw flagę w sessionStorage
-					if (typeof window !== "undefined") {
-						window.sessionStorage?.setItem("heroAnimationPlayed", "true");
-					}
-					// Wywołaj callback aby poinformować rodzica o zakończeniu
-					onAnimationComplete();
-				});
-			}
-		}, 500); // 500ms = 0.5s opóźnienia
+			animationRef.current = lottie.loadAnimation({
+				container: containerRef.current,
+				renderer: "svg",
+				loop: false,
+				autoplay: true,
+				animationData,
+			});
 
-		// Czyszczenie przy odmontowaniu komponentu
+			animationRef.current.addEventListener("complete", handleAnimationComplete);
+		}, 200);
+
 		return () => {
 			clearTimeout(animationTimeout);
 			if (animationRef.current) {
+				animationRef.current.removeEventListener("complete", handleAnimationComplete);
 				animationRef.current.destroy();
 			}
 		};
-	}, [onAnimationComplete]);
+	}, [handleAnimationComplete]);
 
 	return (
-		<div className="fixed left-0 top-0 z-[100] flex h-screen w-screen flex-col items-center justify-center bg-basicDark">
+		<div className="fixed inset-0 z-[100] flex items-center justify-center bg-basicDark">
 			<div ref={containerRef} className="w-full max-w-lg" />
 		</div>
 	);
 };
 
 export default Loader;
-
-// const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
-// 	const containerRef = useRef<HTMLDivElement>(null);
-// 	const animationRef = useRef<AnimationItem | null>(null);
-
-// 	useEffect(() => {
-// 		if (containerRef.current) {
-// 			// Inicjalizacja animacji Lottie
-// 			animationRef.current = lottie.loadAnimation({
-// 				container: containerRef.current,
-// 				renderer: "svg",
-// 				loop: false,
-// 				autoplay: true,
-// 				animationData: animationData,
-// 			});
-
-// 			// Nasłuchuj zakończenia animacji
-// 			animationRef.current.addEventListener("complete", () => {
-// 				console.log("Animacja zakończona");
-// 				// Ustaw flagę w sessionStorage
-// 				if (typeof window !== "undefined") {
-// 					window.sessionStorage?.setItem("heroAnimationPlayed", "true");
-// 				}
-// 				// Wywołaj callback aby poinformować rodzica o zakończeniu
-// 				onAnimationComplete();
-// 			});
-// 		}
-
-// 		// Czyszczenie przy odmontowaniu komponentu
-// 		return () => {
-// 			if (animationRef.current) {
-// 				animationRef.current.destroy();
-// 			}
-// 		};
-// 	}, [onAnimationComplete]);
-
-// 	return (
-// 		<div className="fixed left-0 top-0 z-50 flex h-screen w-screen flex-col items-center justify-center bg-basicDark">
-// 			<div ref={containerRef} className="w-full max-w-lg" />
-// 		</div>
-// 	);
-// };
-
-// export default Loader;

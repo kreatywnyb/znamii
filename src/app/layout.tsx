@@ -2,6 +2,7 @@ import ClientLayout from "@/ui/layouts/clientLayout";
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LoaderProvider } from "@/contexts/LoaderContext";
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
@@ -27,7 +28,9 @@ export default function RootLayout({
 	return (
 		<html lang="pl" suppressHydrationWarning>
 			<body className={` ${geistMono.variable} bg-background pt-12 antialiased md:pt-14`}>
-				<ClientLayout>{children}</ClientLayout>
+				<LoaderProvider>
+					<ClientLayout>{children}</ClientLayout>
+				</LoaderProvider>
 			</body>
 		</html>
 	);
