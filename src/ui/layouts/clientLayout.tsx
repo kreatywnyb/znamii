@@ -43,6 +43,7 @@ import Footer from "@/ui/organisms/Footer";
 import Lenis from "lenis";
 
 import dynamic from "next/dynamic";
+import { twMerge } from "tailwind-merge";
 
 const Loader = dynamic(() => import("../atoms/Loader"), {
 	ssr: false, // To kluczowe - wyłącza SSR dla tego komponentu
@@ -100,13 +101,19 @@ export default function ClientLayout({
 	return (
 		<>
 			{showLoader && <Loader onAnimationComplete={handleAnimationComplete} />}
-			{appReady && (
-				<>
-					<Header />
-					{children}
-					<Footer />
-				</>
-			)}
+			{/* {appReady && ( */}
+			<>
+				<div
+					className={twMerge(
+						"fixed left-0 top-0 z-[55] block h-full w-full bg-basicDark",
+						appReady && "hidden",
+					)}
+				/>
+				<Header />
+				{children}
+				<Footer />
+			</>
+			{/* )} */}
 		</>
 	);
 }
