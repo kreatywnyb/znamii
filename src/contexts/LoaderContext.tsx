@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface LoaderContextType {
 	animationFinished: boolean;
@@ -11,15 +11,6 @@ const LoaderContext = createContext<LoaderContextType | undefined>(undefined);
 
 export const LoaderProvider = ({ children }: { children: ReactNode }) => {
 	const [animationFinished, setAnimationFinished] = useState(false);
-
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			const played = sessionStorage.getItem("heroAnimationPlayed");
-			if (played === "true") {
-				setAnimationFinished(true);
-			}
-		}
-	}, []);
 
 	return (
 		<LoaderContext.Provider value={{ animationFinished, setAnimationFinished }}>

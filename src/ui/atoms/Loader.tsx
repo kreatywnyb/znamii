@@ -15,18 +15,11 @@ const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 	const { setAnimationFinished } = useLoader();
 
 	const handleAnimationComplete = useCallback(() => {
-		if (typeof window !== "undefined") {
-			sessionStorage.setItem("heroAnimationPlayed", "true");
-		}
 		onAnimationComplete();
 		setAnimationFinished(true);
 	}, [onAnimationComplete, setAnimationFinished]);
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			sessionStorage.setItem("heroAnimationPlayed", "false");
-		}
-
 		const animationTimeout = setTimeout(() => {
 			if (!containerRef.current) return;
 
