@@ -13,9 +13,11 @@ export const LoaderProvider = ({ children }: { children: ReactNode }) => {
 	const [animationFinished, setAnimationFinished] = useState(false);
 
 	useEffect(() => {
-		const played = sessionStorage.getItem("heroAnimationPlayed");
-		if (played === "true") {
-			setAnimationFinished(true);
+		if (typeof window !== "undefined") {
+			const played = sessionStorage.getItem("heroAnimationPlayed");
+			if (played === "true") {
+				setAnimationFinished(true);
+			}
 		}
 	}, []);
 
