@@ -103,7 +103,7 @@
 // }
 
 "use client";
-import { useLoader } from "@/contexts/LoaderContext";
+import { LoaderProvider } from "@/contexts/LoaderContext";
 import Footer from "@/ui/organisms/Footer";
 import Header from "@/ui/organisms/Header";
 import Lenis from "lenis";
@@ -113,7 +113,6 @@ import Loader from "../atoms/Loader";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
 	const [showLoader, setShowLoader] = useState(true);
-	const { setAnimationFinished } = useLoader();
 
 	const [appReady, setAppReady] = useState(false);
 
@@ -135,11 +134,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 		sessionStorage.setItem("heroAnimationPlayed", "true");
 		setShowLoader(false);
 		setAppReady(true);
-		setAnimationFinished(true);
 	};
 
 	return (
-		<>
+		<LoaderProvider>
 			{showLoader && <Loader onAnimationComplete={handleAnimationComplete} />}
 			<>
 				<div
@@ -152,6 +150,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 				{children}
 				<Footer />
 			</>
-		</>
+		</LoaderProvider>
 	);
 }

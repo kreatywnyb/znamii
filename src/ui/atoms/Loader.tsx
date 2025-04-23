@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import lottie, { AnimationItem } from "lottie-web";
 import animationData from "@public/loader-animation.json";
+import { useLoader } from "@/contexts/LoaderContext";
 
 interface LoaderProps {
 	onAnimationComplete: () => void;
@@ -11,6 +12,7 @@ interface LoaderProps {
 const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationRef = useRef<AnimationItem | null>(null);
+	const { setAnimationFinished } = useLoader();
 
 	const handleAnimationComplete = useCallback(() => {
 		console.log("Animacja zakończona");
@@ -18,7 +20,8 @@ const Loader: React.FC<LoaderProps> = ({ onAnimationComplete }) => {
 			sessionStorage.setItem("heroAnimationPlayed", "true");
 		}
 		onAnimationComplete();
-	}, [onAnimationComplete]);
+		setAnimationFinished(true);
+	}, [onAnimationComplete, setAnimationFinished]);
 
 	useEffect(() => {
 		sessionStorage.setItem("heroAnimationPlayed", "false");
