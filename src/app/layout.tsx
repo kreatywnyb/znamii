@@ -2,7 +2,14 @@ import ClientLayout from "@/ui/layouts/clientLayout";
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { LoaderProvider } from "@/contexts/LoaderContext";
+import dynamic from "next/dynamic";
+
+const LoaderProvider = dynamic(
+	() => import("../contexts/LoaderContext").then((mod) => mod.LoaderProvider),
+	{
+		ssr: false,
+	},
+);
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
