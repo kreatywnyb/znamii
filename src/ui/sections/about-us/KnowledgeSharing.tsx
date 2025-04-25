@@ -46,9 +46,16 @@ const KnowledgeSharing = () => {
 			<div className="container flex flex-col max-lg:space-y-16 lg:flex-row">
 				<div className="flex max-w-[28.75rem] flex-col justify-between">
 					<div className="flex-1">
-						<FlipWords as="h2" word="Dzielimy się wiedzą, bo sharing is caring" className="mb-12 text-[2.5rem] leading-[3.125rem]">
-							
-						</FlipWords>
+						{/* <FlipWords
+							as="h2"
+							word={`Dzielimy się wiedzą, bo sharing is caring`}
+							className="mb-12 text-[2.5rem] leading-[3.125rem]"
+						/> */}
+						<FlipWords
+							as="h2"
+							word={`Dzielimy się wiedzą,\nbo sharing is caring`}
+							className="mb-12 text-[2.5rem] leading-[3.125rem]"
+						/>
 
 						<p className="text-[1.313rem]">
 							Prowadzimy prelekcje i szkolenia dla uczelni oraz firm, łącząc nasze doświadczenie z
@@ -60,31 +67,33 @@ const KnowledgeSharing = () => {
 						</p>
 					</div>
 					<div className="max-md:mt-8">
-						<TerminalTextEffect text="Jesteśmy partnerem:" animateWhenInView styles="mb-10 inline-block font-geist text-[0.75rem] uppercase">
-
-						</TerminalTextEffect>
+						<TerminalTextEffect
+							text="Jesteśmy partnerem:"
+							animateWhenInView
+							styles="mb-10 inline-block font-geist text-[0.75rem] uppercase"
+						></TerminalTextEffect>
 						<Image alt="WSIZ Logo" src={wsizImg} width={800} height={800} className="h-20 w-auto" />
 					</div>
 				</div>
 				<div className="flex flex-1 flex-col">
-					<div 
+					<div
 						className="overflow-hidden"
 						style={{
-							transform: isDesktop
-								? `translateY(${Math.max(offsetY * 0.2, -200)}px)`
-								: "",
+							transform: isDesktop ? `translateY(${Math.max(offsetY * 0.2, -200)}px)` : "",
 							transition: "transform 0.2s linear",
 						}}
 					>
-						<Image alt="Sharing knowledge presentation" src={sharing3Img} className="ml-auto md:max-w-[455px]" />
+						<Image
+							alt="Sharing knowledge presentation"
+							src={sharing3Img}
+							className="ml-auto md:max-w-[455px]"
+						/>
 					</div>
 					<div className="mt-8 flex flex-col justify-end max-lg:space-y-8 md:mt-[62px] md:flex-row lg:space-x-16">
-						<div 
+						<div
 							className="overflow-hidden"
 							style={{
-								transform: isDesktop
-									? `translateY(${Math.max(offsetY * 0.4, -200)}px)`
-									: "",
+								transform: isDesktop ? `translateY(${Math.max(offsetY * 0.4, -200)}px)` : "",
 								transition: "transform 0.2s linear",
 							}}
 						>
@@ -96,12 +105,10 @@ const KnowledgeSharing = () => {
 								className="h-fit flex-1 md:max-w-[291px]"
 							/>
 						</div>
-						<div 
+						<div
 							className="overflow-hidden"
 							style={{
-								transform: isDesktop
-									? `translateY(${Math.max(offsetY * 0.3, -200)}px)`
-									: "",
+								transform: isDesktop ? `translateY(${Math.max(offsetY * 0.3, -200)}px)` : "",
 								transition: "transform 0.2s linear",
 							}}
 						>

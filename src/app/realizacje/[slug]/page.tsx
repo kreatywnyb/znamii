@@ -4,7 +4,7 @@ import CtaSection from "@/ui/sections/CtaSection";
 import CtaBgImg from "@public/cta-poster-3.webp";
 import CaseStudyAboutSection from "@/ui/sections/case-studies/CaseStudyAboutSection";
 import API from "@/API";
-import { PageProps } from "../../../../.next/types/app/page";
+import { PageProps } from "../../../../.next/types/app/layout";
 
 export const revalidate = 30;
 

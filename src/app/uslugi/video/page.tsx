@@ -8,6 +8,31 @@ import ProcessSection from "@/ui/sections/services/ProcessSection";
 import ServiceSection from "@/ui/sections/services/ServiceSection";
 import CtaBgImg from "@public/cta-poster-1.webp";
 import authorImg from "@public/kamil-pormbinski.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Video ▪ Znami Studio",
+	// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+	// keywords: ["kontakt", "formularz kontaktowy", "adres", "telefon"],
+	openGraph: {
+		title: "Video ▪ Znami Studio",
+		// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+		type: "website",
+		// url: "https://twojastrona.pl/kontakt",
+		// images: [
+		// 	{
+		// 		url: "https://twojastrona.pl/img/og-contact.jpg",
+		// 		width: 1200,
+		// 		height: 630,
+		// 		alt: "Kontakt - Nazwa Twojej Firmy",
+		// 	},
+		// ],
+	},
+	robots: {
+		// index: true,
+		// follow: true,
+	},
+};
 
 const VideoPage = async () => {
 	const response = await API.caseStudies.getCaseStudies({

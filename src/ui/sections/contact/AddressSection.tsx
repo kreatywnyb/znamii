@@ -2,25 +2,38 @@ import React from "react";
 import interiorImage from "@public/interior.webp";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import AnimatedImage from "@/ui/molecules/AnimatedImage";
-import TerminalText from '@/ui/atoms/TerminalText';
+import TerminalText from "@/ui/atoms/TerminalText";
 import { FlipWords } from "@/ui/molecules/FlipWords";
-import Image from 'next/image';
+import Image from "next/image";
 
 const AddressSection: React.FC = () => {
 	return (
-		<WhiteBox className="z-20 [&>div]:-mt-32 ">
+		<WhiteBox className="z-20 [&>div]:-mt-32">
 			<div className="container py-6">
 				<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-					<FlipWords as='h2' word="Wpadnij na kawkę ☕" className="mb-4 text-left text-4xl font-medium text-basicDark"></FlipWords>
+					<FlipWords
+						as="h2"
+						word="Wpadnij na kawkę ☕"
+						className="mb-4 text-left text-4xl font-medium text-basicDark"
+					></FlipWords>
 					<div>
 						<p className="mb-4 text-[1.063rem] tracking-[0.02em]">
-							Jak dojechać? No nie ma łatwo, bo kilka budynków w okolicy ma przypisany ten sam numer.
-							Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać np. po...
-							dużym szyldzie Znami.
+							Jak dojechać? No nie ma łatwo, bo kilka budynków w okolicy ma przypisany ten sam
+							numer. Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać
+							np. po... dużym szyldzie Znami.
 						</p>
-						<TerminalText text="ul. okulickiego 18, 35-202 rzeszów" styles="py-6" animateWhenInView>
-
-						</TerminalText>
+						<div className="flex flex-col py-6 max-md:space-y-2 md:flex-row md:space-x-2">
+							<TerminalText
+								text="ul. okulickiego 18, 35-202 rzeszów"
+								// styles="py-6"
+								animateWhenInView
+							/>
+							<TerminalText
+								text="( chwilowo działamy zdalnie )"
+								styles="text-red-500"
+								animateWhenInView
+							/>
+						</div>
 					</div>
 					<div>
 						<iframe
@@ -31,12 +44,8 @@ const AddressSection: React.FC = () => {
 						></iframe>
 					</div>
 					{/* Using the new AnimatedImage component */}
-					<AnimatedImage  
-						animateDesktop
-						animateMobile 
-					>
+					<AnimatedImage animateDesktop animateMobile>
 						<Image src={interiorImage} alt="Biuro znami"></Image>
-
 					</AnimatedImage>
 				</div>
 			</div>

@@ -83,7 +83,7 @@ const ContactSection: React.FC = () => {
 						policy: false,
 						services: [],
 						name: "",
-						email: "",  
+						email: "",
 						message: "",
 					},
 					{
@@ -93,7 +93,7 @@ const ContactSection: React.FC = () => {
 						keepTouched: false,
 						keepIsValid: false,
 						keepSubmitCount: false,
-					}
+					},
 				);
 				setSelectedServices([]);
 				// Explicitly clear all errors
@@ -126,7 +126,7 @@ const ContactSection: React.FC = () => {
 				: prevServices.filter((s) => s !== service);
 
 			setValue("services", updatedServices);
-			
+
 			// Clear the services error if at least one service is selected
 			if (updatedServices.length > 0) {
 				clearErrors("services");
@@ -142,7 +142,7 @@ const ContactSection: React.FC = () => {
 	useEffect(() => {
 		setValue("services", []);
 	}, [setValue]);
-	
+
 	// Clear errors when submission is successful
 	useEffect(() => {
 		if (isSubmitSuccessful) {
@@ -221,55 +221,68 @@ const ContactSection: React.FC = () => {
 						wideo posłużą Ci na lata.
 					</motion.p>
 					<motion.div className="text-xl lg:text-[2.5rem]" variants={itemVariants}>
-						<motion.div className="flex items-center gap-4 font-medium lg:gap-8">
+						<motion.a
+							className="flex items-center gap-4 font-medium lg:gap-8"
+							href="tel:+48694211577"
+						>
 							<PhoneIcon className="max-lg:size-6" />{" "}
 							<p className="whitespace-nowrap">+48 694 211 577</p>
-						</motion.div>
-						<motion.div className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8">
+						</motion.a>
+						<motion.a
+							className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8"
+							href={`mailto:${contactMail}`}
+						>
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
-						</motion.div>
+						</motion.a>
 					</motion.div>
 					<motion.div className="mt-auto flex w-full justify-between" variants={itemVariants}>
-						<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
-							<motion.div
-								className="relative h-[10.875rem] w-[10.875rem]"
-								whileHover="hover"
-								variants={imageHoverVariants}
-							>
-								<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
-								<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
+						<div className="flex w-full flex-col">
+							{selectedServices.length > 0 && (
+								<span className="mb-10 text-[1.063rem] leading-[160%]">
+									Skontakfuje się z Tobą:
+								</span>
+							)}
+							<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
 								<motion.div
-									className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity`}
-									animate={{
-										opacity:
-											selectedServices.includes("Video") ||
-											selectedServices.includes("Zdjęcia") ||
-											selectedServices.includes("Współpraca")
-												? 0
-												: 1,
-									}}
-									transition={{ duration: 0.5 }}
-								/>
-							</motion.div>
-							<motion.div
-								className="relative h-[10.875rem] w-[10.875rem]"
-								whileHover="hover"
-								variants={imageHoverVariants}
-							>
-								<Image src={maksImage} alt="" className="h-full w-full border border-white" />
-								<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
+									className="relative h-[10.875rem] w-[10.875rem]"
+									whileHover="hover"
+									variants={imageHoverVariants}
+								>
+									<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
+									<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
+									<motion.div
+										className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity`}
+										animate={{
+											opacity:
+												selectedServices.includes("Video") ||
+												selectedServices.includes("Zdjęcia") ||
+												selectedServices.includes("Współpraca")
+													? 0
+													: 1,
+										}}
+										transition={{ duration: 0.5 }}
+									/>
+								</motion.div>
 								<motion.div
-									className={`absolute left-0 top-0 h-full w-full bg-primary`}
-									animate={{
-										opacity:
-											selectedServices.includes("Branding") ||
-											selectedServices.includes("Współpraca")
-												? 0
-												: 1,
-									}}
-									transition={{ duration: 0.5 }}
-								/>
-							</motion.div>
+									className="relative h-[10.875rem] w-[10.875rem]"
+									whileHover="hover"
+									variants={imageHoverVariants}
+								>
+									<Image src={maksImage} alt="" className="h-full w-full border border-white" />
+									<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
+									<motion.div
+										className={`absolute left-0 top-0 h-full w-full bg-primary`}
+										animate={{
+											opacity:
+												selectedServices.includes("Branding") ||
+												selectedServices.includes("Współpraca")
+													? 0
+													: 1,
+										}}
+										transition={{ duration: 0.5 }}
+									/>
+								</motion.div>
+							</div>
 						</div>
 					</motion.div>
 				</motion.div>
@@ -389,11 +402,11 @@ const ContactSection: React.FC = () => {
 
 							<div className="mb-3 flex flex-col items-center justify-between md:flex-row">
 								<div className="flex items-start">
-																			<Controller
+									<Controller
 										name="policy"
 										control={control}
-										rules={{ 
-											validate: value => value === true || "*Zapoznaj się z polityką prywatności" 
+										rules={{
+											validate: (value) => value === true || "*Zapoznaj się z polityką prywatności",
 										}}
 										render={({ field }) => (
 											<Checkbox
@@ -418,7 +431,11 @@ const ContactSection: React.FC = () => {
 										</Link>
 									</label>
 								</div>
-								{errors.policy && !isSubmitSuccessful && <p className="text-[1.063rem] text-errorRed mt-2 md:-mt-1">{errors.policy.message}</p>}
+								{errors.policy && !isSubmitSuccessful && (
+									<p className="mt-2 text-[1.063rem] text-errorRed md:-mt-1">
+										{errors.policy.message}
+									</p>
+								)}
 							</div>
 
 							<motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>

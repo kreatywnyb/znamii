@@ -23,10 +23,11 @@ const ImageSlider = () => {
 
 	return (
 		<div>
-			<AnimatedImage showOverlay={false}
-				className="aspect-video w-full object-cover object-center"
+			<AnimatedImage
+				showOverlay={false}
+				className="aspect-video !w-full object-cover object-center"
 			>
-				<Image src={photos[activeIndex]} alt="About us image"></Image>
+				<Image src={photos[activeIndex]} alt="About us image" className="w-full"></Image>
 			</AnimatedImage>
 		</div>
 	);

@@ -132,7 +132,7 @@ const ValueBox = ({ icon: Icon, title, order, className = "" }: ValueBoxProps) =
 			}`}
 			style={{
 				transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-				transitionDelay: isInView ? `${order * 0.15}s` : "0s",
+				transitionDelay: isInView ? `${order * 0.5}s` : "0s",
 			}}
 		>
 			<Icon className="self-end" />
@@ -230,7 +230,7 @@ const ServicesSection: React.FC = () => {
 								transitionDelay: taglineInView ? "0.2s" : "0s",
 							}}
 						>
-							<CTAButton href={links.contactPage} variant="tertiary">
+							<CTAButton href={links.aboutUs} variant="tertiary">
 								Poznaj się z nami
 							</CTAButton>
 						</div>
