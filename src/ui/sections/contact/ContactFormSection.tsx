@@ -239,7 +239,7 @@ const ContactSection: React.FC = () => {
 						<div className="flex w-full flex-col">
 							{selectedServices.length > 0 && (
 								<span className="mb-10 text-[1.063rem] leading-[160%]">
-									Skontakfuje się z Tobą:
+									Skontaktuje się z Tobą:
 								</span>
 							)}
 							<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
