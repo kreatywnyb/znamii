@@ -47,7 +47,6 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 				}
 			});
 
-			console.log("Zapisane pozycje sekcji:", positions);
 			setSectionPositions(positions);
 
 			// Po zapisaniu pozycji, sprawdzamy czy jest hash w URL

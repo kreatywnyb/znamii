@@ -259,7 +259,7 @@ const ServicesSection: React.FC = () => {
 						<div className="order-6 hidden md:block" />
 					</div>
 				</div>
-				<div className="mb-56 mt-10">
+				<div className="mb-36 mt-10 md:mb-56">
 					<PartnersSlider />
 				</div>
 			</div>

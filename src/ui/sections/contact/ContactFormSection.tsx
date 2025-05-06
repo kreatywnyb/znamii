@@ -139,6 +139,25 @@ const ContactSection: React.FC = () => {
 		});
 	};
 
+	const copyToClipboard = (text: string) => {
+		try {
+			navigator.clipboard
+				.writeText(text)
+				.then(() => {
+					setToast({
+						show: true,
+						message: "Skopiowano do schowka",
+						type: "success",
+					});
+				})
+				.catch((err) => {
+					console.error("Błąd podczas kopiowania do schowka:", err);
+				});
+		} catch (err) {
+			console.error("Wystąpił nieoczekiwany błąd:", err);
+		}
+	};
+
 	useEffect(() => {
 		setValue("services", []);
 	}, [setValue]);
@@ -191,7 +210,7 @@ const ContactSection: React.FC = () => {
 
 	return (
 		<motion.section
-			className="bg-basicDark pb-48 pt-20"
+			className="bg-basicDark pb-48 pt-12"
 			initial="hidden"
 			animate="visible"
 			variants={containerVariants}
@@ -221,24 +240,24 @@ const ContactSection: React.FC = () => {
 						wideo posłużą Ci na lata.
 					</motion.p>
 					<motion.div className="text-xl lg:text-[2.5rem]" variants={itemVariants}>
-						<motion.a
-							className="flex items-center gap-4 font-medium lg:gap-8"
-							href="tel:+48694211577"
+						<motion.div
+							className="flex cursor-pointer items-center gap-4 font-medium transition-transform active:scale-95 lg:gap-8"
+							onClick={() => copyToClipboard("+48694211577")}
 						>
 							<PhoneIcon className="max-lg:size-6" />{" "}
 							<p className="whitespace-nowrap">+48 694 211 577</p>
-						</motion.a>
-						<motion.a
-							className="mt-4 flex items-center justify-start gap-4 font-medium lg:mt-14 lg:gap-8"
-							href={`mailto:${contactMail}`}
+						</motion.div>
+						<motion.div
+							className="mt-4 flex cursor-pointer items-center justify-start gap-4 font-medium transition-transform active:scale-95 lg:mt-14 lg:gap-8"
+							onClick={() => copyToClipboard(contactMail)}
 						>
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
-						</motion.a>
+						</motion.div>
 					</motion.div>
 					<motion.div className="mt-auto flex w-full justify-between" variants={itemVariants}>
 						<div className="flex w-full flex-col">
 							{selectedServices.length > 0 && (
-								<span className="mb-10 text-[1.063rem] leading-[160%]">
+								<span className="text-[1.063rem] leading-[160%] max-md:mt-10 md:mb-10">
 									Skontaktuje się z Tobą:
 								</span>
 							)}
@@ -293,13 +312,13 @@ const ContactSection: React.FC = () => {
 						whileHover={{ boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.15)" }}
 						transition={{ duration: 0.3 }}
 					>
-						<motion.div
+						{/* <motion.div
 							className="absolute -right-4 -top-4 h-4 w-4 bg-primary"
 							initial={{ scale: 0 }}
 							animate={{ scale: 1, rotate: 180 }}
 							transition={{ delay: 0.7, duration: 0.5 }}
-						/>
-						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+						/> */}
+						<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 							<div>
 								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">

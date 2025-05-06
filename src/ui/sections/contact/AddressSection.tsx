@@ -22,7 +22,7 @@ const AddressSection: React.FC = () => {
 							numer. Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać
 							np. po... dużym szyldzie Znami.
 						</p>
-						<div className="flex flex-col py-6 max-md:space-y-2 md:flex-row md:space-x-2">
+						<div className="flex flex-col space-y-2 py-6">
 							<TerminalText
 								text="ul. okulickiego 18, 35-202 rzeszów"
 								// styles="py-6"

@@ -10,7 +10,7 @@ const Footer = () => {
 		<footer className="max-w-screen container fixed bottom-0 left-1/2 -z-10 -translate-x-1/2 md:h-96">
 			<div className="max-md:place-items-left grid grid-cols-1 font-medium md:grid-cols-3">
 				<h3 className="text-[2.5rem] max-md:mb-2">Poklikasz?</h3>
-				<div className="flex items-end text-[1.313rem] leading-[160%]">
+				<div className="flex items-end text-[1.313rem] leading-[160%] no-underline">
 					<div>{contactMail}</div>
 					<div>
 						<CopyButton textToCopy={contactMail} />
@@ -53,9 +53,11 @@ const Footer = () => {
 					Polityka prywatności
 				</Link>
 			</div>
-			<div className="max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs md:grid-cols-3">
+			<div className="max-md:place-items-left grid grid-cols-1 border-t border-[#00000022] py-4 font-geist text-xs max-md:pb-8 md:grid-cols-3">
 				<div className="block uppercase max-md:order-2 max-md:mt-4">©2025</div>
-				<div className="block uppercase max-md:order-1">ul. okulickiego 18, rzeszów</div>
+				<div className="block uppercase no-underline max-md:order-1">
+					ul. okulickiego 18, rzeszów
+				</div>
 				<a className="block uppercase max-md:hidden md:text-right" href="">
 					polityka prywatności
 				</a>

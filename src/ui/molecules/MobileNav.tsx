@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import NavItem from "../atoms/NavItem";
 import { links } from "@/constants";
-import NavItemExpanded from "../atoms/NavItemExpanded";
 import { CTAButton } from "./CTAButton";
 import { usePathname } from "next/navigation";
 
@@ -17,7 +16,7 @@ const MobileNav = () => {
 	}, [pathname]);
 
 	return (
-		<div className="flex h-full items-center text-xs md:hidden">
+		<div className="flex h-full items-center font-geist text-xs md:hidden">
 			<div
 				className="relative z-20 flex h-6 cursor-pointer flex-col justify-center space-y-2"
 				onClick={() => setIsOpen((prev) => !prev)}
@@ -41,11 +40,11 @@ const MobileNav = () => {
 					!isOpen && "z-0 -translate-y-[150%]",
 				)}
 			>
-				<ul className="flex flex-col space-y-4 text-base">
+				<ul className="flex flex-col space-y-4 text-xs uppercase">
 					<li>
 						<NavItem href={links.aboutUs}>Studio znami</NavItem>
 					</li>
-					<li>
+					{/* <li>
 						<NavItemExpanded
 							main={{ text: "Usługi" }}
 							subMenu={[
@@ -54,6 +53,15 @@ const MobileNav = () => {
 								{ href: `${links.services.main}/${links.services.photo}`, text: "Zdjęcia" },
 							]}
 						/>
+					</li> */}
+					<li className="transition-colors hover:text-primary">
+						<NavItem href={`${links.services.main}/${links.services.branding}`}>Branding</NavItem>
+					</li>
+					<li className="transition-colors hover:text-primary">
+						<NavItem href={`${links.services.main}/${links.services.video}`}>Video</NavItem>
+					</li>
+					<li className="transition-colors hover:text-primary">
+						<NavItem href={`${links.services.main}/${links.services.photo}`}>Zdjęcia</NavItem>
 					</li>
 					<li className="transition-colors hover:text-primary">
 						<NavItem href={links.portfolio}>Realizacje</NavItem>
@@ -63,7 +71,7 @@ const MobileNav = () => {
 					</li>
 				</ul>
 				<div className="mt-4 flex">
-					<CTAButton className="!px-4 !py-2 text-base" href={links.contactPage} variant="primary">
+					<CTAButton href={links.contactPage} variant="primary">
 						Zrealizuj projekt
 					</CTAButton>
 				</div>
