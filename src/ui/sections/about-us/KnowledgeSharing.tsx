@@ -46,11 +46,6 @@ const KnowledgeSharing = () => {
 			<div className="container flex flex-col max-lg:space-y-16 lg:flex-row">
 				<div className="flex max-w-[28.75rem] flex-col justify-between">
 					<div className="flex-1">
-						{/* <FlipWords
-							as="h2"
-							word={`Dzielimy się wiedzą, bo sharing is caring`}
-							className="mb-12 text-[2.5rem] leading-[3.125rem]"
-						/> */}
 						<FlipWords
 							as="h2"
 							word={`Dzielimy się wiedzą,\nbo sharing is caring`}
@@ -72,7 +67,13 @@ const KnowledgeSharing = () => {
 							animateWhenInView
 							styles="mb-10 inline-block font-geist text-[0.75rem] uppercase"
 						></TerminalTextEffect>
-						<Image alt="WSIZ Logo" src={wsizImg} width={800} height={800} className="h-20 w-auto" />
+						<Image
+							alt="WSIZ Logo"
+							src={wsizImg}
+							width={800}
+							height={800}
+							className="h-20 w-auto max-md:h-14"
+						/>
 					</div>
 				</div>
 				<div className="flex flex-1 flex-col">

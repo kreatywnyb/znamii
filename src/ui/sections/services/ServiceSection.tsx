@@ -177,6 +177,9 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 						</div>
 					</div>
 				</div>
+				<div className="container -mb-10 mt-20 text-5xl md:hidden">
+					<FlipWords word={"Nasze usługi"} as="h2"></FlipWords>
+				</div>
 				<SubServices sections={sections} />
 				<ServiceCTA />
 			</WhiteBox>

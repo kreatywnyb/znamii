@@ -54,7 +54,7 @@ const TeamMember = ({
 
 	return (
 		<motion.div
-			className="group flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-10 lg:flex-row"
+			className="group flex flex-col justify-between border-b border-lightGrey py-20 max-md:space-y-6 lg:flex-row"
 			key={`${item.name}-${idx}`}
 			initial="hidden"
 			animate={isInView ? "visible" : "hidden"}
@@ -68,7 +68,7 @@ const TeamMember = ({
 				onMouseLeave={() => setIsHovering(false)}
 			>
 				<Image alt={item.name} src={item.img} />
-				<div className="flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-2">
+				<div className="flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-4">
 					<span className="text-[1.313rem]">{item.name}</span>
 					<div
 						className="absolute z-30 hidden flex-col rounded-[0.188rem] border border-basicDark bg-white p-[3.125rem] md:group-hover:flex"
@@ -96,13 +96,15 @@ const TeamMember = ({
 				</div>
 			</div>
 			<div className="flex flex-col md:flex-row md:items-center">
-				<div className="flex flex-col font-geist text-xs max-md:space-y-4 md:flex-row">
+				{/* <div className="flex flex-col font-geist text-xs max-md:space-y-4 md:flex-row"> */}
+				<div className="flex flex-row flex-wrap font-geist text-xs">
 					{item.roles.map((role, idx) => (
 						<span
 							className={twMerge(
 								"relative inline-block whitespace-nowrap uppercase",
 								item.roles.length !== idx + 1 &&
-									"mr-4 pr-4 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:bg-basicDark max-md:after:hidden",
+									// "mr-4 pr-4 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:bg-basicDark max-md:after:hidden",
+									"mr-2 pr-2 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:translate-x-1/2 after:bg-basicDark md:mr-4 md:pr-4",
 							)}
 							key={`${role}-${idx}`}
 						>
