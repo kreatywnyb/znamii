@@ -231,7 +231,7 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 					// </div>
 				)}
 			</div>
-			<div className="container -mt-10 mb-10 w-full md:hidden">
+			<div className="container mb-10 mt-2 w-full md:hidden">
 				<CTAButton className="w-full" href={links.contactPage}>
 					zrealizuj projekt
 				</CTAButton>
