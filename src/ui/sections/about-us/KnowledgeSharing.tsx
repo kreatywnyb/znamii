@@ -42,14 +42,14 @@ const KnowledgeSharing = () => {
 	}, []);
 
 	return (
-		<section ref={sectionRef} className="overflow-hidden py-20 lg:py-40">
+		<section ref={sectionRef} className="overflow-hidden py-16 lg:py-40">
 			<div className="container flex flex-col max-lg:space-y-16 lg:flex-row">
 				<div className="flex max-w-[28.75rem] flex-col justify-between">
 					<div className="flex-1">
 						<FlipWords
 							as="h2"
 							word={`Dzielimy się wiedzą,\nbo sharing is caring`}
-							className="mb-12 text-[2.5rem] leading-[3.125rem]"
+							className="mb-10 text-[2.5rem] leading-[3.125rem] lg:mb-12"
 						/>
 
 						<p className="text-[1.313rem]">
@@ -61,7 +61,7 @@ const KnowledgeSharing = () => {
 							jeśli chcesz żebyśmy pojawili się także u Ciebie.
 						</p>
 					</div>
-					<div className="max-md:mt-8">
+					<div className="max-md:mt-10">
 						<TerminalTextEffect
 							text="Jesteśmy partnerem:"
 							animateWhenInView

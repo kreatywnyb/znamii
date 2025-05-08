@@ -6,8 +6,8 @@ const ServiceCTA = () => {
 	return (
 		<div className="container relative mt-20">
 			<div className="flex flex-col items-center justify-between bg-basicDark md:flex-row">
-				<div className="py-[3.75rem] max-md:px-4 md:pl-16">
-					<h3 className="text-[2.5rem] leading-tight text-white">
+				<div className="py-10 max-md:px-4 md:pl-16 lg:py-[3.75rem]">
+					<h3 className="text-3xl leading-tight text-white lg:text-[2.5rem]">
 						Śmianko w necie, wsparcie w świecie. <br /> Po projekcie doradzamy{" "}
 						<span className="text-primary">bezpłatnie!</span>
 					</h3>

@@ -36,7 +36,7 @@ const FAQSection: React.FC = () => {
 			<div>
 				<FlipWords
 					as="h2"
-					className="text-[2.5rem]"
+					className="text-4xl"
 					word="Fekju, fakju, FAQ. Czy jakoś tak..."
 				></FlipWords>
 			</div>
@@ -46,7 +46,7 @@ const FAQSection: React.FC = () => {
 						<div
 							className={twMerge(
 								"border-b border-lightGrey",
-								openFaq === faq.id && "border-basicDark",
+								// openFaq === faq.id && "border-basicDark",
 								idx === faqs.length - 1 && "border-none",
 							)}
 						>

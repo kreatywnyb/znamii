@@ -97,7 +97,7 @@ const MainSectionAboutUs = () => {
 				</motion.div>
 
 				<motion.div
-					className="relative mt-20"
+					className="relative mt-14 lg:mt-20"
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8, delay: 0.3 }}
@@ -105,7 +105,7 @@ const MainSectionAboutUs = () => {
 					<ImageSlider />
 				</motion.div>
 
-				<div className="mt-32 flex flex-col justify-between md:flex-row lg:pb-10">
+				<div className="mt-24 flex flex-col justify-between md:flex-row lg:mt-32 lg:pb-10">
 					<motion.div
 						ref={valuesRef}
 						className="md:pl-6"

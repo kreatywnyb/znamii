@@ -22,7 +22,7 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 			</div>
 			<div className="container -mt-72">
 				{video ? (
-					<video muted autoPlay className="w-full" src={video} controls></video>
+					<video muted playsInline loop autoPlay className="w-full" src={video} controls />
 				) : image ? (
 					<Image
 						src={image}
