@@ -69,14 +69,6 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 		return () => clearTimeout(timer);
 	}, [sections]);
 
-	// Funkcja aktualizująca URL z aktywną sekcją
-	// const updateUrlHash = (slug: string) => {
-	// 	if (!slug) return;
-	// 	// Aktualizujemy URL bez przewijania strony
-	// 	window.history.replaceState(null, "", `#${slug}`);
-	// 	console.log(`URL zaktualizowany do #${slug}`);
-	// };
-
 	// Śledzenie aktywnej sekcji na podstawie pozycji scrollowania
 	useEffect(() => {
 		// Funkcja określająca, która sekcja jest aktywna na podstawie aktualnej pozycji scrollowania
@@ -181,173 +173,27 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 
 			{/* Main Content */}
 			<div className="flex-1 border-lightGrey">
-				{sections.map(
-					(section) => (
-						<SingleSectionContent section={section} sectionRefs={sectionRefs} key={section.id} />
-					),
-					// <div
-					// 	key={section.id}
-					// 	id={section.slug}
-					// 	// ref={(el) => (sectionRefs.current[section.slug] = el)}
-					// 	ref={(el) => {
-					// 		sectionRefs.current[section.slug] = el;
-					// 	}}
-					// 	className="sticky top-[4rem] -mt-[1px] flex min-h-screen flex-col justify-start border-l border-t border-lightGrey bg-white max-md:px-4 max-md:pt-6 md:justify-center md:pl-10"
-					// >
-					// 	<div className="flex h-[42rem] w-full flex-col transition-opacity duration-500 ease-in-out">
-					// 		<div className="mb-6 md:mb-10 md:pr-8">
-					// 			<h2 className="mb-5 text-2xl font-medium md:text-3xl md:text-[2.5rem]">
-					// 				{section.title}
-					// 			</h2>
-					// 			<p className="text-base leading-normal md:text-[1.313rem] md:text-lg">
-					// 				{section.textTop}
-					// 			</p>
-					// 			<p className="mt-4 text-sm leading-normal text-darkGrey md:mt-5 md:text-[1.063rem] md:text-base">
-					// 				{section.textBottom}
-					// 			</p>
-					// 		</div>
-
-					// 		<div className="mt-auto flex w-full flex-col pr-8 md:flex-row md:justify-between md:space-x-10">
-					// 			<div className="mb-4 w-full flex-1 md:mb-0">
-					// 				<Image
-					// 					alt={section.imageLeft.alt}
-					// 					src={section.imageLeft.src}
-					// 					className="h-auto w-full object-cover object-center md:w-auto"
-					// 				/>
-					// 			</div>
-					// 			<div className="w-full flex-1 bg-blue-500">
-					// 				<Image
-					// 					alt={section.imageRight.alt}
-					// 					src={section.imageRight.src}
-					// 					className="hidden h-full !w-full object-cover object-center md:inline-block"
-					// 				/>
-					// 			</div>
-					// 		</div>
-
-					// 		<CTAButton className="mt-6 w-full md:hidden" href={links.contactPage}>
-					// 			zrealizuj projekt
-					// 		</CTAButton>
-					// 	</div>
-					// </div>
-				)}
-			</div>
-			<div className="container mb-10 mt-2 w-full md:hidden">
-				<CTAButton className="w-full" href={links.contactPage}>
-					zrealizuj projekt
-				</CTAButton>
+				{sections.map((section, idx) => (
+					<SingleSectionContent
+						showCtaButon={idx + 1 === sections.length}
+						section={section}
+						sectionRefs={sectionRefs}
+						key={section.id}
+					/>
+				))}
 			</div>
 		</div>
 	);
 }
 
-// export const SingleSectionContent = ({
-// 	section,
-// 	sectionRefs,
-// }: {
-// 	section: ScrollableSectionInterface;
-// 	sectionRefs: RefObject<Record<string, HTMLElement | null>>;
-// }) => {
-// 	// State to track which image is currently visible on mobile
-// 	const [showFirstImage, setShowFirstImage] = useState(true);
-
-// 	// Effect to toggle between images every 3 seconds on mobile
-// 	useEffect(() => {
-// 		// Only run the interval on mobile devices
-// 		const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-
-// 		if (isMobile) {
-// 			const interval = setInterval(() => {
-// 				setShowFirstImage((prev) => !prev);
-// 			}, 3000);
-
-// 			return () => clearInterval(interval);
-// 		}
-// 	}, []);
-
-// 	return (
-// 		<div
-// 			key={section.id}
-// 			id={section.slug}
-// 			ref={(el) => {
-// 				sectionRefs.current[section.slug] = el;
-// 			}}
-// 			className="sticky top-[4rem] -mt-[1px] flex min-h-screen flex-col justify-start border-l border-t border-lightGrey bg-white max-md:px-4 max-md:pt-6 md:justify-center md:pl-10"
-// 		>
-// 			<div className="flex h-[42rem] w-full flex-col transition-opacity duration-500 ease-in-out">
-// 				<div className="mb-6 md:mb-10 md:pr-8">
-// 					<h2 className="mb-5 text-2xl font-medium md:text-3xl md:text-[2.5rem]">
-// 						{section.title}
-// 					</h2>
-// 					<p className="text-base leading-normal md:text-[1.313rem] md:text-lg">
-// 						{section.textTop}
-// 					</p>
-// 					<p className="mt-4 text-sm leading-normal text-darkGrey md:mt-5 md:text-[1.063rem] md:text-base">
-// 						{section.textBottom}
-// 					</p>
-// 				</div>
-
-// 				<div className="mt-auto flex w-full flex-col pr-8 md:flex-row md:justify-between md:space-x-10">
-// 					{/* Left image container - visible on both mobile and desktop */}
-// 					<div className="mb-4 w-full flex-1 md:mb-0">
-// 						<Image
-// 							alt={section.imageLeft.alt}
-// 							src={section.imageLeft.src}
-// 							className="h-auto w-full object-cover object-center md:w-auto"
-// 						/>
-// 					</div>
-
-// 					{/* Right image container - holds the overlay on mobile */}
-// 					<div className="relative w-full flex-1 bg-blue-500">
-// 						{/* Desktop right image */}
-// 						<Image
-// 							alt={section.imageRight.alt}
-// 							src={section.imageRight.src}
-// 							className="hidden h-full !w-full object-cover object-center md:inline-block"
-// 						/>
-
-// 						{/* Mobile overlay container */}
-// 						<div className="absolute inset-0 h-full w-full md:hidden">
-// 							{/* First image (Left) with opacity toggle */}
-// 							<div
-// 								className="absolute inset-0 transition-opacity duration-1000"
-// 								style={{ opacity: showFirstImage ? 1 : 0 }}
-// 							>
-// 								<Image
-// 									alt={section.imageLeft.alt}
-// 									src={section.imageLeft.src}
-// 									className="h-full w-full object-cover object-center"
-// 								/>
-// 							</div>
-
-// 							{/* Second image (Right) with opacity toggle */}
-// 							<div
-// 								className="absolute inset-0 transition-opacity duration-1000"
-// 								style={{ opacity: showFirstImage ? 0 : 1 }}
-// 							>
-// 								<Image
-// 									alt={section.imageRight.alt}
-// 									src={section.imageRight.src}
-// 									className="h-full w-full object-cover object-center"
-// 								/>
-// 							</div>
-// 						</div>
-// 					</div>
-// 				</div>
-
-// 				<CTAButton className="mt-6 w-full md:hidden" href={links.contactPage}>
-// 					zrealizuj projekt
-// 				</CTAButton>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
 export const SingleSectionContent = ({
 	section,
 	sectionRefs,
+	showCtaButon,
 }: {
 	section: ScrollableSectionInterface;
 	sectionRefs: RefObject<Record<string, HTMLElement | null>>;
+	showCtaButon: boolean;
 }) => {
 	const [showFirstImage, setShowFirstImage] = useState(true);
 
@@ -427,13 +273,13 @@ export const SingleSectionContent = ({
 						/>
 					</div>
 				</div>
-
-				{/* <CTAButton
-					className={`mt-6 w-full !py-4 ${!showButton && "hidden"} md:hidden`}
-					href={links.contactPage}
-				>
-					zrealizuj projekt
-				</CTAButton> */}
+				{showCtaButon && (
+					<div className="mb-10 mt-10 w-full md:hidden">
+						<CTAButton className="w-full" href={links.contactPage}>
+							zrealizuj projekt
+						</CTAButton>
+					</div>
+				)}
 			</div>
 		</div>
 	);

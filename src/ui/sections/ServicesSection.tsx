@@ -156,7 +156,7 @@ const ServicesSection: React.FC = () => {
 						<ServiceHeading href={`${links.services.main}${links.services.branding}`}>
 							Branding
 						</ServiceHeading>
-						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
+						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
 							<ServiceMenuItem href={`${links.services.main}${links.services.video}#naming`}>
 								Logo
 							</ServiceMenuItem>
@@ -187,7 +187,7 @@ const ServicesSection: React.FC = () => {
 						<ServiceHeading href={`${links.services.main}${links.services.video}`}>
 							Video
 						</ServiceHeading>
-						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
+						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
 							<ServiceMenuItem>filmy Reklamowe</ServiceMenuItem>
 							<ServiceMenuItem>Eventy & Konferencje</ServiceMenuItem>
 							<ServiceMenuItem>filmy Korporacyjne</ServiceMenuItem>
@@ -200,7 +200,7 @@ const ServicesSection: React.FC = () => {
 						<ServiceHeading href={`${links.services.main}${links.services.photo}`}>
 							Zdjęcia
 						</ServiceHeading>
-						<ul className="space-y-3 text-xs font-normal uppercase text-lightGrey">
+						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
 							<ServiceMenuItem>sesje Wizerunkowe</ServiceMenuItem>
 							<ServiceMenuItem>Eventy & konfererencje</ServiceMenuItem>
 							<ServiceMenuItem>sesje Biznesowe</ServiceMenuItem>

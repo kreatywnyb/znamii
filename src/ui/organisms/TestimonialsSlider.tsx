@@ -126,11 +126,11 @@ const TestimonialsSlider = () => {
 	const sliderRef = useRef<Slider | null>(null);
 
 	return (
-		<div className="relative overflow-hidden -mx-[.4rem]">
+		<div className="relative -mx-[.4rem] overflow-hidden">
 			<Slider
 				ref={sliderRef}
 				{...settings}
-				className="h-full cursor-pointer py-16 pb-8 [&_.slick-track]:flex [&_.slick-track]:gap-4 "
+				className="h-full cursor-pointer py-16 pb-8 [&_.slick-track]:flex [&_.slick-track]:gap-4"
 			>
 				{opinions.map(({ text, id, author, authorImg, src, company }, idx) => {
 					return (
@@ -177,7 +177,7 @@ const TestimonialsSlider = () => {
 				})}
 			</Slider>
 
-			<div className="flex justify-end gap-2 p-[11px]">
+			<div className="flex justify-center gap-2 p-[11px] md:justify-end">
 				<button
 					className="flex h-10 w-10 items-center justify-center border border-basicDark text-basicDark transition-colors hover:bg-[#00000011]"
 					onClick={() => sliderRef.current?.slickPrev()}

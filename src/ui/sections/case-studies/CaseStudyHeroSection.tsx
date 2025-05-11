@@ -11,7 +11,7 @@ interface CaseStudyHeroSectionProps {
 const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, video, image }) => {
 	return (
 		<section className="mb-32">
-			<div className="bg-basicDark pb-96 pt-20 max-md:mb-8">
+			<div className="bg-basicDark pb-64 pt-20 md:pb-96">
 				<div className="container">
 					<FlipWords
 						word={title}
@@ -20,9 +20,11 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 					></FlipWords>
 				</div>
 			</div>
-			<div className="container -mt-72">
+			<div className="container relative lg:-mt-72">
 				{video ? (
-					<video muted playsInline loop autoPlay className="w-full" src={video} controls />
+					<div className="max-md:absolute max-md:left-4 max-md:right-4 max-md:top-0 max-md:-translate-y-1/2">
+						<video muted playsInline loop autoPlay className="w-full" src={video} controls />
+					</div>
 				) : image ? (
 					<Image
 						src={image}

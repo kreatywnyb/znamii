@@ -233,13 +233,13 @@ const ContactSection: React.FC = () => {
 					></FlipWords>
 
 					<motion.p
-						className="pb-[3.75rem] pr-20 pt-5 text-[1.063rem] leading-[160%]"
+						className="pr-20 pt-5 text-[1.063rem] leading-[160%] lg:pb-[3.75rem]"
 						variants={itemVariants}
 					>
 						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
 						wideo posłużą Ci na lata.
 					</motion.p>
-					<motion.div className="text-xl lg:text-[2.5rem]" variants={itemVariants}>
+					<motion.div className="hidden text-xl lg:block lg:text-[2.5rem]" variants={itemVariants}>
 						<motion.div
 							className="flex cursor-pointer items-center gap-4 font-medium transition-transform active:scale-95 lg:gap-8"
 							onClick={() => copyToClipboard("+48694211577")}
@@ -254,7 +254,10 @@ const ContactSection: React.FC = () => {
 							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
 						</motion.div>
 					</motion.div>
-					<motion.div className="mt-auto flex w-full justify-between" variants={itemVariants}>
+					<motion.div
+						className="mt-auto hidden w-full justify-between lg:flex"
+						variants={itemVariants}
+					>
 						<div className="flex w-full flex-col">
 							{selectedServices.length > 0 && (
 								<span className="text-[1.063rem] leading-[160%] max-md:mt-10 md:mb-10">
@@ -419,7 +422,7 @@ const ContactSection: React.FC = () => {
 								</div>
 							</div>
 
-							<div className="mb-3 flex flex-col items-center justify-between md:flex-row">
+							<div className="mb-3 flex flex-col justify-between md:flex-row md:items-center">
 								<div className="flex items-start">
 									<Controller
 										name="policy"
@@ -458,11 +461,87 @@ const ContactSection: React.FC = () => {
 							</div>
 
 							<motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-								<ButtonPrimary type="submit" className="w-full" isLoading={isSubmitting}>
+								<ButtonPrimary
+									type="submit"
+									className="w-full max-md:mt-10"
+									isLoading={isSubmitting}
+								>
 									Działamy z projektem
 								</ButtonPrimary>
 							</motion.div>
 						</form>
+					</motion.div>
+
+					<motion.div
+						className="mt-auto flex w-full justify-between lg:hidden"
+						variants={itemVariants}
+					>
+						<div className="flex w-full flex-col">
+							{selectedServices.length > 0 && (
+								<span className="text-[1.063rem] leading-[160%] max-md:mt-10 md:mb-10">
+									Skontaktuje się z Tobą:
+								</span>
+							)}
+							<div className="flex w-full max-w-[32.625rem] justify-between max-md:mt-10">
+								<motion.div
+									className="relative h-[10.875rem] w-[10.875rem]"
+									whileHover="hover"
+									variants={imageHoverVariants}
+								>
+									<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
+									<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
+									<motion.div
+										className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity`}
+										animate={{
+											opacity:
+												selectedServices.includes("Video") ||
+												selectedServices.includes("Zdjęcia") ||
+												selectedServices.includes("Współpraca")
+													? 0
+													: 1,
+										}}
+										transition={{ duration: 0.5 }}
+									/>
+								</motion.div>
+								<motion.div
+									className="relative h-[10.875rem] w-[10.875rem]"
+									whileHover="hover"
+									variants={imageHoverVariants}
+								>
+									<Image src={maksImage} alt="" className="h-full w-full border border-white" />
+									<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
+									<motion.div
+										className={`absolute left-0 top-0 h-full w-full bg-primary`}
+										animate={{
+											opacity:
+												selectedServices.includes("Branding") ||
+												selectedServices.includes("Współpraca")
+													? 0
+													: 1,
+										}}
+										transition={{ duration: 0.5 }}
+									/>
+								</motion.div>
+							</div>
+						</div>
+					</motion.div>
+					<motion.div
+						className="block text-xl max-md:mt-10 lg:hidden lg:text-[2.5rem]"
+						variants={itemVariants}
+					>
+						<motion.div
+							className="flex cursor-pointer items-center gap-4 font-medium transition-transform active:scale-95 lg:gap-8"
+							onClick={() => copyToClipboard("+48694211577")}
+						>
+							<PhoneIcon className="max-lg:size-6" />{" "}
+							<p className="whitespace-nowrap">+48 694 211 577</p>
+						</motion.div>
+						<motion.div
+							className="mt-4 flex cursor-pointer items-center justify-start gap-4 font-medium transition-transform active:scale-95 lg:mt-14 lg:gap-8"
+							onClick={() => copyToClipboard(contactMail)}
+						>
+							<EmailIcon className="max-lg:size-6" /> <p className="-mt-2">{contactMail}</p>
+						</motion.div>
 					</motion.div>
 				</motion.div>
 			</div>
