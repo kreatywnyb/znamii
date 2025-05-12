@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-	{ params }: { params: { slug: string } },
+	{ params }: { params: Promise<{ slug: string }> },
 	// parent: ResolvingMetadata,
 ): Promise<Metadata> {
 	try {
@@ -88,7 +88,8 @@ export async function generateMetadata(
 	};
 }
 
-const CaseStudyPage = async ({ params }: { params: { slug: string } }) => {
+const CaseStudyPage = async (props: { params: Promise<{ slug: string }> }) => {
+	const params = await props.params;
 	const response = await API.caseStudies.getCaseStudy(params.slug);
 
 	if (!response) return <div>Coś poszło nie tak</div>;
@@ -98,22 +99,22 @@ const CaseStudyPage = async ({ params }: { params: { slug: string } }) => {
 	return (
 		<main className="border-t border-darkGrey bg-background">
 			<CaseStudyHeroSection
-				title={caseStudy.company}
-				video={caseStudy.mainVideo?.url}
-				image={caseStudy.mainPhoto.url}
+				title={caseStudy?.company}
+				video={caseStudy?.mainVideo?.url}
+				image={caseStudy?.mainPhoto.url}
 			></CaseStudyHeroSection>
 			<CaseStudyDetailsSection
-				industry={caseStudy.industryArray}
-				workScope={caseStudy.scopeArray}
-				year={caseStudy.year}
+				industry={caseStudy?.industryArray}
+				workScope={caseStudy?.scopeArray}
+				year={caseStudy?.year}
 			/>
 			<CaseStudyAboutSection
-				leftDescription={caseStudy.descriptionLeft}
-				rightDescription={caseStudy.descriptionRight}
-				media={caseStudy.media}
-				doubleImageSectionsIndexes={caseStudy.doubleImageSectionsIndexes}
+				leftDescription={caseStudy?.descriptionLeft}
+				rightDescription={caseStudy?.descriptionRight}
+				media={caseStudy?.media}
+				doubleImageSectionsIndexes={caseStudy?.doubleImageSectionsIndexes}
 			></CaseStudyAboutSection>
-			<CtaSection image={CtaBgImg.src}></CtaSection>
+			<CtaSection image={CtaBgImg?.src}></CtaSection>
 		</main>
 	);
 };
