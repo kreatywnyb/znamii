@@ -83,11 +83,11 @@ export const TextGenerateEffect = ({
 									onAnimationComplete={onTerminalTextComplete}
 								/>
 							</span>
-							<span className="mx-auto inline-block max-w-[80%] md:hidden">
+							<span className="mx-auto inline-block max-w-[300px] p-4 md:hidden">
 								<TerminalText
 									speed={30}
 									text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
-									styles=" h-10 flex text-center"
+									styles="h-10 flex text-center"
 									onAnimationComplete={onTerminalTextComplete}
 								/>
 							</span>
