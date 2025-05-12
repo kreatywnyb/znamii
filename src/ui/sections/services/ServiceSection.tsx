@@ -137,11 +137,11 @@ const ServiceSection = ({ opinion, headingTwo, name, paragraph }: ServiceSection
 						<FlipWords word={name} as="h1"></FlipWords>
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
-						<div className="mt-11 flex flex-col-reverse md:flex-row md:space-x-16">
-							<CTAButton variant="primaryv2" className="max-md:mt-6" href={links.contactPage}>
+						<div className="mt-11 flex flex-col md:flex-row md:space-x-16">
+							<CTAButton variant="primaryv2" className="max-md:mb-6" href={links.contactPage}>
 								Zrealizuj projekt z nami
 							</CTAButton>
-							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white py-[0.875rem] pl-[1.375rem] pr-[1.188rem]">
+							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white px-[1.375rem] py-[0.875rem]">
 								<GoogleIcon className="h-[1.125rem] w-[1.125rem]" />
 								<div className="flex gap-0.5">
 									<StarIcon />

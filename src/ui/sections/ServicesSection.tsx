@@ -122,7 +122,7 @@ interface ValueBoxProps {
 
 // Value box component with animation
 const ValueBox = ({ icon: Icon, title, order, className = "" }: ValueBoxProps) => {
-	const { ref, isInView } = useInView({ threshold: 1, triggerOnce: true });
+	const { ref, isInView } = useInView({ threshold: 0.5, triggerOnce: true });
 
 	return (
 		<div
@@ -132,7 +132,7 @@ const ValueBox = ({ icon: Icon, title, order, className = "" }: ValueBoxProps) =
 			}`}
 			style={{
 				transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-				transitionDelay: isInView ? `${order * 0.5}s` : "0s",
+				transitionDelay: isInView ? `${order * 0.2}s` : "0s",
 			}}
 		>
 			<Icon className="self-end" />
@@ -240,19 +240,19 @@ const ServicesSection: React.FC = () => {
 							icon={PrecisionIcon}
 							title="Precyzja"
 							order={1}
-							className="order-1 max-w-[15.625rem] self-end rounded-br-none max-md:mt-auto"
+							className="order-1 max-w-[200px] self-end rounded-br-none max-md:mt-auto lg:max-w-[15.625rem]"
 						/>
 						<ValueBox
 							icon={EmpathyIcon}
 							title="Empatia"
 							order={2}
-							className="order-3 h-full w-full max-w-[15.625rem] rounded-bl-none max-md:-mt-[1px] max-md:ml-auto max-md:rounded-tl-none"
+							className="order-3 h-full w-full max-w-[200px] rounded-bl-none max-md:-mt-[1px] max-md:ml-auto max-md:rounded-tl-none lg:max-w-[15.625rem]"
 						/>
 						<ValueBox
 							icon={OpennessIcon}
 							title="Otwartość"
 							order={3}
-							className="order-5 -ml-[0.063rem] -mr-[0.063rem] -mt-[0.063rem] max-w-[15.75rem] rounded-t-none max-md:-mt-[2px]"
+							className="order-5 -ml-[1px] -mr-[1px] -mt-[0.063rem] max-w-[200px] rounded-t-none max-md:-mt-[2px] lg:max-w-[15.75rem]"
 						/>
 						<div className="order-2 hidden md:block" />
 						<div className="order-4 hidden md:block" />

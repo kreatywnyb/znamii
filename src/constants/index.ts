@@ -9,6 +9,7 @@ export const links = {
 		branding: "/branding",
 		photo: "/zdjecia",
 	},
+	privacyPolicy: "/polityka-prywatnosci",
 };
 
 export const contactMail = "kontakt@znami.co";

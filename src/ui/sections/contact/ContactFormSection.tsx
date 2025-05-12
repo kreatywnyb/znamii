@@ -6,7 +6,7 @@ import { Checkbox } from "@/ui/molecules/Checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
-import { contactMail } from "@/constants";
+import { contactMail, links } from "@/constants";
 import EmailIcon from "@/ui/icons/EmailIcon";
 import PhoneIcon from "@/ui/icons/PhoneIcon";
 import imagePawel from "@public/pawel.jpg";
@@ -448,7 +448,7 @@ const ContactSection: React.FC = () => {
 										className={`ml-2 cursor-pointer text-sm font-medium text-darkGrey ${isSubmitting ? "opacity-70" : ""}`}
 									>
 										Zapoznałem się z{" "}
-										<Link href="/policy" className="underline">
+										<Link href={links.privacyPolicy} className="underline">
 											Polityką Prywatności
 										</Link>
 									</label>

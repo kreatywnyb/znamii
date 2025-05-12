@@ -49,7 +49,7 @@ const Footer = () => {
 				<Link className="block uppercase md:text-right" href={links.portfolio}>
 					Projekty
 				</Link>
-				<Link className="block uppercase md:hidden md:text-right" href="">
+				<Link className="block uppercase md:hidden md:text-right" href={links.privacyPolicy}>
 					Polityka prywatności
 				</Link>
 			</div>
@@ -58,7 +58,7 @@ const Footer = () => {
 				<div className="block uppercase no-underline max-md:order-1">
 					ul. okulickiego 18, rzeszów
 				</div>
-				<a className="block uppercase max-md:hidden md:text-right" href="">
+				<a className="block uppercase max-md:hidden md:text-right" href={links.privacyPolicy}>
 					polityka prywatności
 				</a>
 			</div>
