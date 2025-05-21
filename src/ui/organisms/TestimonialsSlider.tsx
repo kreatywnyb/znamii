@@ -1,20 +1,13 @@
 "use client";
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import Image, { StaticImageData } from "next/image";
-import krzysztofImage from "@public/krzysztof-winiarski.webp";
-import magdaImage from "@public/magda-plaskacz.webp";
-import grzegorzImage from "@public/grzegorz-sowa.webp";
-import grzegorzMikulaImage from "@public/grzegorz-mikula.webp";
-import bartekImage from "@public/bartek-les.webp";
-import kamilImage from "@public/kamil-pormbinski.webp";
-import kasiaImage from "@public/kasia-wlodarczyk.webp";
-import raphaelImage from "@public/raphael-sheffield.webp";
+import Image from "next/image";
+
 
 interface Opinion {
 	id: number;
 	author: string;
-	authorImg: StaticImageData;
+	authorImg: string;
 	company: string;
 	src?: string;
 	text: string;
@@ -22,70 +15,72 @@ interface Opinion {
 
 const opinions: Opinion[] = [
 	{
+
+
 		id: 1,
 		author: "Krzysztof Winiarski",
-		authorImg: krzysztofImage,
+		authorImg: "https://api.znami.usermd.net/krzysztof-winiarski",
 		company: "AW-SPORT",
-		src: "/person-speaking.mp4",
+		src: "https://api.znami.usermd.net/opinie-aw-kwadrat/",
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
 	},
 	{
 		id: 2,
 		author: "Magda Plaskacz",
-		authorImg: magdaImage,
+		authorImg: "https://api.znami.usermd.net/magda-plaskacz",
 		company: "DR SNOW",
 		text: "Pełna profeska. Praca zawsze w miłej atmosferze, a jej efekty są zawsze mega zadowalające i co ważne - w szybkim terminie realizowane! Dzięki!",
 	},
 	{
 		id: 3,
 		author: "Grzegorz Sowa",
-		authorImg: grzegorzImage,
-		company: "DR SNOW",
+		authorImg: "https://api.znami.usermd.net/grzegorz-sowa",
+		company: "Resovia Basketball S.A.",
 		text: "Dziękujemy jako klub koszykarski Resovii Rzeszów za profesjonalnie wykonaną sesję zawodników Resovii, zdjęcia grupowe i indywidualne. Pełen profesjonalizm i terminowość!",
 	},
 	{
 		id: 4,
 		author: "Kasia Włodarczyk",
-		authorImg: kasiaImage,
-		company: "fundacja Generaacja",
-		src: "/person-speaking.mp4",
-		text: "XYZ",
+		authorImg: "https://api.znami.usermd.net/kasia-wlodarczyk",
+		company: "fundacja Generacja",
+		src: "https://api.znami.usermd.net/opinie-fundacja-kwadrat/",
+		text: "Chcąc opisać tę współpracę w kilku słowach, musiałabym użyć słów: uważność, komunikacja i efekt. Każdy element był dopracowany w najdrobniejszych szczegółach. ",
 	},
 	{
 		id: 5,
 		author: "Grzegorz Mikuła",
-		authorImg: grzegorzMikulaImage,
+		authorImg: "https://api.znami.usermd.net/grzegorz-mikula",
 		company: "hiFOOD",
-		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym."
 	},
 	{
 		id: 6,
 		author: "Raphael Sheffield",
-		authorImg: raphaelImage,
+		authorImg: "https://api.znami.usermd.net/raphael-sheffield",
 		company: "Safran aircraft engines poland",
-		text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
+		text: "Znami is a trusted partner of Safran aircraft engines Poland. We appreciate the very high quality of images (both still and motion) taken, and the very fast and perfect post-production treatment performed.",
 	},
 	{
 		id: 7,
 		author: "Bartek Leś",
-		authorImg: bartekImage,
+		authorImg: "https://api.znami.usermd.net/bartek-les",
 		company: "recovery lab",
-		src: "/person-speaking.mp4",
+		src: "https://api.znami.usermd.net/opinie-rl-kwadrat/",
 		text: "Zrobili dla mojej firmy całą stronę internetową (od brandu, przez materiały foto/wideo aż do kodowania i wypuszczenia jej w świat). Jestem bardzo zadowolony ze współpracy!",
 	},
 	{
 		id: 8,
 		author: "Kamil Porembiński",
-		authorImg: kamilImage,
+		authorImg: "https://api.znami.usermd.net/kamil-pormbinski",
 		company: "podcast spod wody",
 		text: "Paweł i jego ekipa to idealny wybór jeżeli szukasz realizacji związanych z wideo. Zawsze pomocni, mega merytoryczni i kreatywni! Polecam :)",
 	},
 	{
 		id: 9,
 		author: "Natalia Boniecka",
-		authorImg: kamilImage,
+		authorImg: "https://api.znami.usermd.net/natalia-boniecka",
 		company: "blawesome",
-		text: "Super profesjonaliści! Mega robota z zaprojektowaniem identyfikacji wizualnej dla Blawesome! 💛Polecam z całego serduszka!",
+		text: "Super profesjonaliści! Mega robota z zaprojektowaniem identyfikacji wizualnej dla Blawesome! 💛 Polecam z całego serduszka!",
 	},
 ];
 
@@ -162,7 +157,7 @@ const TestimonialsSlider = () => {
 
 									<div className="flex items-end gap-4 max-md:mt-4">
 										<div className="relative h-[60px] w-[60px] bg-primary">
-											<Image src={authorImg} className="h-full" alt="author" />
+											<Image width={60} height={60} src={authorImg} className="h-full" alt="Autor opinii" />
 											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
 										</div>
 										<div className={`${src ? "text-white" : "text-basicDark"}`}>

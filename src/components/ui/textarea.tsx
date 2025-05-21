@@ -1,22 +1,52 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
+// Interface for the clear method
+export interface TextareaMethods {
+	clear: () => void;
+}
+
+// Props interface
 interface TextareaProps extends React.ComponentProps<"textarea"> {
 	value?: string;
 	onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 	maxCharacters?: number;
+	clearMethod?: React.RefObject<TextareaMethods | null>;
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-	({ className, value = "", onChange, maxCharacters = 360, ...props }, ref) => {
+	({ className, value = "", onChange, maxCharacters = 360, clearMethod, ...props }, ref) => {
 		const [inputValue, setInputValue] = React.useState<string>(value || "");
 		const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 		const highlightRef = React.useRef<HTMLDivElement>(null);
+
 		const combinedRef = (node: HTMLTextAreaElement) => {
 			textareaRef.current = node;
 			if (typeof ref === "function") ref(node);
 			else if (ref) ref.current = node;
 		};
+
+		React.useImperativeHandle(clearMethod, () => ({
+			clear: () => {
+				setInputValue("");
+				if (textareaRef.current) {
+					textareaRef.current.value = "";
+
+					// Create and dispatch a change event to ensure React Hook Form is updated
+					const event = new Event("change", { bubbles: true });
+					textareaRef.current.dispatchEvent(event);
+
+					// If there's an onChange handler, call it with an empty value
+					if (onChange) {
+						const syntheticEvent = {
+							target: { value: "" },
+							currentTarget: { value: "" },
+						} as unknown as React.ChangeEvent<HTMLTextAreaElement>;
+						onChange(syntheticEvent);
+					}
+				}
+			},
+		}));
 
 		React.useEffect(() => {
 			setInputValue(value || "");
@@ -69,12 +99,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 					/* Desktop-only extra padding for scrollbar width */
 					/* .desktop-scrollbar-padding {
-						padding-right: 1.5rem;
-					} */
+            padding-right: 1.5rem;
+          } */
 				`}</style>
 				<div
 					ref={highlightRef}
-					className="invisible-scrollbar desktop-scrollbar-padding pr-8 absolute left-[0px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 text-[1.063rem] leading-[1.5rem] tracking-normal text-darkGrey"
+					className="invisible-scrollbar desktop-scrollbar-padding absolute left-[0px] top-[4px] w-full overflow-y-auto whitespace-pre-wrap break-words border border-transparent p-4 pr-8 text-[1.063rem] leading-[1.5rem] tracking-normal text-darkGrey"
 					style={{
 						pointerEvents: "none",
 						minHeight: "60px",
