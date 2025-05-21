@@ -16,10 +16,12 @@ import { ButtonPrimary } from "@/ui/molecules/ButtonPrimary";
 import InfoIcon from "@/ui/icons/InfoIcon";
 import SecurityIcon from "@/ui/icons/SecurityIcon";
 import Toast from "@/ui/molecules/Toast";
-import API from "@/API";
+// import API from "@/API";
 import { ContactFormData } from "@/API/models/contactFormData";
 import { motion } from "framer-motion";
 import { FlipWords } from "../../molecules/FlipWords";
+import { useRef } from "react";
+import API from "@/API";
 
 const MAX_MESSAGE_LENGTH = 360;
 
@@ -56,6 +58,8 @@ const ContactSection: React.FC = () => {
 		message: "",
 	});
 
+	const textareaRef = useRef<{ clear: () => void }>(null);
+
 	const services = ["Branding", "Video", "Zdjęcia", "Współpraca"];
 	const message = watch("message", "");
 	const remainingChars = MAX_MESSAGE_LENGTH - message.length;
@@ -77,7 +81,8 @@ const ContactSection: React.FC = () => {
 					message: "Wiadomość wysłana",
 					subMessage: "Zwykle odpisujemy w 24h",
 				});
-				// Reset form with complete options to ensure all state is cleared
+
+				// First, reset form with React Hook Form's reset
 				reset(
 					{
 						policy: false,
@@ -95,8 +100,13 @@ const ContactSection: React.FC = () => {
 						keepSubmitCount: false,
 					},
 				);
+
+				// Then explicitly clear the textarea
+				if (textareaRef.current) {
+					textareaRef.current.clear();
+				}
+
 				setSelectedServices([]);
-				// Explicitly clear all errors
 				clearErrors();
 			} else {
 				setToast({
@@ -118,7 +128,7 @@ const ContactSection: React.FC = () => {
 			setIsSubmitting(false);
 		}
 	};
-
+	
 	const handleCheckboxChange = (service: string, checked: boolean) => {
 		setSelectedServices((prevServices) => {
 			const updatedServices = checked
@@ -270,7 +280,11 @@ const ContactSection: React.FC = () => {
 									whileHover="hover"
 									variants={imageHoverVariants}
 								>
-									<Image src={imagePawel} alt="" className="h-full w-full border border-white" />
+									<img
+										src="https://api.znami.usermd.net/kontakt-pawel/"
+										alt=""
+										className="h-full w-full border border-white"
+									/>
 									<p className="absolute bottom-1 left-2 text-[1.313rem]">Paweł</p>
 									<motion.div
 										className={`absolute left-0 top-0 h-full w-full bg-primary transition-opacity`}
@@ -290,7 +304,11 @@ const ContactSection: React.FC = () => {
 									whileHover="hover"
 									variants={imageHoverVariants}
 								>
-									<Image src={maksImage} alt="" className="h-full w-full border border-white" />
+									<img
+										src="https://api.znami.usermd.net/kontakt-maks/"
+										alt=""
+										className="h-full w-full border border-white"
+									/>
 									<p className="absolute bottom-1 left-2 text-[1.313rem]">Maks</p>
 									<motion.div
 										className={`absolute left-0 top-0 h-full w-full bg-primary`}
@@ -410,8 +428,13 @@ const ContactSection: React.FC = () => {
 								<Textarea
 									placeholder="Opisz firmę i projekt ..."
 									{...register("message", { required: "*Opisz firmę i projekt" })}
-									className={`mt-1 w-full rounded-[2px] ${errors.message ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
+									className={`mt-1 w-full rounded-[2px] ${
+										errors.message
+											? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed"
+											: "border-basicDark"
+									}`}
 									disabled={isSubmitting}
+									clearMethod={textareaRef}
 								/>
 								<div
 									className={`mt-2 flex w-full items-center justify-end gap-1 ${isOverLimit ? "text-errorRed" : "text-darkGrey"}`}
