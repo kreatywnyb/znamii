@@ -64,6 +64,14 @@ export async function generateMetadata(
 				// ],
 				siteName: "Znami Studio",
 				locale: "pl_PL",
+				images: [
+					{
+						url: "https://api.znami.usermd.net/wp-content/uploads/2025/05/og-image.png",
+						width: 1200,
+						height: 630,
+						alt: "Kontakt - Znami",
+					},
+				],
 			},
 			//   twitter: {
 			//     card: 'summary_large_image',

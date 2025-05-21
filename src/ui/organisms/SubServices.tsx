@@ -241,14 +241,18 @@ export const SingleSectionContent = ({
 						<Image
 							alt={section.imageLeft.alt}
 							src={section.imageLeft.src}
-							className="h-auto w-full object-cover object-center md:w-auto"
+							width={1000}
+							height={1000}
+							className="aspect-[16/10] h-auto w-full object-cover object-center md:w-auto"
 						/>
 					</div>
 					<div className="w-full flex-1">
 						<Image
 							alt={section.imageRight.alt}
 							src={section.imageRight.src}
-							className="hidden h-full !w-full object-cover object-center md:inline-block"
+							width={1000}
+							height={1000}
+							className="hidden aspect-[16/10] h-full !w-full object-cover object-center md:inline-block"
 						/>
 					</div>
 				</div>
@@ -260,7 +264,9 @@ export const SingleSectionContent = ({
 						<Image
 							alt={section.imageLeft.alt}
 							src={section.imageLeft.src}
-							className="h-auto w-full object-cover object-center transition-opacity duration-1000 md:w-auto"
+							width={1000}
+							height={1000}
+							className="aspect-[16/10] h-auto w-full object-cover object-center transition-opacity duration-1000 md:w-auto"
 							style={{ opacity: showFirstImage ? 1 : 0 }}
 						/>
 					</div>
@@ -268,7 +274,9 @@ export const SingleSectionContent = ({
 						<Image
 							alt={section.imageRight.alt}
 							src={section.imageRight.src}
-							className="h-full !w-full object-cover object-center transition-opacity duration-1000"
+							width={1000}
+							height={1000}
+							className="aspect-[16/10] h-auto !w-full object-cover object-center transition-opacity duration-1000"
 							style={{ opacity: showFirstImage ? 0 : 1 }}
 						/>
 					</div>

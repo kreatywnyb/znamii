@@ -3,9 +3,9 @@ import { motion, useMotionValueEvent, useScroll, useInView } from "framer-motion
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
-import img1 from "@public/serv-img-1.webp";
+import { ProgressSectionItem } from "../sections/services/ProcessSection";
 
-const ProgressSection: React.FC = () => {
+const ProgressSection = ({ item }: { item: ProgressSectionItem }) => {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 	const isInView = useInView(contentRef, { once: true, amount: 0.3 });
@@ -90,26 +90,32 @@ const ProgressSection: React.FC = () => {
 					variants={slideInVariants}
 					className="relative aspect-square w-full max-w-full md:max-w-[15rem] lg:max-w-[17.5rem]"
 				>
-					<Image src={img1} alt="" className="h-full w-full object-cover object-center" />
+					<Image
+						width={2000}
+						height={2000}
+						src={item.img}
+						alt=""
+						className="h-full w-full object-cover object-center"
+					/>
 				</motion.div>
 				<motion.div
 					variants={slideInVariants}
 					className="flex-1 bg-white px-4 py-6 md:px-6 md:py-8 lg:px-10 lg:py-11"
 				>
-					<h3 className="text-xl md:text-[1.313rem]">1. Rozmawiamy o Twoich potrzebach</h3>
-					<p className="my-4 text-base text-darkGrey md:my-5 md:text-[1.063rem]">
-						Chcemy poznać Twoją markę oraz cele jakie ma do osiągnięcia. Dzięki temu będziemy w
-						stanie dostosować ofertę specjalnie dla Ciebie.
-					</p>
+					<h3 className="text-xl md:text-[1.313rem]">{item.title}</h3>
+					<p className="my-4 text-base text-darkGrey md:my-5 md:text-[1.063rem]">{item.content}</p>
 					<ul className="list-sq">
-						<li className="relative pl-3 text-base md:text-[1.063rem]">
-							<span className="absolute left-0 top-1/2 h-[0.313rem] w-[0.313rem] -translate-y-1/2 bg-basicDark" />
-							Przeprowadzamy briefing kreatywny i przygotowujemy ofertę
-						</li>
-						<li className="relative pl-3 text-base md:text-[1.063rem]">
+						{item.list.map((item, idx) => (
+							<li key={idx} className="relative pl-3 text-base md:text-[1.063rem]">
+								<span className="absolute left-0 top-1/2 h-[0.313rem] w-[0.313rem] -translate-y-1/2 bg-basicDark" />
+								{item}
+							</li>
+						))}
+
+						{/* <li className="relative pl-3 text-base md:text-[1.063rem]">
 							<span className="absolute left-0 top-1/2 h-[0.313rem] w-[0.313rem] -translate-y-1/2 bg-basicDark" />
 							Opracowujemy harmonogram prac
-						</li>
+						</li> */}
 					</ul>
 				</motion.div>
 			</motion.div>

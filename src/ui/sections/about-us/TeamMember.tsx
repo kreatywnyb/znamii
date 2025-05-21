@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, JSX } from "react";
-import Image, { StaticImageData } from "next/image";
+// import Image, { StaticImageData } from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion, useInView } from "framer-motion";
 
@@ -9,7 +9,8 @@ const TeamMember = ({
 	idx,
 }: {
 	item: {
-		img: StaticImageData;
+		// img: StaticImageData;
+		img: string;
 		roles: string[];
 		name: string;
 		socials: { link: string; icon: (props?: React.SVGProps<SVGSVGElement>) => JSX.Element };
@@ -67,7 +68,15 @@ const TeamMember = ({
 				onMouseEnter={() => setIsHovering(true)}
 				onMouseLeave={() => setIsHovering(false)}
 			>
-				<Image alt={item.name} src={item.img} />
+				{/* <Image alt={item.name} src={item.img} /> */}
+				<video
+					src={item.img}
+					muted
+					autoPlay
+					loop
+					playsInline
+					className="h-[10.875rem] w-[10.875rem]"
+				/>
 				<div className="flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-4">
 					<span className="text-[1.313rem]">{item.name}</span>
 					<div

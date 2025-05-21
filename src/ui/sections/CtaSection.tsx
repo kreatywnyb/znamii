@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect } from "react";
 import { CTAButton } from "../molecules/CTAButton";
 import { links } from "@/constants";
@@ -60,10 +60,9 @@ const CtaSection: React.FC<CtaSectionProps> = ({ title, text, image }) => {
 			>
 				<FlipWords
 					word={title || "Gotowy by zrealizować swój projekt z nami?"}
-					className="mb-4 max-w-[40rem] text-left text-[2rem] font-medium md:text-[3.625rem] md:leading-[125%] min-h-96:"
-				>
-				</FlipWords>
-				
+					className="min-h-96: mb-4 max-w-[47rem] text-left text-[2rem] font-medium md:text-[3.625rem] md:leading-[125%]"
+				></FlipWords>
+
 				<motion.p
 					className="mb-[3.75rem] text-[1.313rem] text-lg font-medium leading-[160%] text-lightGrey"
 					initial="hidden"
@@ -72,7 +71,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ title, text, image }) => {
 				>
 					{text || "Zrealizujemy projekty, które do tej pory były wyłącznie w Twojej głowie."}
 				</motion.p>
-				
+
 				<motion.div
 					initial="hidden"
 					animate={controls}

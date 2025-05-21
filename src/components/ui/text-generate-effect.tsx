@@ -78,7 +78,8 @@ export const TextGenerateEffect = ({
 								<TerminalText
 									speed={30}
 									// text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
-									text={`Znami to studio kreatywne, które zrealizuje dla Twojej firmy\nbranding, nagrania wideo i sesje zdjęciowe`}
+									// text={`Znami to studio kreatywne, które zrealizuje dla Twojej firmy\nbranding, nagrania wideo i sesje zdjęciowe`}
+									text={`Znami to studio kreatywne, które stworzy dla Twojej firmy branding, nagrania wideo i zdjęcia tak dobre,\nże nawet Twoja konkurencja zacznie je lajkować`}
 									styles=" h-10 flex text-center"
 									onAnimationComplete={onTerminalTextComplete}
 								/>

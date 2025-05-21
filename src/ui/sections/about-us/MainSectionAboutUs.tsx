@@ -77,21 +77,24 @@ const MainSectionAboutUs = () => {
 				>
 					<motion.div className="flex-1 md:basis-2/5" variants={textFadeIn}>
 						<FlipWords
-							word="Jak do tego doszło, nie wiem?"
+							word="Dlaczego warto nas wybrać? 🤔"
 							as="h2"
 							className="max-w-96 text-3xl font-medium lg:text-[2.5rem] lg:leading-[125%]"
 						></FlipWords>
 					</motion.div>
 					<motion.div className="ml-auto flex-1 md:basis-1/4" variants={firstParaFadeIn}>
 						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
-							Tutaj jakaś ckliwa historia jak pomogliśmy innym markom przekształcić ich pomysły w
-							rzeczywistość prawdź jak pomogliśmy innym markom przekształcić ich itede ite
+							Znami to kameralne studio kreatywne, które powstało z przyjaźni dwóch gości – Puciaka
+							i Maksa, którzy znają się od blisko 15 lat. Tak, to ten typ przyjaźni, w której nie ma
+							miejsca na spiny i sztywną atmosferę. Dokładnie tak samo traktujemy naszych klientów -
+							bez zbędnego zadęcia, za to z sercem i pełnym profesjonalizmem.
 						</p>
 					</motion.div>
 					<motion.div className="flex-1 md:basis-1/4" variants={secondParaFadeIn}>
 						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
-							Sprawdź jak pomogliśmy innym markom przekształc pomysły w rzeczywistość prawdź jak
-							pomogliśmy innym markom przekształcić ich pomysły.
+							Zrealizujemy dla Ciebie branding, sesje zdjęciowe i video. Informacje o postępach
+							otrzymasz zawsze z pierwszej ręki, a dzięki temu, że nie jesteśmy dużą agencją
+							kreatywną, możesz spać spokojnie - nie zrujnujemy Twojego portfela.
 						</p>
 					</motion.div>
 				</motion.div>
@@ -134,7 +137,7 @@ const MainSectionAboutUs = () => {
 								<h3 className="text-[2.5rem] leading-[50px]">Precyzja</h3>
 							</div>
 							<p className="text-[1.063rem] leading-[160%] tracking-[0.02em]">
-								Przesuwamy piksele z prawa na lewo, dopóki wszystko nie wygląda tak, jak powinno.
+								Przesuwamy piksele z prawej do lewej, dopóki wszystko nie wygląda tak, jak powinno.
 								Poprawiamy każdą niedoskonałość na zdjęciu czy filmie, bo wiemy, że to właśnie
 								detale robią różnicę. Czasami wracamy do projektu wiele razy, żeby upewnić się, że
 								każdy element gra w punkt. Nie jest to obsesja – to po prostu sposób, w jaki
@@ -160,7 +163,7 @@ const MainSectionAboutUs = () => {
 								problem, zrobimy poprawki, zmiksujemy pomysły i działamy dalej. Pomysły z kosmosu,
 								klienci z nietypowych branż czy niestandardowe zlecenia? Uwielbiamy takie wyzwania.
 								Otwartość to dla nas codzienność – to dzięki luźnej atmosferze tworzymy projekty,
-								które żyją, ewoluują i odpowiadają na potrzeby klienta.
+								które żyją, ewoluują i odpowiadają na Twoje potrzeby.
 							</p>
 						</motion.div>
 
@@ -177,10 +180,11 @@ const MainSectionAboutUs = () => {
 								<h3 className="text-[2.5rem] leading-[150%]">Empatia</h3>
 							</div>
 							<p className="text-[1.063rem] leading-[160%] tracking-[0.02em]">
-								Rozumiemy, że Twój projekt to coś więcej niż tylko zadanie – to Twój pomysł, wizja a
-								często także kawałek serca. Dlatego zawsze staramy się znaleźć czas, nawet gdy dzień
-								wydaje się za krótki. Utożsamiamy się z Twoimi celami, bo wiemy, że sukces Twojej
-								marki to także nasz sukces.
+								Rozumiemy, że projekt to coś więcej niż tylko zadanie – to Twój biznesi często także
+								kawał serducha, od którego zależy, co będzie dało się włożyć do garnka na koniec
+								miesiąca. Dlatego zawsze staramy się znaleźć czas dla naszych klientów, nawet gdy
+								dzień wydaje się zbyt krótki. Utożsamiamy się z Twoimi celami, bo wiemy, że sukces
+								Twojej marki to także nasz sukces.
 							</p>
 						</motion.div>
 					</div>

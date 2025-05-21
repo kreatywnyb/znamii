@@ -19,7 +19,7 @@ const AddressSection: React.FC = () => {
 					<div>
 						<p className="mb-4 text-[1.063rem] tracking-[0.02em]">
 							Jak dojechać? No nie ma łatwo, bo kilka budynków w okolicy ma przypisany ten sam
-							numer. Nasze biuro mieści się przy głównej ulicy,na prawo od Unimetu. Można je poznać
+							numer. Nasze biuro mieści się przy głównej ulicy, na prawo od Unimetu. Można je poznać
 							np. po... dużym szyldzie Znami.
 						</p>
 						<div className="flex flex-col space-y-2 py-6">
@@ -29,7 +29,7 @@ const AddressSection: React.FC = () => {
 								animateWhenInView
 							/>
 							<TerminalText
-								text="( chwilowo działamy zdalnie )"
+								text="( CHWILOWO działamy zdalnie 💔 )"
 								styles="text-red-500"
 								animateWhenInView
 							/>

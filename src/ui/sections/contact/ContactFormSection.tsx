@@ -229,7 +229,7 @@ const ContactSection: React.FC = () => {
 					<FlipWords
 						as="h1"
 						className="max-w-[28rem] leading-[125%] text-white"
-						word="Zrealizuj projekt razem z nami!"
+						word="Zrealizuj projekt razem z nami! 😊"
 					></FlipWords>
 
 					<motion.p

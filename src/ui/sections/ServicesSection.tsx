@@ -42,7 +42,7 @@ const useInView = (options: UseInViewOptions = {}) => {
 		return () => {
 			if (element) observer.unobserve(element);
 		};
-	}, [options, triggerOnce]);
+	}, [options, triggerOnce, observerOptions]);
 
 	return { ref, isInView };
 };
@@ -214,14 +214,11 @@ const ServicesSection: React.FC = () => {
 					<div className="flex flex-1 flex-col justify-between">
 						<div
 							ref={taglineRef as React.RefObject<HTMLParagraphElement>}
-							className={`mb-12 max-w-[600px] text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px] ${
+							className={`mb-12 max-w-[550px] text-3xl font-medium lg:text-[2.5rem] lg:leading-[50px] ${
 								taglineInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
 							}`}
 						>
-							<FlipWords
-								word="Wierzymy, że najlepsze pomysły rodzą się w atmosferze swobody. Dlatego działamy luźno,
-							a tworzymy sztywniutko."
-							></FlipWords>
+							<FlipWords word="Najlepsze pomysły rodzą się, gdy nie ma spiny 🥸 U nas możesz liczyć na szczerą komunikację, a projekt wyjdzie bueno."></FlipWords>
 						</div>
 						<div
 							className={`${taglineInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}

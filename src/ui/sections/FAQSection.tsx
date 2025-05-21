@@ -3,28 +3,13 @@ import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { FlipWords } from "../molecules/FlipWords";
 
-interface FAQ {
+export interface FAQ {
 	id: number;
 	question: string;
 	answear: string;
 }
 
-const faqs: FAQ[] = [
-	{
-		id: 1,
-		question: "Mam własny pomysł. Czy realizacja będzie dzięki temu tańsza?",
-		answear:
-			"Niestety nie. Nasz proces projektowy składa się z wielu etapów, w tym m. in. z badania rynku, opracowania strategii i zaprojektowania lub dopasowania projektu do całej identyfikacji wizualnej. Każdy z etapów odgrywa kluczową rolę w osiągnięciu finalnego rezultatu. Twoja inwestycja w nasze usługi zawsze obejmuje więc cały proces twórczy, a wszystkie pomysły i sugestie traktujemy po prostu jako dodatkowe wytyczne do projektu.",
-	},
-	{
-		id: 2,
-		question: "Czy mogę zamówić wyłącznie logo?",
-		answear:
-			"Tak, wraz z logo otrzymasz pełną dokumentację w postaci Księgi Znaku i stosowne prawa autorskie. Wierzymy jednak, że za sukcesem firm stoi prawidłowo opracowana strategia marki idąca w parze z całą identyfikacją wizualną i spójnie zaprojektowanymi treściami (jak np. sesja zdjęciowa czy strona internetowa). Zaprojektowanie nowego logo jest krokiem w dobrą stronę, ale by osiągać cele biznesowe, warto sięgnąć dalej.",
-	},
-];
-
-const FAQSection: React.FC = () => {
+const FAQSection = ({ faqs }: { faqs: FAQ[] }) => {
 	const [openFaq, setOpenFaq] = useState<number | null>(null);
 
 	const toggleFaq = (id: number): void => {
@@ -99,7 +84,7 @@ const FAQSection: React.FC = () => {
 								id={`faq-content-${faq.id}`}
 								className={twMerge(
 									"max-h-0 overflow-hidden transition-all duration-500 ease-in-out",
-									openFaq === faq.id && "max-h-96", // Dostosuj wartość max-h do najdłuższej odpowiedzi
+									openFaq === faq.id && "max-h-[36rem]", // Dostosuj wartość max-h do najdłuższej odpowiedzi
 								)}
 								aria-hidden={openFaq !== faq.id}
 							>
@@ -110,7 +95,7 @@ const FAQSection: React.FC = () => {
 										transform: openFaq === faq.id ? "translateY(0)" : "translateY(1rem)",
 									}}
 								>
-									{faq.answear}
+									<span dangerouslySetInnerHTML={{ __html: faq.answear }} />
 								</div>
 							</div>
 						</div>

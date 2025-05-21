@@ -9,21 +9,23 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Realizacje ▪ Znami Studio",
-	// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+	description:
+		"Znami to studio kreatywne, które stworzy dla Ciebie kompleksowy branding, sesje foto i wideo - profesjonalnie, na czas i w dobrej cenie! ",
 	// keywords: ["kontakt", "formularz kontaktowy", "adres", "telefon"],
 	openGraph: {
 		title: "Realizacje ▪ Znami Studio",
-		// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+		description:
+			"Znami to studio kreatywne, które stworzy dla Ciebie kompleksowy branding, sesje foto i wideo - profesjonalnie, na czas i w dobrej cenie! ",
 		type: "website",
 		// url: "https://twojastrona.pl/kontakt",
-		// images: [
-		// 	{
-		// 		url: "https://twojastrona.pl/img/og-contact.jpg",
-		// 		width: 1200,
-		// 		height: 630,
-		// 		alt: "Kontakt - Nazwa Twojej Firmy",
-		// 	},
-		// ],
+		images: [
+			{
+				url: "https://api.znami.usermd.net/wp-content/uploads/2025/05/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "Kontakt - Znami",
+			},
+		],
 	},
 	robots: {
 		// index: true,

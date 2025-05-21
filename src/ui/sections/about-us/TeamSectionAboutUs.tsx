@@ -5,15 +5,16 @@ import LinkedinIcon from "@/ui/icons/LinkedinIcon";
 import { CTAButton } from "@/ui/molecules/CTAButton";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import TerminalText from "@/ui/atoms/TerminalText";
-import pawelImg from "@public/pawel.webp";
-import { StaticImageData } from "next/image";
+// import pawelImg from "@public/pawel.webp";
+// import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { JSX, useRef } from "react";
 import { useInView } from "framer-motion";
 import TeamMember from "./TeamMember";
 
 const team: {
-	img: StaticImageData;
+	// img: StaticImageData;
+	img: string;
 	roles: string[];
 	name: string;
 	socials: { link: string; icon: (props?: React.SVGProps<SVGSVGElement>) => JSX.Element };
@@ -24,7 +25,8 @@ const team: {
 	};
 }[] = [
 	{
-		img: pawelImg,
+		// img: pawelImg,
+		img: "https://api.znami.usermd.net/wp-content/uploads/2025/05/Glowki-Puciak.mp4",
 		name: "Paweł “Puciak” Ciupak",
 		roles: ["współzałożyciel", "fotograf", "Videographer"],
 		socials: {
@@ -32,8 +34,8 @@ const team: {
 			icon: LinkedinIcon,
 		},
 		description: {
-			title: "Paweł Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
-			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			title: "Filmowiec, fotograf, wulkan energii 😏",
+			desc: "Specjalista od realizacji video oraz sesji zdjęciowych z kwitnącym doświadczeniem w zakresie motion designu. Prowadzi szkolenia z produkcji video. Jest duszą towarzystwa z magiczną zdolnością tworzenia swobodnej atmosfery, nawet na najbardziej drewnianych planach zdjęciowych. Gdy tylko klient nie ma nic przeciwko, to Puciak dzwoni zamiast pisać. Jest wszędzie, o wszystkim pamięta, przytuli.",
 			hobbies: [
 				"futbol amerykański",
 				"formuła 1",
@@ -45,7 +47,8 @@ const team: {
 		},
 	},
 	{
-		img: pawelImg,
+		// img: pawelImg,
+		img: "https://api.znami.usermd.net/wp-content/uploads/2025/05/Glowki-Maks.mp4",
 		name: "Maks Myśliwiec",
 		roles: ["współzałożyciel", "Brand Designer"],
 		socials: {
@@ -53,20 +56,21 @@ const team: {
 			icon: LinkedinIcon,
 		},
 		description: {
-			title: "Maks Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
-			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			title: "Brand designer z sercem marketera, cicha woda 🌊",
+			desc: "Na spotkaniach nie mówi za wiele, ale uważnie słucha i ma w zanadrzu mem na każdą okazję. Odpowiedzialny jest za identyfikacje wizualne, projekty stron internetowych, grafiki na media społecznościowe oraz te do druku. Od lat współpracuje z zespołami marketingowymi różnych firm i agencji. Wykłada na uczelni wyższej i czasem prowadzi prelekcje na konferencjach. Artystyczny łeb - nie zauważa powiadomień, gdy już wciągnie się w pracę.",
 			hobbies: [
-				"futbol amerykański",
-				"formuła 1",
-				"zimowe slalomy i hopki",
-				"lubi w playstation",
-				"czarna kawa",
-				"czarny humor",
+				"japonia i język japoński",
+				"muzyka z winyli",
+				"granie na gitarzu",
+				"gry retro",
+				"team biała czekolada",
+				"absurdalny humor",
 			],
 		},
 	},
 	{
-		img: pawelImg,
+		// img: pawelImg,
+		img: "https://api.znami.usermd.net/wp-content/uploads/2025/05/Glowki-Mati.mp4",
 		name: "Mateusz Sala",
 		roles: ["Kreatywny brand (PARTNER biznesowy)", "website development"],
 		socials: {
@@ -74,15 +78,14 @@ const team: {
 			icon: KbLogoIcon,
 		},
 		description: {
-			title: "Mateusz Filmowiec, fotograf, tatko, ojciec współzałożyciel 😏",
-			desc: "Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś mógł spokojnie",
+			title: "Gdzie Znami nie może, tam Mateusza pośle 😎",
+			desc: "Współzałożyciel agencji Kreatywny Brand, która jako nasz partner biznesowy, odpowiada za kodowanie i szerokopojęty development stron internetowych tworzonych przez Znami Studio. Często pojawia się na callach, by trzymać rękę na pulsie i móc sprawniej koordynować prace nad wdrożeniem stron. Posiada wieloletnie doświadczenie jako web i product designer.",
 			hobbies: [
-				"futbol amerykański",
-				"formuła 1",
-				"zimowe slalomy i hopki",
-				"lubi w playstation",
-				"czarna kawa",
-				"czarny humor",
+				"smart home i automatyzacje",
+				"produkty firmy apple",
+				"ostre sosy",
+				"kawka z przelewu",
+				"śmieszy go disco polo",
 			],
 		},
 	},
@@ -112,7 +115,7 @@ const TeamSectionAboutUs = () => {
 						{isTerminalInView && (
 							<Link
 								href={links.contactPage}
-								className="underline ml-2"
+								className="ml-2 underline"
 								style={{
 									opacity: 0,
 									animation: "fadeIn .5s ease-in-out 1.5s forwards",
