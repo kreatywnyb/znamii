@@ -128,7 +128,7 @@ const ContactSection: React.FC = () => {
 			setIsSubmitting(false);
 		}
 	};
-	
+
 	const handleCheckboxChange = (service: string, checked: boolean) => {
 		setSelectedServices((prevServices) => {
 			const updatedServices = checked
@@ -246,7 +246,7 @@ const ContactSection: React.FC = () => {
 						className="pr-20 pt-5 text-[1.063rem] leading-[160%] lg:pb-[3.75rem]"
 						variants={itemVariants}
 					>
-						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a branding, zdjęcia i
+						Też nie lubimy formularzy, ale pamiętaj, że to minuta roboty, a&nbsp;branding, zdjęcia i
 						wideo posłużą Ci na lata.
 					</motion.p>
 					<motion.div className="hidden text-xl lg:block lg:text-[2.5rem]" variants={itemVariants}>

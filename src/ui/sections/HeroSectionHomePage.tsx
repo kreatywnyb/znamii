@@ -20,7 +20,8 @@ const HeroSectionHomePage = () => {
 
 				<div className="absolute left-1/2 top-1/2 z-[10] -translate-x-1/2 -translate-y-1/2 max-md:w-full">
 					<video
-						src="/hero-video-min.mp4"
+						// src="/hero-video-min.mp4"
+						src="https://api.znami.usermd.net/hero-video/"
 						className="h-fit animate-fadeIn opacity-0 max-md:w-full"
 						style={{ animationFillMode: "forwards", animationDuration: "1s" }}
 						autoPlay

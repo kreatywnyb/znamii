@@ -248,7 +248,7 @@ const BrandingPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/Znami-Studio-Header-video" />
+			<HeroSectionServicesPage video="https://api.znami.usermd.net/znami-studio-header-branding/" />
 			<ServiceSection
 				name="Branding"
 				headingTwo="Dobry branding jest jak ubranie - nie tylko dobrze wygląda, ale jest funkcjonalny i odzwierciedla charakter osoby, a w tym przypadku firmy. Jej tożsamość i wartości. "
@@ -260,9 +260,10 @@ const BrandingPage = async () => {
 					text: "Jeżeli nasi klienci pytają, kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 				}}
 				sections={sections}
+				ctaVideo="https://api.znami.usermd.net/z-telefonem-maks/"
 			/>
 			<ProcessSection elements={progressItems} />
-			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady! 🤤" />
 			<FAQSection faqs={faqs} />
 			<CtaSection image={CtaBgImg.src} />
 		</main>

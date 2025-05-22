@@ -48,7 +48,7 @@ const KnowledgeSharing = () => {
 					<div className="flex-1">
 						<FlipWords
 							as="h2"
-							word={`Dzielimy się wiedzą,\nbo sharing is caring`}
+							word={`Dzielimy się wiedzą,\nbo sharing is caring 💬`}
 							className="mb-10 text-[2.5rem] leading-[3.125rem] lg:mb-12"
 						/>
 

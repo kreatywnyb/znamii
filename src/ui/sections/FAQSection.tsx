@@ -22,7 +22,7 @@ const FAQSection = ({ faqs }: { faqs: FAQ[] }) => {
 				<FlipWords
 					as="h2"
 					className="text-4xl"
-					word="Fekju, fakju, FAQ. Czy jakoś tak..."
+					word="Fekju, fakju, FAQ 🧐 Czy jakoś tak..."
 				></FlipWords>
 			</div>
 			<section className="mt-14 space-y-4">

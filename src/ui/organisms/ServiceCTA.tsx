@@ -2,7 +2,11 @@ import React from "react";
 import { CTAButton } from "../molecules/CTAButton";
 import { links } from "@/constants";
 
-const ServiceCTA = () => {
+interface IServiceCTAProps {
+	videoSrc: string;
+}
+
+const ServiceCTA = ({ videoSrc }: IServiceCTAProps) => {
 	return (
 		<div className="container relative mt-20">
 			<div className="flex flex-col items-center justify-between bg-basicDark md:flex-row">
@@ -19,7 +23,7 @@ const ServiceCTA = () => {
 					</CTAButton>
 				</div>
 				<div className="flex">
-					<video src="/video-1.mp4" className="md:max-h-[22rem]" autoPlay loop muted playsInline />
+					<video src={videoSrc} className="md:max-h-[22rem]" autoPlay loop muted playsInline />
 				</div>
 			</div>
 			<div className="absolute right-0 top-full h-4 w-4 bg-primary" />

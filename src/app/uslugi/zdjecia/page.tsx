@@ -261,9 +261,10 @@ const FotoPage = async () => {
 					text: "Wszystko poszło sprawnie, atmosfera była na luzie, a zdjęcia wyszły świetnie. Widać, że pełen profesjonalizm, ale bez sztywności. Na pewno jeszcze wrócę!",
 				}}
 				sections={sections}
+				ctaVideo="https://api.znami.usermd.net/z-telefonem-puciak/"
 			/>
 			<ProcessSection elements={progressItems} />
-			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady! 🤤" />
 			<FAQSection faqs={faqs} />
 			<CtaSection image={CtaBgImg.src} />
 		</main>

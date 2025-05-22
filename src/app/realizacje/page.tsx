@@ -43,7 +43,7 @@ export default async function CaseStudiesPage() {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionWithText headingText="Fachuuura! W sensie nasze portfolio" />
+			<HeroSectionWithText headingText="Fachuuura! W sensie nasze portfolio 👀" />
 			<WhiteBox className="relative z-10 mb-[30rem] [&>div]:-mt-64">
 				<div className="container">
 					<CaseStudiesList caseStudies={caseStudies} filters={filters} />

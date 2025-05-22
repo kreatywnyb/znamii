@@ -19,6 +19,7 @@ export type ServiceSectionProps = {
 		text: string;
 	};
 	sections: ScrollableSectionInterface[];
+	ctaVideo: string;
 };
 
 const ServiceSection = ({
@@ -27,12 +28,13 @@ const ServiceSection = ({
 	name,
 	paragraph,
 	sections,
+	ctaVideo,
 }: ServiceSectionProps) => {
 	return (
 		<section className="">
 			<WhiteBox className="relative z-10 md:[&>div]:-mt-[12%]">
 				<div className="container flex flex-col justify-between lg:flex-row">
-					<div className="max-w-[780px] flex-1">
+					<div className="max-w-[50rem] flex-1">
 						<FlipWords word={name} as="h1"></FlipWords>
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
@@ -86,7 +88,7 @@ const ServiceSection = ({
 					<FlipWords word={"Nasze usługi"} as="h2"></FlipWords>
 				</div>
 				<SubServices sections={sections} />
-				<ServiceCTA />
+				<ServiceCTA videoSrc={ctaVideo} />
 			</WhiteBox>
 		</section>
 	);

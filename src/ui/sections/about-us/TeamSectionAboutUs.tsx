@@ -98,7 +98,7 @@ const TeamSectionAboutUs = () => {
 	return (
 		<WhiteBox>
 			<div className="container">
-				<h2 className="mb-0 text-[2.5rem] leading-[50px] lg:mb-0">Aleście ekipę zmontowali</h2>
+				<h2 className="mb-0 text-[2.5rem] leading-[50px] lg:mb-0">Aleście ekipę zmontowali 😅</h2>
 				<div className="flex flex-col">
 					{team.map((item, idx) => (
 						<TeamMember key={idx} item={item} idx={idx} />

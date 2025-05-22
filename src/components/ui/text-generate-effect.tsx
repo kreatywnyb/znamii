@@ -4,6 +4,12 @@ import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 import React from "react";
 import TerminalText from "@/ui/atoms/TerminalText";
+import { Funnel_Display } from "next/font/google";
+
+const funnelDisplay = Funnel_Display({
+	variable: "--font-funnel-display",
+	subsets: ["latin"],
+});
 
 export const TextGenerateEffect = ({
 	bigWords,
@@ -47,7 +53,10 @@ export const TextGenerateEffect = ({
 	// 🔹 Renderowanie dużych słów (spadają z góry)
 	const renderWords = () => {
 		return (
-			<motion.div ref={scope} className="inline-flex flex-wrap justify-center sm:space-x-6">
+			<motion.div
+				ref={scope}
+				className={`inline-flex flex-wrap justify-center sm:space-x-6 ${funnelDisplay.className} tracking-[-0.02em]`}
+			>
 				{wordsArray.map((word, idx) => (
 					<motion.span
 						key={word + idx}
@@ -87,7 +96,7 @@ export const TextGenerateEffect = ({
 							<span className="mx-auto inline-block max-w-[300px] p-4 md:hidden">
 								<TerminalText
 									speed={30}
-									text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy branding, nagrania wideo i sesje zdjęciowe"
+									text="Znami to studio kreatywne, które stworzy dla Twojej firmy branding, nagrania wideo i zdjęcia tak dobre, że nawet Twoja konkurencja zacznie je lajkować"
 									styles="h-10 flex text-center"
 									onAnimationComplete={onTerminalTextComplete}
 								/>

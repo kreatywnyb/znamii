@@ -276,9 +276,10 @@ const VideoPage = async () => {
 					text: "Paweł i jego ekipa to idealny wybór jeżeli szukasz realizacji związanych z wideo.Zawsze pomocni, mega merytoryczni i kreatywni! Polecam :)",
 				}}
 				sections={sections}
+				ctaVideo="https://api.znami.usermd.net/z-telefonem-puciak/"
 			/>
 			<ProcessSection elements={progressItems} />
-			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady!" />
+			<SmallCaseStudiesSection caseStudies={caseStudies} title="Pa tu, jakie fajne przykłady! 🤤" />
 			<FAQSection faqs={faqs} />
 			<CtaSection image={CtaBgImg.src} />
 		</main>

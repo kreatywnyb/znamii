@@ -236,14 +236,14 @@ export const SingleSectionContent = ({
 
 				{/* DESKTOP */}
 
-				<div className="mt-auto hidden w-full flex-col pr-8 md:flex md:flex-row md:justify-between md:space-x-10">
+				<div className="hidden w-full flex-col pr-8 md:flex md:flex-row md:justify-between md:space-x-10">
 					<div className="mb-4 w-full flex-1 md:mb-0">
 						<Image
 							alt={section.imageLeft.alt}
 							src={section.imageLeft.src}
 							width={1000}
 							height={1000}
-							className="aspect-[16/10] h-auto w-full object-cover object-center md:w-auto"
+							className="aspect-[16/10] h-auto !w-full object-cover object-center md:w-auto"
 						/>
 					</div>
 					<div className="w-full flex-1">

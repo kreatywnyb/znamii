@@ -83,7 +83,7 @@ const MainSectionAboutUs = () => {
 						></FlipWords>
 					</motion.div>
 					<motion.div className="ml-auto flex-1 md:basis-1/4" variants={firstParaFadeIn}>
-						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
+						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[22rem]">
 							Znami to kameralne studio kreatywne, które powstało z przyjaźni dwóch gości – Puciaka
 							i Maksa, którzy znają się od blisko 15 lat. Tak, to ten typ przyjaźni, w której nie ma
 							miejsca na spiny i sztywną atmosferę. Dokładnie tak samo traktujemy naszych klientów -
@@ -91,7 +91,7 @@ const MainSectionAboutUs = () => {
 						</p>
 					</motion.div>
 					<motion.div className="flex-1 md:basis-1/4" variants={secondParaFadeIn}>
-						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[320px]">
+						<p className="text-[1.063rem] font-medium leading-[160%] md:max-w-[22rem]">
 							Zrealizujemy dla Ciebie branding, sesje zdjęciowe i video. Informacje o postępach
 							otrzymasz zawsze z pierwszej ręki, a dzięki temu, że nie jesteśmy dużą agencją
 							kreatywną, możesz spać spokojnie - nie zrujnujemy Twojego portfela.
