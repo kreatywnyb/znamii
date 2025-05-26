@@ -3,18 +3,24 @@ import CaseStudyAboutSection from "@/ui/sections/case-studies/CaseStudyAboutSect
 import CaseStudyDetailsSection from "@/ui/sections/case-studies/CaseStudyDetailsSection";
 import CaseStudyHeroSection from "@/ui/sections/case-studies/CaseStudyHeroSection";
 import CtaSection from "@/ui/sections/CtaSection";
-import CtaBgImg from "@public/cta-poster-3.webp";
+import CtaBgImg from "@public/cta-poster-1.webp";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const revalidate = 30;
 
 export async function generateStaticParams() {
-	const response = await API.caseStudies.getCaseStudies();
-	const caseStudies = response.data;
+	try {
+		const response = await API.caseStudies.getCaseStudies();
+		const caseStudies = response.data;
 
-	return caseStudies.map((caseStudy) => ({
-		slug: caseStudy.slug,
-	}));
+		return caseStudies.map((caseStudy) => ({
+			slug: caseStudy.slug,
+		}));
+	} catch (error) {
+		console.error("Error generating static params:", error);
+		return [];
+	}
 }
 
 export async function generateMetadata(
@@ -24,22 +30,39 @@ export async function generateMetadata(
 	try {
 		const { slug } = await params;
 		const response = await API.caseStudies.getCaseStudy(slug);
-		const caseStudy = response.data[0].caseStudyData;
+		
+		// Check if response exists and has data
+		if (!response || !response.data || response.data.length === 0) {
+			return {
+				title: "Case Study Not Found - Znami Studio",
+				description: "The requested case study could not be found.",
+			};
+		}
 
-		// Utwórz opis z fragmentów opisu case study lub użyj domyślnego
+		const caseStudy = response.data[0]?.caseStudyData;
+		
+		// Check if caseStudyData exists
+		if (!caseStudy) {
+			return {
+				title: "Case Study Not Found - Znami Studio",
+				description: "The requested case study could not be found.",
+			};
+		}
+
+		// Create description from case study fragments or use default
 		let description = "";
 		if (caseStudy.descriptionLeft) {
-			// Pobierz pierwsze 160 znaków opisu
+			// Get first 160 characters of description
 			description = caseStudy.descriptionLeft.substring(0, 160);
 			if (description.length === 160) description += "...";
 		} else {
-			description = `Realizacja dla firmy ${caseStudy.company}. Zakres prac: ${caseStudy.scopeArray.join(", ")}.`;
+			description = `Realizacja dla firmy ${caseStudy.company}. Zakres prac: ${caseStudy.scopeArray?.join(", ") || ""}. `;
 		}
 
 		const keywords = [
 			caseStudy.company,
-			...caseStudy.industryArray,
-			...caseStudy.scopeArray,
+			...(caseStudy.industryArray || []),
+			...(caseStudy.scopeArray || []),
 			"realizacja",
 			"case study",
 			"Znami Studio",
@@ -88,43 +111,57 @@ export async function generateMetadata(
 			//   }
 		};
 	} catch (err) {
-		console.log(err);
+		console.error("Error generating metadata:", err);
+		return {
+			title: "Case Study Not Found - Znami Studio",
+			description: "The requested case study could not be found.",
+		};
 	}
-
-	return {
-		title: "Znami Studio",
-	};
 }
 
 const CaseStudyPage = async (props: { params: Promise<{ slug: string }> }) => {
 	const params = await props.params;
-	const response = await API.caseStudies.getCaseStudy(params.slug);
+	
+	try {
+		const response = await API.caseStudies.getCaseStudy(params.slug);
 
-	if (!response) return <div>Coś poszło nie tak</div>;
+		// Check if response exists and has data
+		if (!response || !response.data || response.data.length === 0) {
+			notFound();
+		}
 
-	const caseStudy = response.data[0].caseStudyData;
+		const caseStudyData = response.data[0]?.caseStudyData;
+		
+		// Check if caseStudyData exists
+		if (!caseStudyData) {
+			notFound();
+		}
 
-	return (
-		<main className="border-t border-darkGrey bg-background">
-			<CaseStudyHeroSection
-				title={caseStudy?.company}
-				video={caseStudy?.mainVideo?.url}
-				image={caseStudy?.mainPhoto.url}
-			></CaseStudyHeroSection>
-			<CaseStudyDetailsSection
-				industry={caseStudy?.industryArray}
-				workScope={caseStudy?.scopeArray}
-				year={caseStudy?.year}
-			/>
-			<CaseStudyAboutSection
-				leftDescription={caseStudy?.descriptionLeft}
-				rightDescription={caseStudy?.descriptionRight}
-				media={caseStudy?.media}
-				doubleImageSectionsIndexes={caseStudy?.doubleImageSectionsIndexes}
-			></CaseStudyAboutSection>
-			<CtaSection image={CtaBgImg?.src}></CtaSection>
-		</main>
-	);
+		return (
+			<main className="border-t border-darkGrey bg-background">
+				<CaseStudyHeroSection
+					title={caseStudyData?.company}
+					video={caseStudyData?.mainVideo?.url}
+					image={caseStudyData?.mainPhoto?.url}
+				></CaseStudyHeroSection>
+				<CaseStudyDetailsSection
+					industry={caseStudyData?.industryArray || []}
+					workScope={caseStudyData?.scopeArray || []}
+					year={caseStudyData?.year}
+				/>
+				<CaseStudyAboutSection
+					leftDescription={caseStudyData?.descriptionLeft}
+					rightDescription={caseStudyData?.descriptionRight}
+					media={caseStudyData?.media || []}
+					doubleImageSectionsIndexes={caseStudyData?.doubleImageSectionsIndexes || []}
+				></CaseStudyAboutSection>
+				<CtaSection image={CtaBgImg?.src}></CtaSection>
+			</main>
+		);
+	} catch (error) {
+		console.error("Error fetching case study:", error);
+		notFound();
+	}
 };
 
 export default CaseStudyPage;

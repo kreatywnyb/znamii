@@ -26,6 +26,8 @@ export interface Video {
     noControls?: boolean;
     muted?: boolean;
     loop?: boolean;
+    height?: number;
+    width?: number;
     autoplay?: boolean;
     playsInline?: boolean;
     description?: string;

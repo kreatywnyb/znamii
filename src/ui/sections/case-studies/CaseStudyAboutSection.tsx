@@ -11,9 +11,7 @@ interface CaseStudyAboutSectionProps {
 	leftDescription: string;
 	rightDescription?: string;
 	rightDescription2?: string;
-	// You can accept either separate arrays or a combined media array
 	media?: CombinedMediaItem[];
-	// Or keep supporting the old interface for backward compatibility
 	photos?: MediaItem[];
 	videos?: Video[];
 	doubleImageSectionsIndexes?: number[];
@@ -29,15 +27,54 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 	doubleImageSectionsIndexes = [],
 }) => {
 	// Combine media items if separate arrays are provided
-	const allMedia: CombinedMediaItem[] = media.length > 0 
-		? media 
-		: [
-			...photos.map(photo => ({ ...photo, type: photo.type || "image" })),
-			...videos.map(video => ({ ...video, type: video.type || "video" })),
-		];
+	const allMedia: CombinedMediaItem[] =
+		media.length > 0
+			? media
+			: [
+					...photos.map((photo) => ({ ...photo, type: photo.type || "image" })),
+					...videos.map((video) => ({ ...video, type: video.type || "video" })),
+				];
 
 	const isDoubleImageSection = (index: number) => {
 		return doubleImageSectionsIndexes.includes(index);
+	};
+
+	const renderMediaItem = (mediaItem: CombinedMediaItem, className: string = "") => (
+		<AnimatedMedia
+			animateDesktop={mediaItem.animateDesktop ?? true}
+			animateMobile={mediaItem.animateMobile ?? false}
+			maxZoom={1.1}
+			showOverlay={true}
+		>
+			{isImage(mediaItem) ? (
+				<Image
+					src={mediaItem.url}
+					alt={mediaItem.alt || "Case study image"}
+					width={mediaItem.width || 800}
+					height={mediaItem.height || 600}
+					className={`h-full w-full object-cover ${className}`}
+				/>
+			) : (
+				<video
+					className={`h-full w-full object-cover ${className}`}
+					title={mediaItem.title}
+					controls={!mediaItem.noControls}
+					muted={mediaItem.muted}
+					loop={mediaItem.loop}
+					autoPlay={mediaItem.autoplay}
+					playsInline={mediaItem.playsInline}
+				>
+					<source src={mediaItem.url} type={mediaItem.mime} />
+					Your browser does not support the video tag.
+				</video>
+			)}
+		</AnimatedMedia>
+	);
+
+	const calculateAspectRatio = (mediaItem: CombinedMediaItem): number => {
+		const width = mediaItem.width || 800;
+		const height = mediaItem.height || 600;
+		return width / height;
 	};
 
 	const renderMedia = () => {
@@ -55,75 +92,28 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						const currentMedia = media;
 						const nextMedia = allMedia[index + 1];
 
+						// Calculate aspect ratios
+						const currentAspectRatio = calculateAspectRatio(currentMedia);
+						const nextAspectRatio = calculateAspectRatio(nextMedia);
+
 						return (
 							<div key={`double-${index}`}>
 								{currentMedia.description && (
-									<div className="my-16 text-lg md:pr-2 md:max-w-[50%] mx-4">{currentMedia.description}</div>
+									<div className="mx-4 my-16 text-lg md:max-w-[50%] md:pr-2">
+										{currentMedia.description}
+									</div>
 								)}
 
-								<div className="flex flex-col md:flex-row md:space-x-4 md:space-y-0">
-									<div className="mb-4 flex-grow">
-										<AnimatedMedia
-											animateDesktop={currentMedia.animateDesktop ?? true}
-											animateMobile={currentMedia.animateMobile ?? false}
-											maxZoom={1.1}
-											showOverlay={true}
-										>
-											{isImage(currentMedia) ? (
-												<Image
-													src={currentMedia.url}
-													alt={currentMedia.alt || "Case study image"}
-													width={currentMedia.width || 800}
-													height={currentMedia.height || 600}
-													className="h-full w-full object-cover"
-												/>
-											) : (
-												<video 
-													className="w-full" 
-													title={currentMedia.title}
-													controls={!currentMedia.noControls}
-													muted={currentMedia.muted}
-													loop={currentMedia.loop}
-													autoPlay={currentMedia.autoplay}
-													playsInline={currentMedia.playsInline}
-												>
-													<source src={currentMedia.url} type={currentMedia.mime} />
-													Your browser does not support the video tag.
-												</video>
-											)}
-										</AnimatedMedia>
+								<div className="mb-4 flex flex-col gap-4 md:flex-row">
+									<div className="min-w-0 flex-1" style={{ flex: `${currentAspectRatio} 1 0%` }}>
+										<div className="w-full" style={{ aspectRatio: currentAspectRatio.toString() }}>
+											{renderMediaItem(currentMedia, "h-full object-cover")}
+										</div>
 									</div>
-
-									<div className="mb-4 flex-grow">
-										<AnimatedMedia
-											animateDesktop={nextMedia.animateDesktop ?? true}
-											animateMobile={nextMedia.animateMobile ?? false}
-											maxZoom={1.1}
-											showOverlay={true}
-										>
-											{isImage(nextMedia) ? (
-												<Image
-													src={nextMedia.url}
-													alt={nextMedia.alt || "Case study image"}
-													className="w-full object-cover h-full"
-													width={nextMedia.width || 800}
-													height={nextMedia.height || 600}
-												/>
-											) : (
-												<video 
-													className="w-full h-full" 
-													title={nextMedia.title}
-													controls={!nextMedia.noControls}
-													muted={nextMedia.muted}
-													loop={nextMedia.loop}
-													autoPlay={nextMedia.autoplay}
-													playsInline={nextMedia.playsInline}
-												>
-													<source src={nextMedia.url} type={nextMedia.mime} />
-													Your browser does not support the video tag.
-												</video>
-											)}
-										</AnimatedMedia>
+									<div className="min-w-0 flex-1" style={{ flex: `${nextAspectRatio} 1 0%` }}>
+										<div className="w-full" style={{ aspectRatio: nextAspectRatio.toString() }}>
+											{renderMediaItem(nextMedia, "h-full object-cover")}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -132,40 +122,19 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						displayedIndices.add(index);
 
 						return (
-							<div key={`single-${index}`} className="w-full last:mb-0 mb-4">
+							<div key={`single-${index}`} className="mb-4 w-full last:mb-0">
 								{media.description && (
-									<div className="my-16 text-lg md:max-w-[50%] mx-4">{media.description}</div>
+									<div className="mx-4 my-16 text-lg md:max-w-[50%]">{media.description}</div>
 								)}
 
-								<AnimatedMedia
-									animateDesktop={media.animateDesktop ?? true}
-									animateMobile={media.animateMobile ?? false}
-									maxZoom={1.1}
-									showOverlay={true}
+								<div
+									className="w-full"
+									style={{
+										aspectRatio: calculateAspectRatio(media).toString(),
+									}}
 								>
-									{isImage(media) ? (
-										<Image
-											src={media.url}
-											alt={media.alt || "Case study image"}
-											width={media.width || 800}
-											height={media.height || 600}
-											className="h-full w-full object-cover"
-										/>
-									) : (
-										<video 
-											className="w-full h-full object-cover" 
-											title={media.title}
-											controls={!media.noControls}
-											muted={media.muted}
-											loop={media.loop}
-											autoPlay={media.autoplay}
-											playsInline={media.playsInline}
-										>
-											<source src={media.url} type={media.mime} />
-											Your browser does not support the video tag.
-										</video>
-									)}
-								</AnimatedMedia>
+									{renderMediaItem(media)}
+								</div>
 							</div>
 						);
 					}
@@ -176,9 +145,17 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 
 	return (
 		<WhiteBox className="my-8 [&>div]:md:p-16">
-			<div className="container flex flex-col justify-between max-lg:space-y-4 lg:flex-row lg:space-x-10">
+			<div className="container flex min-h-32 flex-col justify-between max-lg:space-y-4 lg:flex-row lg:space-x-10">
 				<div className="flex max-w-[28rem] flex-col justify-between">
-					<p className="text-[1.313rem]">{leftDescription}</p>
+					<p className="text-[1.313rem]">
+						{" "}
+						{leftDescription?.split(/\r\n|\r|\n/).map((line, index, array) => (
+							<React.Fragment key={index}>
+								{line}
+								{index < array.length - 1 && <br />}
+							</React.Fragment>
+						))}
+					</p>
 					<span className="hidden md:block">
 						<CTAButton variant="primaryv2" href={links.contactPage}>
 							Zrealizuj projekt z nami
@@ -186,12 +163,14 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 					</span>
 				</div>
 				<div className="max-w-[40rem] max-md:mt-20">
-					{rightDescription ? (
-						<div
-							className="[&>p:not(:last-child)]:mb-12"
-							dangerouslySetInnerHTML={{ __html: rightDescription }}
-						></div>
-					) : null}
+					<div className="[&>p:not(:last-child)]:mb-12">
+						{rightDescription?.split(/\r\n|\r|\n/).map((line, index, array) => (
+							<React.Fragment key={index}>
+								{line}
+								{index < array.length - 1 && <br />}
+							</React.Fragment>
+						))}
+					</div>
 					{rightDescription2 && <p>{rightDescription2}</p>}
 					<span className="mt-10 block md:hidden">
 						<CTAButton variant="primaryv2" href={links.contactPage}>
