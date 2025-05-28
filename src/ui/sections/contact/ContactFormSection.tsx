@@ -48,7 +48,7 @@ const ContactSection: React.FC = () => {
 			policy: false,
 			services: [],
 		},
-		mode: "onChange", // Changed from default 'onSubmit' to 'onChange'
+		mode: "onSubmit",
 	});
 	const [selectedServices, setSelectedServices] = useState<string[]>([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -374,7 +374,7 @@ const ContactSection: React.FC = () => {
 							<div>
 								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
-										Jak się do ciebie zwracać
+										Jak się do ciebie zwracać?
 									</label>
 									{errors.name && (
 										<p className="text-[1.063rem] text-errorRed">{errors.name.message}</p>
@@ -383,7 +383,7 @@ const ContactSection: React.FC = () => {
 								<Input
 									{...register("name", { required: "*Wpisz swoje imię / pseudonim" })}
 									className={`mt-1 w-full rounded-[2px] ${errors.name ? "border-errorRed bg-[#FFF1F2] placeholder:text-errorRed" : "border-basicDark"}`}
-									placeholder="Imię"
+									placeholder="Imię i nazwisko"
 									disabled={isSubmitting}
 								/>
 							</div>
@@ -419,7 +419,7 @@ const ContactSection: React.FC = () => {
 							<div>
 								<div className="mb-3 flex flex-col justify-between md:flex-row">
 									<label className="block text-[1.063rem] font-medium text-basicDark">
-										Opowiedz co cię sprowadza
+										Opowiedz, co Cię sprowadza
 									</label>
 									{errors.message && (
 										<p className="text-[1.063rem] text-errorRed">{errors.message.message}</p>

@@ -15,7 +15,7 @@ const ProcessSection = ({ elements }: { elements: ProgressSectionItem[] }) => {
 		<section className="pt-20">
 			<div className="container mb-16">
 				<FlipWords
-					word="Jasny proces to najlesze rezultaty ✌️"
+					word="Jasny proces to najlepsze rezultaty ✌️"
 					className="mb-4 mt-8 text-left text-4xl font-medium text-basicDark"
 				></FlipWords>
 			</div>

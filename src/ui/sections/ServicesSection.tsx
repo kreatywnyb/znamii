@@ -157,27 +157,27 @@ const ServicesSection: React.FC = () => {
 							Branding
 						</ServiceHeading>
 						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
-							<ServiceMenuItem href={`${links.services.main}${links.services.video}#naming`}>
+							<ServiceMenuItem href={`${links.services.main}${links.services.branding}#naming`}>
+								Naming
+							</ServiceMenuItem>
+							<ServiceMenuItem href={`${links.services.main}${links.services.branding}#logo`}>
 								Logo
 							</ServiceMenuItem>
 							<ServiceMenuItem
-								href={`${links.services.main}${links.services.video}#identyfikacja-wizualna`}
+								href={`${links.services.main}${links.services.branding}#identyfikacja-wizualna`}
 							>
-								identyfikacje wizualne
+								Identyfikacja wizualna
 							</ServiceMenuItem>
-							<ServiceMenuItem href={`${links.services.main}${links.services.video}#web-design`}>
+							<ServiceMenuItem href={`${links.services.main}${links.services.branding}#web-design`}>
 								Strony internetowe
 							</ServiceMenuItem>
-							<ServiceMenuItem href={`${links.services.main}${links.services.video}#naming`}>
-								Naming
-							</ServiceMenuItem>
 							<ServiceMenuItem
-								href={`${links.services.main}${links.services.video}#projekty-do-druku`}
+								href={`${links.services.main}${links.services.branding}#projekty-do-druku`}
 							>
-								projekty do druku
+								Projekty do druku
 							</ServiceMenuItem>
 							<ServiceMenuItem
-								href={`${links.services.main}${links.services.video}#uslugi-abonamentowe`}
+								href={`${links.services.main}${links.services.branding}#uslugi-abonamentowe`}
 							>
 								obsługa abonamentowa
 							</ServiceMenuItem>
@@ -188,12 +188,36 @@ const ServicesSection: React.FC = () => {
 							Video
 						</ServiceHeading>
 						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
-							<ServiceMenuItem>filmy Reklamowe</ServiceMenuItem>
-							<ServiceMenuItem>Eventy & Konferencje</ServiceMenuItem>
-							<ServiceMenuItem>filmy Korporacyjne</ServiceMenuItem>
-							<ServiceMenuItem>Webinary & podcasty</ServiceMenuItem>
-							<ServiceMenuItem>SPOTY SPOŁECZNE</ServiceMenuItem>
-							<ServiceMenuItem>obsługa abonamentowa</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#filmy-reklamowe`}
+							>
+								filmy Reklamowe
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#eventy-i-konferencje`}
+							>
+								Eventy & Konferencje
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#filmy-korporacyjne`}
+							>
+								filmy Korporacyjne
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#webinary-i-podcasty`}
+							>
+								Webinary & podcasty
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#spoty-spoleczne`}
+							>
+								SPOTY SPOŁECZNE
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.video}#uslugi-abonamentowe`}
+							>
+								obsługa abonamentowa
+							</ServiceMenuItem>
 						</ul>
 					</div>
 					<div className="">
@@ -201,12 +225,36 @@ const ServicesSection: React.FC = () => {
 							Zdjęcia
 						</ServiceHeading>
 						<ul className="space-y-3 text-base font-normal uppercase text-lightGrey md:text-xs">
-							<ServiceMenuItem>sesje Wizerunkowe</ServiceMenuItem>
-							<ServiceMenuItem>Eventy & konfererencje</ServiceMenuItem>
-							<ServiceMenuItem>sesje Biznesowe</ServiceMenuItem>
-							<ServiceMenuItem>fotografia produktowa</ServiceMenuItem>
-							<ServiceMenuItem>zdjęcia z drona</ServiceMenuItem>
-							<ServiceMenuItem>obsługa abonamentowa</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#sesje-biznesowe`}
+							>
+								sesje biznesowe
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#eventy-i-konferencje`}
+							>
+								Eventy & konfererencje
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#sesje-wizerunkowe`}
+							>
+								sesje wizerunkowe
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#fotografia-produktowa`}
+							>
+								fotografia produktowa
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#zdjecia-z-drona`}
+							>
+								zdjęcia z drona
+							</ServiceMenuItem>
+							<ServiceMenuItem
+								href={`${links.services.main}${links.services.photo}#uslugi-abonamentowe`}
+							>
+								obsługa abonamentowa
+							</ServiceMenuItem>
 						</ul>
 					</div>
 				</div>
