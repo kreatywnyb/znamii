@@ -1,6 +1,8 @@
+"use client";
 import { FlipWords } from "@/ui/molecules/FlipWords";
 import React from "react";
 import Image from "next/image";
+import ReactPlayer from "react-player";
 
 interface CaseStudyHeroSectionProps {
 	title: string;
@@ -23,24 +25,26 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 			<div className="container relative lg:-mt-72">
 				{video ? (
 					<div className="max-md:absolute max-md:left-4 max-md:right-4 max-md:top-0 max-md:-translate-y-1/2">
-						<video
-							// muted
-							// playsInline
-							// webkit-playsinline="true"
-							// loop
-							// autoPlay
-							// className="w-full"
-							// src={video}
-							// controls
+						{/* <video
 							muted
 							playsInline
+							webkit-playsinline="true"
 							loop
 							autoPlay
 							className="w-full"
 							src={video}
 							controls
-							disablePictureInPicture
-							controlsList="nodownload nofullscreen noremoteplayback"
+						/> */}
+						<ReactPlayer
+							url={video}
+							width="100%"
+							height="100%"
+							loop
+							muted
+							playing
+							controls
+							playsinline
+							className="h-full w-full object-cover"
 						/>
 					</div>
 				) : image ? (
