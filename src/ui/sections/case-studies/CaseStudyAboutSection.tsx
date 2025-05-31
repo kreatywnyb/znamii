@@ -62,7 +62,7 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 					muted={mediaItem.muted}
 					loop={mediaItem.loop}
 					autoPlay={mediaItem.autoplay}
-					playsInline={mediaItem.playsInline}
+					playsInline
 				>
 					<source src={mediaItem.url} type={mediaItem.mime} />
 					Your browser does not support the video tag.
