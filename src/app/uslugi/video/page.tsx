@@ -12,11 +12,13 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Video ▪ Znami Studio",
-	// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+	description:
+		"Tworzymy treści wideo wspierające wizerunek marki. Produkujemy m.in. filmy reklamowe, produktowe, z eventów, webinary i video na social media.",
 	// keywords: ["kontakt", "formularz kontaktowy", "adres", "telefon"],
 	openGraph: {
 		title: "Video ▪ Znami Studio",
-		// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+		description:
+			"Tworzymy treści wideo wspierające wizerunek marki. Produkujemy m.in. filmy reklamowe, produktowe, z eventów, webinary i video na social media.",
 		type: "website",
 		// url: "https://twojastrona.pl/kontakt",
 		images: [
@@ -44,11 +46,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Zaczynamy od briefu, na podstawie którego opracowujemy koncepcję i harmonogram zdjęć. Organizujemy plan zdjęciowy – scenografię, oświetlenie, ekipę. Po nagraniach przechodzimy do montażu, dodajemy animacje, efekty dźwiękowe, lektora oraz elementy video marketingowe. Finalny film dostarczamy w formatach gotowych do publikacji na social mediach, w telewizji czy kampaniach internetowych.",
 		slug: "filmy-reklamowe",
 		imageLeft: {
-			alt: "",
+			alt: "Ujęcie z konferencji - profesjonalna relacja wideo z eventu firmowego od Znami Studio",
 			src: "https://api.znami.usermd.net/filmy-reklamowe-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Nagrania wideo na żywo - usługa filmowania eventów i spotkań biznesowych realizowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/filmy-reklamowe-img-2/",
 		},
 	},
@@ -61,11 +63,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Dbamy o swój dress code i pracujemy dyskretnie, by nie zakłócać przebiegu wydarzenia, a jednocześnie uchwycić wszystkie kluczowe momenty. Poza nagraniami wideo oferujemy także zdjęcia z eventów i dynamiczne podsumowania montażowe. Gotowe filmy nadają się do publikacji w social mediach, na stronach internetowych, jako materiały promocyjne czy firmowe archiwum. Materiały video z eventów sprawdzą się świetnie do sprzedaży kolejnych edycji wydarzenia i podtrzymywania zainteresowania pomiędzy nimi. Przygotujemy wideo zarówno w poziomych formatach, jak i wideo w formatach pionowych.",
 		slug: "eventy-i-konferencje",
 		imageLeft: {
-			alt: "",
+			alt: "Backstage filmu korporacyjnego - profesjonalna produkcja wideo dla firm realizowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/eventy-i-konferencje-image-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Spotkanie firmowe z prezentacją - ujęcie do filmu korporacyjnego promującego działalność firmy realizowanego przez Znami",
 			src: "https://api.znami.usermd.net/eventy-i-konferencje-image-2/",
 		},
 	},
@@ -95,11 +97,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Zapewniamy wysokiej jakości obraz i dźwięk dzięki profesjonalnemu sprzętowi. Pracujemy nad montażem, dodając napisy, intro, dźwiękowe dżingle, które podnoszą atrakcyjność nagrań. Dla webinarów oferujemy wsparcie w transmisji na żywo i zapis materiału do późniejszego wykorzystania (np. do reels czy jako treści do organicznego wykorzystania w social mediach).",
 		slug: "webinary-i-podcasty",
 		imageLeft: {
-			alt: "",
+			alt: "Prowadząca webinar w trakcie nagrania - profesjonalna produkcja webinarów i podcastów realizowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/webinary-i-podcasty-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Prowadząca webinar przy laptopie - kadr z realizacji transmisji i nagrań online przez Znami Studio",
 			src: "https://api.znami.usermd.net/webinary-i-podcasty-img-2/",
 		},
 	},
@@ -109,14 +111,14 @@ const sections: ScrollableSectionInterface[] = [
 		textTop:
 			"Spoty społeczne to filmy, które mają angażować odbiorcę i zwracać uwagę na ważne tematy. Tworzymy materiały dla organizacji pozarządowych, firm realizujących działania CSR czy inicjatyw społecznych, również tych dotowanych przez państwo czy UE.",
 		textBottom:
-			"Pracę zaczynamy od analizy grupy docelowej i dopasowania formy filmu do oczekiwanych emocji i reakcji. Dbamy o scenariusz, nagrania i montaż – tworząc spoty, które mogą być gotowe do emisji w telewizji, na social mediach lub w kampaniach internetowych. Staramy się dbać o dostępność treści, dlatego do filmów dodajemy także animacje czy napisy, które zwiększają ich zrozumienie.",
+			"Pracę zaczynamy od analizy grupy docelowej i dopasowania formy filmu do oczekiwanych emocji i reakcji. Dbamy o scenariusz, nagrania i montaż – tworząc spoty, które mogą być gotowe do emisji w telewizji, na social mediach lub w kampaniach internetowych. Staramy się dbać o dostępność treści, dlatego do filmów dodajemy także animacje czy napisy, które zwiększają ich zrozumienie.",
 		slug: "spoty-spoleczne",
 		imageLeft: {
-			alt: "",
+			alt: "Backstage z realizacji filmu społecznego - produkcja wideo realizowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/spoty-spoleczne-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Ujęcie z kampanii wideo - film społeczny realizowany przez Znami Studio",
 			src: "https://api.znami.usermd.net/spoty-spoleczne-img-2/",
 		},
 	},
@@ -129,11 +131,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Razem ustalamy harmonogram działań i zakres usług. W przypadku nagrań zajmujemy się wszystkim – od ustawienia oświetlenia po montaż filmów. Gotowe materiały przekazujemy w formatach dostosowanych do platform takich jak Instagram, TikTok, YouTube czy Vimeo. Dzięki abonamentowi masz pewność, że Twoje treści wideo będą regularnie aktualizowane, spójne z wizerunkiem marki, ponieważ dbamy też o branding, grafiki i zgodne z trending content oraz najnowszymi standardami mediów społecznościowych.",
 		slug: "uslugi-abonamentowe",
 		imageLeft: {
-			alt: "",
+			alt: "Produkcja filmowa w usłudze abonamentowej realizowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/uslugi-abonamentowe-vide-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Konsultacje i montaż materiałów wideo - cykliczna produkcja wideo dla firm w ramach abonamentu Znami",
 			src: "https://api.znami.usermd.net/uslugi-abonamentowe-vide-img-2/",
 		},
 	},
@@ -149,6 +151,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Opracowujemy harmonogram prac",
 		],
 		title: "1. Rozmawiamy o Twoich potrzebach",
+		alt: "Briefing kreatywny pod nagrania wideo realizowane przez Znami Studio",
 	},
 	{
 		content:
@@ -159,6 +162,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Przygotowujemy rzeczy, które będą potrzebne na planie zdjęciowym",
 		],
 		title: "2. Pre-produkcja",
+		alt: "Pre-produkcja i przygotowanie scenariusza pod film realizowany przez Znami Studio",
 	},
 	{
 		content:
@@ -169,6 +173,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Nagrywamy zaplanowane materiały wideo",
 		],
 		title: "3. Dzień zdjęciowy",
+		alt: "Dzień zdjęciowy - nagrywanie materiałów wideo przez Znami Studio",
 	},
 	{
 		content:
@@ -179,6 +184,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Dodajemy animacje, transkrypcje i nanosimy color-grading",
 		],
 		title: "4. Post-produkcja",
+		alt: "Animacje, transkrypcje i color-grading - post-produkcja filmu realizowanego przez Znami Studio",
 	},
 	{
 		content:
@@ -189,6 +195,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Wystawiamy fakturę i przekazujemy prawa autorskie",
 		],
 		title: "5. Finalizacja projektu i przekazanie plików",
+		alt: "Finalizacja gotowego projektu - realizacji wideo przygotowanej przez Znami Studio",
 	},
 ];
 
@@ -264,7 +271,7 @@ const VideoPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/Znami-Studio-Header-video" />
+			<HeroSectionServicesPage video="https://api.znami.usermd.net/header-video-video/" />
 			<ServiceSection
 				name="Video"
 				headingTwo="Profesjonalne video to skuteczne narzędzie, które świetnie zwiększy zasięgi, zbuduje zaufanie i wzmocni wizerunek Twojej marki. "

@@ -94,7 +94,7 @@ const ProgressSection = ({ item }: { item: ProgressSectionItem }) => {
 						width={2000}
 						height={2000}
 						src={item.img}
-						alt=""
+						alt={item.alt}
 						className="h-full w-full object-cover object-center"
 					/>
 				</motion.div>

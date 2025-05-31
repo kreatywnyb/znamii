@@ -12,11 +12,13 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Branding ▪ Znami Studio",
-	// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+	description:
+		"Branding to klucz do sukcesu Twojej marki. Oferujemy kompleksową identyfikację wizualną, projektowanie logo, strategię komunikacji i materiały marketingowe.",
 	// keywords: ["kontakt", "formularz kontaktowy", "adres", "telefon"],
 	openGraph: {
 		title: "Branding ▪ Znami Studio",
-		// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+		description:
+			"Branding to klucz do sukcesu Twojej marki. Oferujemy kompleksową identyfikację wizualną, projektowanie logo, strategię komunikacji i materiały marketingowe.",
 		type: "website",
 		// url: "https://twojastrona.pl/kontakt",
 		images: [
@@ -44,11 +46,11 @@ const sections: ScrollableSectionInterface[] = [
 		textBottom:
 			"Tworzymy szeroką listę propozycji i każdą z nich dokładnie analizujemy. Sprawdzamy dostępność domen internetowych i profili w social mediach, a także przeprowadzamy małe badanie wśród Twojej grupy docelowej, by mieć pewność, że nazwa trafia w gusta klientów. Na koniec dostajesz 3 najlepsze opcje, które są gotowe do wdrożenia – wszystko po to, byś miał wybór i mógł spokojnie budować swoją markę od samego początku.",
 		imageLeft: {
-			alt: "",
+			alt: "Prezentacja strategii marki przy tablicy - proces brandingowy w Znami Studio",
 			src: "https://api.znami.usermd.net/branding-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Burza mózgów, testy nazw, branding, strategia marki - proces namingowy marki w Znami Studio",
 			src: "https://api.znami.usermd.net/branding-img-2/",
 		},
 	},
@@ -57,11 +59,11 @@ const sections: ScrollableSectionInterface[] = [
 		title: "Logo",
 		slug: "logo",
 		imageLeft: {
-			alt: "",
+			alt: "Etap szkicowania logo - proces tworzenia brandingu marki w Znami Studio",
 			src: "https://api.znami.usermd.net/logo-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Prezentacja ikon i logo w wersjach wektorowych - identyfikacja wizualna, branding w Znami Studio",
 			src: "https://api.znami.usermd.net/logo-img-2/",
 		},
 		textTop:
@@ -74,11 +76,11 @@ const sections: ScrollableSectionInterface[] = [
 		title: "Identyfikacja wizualna",
 		slug: "identyfikacja-wizualna",
 		imageLeft: {
-			alt: "",
+			alt: "Identyfikacja wizualna, logo i kolory - tworzenie brand booka marki w Znami Studio",
 			src: "https://api.znami.usermd.net/identyfikacja-wizualna-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Logo, barwy, branding - identyfikacja wizualna dla marki od Znami Studio",
 			src: "https://api.znami.usermd.net/identyfikacja-wizualna-img-2/",
 		},
 		textTop:
@@ -91,11 +93,11 @@ const sections: ScrollableSectionInterface[] = [
 		title: "Web Design",
 		slug: "web-design",
 		imageLeft: {
-			alt: "",
+			alt: "Projektowanie UX/UI strony internetowej - praca nad designem firmowej strony www w Znami Studio",
 			src: "https://api.znami.usermd.net/web-design-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Nowoczesny design strony internetowej - responsywna witryna marki zaprojektowana przez Znami Studio",
 			src: "https://api.znami.usermd.net/web-design-img-2/",
 		},
 		textTop:
@@ -108,11 +110,11 @@ const sections: ScrollableSectionInterface[] = [
 		title: "Projekty do druku",
 		slug: "projekty-do-druku",
 		imageLeft: {
-			alt: "",
+			alt: "Projektowanie materiałów do druku - praca nad identyfikacją wizualną w Znami Studio",
 			src: "https://api.znami.usermd.net/projekty-do-druku-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Opakowania z etykietami - branding offline i projekty graficzne etykiet produktowych od Znami Studio",
 			src: "https://api.znami.usermd.net/projekty-do-druku-img-2/",
 		},
 		textTop:
@@ -125,11 +127,11 @@ const sections: ScrollableSectionInterface[] = [
 		title: "Usługi abonamentowe",
 		slug: "uslugi-abonamentowe",
 		imageLeft: {
-			alt: "",
+			alt: "Kreatywna obsługa graficzna dla firm. Branding do social media od Znami Studio",
 			src: "https://api.znami.usermd.net/uslugi-abonamentowe-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Produkcja zdjęć i grafik do social media. Profesjonalny content wizualny dla marek od Znami Studio",
 			src: "https://api.znami.usermd.net/uslugi-abonamentowe-img-2/",
 		},
 		textTop:
@@ -149,6 +151,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Przeprowadzamy briefing kreatywny i przygotowujemy ofertę",
 			"Opracowujemy harmonogram prac",
 		],
+		alt: "Birefing kreatywny - proces tworzenia brandingu Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-branding-2/",
@@ -159,6 +162,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Przeprowadzamy reasearch i zbieramy inspiracje",
 			"Pracujemy nad projektem, a potem przeprowadzamy jego prezentację",
 		],
+		alt: "Research i projektowanie brandingu realizowanego przez Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-branding-3/",
@@ -169,6 +173,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Wspólnie z Tobą przeprowadzamy rewizję projektu",
 			"Robimy sesje poprawkowe, jeśli zachodzi potrzeba",
 		],
+		alt: "Rewizja projektu - realizacja brandingu przez Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-branding-4/",
@@ -179,6 +184,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Oddajemy gotowe pliki i pomagamy wdrożyć opracowany design",
 			"Wystawiamy fakturę i przekazujemy prawa autorskie",
 		],
+		alt: "Wdrażanie identyfikacji wizualnej zrealizowanej przez Znami Studio",
 	},
 ];
 

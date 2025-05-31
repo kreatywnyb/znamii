@@ -12,11 +12,13 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "Zdjęcia ▪ Znami Studio",
-	// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+	description:
+		"Tworzymy materiały wizualne wspierające Twoją markę. Oferujemy m.in. zdjęcia biznesowe, sesje wizerunkowe, fotografię produktową, zdjęcia z eventów",
 	// keywords: ["kontakt", "formularz kontaktowy", "adres", "telefon"],
 	openGraph: {
 		title: "Zdjęcia ▪ Znami Studio",
-		// description: "Skontaktuj się z nami. Odpowiemy na wszystkie Twoje pytania.",
+		description:
+			"Tworzymy materiały wizualne wspierające Twoją markę. Oferujemy m.in. zdjęcia biznesowe, sesje wizerunkowe, fotografię produktową, zdjęcia z eventów",
 		type: "website",
 		// url: "https://twojastrona.pl/kontakt",
 		images: [
@@ -44,11 +46,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Każdą sesję zdjęciową rozpoczynamy od omówienia Twoich potrzeb – dobieramy styl, tło i klimat zdjęć, które będą najlepiej pasować do Twojej branży i strategii marki. Pracujemy w studiu lub w wybranej przez Ciebie lokalizacji. Efekty przekazujemy w formie obrobionych zdjęć w najwyższej jakości – zarówno gotowych do druku, jak i publikacji online na stronie czy social mediach.",
 		slug: "sesje-biznesowe",
 		imageLeft: {
-			alt: "",
+			alt: "Zdjęcia biznesowe na www i Linkedin -  backstage sesji wizerunkowej Znami Studio",
 			src: "https://api.znami.usermd.net/sesje-biznesowe-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Zdjęcie do CV, LinkedIn i strony www - profesjonalny portret biznesowy wykonany przez Znami Studio",
 			src: "https://api.znami.usermd.net/sesje-biznesowe-img-2/",
 		},
 	},
@@ -60,11 +62,11 @@ const sections: ScrollableSectionInterface[] = [
 		textBottom:
 			"Podczas eventów jesteśmy wszędzie tam, gdzie dzieje się coś istotnego – uchwycimy prelegentów, uczestników i najważniejsze punkty programu. Oferujemy także nagrania wideo, które montujemy w dynamiczny film podsumowujący (tzw. aftermovie), wspierający video marketing marki. Materiały przekazujemy w formie cyfrowej, gotowe do użycia na social mediach, w relacjach czy materiałach promocyjnych.",
 		imageLeft: {
-			alt: "",
+			alt: "Fotografia eventowa. Profesjonalne zdjęcia z konferencji i wystąpień publicznych od Znami Studio",
 			src: "https://api.znami.usermd.net/eventy-i-konferencje-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Realizacja foto i video z konferencji. Zdjęcia i nagrania z eventów do social media i filmów podsumowujących od Znami Studio",
 			src: "https://api.znami.usermd.net/eventy-i-konferencje-img-2/",
 		},
 		slug: "eventy-i-konferencje",
@@ -78,11 +80,11 @@ const sections: ScrollableSectionInterface[] = [
 		textBottom:
 			"Pracujemy w plenerze, biurze lub dowolnej lokalizacji, która pasuje do Twojej marki. Przygotowujemy stylizację, rekwizyty i aranżację tak, by zdjęcia były spójne z Twoją identyfikacją wizualną i strategią komunikacji. Po sesji wybieramy najlepsze kadry i poddajemy je profesjonalnej obróbce – dzięki temu finalne zdjęcia do personal brandingu są gotowe do publikacji i budowy spójnego wizerunku marki.",
 		imageLeft: {
-			alt: "",
+			alt: "Sesja wizerunkowa dla trenerów personalnych w siłowni - personal branding marki ze Znami Studio",
 			src: "https://api.znami.usermd.net/sesje-wizerunkowe-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Profesjonalna sesja wizerunkowa mężczyzny podnoszącego ciężary - wizerunkowa fotografia sportowa dla trenerów personalnych od Znami",
 			src: "https://api.znami.usermd.net/sesje-wizerunkowe-img-2/",
 		},
 	},
@@ -95,11 +97,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Przygotowujemy zarówno packshoty produktowe na neutralnym tle, jak i zdjęcia stylizowane, które pokazują produkty w użyciu. Korzystamy z profesjonalnego oświetlenia i sprzętu, aby uzyskać najwyższą jakość obrazu. Po sesji otrzymujesz obrobione pliki w formacie idealnym do druku, zdjęcia do sklepu internetowego, social mediów lub katalogów online i profesjonalnych materiałów reklamowych.",
 		slug: "fotografia-produktowa",
 		imageLeft: {
-			alt: "",
+			alt: "Packshot drewnianego legowiska dla psa - fotografia produktowa Znami Studio",
 			src: "https://api.znami.usermd.net/fotografia-produktowa-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Fotografia produktowa łóżka dla psa - stylizowane zdjęcia reklamowe dla e-commerce od Znami Studio",
 			src: "https://api.znami.usermd.net/fotografia-produktowa-img-2/",
 		},
 	},
@@ -112,11 +114,11 @@ const sections: ScrollableSectionInterface[] = [
 			"Korzystamy z dronów wysokiej klasy, co gwarantuje ostre i wyraźne ujęcia nawet w trudnych warunkach. Przed realizacją ustalamy z Tobą scenariusz i cele sesji. Finalny materiał dostarczamy w formie plików obrobionych i gotowych do użycia, zgodnych z wymogami platform cyfrowych czy mediów drukowanych.",
 		slug: "zdjecia-z-drona",
 		imageLeft: {
-			alt: "",
+			alt: "Sterowanie dronem w plenerze - backstage profesjonalnej sesji z drona realizowanej przez Znami Studio",
 			src: "https://api.znami.usermd.net/zdjecia-z-drona-img-1/",
 		},
 		imageRight: {
-			alt: "",
+			alt: "Ujęcie z drona - profesjonalne zdjęcia z powietrza wykonane przez Znami Studio",
 			src: "https://api.znami.usermd.net/zdjecia-z-drona-img-2/",
 		},
 	},
@@ -128,8 +130,14 @@ const sections: ScrollableSectionInterface[] = [
 		textBottom:
 			"Na początku ustalamy Twoje potrzeby, harmonogram i zakres prac. Regularnie dostarczamy zdjęcia i materiały wideo, które są w pełni dopasowane do identyfikacji wizualnej firmy. Dzięki abonamentowi oszczędzasz czas i masz pewność, że zawsze otrzymasz wysokiej jakości treści wizualne, takie jak profesjonalna fotografia, wideo i grafiki.",
 		slug: "uslugi-abonamentowe",
-		imageLeft: { alt: "", src: "https://api.znami.usermd.net/uslugi-abonamentowe-photo-img-1/" },
-		imageRight: { alt: "", src: "https://api.znami.usermd.net/uslugi-abonamentowe-photo-img-2/" },
+		imageLeft: {
+			alt: "Usługi fotograficzne w abonamencie - sesja wizerunkowa w studiu realizowana przez Znami Studio",
+			src: "https://api.znami.usermd.net/uslugi-abonamentowe-photo-img-1/",
+		},
+		imageRight: {
+			alt: "Zdjęcia w ramach usługi abonamentowej Znami Studio",
+			src: "https://api.znami.usermd.net/uslugi-abonamentowe-photo-img-2/",
+		},
 	},
 ];
 
@@ -143,6 +151,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Przeprowadzamy briefing kreatywny i przygotowujemy ofertę",
 			"Opracowujemy harmonogram prac",
 		],
+		alt: "Briefing kreatywny w ramach realizacji zdjęć przez Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-photo-2/",
@@ -153,6 +162,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Opracowujemy koncept zdjęć i tworzymy moodboard",
 			"Przygotowujemy rzeczy, które będą potrzebne w dniu zdjęciowym",
 		],
+		alt: "Pre-produkcja: moodboard i koncept sesji w ramach realizacji zdjęć przez Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-photo-3/",
@@ -163,6 +173,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Rozstawiamy sprzęt, przygotowujemy modeli i plan zdjęciowy",
 			"Robimy wszystkie zaplanowane zdjęcia",
 		],
+		alt: "Realizacja sesji zdjęciowej w wykonaniu Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-photo-4/",
@@ -173,6 +184,7 @@ const progressItems: ProgressSectionItem[] = [
 			"Wybierasz zdjęcia, które najbardziej Ci się podobają",
 			"Obrabiamy i retuszujemy wskazane przez Ciebie zdjęcia ",
 		],
+		alt: "Profesjonalna obróbka zdjęć realizowanych przez Znami Studio",
 	},
 	{
 		img: "https://api.znami.usermd.net/process-section-photo-5/",
@@ -180,6 +192,7 @@ const progressItems: ProgressSectionItem[] = [
 		content:
 			"Gdy zdjęcia zostaną zaakceptowane, wysyłamy je najczęściej w 2 formatach, które są odpowiednio dostosowane do digitalu oraz do DTP.",
 		list: ["Export zdjęć wg wytycznych", "Umieszczenie zdjęć w chmurze"],
+		alt: "",
 	},
 ];
 
@@ -249,7 +262,7 @@ const FotoPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo.webm" />
+			<HeroSectionServicesPage video="https://api.znami.usermd.net/header-video-photo" />
 			<ServiceSection
 				name="Zdjęcia"
 				headingTwo="Profesjonalna sesja zdjęciowa dla biznesu to inwestycja, która przynosi wiele korzyści i szybko się zwraca."

@@ -8,6 +8,7 @@ export type ProgressSectionItem = {
 	content: string;
 	list: string[];
 	img: string;
+	alt: string;
 };
 
 const ProcessSection = ({ elements }: { elements: ProgressSectionItem[] }) => {

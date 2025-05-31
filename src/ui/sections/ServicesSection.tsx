@@ -285,19 +285,19 @@ const ServicesSection: React.FC = () => {
 							icon={PrecisionIcon}
 							title="Precyzja"
 							order={1}
-							className="order-1 max-w-[200px] self-end rounded-br-none max-md:mt-auto lg:max-w-[15.625rem]"
+							className="order-1 max-w-[220px] self-end rounded-br-none max-md:mt-auto lg:max-w-[15.625rem]"
 						/>
 						<ValueBox
 							icon={EmpathyIcon}
 							title="Empatia"
 							order={2}
-							className="order-3 h-full w-full max-w-[200px] rounded-bl-none max-md:-mt-[1px] max-md:ml-auto max-md:rounded-tl-none lg:max-w-[15.625rem]"
+							className="order-3 h-full w-full max-w-[220px] rounded-bl-none max-md:-mt-[1px] max-md:ml-auto max-md:rounded-tl-none lg:max-w-[15.625rem]"
 						/>
 						<ValueBox
 							icon={OpennessIcon}
 							title="Otwartość"
 							order={3}
-							className="order-5 -ml-[1px] -mr-[1px] -mt-[0.063rem] max-w-[200px] rounded-t-none max-md:-mt-[2px] lg:max-w-[15.75rem]"
+							className="order-5 -ml-[1px] -mr-[1px] -mt-[0.063rem] max-w-[220px] rounded-t-none max-md:-mt-[2px] lg:max-w-[15.75rem]"
 						/>
 						<div className="order-2 hidden md:block" />
 						<div className="order-4 hidden md:block" />
