@@ -1,19 +1,15 @@
 export interface HeroSectionServicesPageProps {
 	video: string;
+	video2?: string;
 }
 
-const HeroSectionServicesPage = ({ video }: HeroSectionServicesPageProps) => {
+const HeroSectionServicesPage = ({ video, video2 }: HeroSectionServicesPageProps) => {
 	return (
 		<section className="aspect-[4/5] w-full overflow-hidden md:aspect-[16/9] lg:aspect-[16/9]">
-			<video
-				src={video}
-				autoPlay
-				loop
-				muted
-				playsInline
-				preload="auto"
-				className="h-full w-full object-cover"
-			/>
+			<video autoPlay loop muted playsInline preload="auto" className="h-full w-full object-cover">
+				<source src={video} type="video/mp4" />
+				{video2 && <source src={video2} type="video/webm" />}
+			</video>
 		</section>
 	);
 };

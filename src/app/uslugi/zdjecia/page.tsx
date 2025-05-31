@@ -262,7 +262,10 @@ const FotoPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/header-video-photo" />
+			<HeroSectionServicesPage
+				video="https://api.znami.usermd.net/header-video-photo"
+				video2="https://api.znami.usermd.net/header-video-photo-2/"
+			/>
 			<ServiceSection
 				name="Zdjęcia"
 				headingTwo="Profesjonalna sesja zdjęciowa dla biznesu to inwestycja, która przynosi wiele korzyści i szybko się zwraca."

@@ -27,7 +27,6 @@ const HeroSectionHomePage = () => {
 						loop
 						muted
 						playsInline
-						poster="/hero-poster.png"
 					/>
 				</div>
 			</div>

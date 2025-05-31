@@ -271,7 +271,10 @@ const VideoPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/header-video-video/" />
+			<HeroSectionServicesPage
+				video="https://api.znami.usermd.net/header-video-video/"
+				video2="https://api.znami.usermd.net/header-video-vide-2/"
+			/>
 			<ServiceSection
 				name="Video"
 				headingTwo="Profesjonalne video to skuteczne narzędzie, które świetnie zwiększy zasięgi, zbuduje zaufanie i wzmocni wizerunek Twojej marki. "
