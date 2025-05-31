@@ -10,6 +10,9 @@ const ImageSlider = () => {
 				muted
 				loop
 				playsInline
+				controls
+				disablePictureInPicture
+				controlsList="nodownload nofullscreen noremoteplayback"
 			></video>
 		</div>
 	);

@@ -24,14 +24,23 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 				{video ? (
 					<div className="max-md:absolute max-md:left-4 max-md:right-4 max-md:top-0 max-md:-translate-y-1/2">
 						<video
+							// muted
+							// playsInline
+							// webkit-playsinline="true"
+							// loop
+							// autoPlay
+							// className="w-full"
+							// src={video}
+							// controls
 							muted
 							playsInline
-							webkit-playsinline="true"
 							loop
 							autoPlay
 							className="w-full"
 							src={video}
 							controls
+							disablePictureInPicture
+							controlsList="nodownload nofullscreen noremoteplayback"
 						/>
 					</div>
 				) : image ? (
