@@ -129,9 +129,6 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 
 								<div
 									className="w-full"
-									style={{
-										aspectRatio: calculateAspectRatio(media).toString(),
-									}}
 								>
 									{renderMediaItem(media)}
 								</div>

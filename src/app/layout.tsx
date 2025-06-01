@@ -93,6 +93,31 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="pl" suppressHydrationWarning>
+			<head>
+				{/* DNS prefetch and preconnect for faster connection */}
+				<link rel="dns-prefetch" href="https://api.znami.usermd.net" />
+				<link rel="preconnect" href="https://api.znami.usermd.net" />
+
+				{/* Preload critical videos */}
+				<link
+					rel="preload"
+					href="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo.mp4"
+					as="video"
+					type="video/mp4"
+				/>
+				<link
+					rel="preload"
+					href="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-video.mp4"
+					as="video"
+					type="video/mp4"
+				/>
+				<link
+					rel="preload"
+					href="https://api.znami.usermd.net/wp-content/uploads/2025/05/znami-studio-header-branding.mp4"
+					as="video"
+					type="video/mp4"
+				/>
+			</head>
 			<body className={`${geistMono.variable} bg-background pt-12 antialiased md:pt-14`}>
 				<PasswordProtection>
 					<ClientLayout>{children}</ClientLayout>

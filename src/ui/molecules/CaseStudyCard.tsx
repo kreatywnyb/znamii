@@ -52,7 +52,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 						src={caseStudy.mainPhoto.url}
 						alt={caseStudy.title}
 						fill
-						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						unoptimized
 						className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
 						priority={false}
 					/>
