@@ -254,7 +254,8 @@ const BrandingPage = async () => {
 
 	return (
 		<main className="bg-background">
-			<HeroSectionServicesPage video="https://api.znami.usermd.net/znami-studio-header-branding/" />
+			{/* <HeroSectionServicesPage video="https://api.znami.usermd.net/znami-studio-header-branding/" /> */}
+			<HeroSectionServicesPage video="https://api.znami.usermd.net/wp-content/uploads/2025/05/znami-studio-header-branding.mp4" />
 			<ServiceSection
 				name="Branding"
 				headingTwo="Dobry branding jest jak ubranie - nie tylko dobrze wygląda, ale jest funkcjonalny i odzwierciedla charakter osoby, a w tym przypadku firmy. Jej tożsamość i wartości. "
