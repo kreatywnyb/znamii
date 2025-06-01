@@ -11,7 +11,7 @@ interface CaseStudyHeroSectionProps {
 const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, video, image }) => {
 	return (
 		<section className="mb-32">
-			<div className="bg-basicDark pb-48 pt-20 md:pb-96 lg:pb-64">
+			<div className="bg-basicDark pb-48 pt-20 md:pb-96">
 				<div className="container">
 					<FlipWords
 						word={title}

@@ -263,8 +263,10 @@ const FotoPage = async () => {
 	return (
 		<main className="bg-background">
 			<HeroSectionServicesPage
-				video="https://api.znami.usermd.net/header-video-photo"
-				video2="https://api.znami.usermd.net/header-video-photo-2/"
+				video="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo.mp4"
+				video2="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo-2.webm"
+				// video="https://api.znami.usermd.net/header-video-photo"
+				// video2="https://api.znami.usermd.net/header-video-photo-2/"
 			/>
 			<ServiceSection
 				name="Zdjęcia"
