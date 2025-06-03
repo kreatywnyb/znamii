@@ -62,22 +62,49 @@ const TeamMember = ({
 			variants={slideInVariants}
 		>
 			<div
-				className="relative flex flex-col md:w-[40rem] md:flex-row md:items-center md:space-x-6"
+				className="relative flex md:w-[40rem] md:flex-row md:items-center md:space-x-6"
 				ref={memberRef}
 				onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleMouseMove(e)}
 				onMouseEnter={() => setIsHovering(true)}
 				onMouseLeave={() => setIsHovering(false)}
 			>
-				{/* <Image alt={item.name} src={item.img} /> */}
 				<video
 					src={item.img}
 					muted
 					autoPlay
 					loop
 					playsInline
-					className="h-[10.875rem] w-[10.875rem]"
+					className="h-[7.5rem] w-[7.5rem] max-lg:mr-4 lg:h-[10.875rem] lg:w-[10.875rem]"
 				/>
-				<div className="flex h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-4">
+				<div className="flex h-[7.5rem] flex-col lg:hidden">
+					<span className="text-[1.313rem] leading-tight">{item.name}</span>
+					<div className="mt-2 flex flex-row flex-wrap font-geist text-xs">
+						{item.roles.map((role, idx) => (
+							<span
+								className={twMerge(
+									"relative inline-block uppercase",
+									item.roles.length !== idx + 1 &&
+										// "mr-4 pr-4 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:bg-basicDark max-md:after:hidden",
+										"mr-2 pr-2 after:absolute after:right-0 after:top-1/2 after:h-1 after:w-1 after:-translate-y-1/2 after:translate-x-1/2 after:bg-basicDark md:mr-4 md:pr-4",
+								)}
+								key={`${role}-${idx}`}
+							>
+								{role}
+							</span>
+						))}
+					</div>
+					<a
+						href={item.socials.link}
+						target="_blank"
+						className={twMerge(
+							"mt-auto flex !h-8 !w-8 items-center justify-center md:ml-[8.375rem] [&>svg>path]:!h-5 [&>svg>path]:!w-5 [&>svg]:!h-5 [&>svg]:!w-5",
+							idx !== 2 && "rounded-[0.125rem] border border-lightGrey",
+						)}
+					>
+						{item.socials.icon()}
+					</a>
+				</div>
+				<div className="hidden h-full items-center whitespace-nowrap text-[1.313rem] leading-[33px] max-md:mt-4 lg:flex">
 					<span className="text-[1.313rem]">{item.name}</span>
 					<div
 						className="absolute z-30 hidden flex-col rounded-[0.188rem] border border-basicDark bg-white p-[3.125rem] md:group-hover:flex"
@@ -104,7 +131,11 @@ const TeamMember = ({
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col md:flex-row md:items-center">
+			<div className="flex flex-col lg:hidden">
+				<span>{item.description.title}</span>
+				<span className="mt-5 font-light text-darkGrey">{item.description.desc}</span>
+			</div>
+			<div className="hidden flex-col md:flex-row md:items-center lg:flex">
 				{/* <div className="flex flex-col font-geist text-xs max-md:space-y-4 md:flex-row"> */}
 				<div className="flex flex-row flex-wrap font-geist text-xs">
 					{item.roles.map((role, idx) => (

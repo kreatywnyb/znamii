@@ -19,7 +19,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
 	useEffect(() => {
 		if (appReady) {
-			const lenis = new Lenis();
+			const lenis = new Lenis({
+				lerp: 0.15,
+			});
 
 			function raf(time: number) {
 				lenis.raf(time);
