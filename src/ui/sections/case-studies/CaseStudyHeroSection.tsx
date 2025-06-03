@@ -12,11 +12,26 @@ interface CaseStudyHeroSectionProps {
 const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, video, image }) => {
 	const mediaRef = useRef<HTMLDivElement>(null);
 	const [mediaHeight, setMediaHeight] = useState(0);
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		// Check if mobile on mount and resize
+		const checkMobile = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+
+		return () => {
+			window.removeEventListener("resize", checkMobile);
+		};
+	}, []);
 
 	useEffect(() => {
 		const updateMediaHeight = () => {
 			if (mediaRef.current) {
-				const height = mediaRef.current.offsetHeight + 50;
+				const height = mediaRef.current.offsetHeight + (isMobile ? 25 : 50);
 				setMediaHeight(height);
 			}
 		};
@@ -38,17 +53,17 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 		return () => {
 			window.removeEventListener("resize", updateMediaHeight);
 		};
-	}, [image, video]);
+	}, [image, video, isMobile]);
 
 	return (
-		<section className="relative mb-32">
+		<section className="relative mb-16 md:mb-32">
 			{/* Black background section with dynamic height */}
-			<div className="relative bg-basicDark" style={{ paddingBottom: `${mediaHeight / 2}px` }}>
-				<div className="container pt-20">
+			<div className="relative bg-basicDark pb-28" >
+				<div className="container pt-12 md:pt-20 ">
 					<FlipWords
 						word={title}
 						as="h1"
-						className="mb-16 h-[3.8rem] text-4xl text-white lg:text-[3.625rem]"
+						className="mb-8 md:mb-16  text-4xl text-white lg:text-[3.625rem]"
 					/>
 				</div>
 			</div>
@@ -59,8 +74,7 @@ const CaseStudyHeroSection: React.FC<CaseStudyHeroSectionProps> = ({ title, vide
 					ref={mediaRef}
 					className="relative"
 					style={{
-						marginTop: `-${mediaHeight / 2 - 50}px`,
-						// marginBottom: `${mediaHeight / 2}px`
+						marginTop: `-${mediaHeight / 2 - (isMobile ? 25 : 50)}px`,
 					}}
 				>
 					{video ? (
