@@ -10,7 +10,7 @@ import { Metadata } from "next";
 
 const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
 
-export const revalidate = 30;
+export const revalidate = 300;
 
 export const metadata: Metadata = {
 	title: "Znami Studio - Branding, video i zdjęcia",

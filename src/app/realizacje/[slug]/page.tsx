@@ -175,7 +175,7 @@ import CtaBgImg from "@public/cta-poster-1.webp";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 30;
+export const revalidate = 300;
 
 // Helper function to safely get case study data
 async function getCaseStudyData(slug: string) {
