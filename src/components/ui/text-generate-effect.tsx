@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 import React from "react";
-import TerminalText from "@/ui/atoms/TerminalText";
 import { Funnel_Display } from "next/font/google";
+import { useLoader } from "@/contexts/LoaderContext";
+import TerminalTextEffect from "@/ui/atoms/TerminalText";
 
 const funnelDisplay = Funnel_Display({
 	variable: "--font-funnel-display",
@@ -13,7 +14,7 @@ const funnelDisplay = Funnel_Display({
 
 export const TextGenerateEffect = ({
 	bigWords,
-	onTerminalTextComplete, // Add callback prop for TerminalText completion
+	onTerminalTextComplete,
 	classNameOne,
 }: {
 	bigWords: string;
@@ -24,11 +25,18 @@ export const TextGenerateEffect = ({
 }) => {
 	const [scope, animate] = useAnimate();
 	const [startSecondAnimation, setStartSecondAnimation] = useState(false);
+	const { isBot } = useLoader();
 
 	const wordsArray = bigWords.split(" ");
 
 	// 🔹 Animacja dla dużych słów (spadają jedno po drugim)
 	useEffect(() => {
+		// Skip animations for bots
+		if (isBot) {
+			setStartSecondAnimation(true);
+			return;
+		}
+
 		animate(
 			"span",
 			{
@@ -48,7 +56,7 @@ export const TextGenerateEffect = ({
 		}, totalAnimationTime);
 
 		return () => clearTimeout(timer);
-	}, [scope, wordsArray.length, animate]);
+	}, [scope, wordsArray.length, animate, isBot]);
 
 	// 🔹 Renderowanie dużych słów (spadają z góry)
 	const renderWords = () => {
@@ -60,10 +68,16 @@ export const TextGenerateEffect = ({
 				{wordsArray.map((word, idx) => (
 					<motion.span
 						key={word + idx}
-						initial={{ opacity: 0, y: -20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.2, delay: idx * 0.5 }}
-						className={cn("block leading-tight", idx === 1 && "max-sm:mx-4")}
+						initial={isBot ? false : { opacity: 0, y: -20 }}
+						animate={isBot ? false : { opacity: 1, y: 0 }}
+						transition={isBot ? undefined : { duration: 0.2, delay: idx * 0.5 }}
+						className={cn(
+							"block leading-tight", 
+							idx === 1 && "max-sm:mx-4",
+							// Ensure immediate visibility for bots
+							isBot && "opacity-100"
+						)}
+						style={isBot ? { opacity: 1, transform: "translateY(0px)" } : undefined}
 					>
 						{word}
 					</motion.span>
@@ -79,26 +93,25 @@ export const TextGenerateEffect = ({
 			</div>
 
 			<div className="flex w-full justify-center">
-				{/* <div className="mt-4 flex h-10 w-full md:w-[29.5rem]"> */}
 				<div className="mt-4 flex h-10">
 					{startSecondAnimation && (
 						<>
 							<span className="hidden md:inline-block">
-								<TerminalText
-									speed={30}
-									// text="Znami to studio kreatywne, które zrealizuje dla Twojej firmy <br /> branding, nagrania wideo i sesje zdjęciowe"
-									// text={`Znami to studio kreatywne, które zrealizuje dla Twojej firmy\nbranding, nagrania wideo i sesje zdjęciowe`}
+								<TerminalTextEffect
+									speed={isBot ? 0 : 30} // Instant for bots
 									text={`Znami to studio kreatywne, które stworzy dla Twojej firmy branding, nagrania wideo i zdjęcia tak dobre,\nże nawet Twoja konkurencja zacznie je lajkować`}
-									styles=" h-10 flex text-center"
+									styles="h-10 flex text-center"
 									onAnimationComplete={onTerminalTextComplete}
+									disableAnimation={isBot}
 								/>
 							</span>
 							<span className="mx-auto inline-block max-w-[300px] p-4 md:hidden">
-								<TerminalText
-									speed={30}
+								<TerminalTextEffect
+									speed={isBot ? 0 : 30} // Instant for bots
 									text="Znami to studio kreatywne, które stworzy dla Twojej firmy branding, nagrania wideo i zdjęcia tak dobre, że nawet Twoja konkurencja zacznie je lajkować"
 									styles="h-10 flex text-center"
 									onAnimationComplete={onTerminalTextComplete}
+									disableAnimation={isBot}
 								/>
 							</span>
 						</>

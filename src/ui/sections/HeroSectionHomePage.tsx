@@ -4,7 +4,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { useLoader } from "@/contexts/LoaderContext";
 
 const HeroSectionHomePage = () => {
-	const { animationFinished } = useLoader();
+	const { animationFinished, isBot } = useLoader();
 
 	return (
 		<section className="bg-basicDark text-white">
@@ -20,10 +20,20 @@ const HeroSectionHomePage = () => {
 
 				<div className="absolute left-1/2 top-1/2 z-[10] -translate-x-1/2 -translate-y-1/2 max-md:w-full">
 					<video
-						// src="https://api.znami.usermd.net/hero-video/"
 						src="https://api.znami.usermd.net/wp-content/uploads/2025/05/hero-video.webm"
-						className="h-fit animate-fadeIn opacity-0 max-md:w-full"
-						style={{ animationFillMode: "forwards", animationDuration: "1s" }}
+						className={`h-fit max-md:w-full ${
+							isBot
+								? "opacity-100" // Immediately visible for bots
+								: "animate-fadeIn opacity-0" // Animated for users
+						}`}
+						style={
+							isBot
+								? {} // No animation styles for bots
+								: {
+										animationFillMode: "forwards",
+										animationDuration: "1s",
+									}
+						}
 						autoPlay
 						loop
 						muted

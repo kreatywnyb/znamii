@@ -32,7 +32,7 @@ const AnimatedMedia: React.FC<AnimatedMediaProps> = ({
     setShouldAnimate(isMobile ? animateMobile : animateDesktop);
   }, [animateDesktop, animateMobile]);
   
-  const isInView = useInView(ref, { once: true, amount: 0.5 }); 
+  const isInView = useInView(ref, { once: true, amount: 0.25 }); 
   
   const { scrollYProgress } = useScroll({
     target: ref,

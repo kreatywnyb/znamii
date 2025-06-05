@@ -12,26 +12,34 @@ const Loader = dynamic(() => import("../atoms/Loader"), {
 	ssr: false,
 });
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
-	const [showLoader, setShowLoader] = useState(true);
+interface ClientLayoutProps {
+	children: React.ReactNode;
+	isBot?: boolean;
+}
 
-	const [appReady, setAppReady] = useState(false);
+export default function ClientLayout({ children, isBot = false }: ClientLayoutProps) {
+	// Skip loader entirely for bots
+	const [showLoader, setShowLoader] = useState(!isBot);
+	const [appReady, setAppReady] = useState(isBot);
 
 	useEffect(() => {
 		if (appReady) {
-			const lenis = new Lenis({
-				lerp: 0.15,
-			});
+			// Don't initialize Lenis for bots (smooth scrolling library)
+			if (!isBot) {
+				const lenis = new Lenis({
+					lerp: 0.15,
+				});
 
-			function raf(time: number) {
-				lenis.raf(time);
+				function raf(time: number) {
+					lenis.raf(time);
+					requestAnimationFrame(raf);
+				}
+
 				requestAnimationFrame(raf);
+				return () => lenis.destroy();
 			}
-
-			requestAnimationFrame(raf);
-			return () => lenis.destroy();
 		}
-	}, [appReady]);
+	}, [appReady, isBot]);
 
 	const handleAnimationComplete = () => {
 		setShowLoader(false);
@@ -39,7 +47,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 	};
 
 	return (
-		<LoaderProvider>
+		<LoaderProvider isBot={isBot}>
 			{showLoader && <Loader onAnimationComplete={handleAnimationComplete} />}
 			<>
 				<div

@@ -38,6 +38,8 @@ import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { headers } from "next/headers";
+import { isBot } from "next/dist/server/web/spec-extension/user-agent";
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
@@ -86,11 +88,17 @@ function PasswordProtection({ children }: { children: React.ReactNode }) {
 	);
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const headersList = headers();
+	const userAgent = (await headersList).get("user-agent") || "";
+
+	// Detect if this is a bot request
+	const isBotRequest = isBot(userAgent);
+
 	return (
 		<html lang="pl" suppressHydrationWarning>
 			<head>
@@ -120,7 +128,7 @@ export default function RootLayout({
 			</head>
 			<body className={`${geistMono.variable} bg-background pt-12 antialiased md:pt-14`}>
 				<PasswordProtection>
-					<ClientLayout>{children}</ClientLayout>
+					<ClientLayout isBot={isBotRequest}>{children}</ClientLayout>
 				</PasswordProtection>
 				{/* Microsoft Clarity */}
 				<Script

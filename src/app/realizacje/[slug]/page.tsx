@@ -194,7 +194,8 @@ async function getCaseStudyData(slug: string) {
 
 		return firstItem.caseStudyData;
 	} catch (error) {
-		console.error(`Error fetching case study data for slug "${slug}":`, error);
+		const timestamp = new Date().toISOString();
+		console.error(`[${timestamp}] Error fetching case study data for slug "${slug}":`, error);
 		return null;
 	}
 }
@@ -205,7 +206,8 @@ export async function generateStaticParams() {
 
 		// Add validation for the response
 		if (!response?.data || !Array.isArray(response.data)) {
-			console.warn("getCaseStudies returned invalid data structure");
+			const timestamp = new Date().toISOString();
+			console.warn(`[${timestamp}] getCaseStudies returned invalid data structure`);
 			return [];
 		}
 
@@ -215,7 +217,8 @@ export async function generateStaticParams() {
 				slug: caseStudy.slug,
 			}));
 	} catch (error) {
-		console.error("Error generating static params:", error);
+		const timestamp = new Date().toISOString();
+		console.error(`[${timestamp}] Error generating static params:`, error);
 		return [];
 	}
 }
