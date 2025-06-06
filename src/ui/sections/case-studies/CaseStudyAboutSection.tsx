@@ -4,6 +4,7 @@ import { CTAButton } from "../../molecules/CTAButton";
 import WhiteBox from "@/ui/organisms/WhiteBox";
 import { links } from "@/constants";
 import { MediaItem, Video, CombinedMediaItem, isImage } from "@/API/models/caseStudies";
+import Image from "next/image";
 import AnimatedMedia from "@/ui/molecules/AnimatedImage";
 
 interface CaseStudyAboutSectionProps {
@@ -46,9 +47,12 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 			showOverlay={true}
 		>
 			{isImage(mediaItem) ? (
-				<img
+				<Image
+					loading="lazy"
 					src={mediaItem.url}
 					alt={mediaItem.alt || "Case study image"}
+					width={mediaItem.width || 800}
+					height={mediaItem.height || 600}
 					className={`h-full w-full object-cover ${className}`}
 				/>
 			) : (
