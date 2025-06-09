@@ -256,7 +256,7 @@ const faqs: FAQ[] = [
 const FotoPage = async () => {
 	const response = await API.caseStudies.getCaseStudies({
 		showOnServicePage: true,
-		category: "branding",
+		category: "zdjecia",
 	});
 	const caseStudies: CaseStudyResponse[] = response.data;
 
