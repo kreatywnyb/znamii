@@ -162,7 +162,12 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 								))}
 							</ul>
 							<div className="mt-auto inline-block">
-								<CTAButton className="max-md:hidden" href={links.contactPage} variant="primaryv2">
+								<CTAButton
+									className="max-md:hidden"
+									href={links.contactPage}
+									variant="primaryv2"
+									id="cta-btn-subservice"
+								>
 									zrealizuj projekt
 								</CTAButton>
 							</div>
@@ -283,7 +288,7 @@ export const SingleSectionContent = ({
 				</div>
 				{showCtaButon && (
 					<div className="mb-10 mt-10 w-full md:hidden">
-						<CTAButton className="w-full" href={links.contactPage}>
+						<CTAButton className="w-full" href={links.contactPage} id="cta-btn-subservice">
 							zrealizuj projekt
 						</CTAButton>
 					</div>

@@ -29,6 +29,7 @@ const SmallCaseStudiesSection: React.FC<SmallCaseStudiesSectionProps> = ({
 						href={links.portfolio}
 						variant="secondary"
 						className="whitespace-nowrap max-sm:text-sm"
+						id="cta-btn-small-case-studies"
 					>
 						Zobacz wszystkie realizacje
 					</CTAButton>

@@ -58,35 +58,35 @@ export const metadata: Metadata = {
 };
 
 // Komponent zabezpieczenia hasłem
-function PasswordProtection({ children }: { children: React.ReactNode }) {
-	return (
-		<>
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `
-						(function() {
-							if (typeof window !== 'undefined') {
-								const auth = sessionStorage.getItem('znami_auth');
-								
-								if (!auth) {
-									const password = prompt('Wprowadź hasło dostępu:');
-									
-									if (password === 'znami1234') {
-										sessionStorage.setItem('znami_auth', 'true');
-									} else {
-										alert('Nieprawidłowe hasło!');
-										window.location.reload();
-									}
-								}
-							}
-						})();
-					`,
-				}}
-			/>
-			{children}
-		</>
-	);
-}
+// function PasswordProtection({ children }: { children: React.ReactNode }) {
+// 	return (
+// 		<>
+// 			<script
+// 				dangerouslySetInnerHTML={{
+// 					__html: `
+// 						(function() {
+// 							if (typeof window !== 'undefined') {
+// 								const auth = sessionStorage.getItem('znami_auth');
+
+// 								if (!auth) {
+// 									const password = prompt('Wprowadź hasło dostępu:');
+
+// 									if (password === 'znami1234') {
+// 										sessionStorage.setItem('znami_auth', 'true');
+// 									} else {
+// 										alert('Nieprawidłowe hasło!');
+// 										window.location.reload();
+// 									}
+// 								}
+// 							}
+// 						})();
+// 					`,
+// 				}}
+// 			/>
+// 			{children}
+// 		</>
+// 	);
+// }
 
 export default async function RootLayout({
 	children,
@@ -102,6 +102,20 @@ export default async function RootLayout({
 	return (
 		<html lang="pl" suppressHydrationWarning>
 			<head>
+				{/* Google Tag Manager */}
+				<Script
+					id="gtm-script"
+					strategy="afterInteractive"
+					dangerouslySetInnerHTML={{
+						__html: `
+						(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+						})(window,document,'script','dataLayer','GTM-W3XPCNV');
+					`,
+					}}
+				/>
 				{/* DNS prefetch and preconnect for faster connection */}
 				{/* <link rel="dns-prefetch" href="https://api.znami.usermd.net" />
 				<link rel="preconnect" href="https://api.znami.usermd.net" /> */}
@@ -127,9 +141,18 @@ export default async function RootLayout({
 				/> */}
 			</head>
 			<body className={`${geistMono.variable} bg-background pt-12 antialiased md:pt-14`}>
-				<PasswordProtection>
-					<ClientLayout isBot={isBotRequest}>{children}</ClientLayout>
-				</PasswordProtection>
+				{/* Google Tag Manager (noscript) */}
+				<noscript>
+					<iframe
+						src={`https://www.googletagmanager.com/ns.html?id=GTM-W3XPCNV`}
+						height="0"
+						width="0"
+						style={{ display: "none", visibility: "hidden" }}
+					/>
+				</noscript>
+				{/* <PasswordProtection> */}
+				<ClientLayout isBot={isBotRequest}>{children}</ClientLayout>
+				{/* </PasswordProtection> */}
 				{/* Microsoft Clarity */}
 				<Script
 					id="clarity-script"

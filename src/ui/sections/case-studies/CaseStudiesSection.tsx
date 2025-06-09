@@ -27,6 +27,7 @@ const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ title, caseStud
 						href={links.portfolio}
 						variant="secondary"
 						className="whitespace-nowrap max-sm:text-sm"
+						id="cta-btn-casestudies-section"
 					>
 						Zobacz wszystkie realizacje
 					</CTAButton>

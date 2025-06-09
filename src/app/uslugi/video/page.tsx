@@ -276,6 +276,7 @@ const VideoPage = async () => {
 				// video2="https://api.znami.usermd.net/header-video-vide-2/"
 				video="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-video.mp4"
 				video2="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-vide-2.webm"
+				poster="./poster-video.webp"
 			/>
 			<ServiceSection
 				name="Video"

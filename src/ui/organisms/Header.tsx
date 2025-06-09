@@ -117,7 +117,12 @@ const Header = () => {
 					</div>
 
 					{/* CTA Button - Always visible */}
-					<CTAButton className="!text-xs" href={links.contactPage} variant="primary">
+					<CTAButton
+						className="!text-xs"
+						href={links.contactPage}
+						variant="primary"
+						id="cta-btn-header"
+					>
 						Zrealizuj projekt
 					</CTAButton>
 				</div>

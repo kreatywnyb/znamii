@@ -137,7 +137,7 @@ const TeamSectionAboutUs = () => {
 							}
 						`}</style>
 					</div>
-					<CTAButton href={links.contactPage} variant="primaryv2">
+					<CTAButton href={links.contactPage} variant="primaryv2" id="cta-btn-team-section">
 						Zrealizuj projekt z nami
 					</CTAButton>
 				</div>

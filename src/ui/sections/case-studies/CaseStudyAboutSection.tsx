@@ -128,11 +128,7 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 									<div className="mx-4 my-16 text-lg md:max-w-[50%]">{media.description}</div>
 								)}
 
-								<div
-									className="w-full"
-								>
-									{renderMediaItem(media)}
-								</div>
+								<div className="w-full">{renderMediaItem(media)}</div>
 							</div>
 						);
 					}
@@ -155,7 +151,7 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 						))}
 					</p>
 					<span className="hidden md:block">
-						<CTAButton variant="primaryv2" href={links.contactPage}>
+						<CTAButton variant="primaryv2" href={links.contactPage} id="cta-btn-case-study-section">
 							Zrealizuj projekt z nami
 						</CTAButton>
 					</span>
@@ -171,7 +167,11 @@ const CaseStudyAboutSection: React.FC<CaseStudyAboutSectionProps> = ({
 					</div>
 					{rightDescription2 && <p>{rightDescription2}</p>}
 					<span className="mt-10 block md:hidden">
-						<CTAButton variant="primaryv2" href={links.contactPage}>
+						<CTAButton
+							variant="primaryv2"
+							href={links.contactPage}
+							id="cta-btn-case-study-section-2"
+						>
 							Zrealizuj projekt z nami
 						</CTAButton>
 					</span>
