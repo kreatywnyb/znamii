@@ -39,7 +39,12 @@ const ServiceSection = ({
 						<h2 className="mt-5 text-[1.313rem]">{headingTwo}</h2>
 						<p className="mt-8 text-[1.063rem] tracking-[0.02em] text-darkGrey">{paragraph}</p>
 						<div className="mt-11 flex flex-col md:flex-row md:space-x-16">
-							<CTAButton variant="primaryv2" className="max-md:mb-6" href={links.contactPage}>
+							<CTAButton
+								variant="primaryv2"
+								className="max-md:mb-6"
+								href={links.contactPage}
+								id="cta-btn-service-section"
+							>
 								Zrealizuj projekt z nami
 							</CTAButton>
 							<div className="order-2 flex h-fit w-fit items-center justify-center gap-4 border border-[#EBEBEB] bg-white px-[1.375rem] py-[0.875rem]">

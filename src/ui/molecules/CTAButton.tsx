@@ -12,6 +12,7 @@ export type CTAButton = {
 	variant?: "primary" | "secondary" | "tertiary" | "primaryv2";
 	className?: string;
 	pixelSize?: number;
+	id?: string;
 };
 
 export const CTAButton = ({
@@ -20,6 +21,7 @@ export const CTAButton = ({
 	variant = "primary",
 	className,
 	pixelSize = 16,
+	id,
 }: CTAButton) => {
 	const buttonRef = useRef<HTMLAnchorElement>(null);
 	const pixelGridRef = useRef<HTMLDivElement>(null);
@@ -105,6 +107,7 @@ export const CTAButton = ({
 				variant === "primaryv2" && "bg-primary text-basicDark hover:text-white",
 				className,
 			)}
+			id={id && id}
 		>
 			{/* Pixel grid container */}
 			<div ref={pixelGridRef} className="absolute inset-0 z-10" style={{ pointerEvents: "none" }} />

@@ -275,7 +275,7 @@ const ServicesSection: React.FC = () => {
 								transitionDelay: taglineInView ? "0.2s" : "0s",
 							}}
 						>
-							<CTAButton href={links.aboutUs} variant="tertiary">
+							<CTAButton href={links.aboutUs} variant="tertiary" id="cta-btn-service-section">
 								Poznaj się z nami
 							</CTAButton>
 						</div>

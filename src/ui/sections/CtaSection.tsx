@@ -81,6 +81,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ title, text, image }) => {
 					<CTAButton
 						href={links.contactPage}
 						className="whitespace-nowrap text-center max-md:w-full max-sm:text-sm"
+						id="cta-btn-cta-section"
 					>
 						Zrealizuj projekt z nami
 					</CTAButton>

@@ -41,7 +41,7 @@ const ProgressSectionCtaButton: React.FC = () => {
 
 			{/* Treść sekcji */}
 			<div className="transparent mb-20 flex flex-1 space-x-[1.875rem] text-[1.313rem] text-basicDark md:ml-20">
-				<CTAButton variant="primaryv2" href={links.contactPage}>
+				<CTAButton variant="primaryv2" href={links.contactPage} id="cta-btn-process-section">
 					zrealizuj projekt z nami
 				</CTAButton>
 			</div>

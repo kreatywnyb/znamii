@@ -17,7 +17,12 @@ export default function NotFound() {
 						Zabłądzonko?
 					</h1>
 				</div>
-				<CTAButton href={links.homePage} variant="tertiary" className="mt-10">
+				<CTAButton
+					href={links.homePage}
+					variant="tertiary"
+					className="mt-10"
+					id="CTA-btn-not-found"
+				>
 					Wróć na stronę główną
 				</CTAButton>
 			</div>

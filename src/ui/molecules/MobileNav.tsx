@@ -71,7 +71,7 @@ const MobileNav = () => {
 					</li>
 				</ul>
 				<div className="mt-4 flex">
-					<CTAButton href={links.contactPage} variant="primary">
+					<CTAButton href={links.contactPage} variant="primary" id="cta-btn-header">
 						Zrealizuj projekt
 					</CTAButton>
 				</div>

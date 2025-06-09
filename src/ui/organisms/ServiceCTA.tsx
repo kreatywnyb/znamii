@@ -18,7 +18,7 @@ const ServiceCTA = ({ videoSrc }: IServiceCTAProps) => {
 					<p className="mt-4 text-[1.063rem] leading-normal text-lightGrey">
 						Po zakończonej realizacji brandingu otrzymasz rzetelną pomoc - zupełnie za darmo.
 					</p>
-					<CTAButton className="mt-10" href={links.contactPage}>
+					<CTAButton className="mt-10" href={links.contactPage} id="cta-btn-service">
 						Zrealizuj projekt z nami
 					</CTAButton>
 				</div>

@@ -265,6 +265,7 @@ const FotoPage = async () => {
 			<HeroSectionServicesPage
 				video="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo.mp4"
 				video2="https://api.znami.usermd.net/wp-content/uploads/2025/05/header-video-photo-2.webm"
+				poster="./poster-foto.webp"
 				// video="https://api.znami.usermd.net/header-video-photo"
 				// video2="https://api.znami.usermd.net/header-video-photo-2/"
 			/>
