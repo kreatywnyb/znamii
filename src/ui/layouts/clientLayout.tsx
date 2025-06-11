@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 const Loader = dynamic(() => import("../atoms/Loader"), {
 	ssr: false,
@@ -18,9 +19,15 @@ interface ClientLayoutProps {
 }
 
 export default function ClientLayout({ children, isBot = false }: ClientLayoutProps) {
+	const pathname = usePathname();
+
+	// Określ routy, na których loader nie powinien się pokazywać
+	const noLoaderRoutes = ["/branding", "/video", "/zdjecia"];
+	const shouldSkipLoader = noLoaderRoutes.some((route) => pathname.includes(route));
+
 	// Skip loader entirely for bots
-	const [showLoader, setShowLoader] = useState(!isBot);
-	const [appReady, setAppReady] = useState(isBot);
+	const [showLoader, setShowLoader] = useState(!isBot && !shouldSkipLoader);
+	const [appReady, setAppReady] = useState(isBot || shouldSkipLoader);
 
 	useEffect(() => {
 		if (appReady) {
@@ -39,7 +46,7 @@ export default function ClientLayout({ children, isBot = false }: ClientLayoutPr
 				return () => lenis.destroy();
 			}
 		}
-	}, [appReady, isBot]);
+	}, [appReady, isBot, shouldSkipLoader]);
 
 	const handleAnimationComplete = () => {
 		setShowLoader(false);
