@@ -64,7 +64,7 @@ export default function ScrollableSections({ sections }: SubServicesProps) {
 		// Dajemy komponentom czas na wyrenderowanie
 		const timer = setTimeout(() => {
 			calculateSectionPositions();
-		}, 500);
+		}, 1000);
 
 		return () => clearTimeout(timer);
 	}, [sections]);

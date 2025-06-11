@@ -26,13 +26,15 @@ const Footer = () => {
 				</div>
 				<div className="mt-6 flex gap-2 md:mt-0 md:justify-end md:gap-8">
 					<a
-						href=""
+						href="https://www.instagram.com/znami.co/"
+						target="_blank"
 						className="border border-[#00000022] p-[13px] transition-colors hover:bg-gray-200"
 					>
 						<InstagramIcon />
 					</a>
 					<a
-						href=""
+						href="https://www.youtube.com/@Znamico"
+						target="_blank"
 						className="border border-[#00000022] p-[13px] transition-colors hover:bg-gray-200"
 					>
 						<YoutubeIcon />
