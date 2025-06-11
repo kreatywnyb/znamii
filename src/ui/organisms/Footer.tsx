@@ -28,16 +28,22 @@ const Footer = () => {
 					<a
 						href="https://www.instagram.com/znami.co/"
 						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Zobacz profil Znami na Instagramie"
 						className="border border-[#00000022] p-[13px] transition-colors hover:bg-gray-200"
 					>
-						<InstagramIcon />
+						<InstagramIcon aria-hidden="true" />
 					</a>
+
 					<a
 						href="https://www.youtube.com/@Znamico"
 						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Zobacz kanał Znami na YouTube"
 						className="border border-[#00000022] p-[13px] transition-colors hover:bg-gray-200"
 					>
-						<YoutubeIcon />
+						{" "}
+						<YoutubeIcon aria-hidden="true" />
 					</a>
 				</div>
 			</div>

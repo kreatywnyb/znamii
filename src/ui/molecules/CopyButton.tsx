@@ -12,8 +12,13 @@ const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
 	};
 
 	return (
-		<button onClick={copyToClipboard} className="mb-2 ml-2 hover:scale-105 active:scale-95">
-			<CopyIcon />
+		<button
+			type="button"
+			onClick={copyToClipboard}
+			aria-label="Skopiuj do schowka"
+			className="mb-2 ml-2 hover:scale-105 active:scale-95"
+		>
+			<CopyIcon aria-hidden="true" />
 		</button>
 	);
 };

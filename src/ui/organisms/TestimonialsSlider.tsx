@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 
-
 interface Opinion {
 	id: number;
 	author: string;
@@ -15,8 +14,6 @@ interface Opinion {
 
 const opinions: Opinion[] = [
 	{
-
-
 		id: 1,
 		author: "Krzysztof Winiarski",
 		authorImg: "https://api.znami.usermd.net/krzysztof-winiarski",
@@ -51,7 +48,7 @@ const opinions: Opinion[] = [
 		author: "Grzegorz Mikuła",
 		authorImg: "https://api.znami.usermd.net/grzegorz-mikula",
 		company: "hiFOOD",
-		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym."
+		text: "Jeżeli nasi klienci pytają,kto Wam projektował grafikę, bo jest genialna - to chyba najlepsza rekomendacja. Nie wyobrażamy sobie współpracować z nikim innym.",
 	},
 	{
 		id: 6,
@@ -157,7 +154,13 @@ const TestimonialsSlider = () => {
 
 									<div className="flex items-end gap-4 max-md:mt-4">
 										<div className="relative h-[60px] w-[60px] bg-primary">
-											<Image width={60} height={60} src={authorImg} className="h-full" alt="Autor opinii" />
+											<Image
+												width={60}
+												height={60}
+												src={authorImg}
+												className="h-full"
+												alt="Autor opinii"
+											/>
 											<div className="absolute -left-4 h-4 w-4 bg-primary font-medium"></div>
 										</div>
 										<div className={`${src ? "text-white" : "text-basicDark"}`}>
@@ -174,6 +177,8 @@ const TestimonialsSlider = () => {
 
 			<div className="flex justify-center gap-2 p-[11px] md:justify-end">
 				<button
+					type="button"
+					aria-label="Przesuń w lewo"
 					className="flex h-10 w-10 items-center justify-center border border-basicDark text-basicDark transition-colors hover:bg-[#00000011]"
 					onClick={() => sliderRef.current?.slickPrev()}
 				>
@@ -183,6 +188,7 @@ const TestimonialsSlider = () => {
 						viewBox="0 0 16 16"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
 					>
 						<path
 							d="M10.5 3.5L5.5 8L10.5 12.5"
@@ -194,6 +200,8 @@ const TestimonialsSlider = () => {
 					</svg>
 				</button>
 				<button
+					type="button"
+					aria-label="Przesuń w prawo"
 					className="flex h-10 w-10 items-center justify-center border border-basicDark text-basicDark transition-colors hover:bg-[#00000011]"
 					onClick={() => sliderRef.current?.slickNext()}
 				>
@@ -203,6 +211,7 @@ const TestimonialsSlider = () => {
 						viewBox="0 0 16 16"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
 					>
 						<path
 							d="M5.5 3.5L10.5 8L5.5 12.5"

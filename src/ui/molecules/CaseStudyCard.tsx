@@ -50,7 +50,7 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 				<div className="absolute inset-0 h-full w-full overflow-hidden">
 					<Image
 						src={caseStudy.mainPhoto.url}
-						alt={caseStudy.title}
+						alt={`Miniaturka ${caseStudy.title}`}
 						fill
 						unoptimized
 						className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

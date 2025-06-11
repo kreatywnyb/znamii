@@ -96,8 +96,67 @@ export default async function RootLayout({
 	const headersList = headers();
 	const userAgent = (await headersList).get("user-agent") || "";
 
-	// Detect if this is a bot request
-	const isBotRequest = isBot(userAgent);
+	function isEnhancedBot(userAgent: string): boolean {
+		if (!userAgent) return false;
+
+		const botPatterns = [
+			// Search engine bots
+			/googlebot/i,
+			/bingbot/i,
+			/slurp/i,
+			/duckduckbot/i,
+			/baiduspider/i,
+			/yandexbot/i,
+			/sogou/i,
+
+			// SEO and monitoring tools
+			/lighthouse/i,
+			/gtmetrix/i,
+			/pagespeed/i,
+			/insights/i,
+			/speed/i,
+			/chrome-lighthouse/i,
+			/wprocketbot/i,
+
+			// Social media crawlers
+			/facebookexternalhit/i,
+			/twitterbot/i,
+			/linkedinbot/i,
+			/whatsapp/i,
+			/telegrambot/i,
+
+			// Other crawlers and bots
+			/crawler/i,
+			/spider/i,
+			/bot\b/i,
+			/crawl/i,
+			/scraper/i,
+			/parser/i,
+			/fetcher/i,
+			/validator/i,
+			/monitor/i,
+			/checker/i,
+			/test/i,
+
+			// Specific tools
+			/ahrefsbot/i,
+			/semrushbot/i,
+			/mj12bot/i,
+			/dotbot/i,
+			/petalbot/i,
+
+			// Headless browsers often used for testing
+			/headlesschrome/i,
+			/phantomjs/i,
+			/selenium/i,
+		];
+
+		return botPatterns.some((pattern) => pattern.test(userAgent));
+	}
+
+	const isPageSpeedInsights = /lighthouse|pagespeed|insights|gtmetrix|speed/i.test(userAgent);
+
+	const isBotRequest = isEnhancedBot(userAgent) || isPageSpeedInsights || isBot(userAgent);
 
 	return (
 		<html lang="pl" suppressHydrationWarning>

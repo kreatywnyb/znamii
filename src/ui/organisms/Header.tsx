@@ -77,8 +77,8 @@ const Header = () => {
 			<div className="container relative z-20 flex h-full items-center justify-between">
 				{/* Logo */}
 				<div className="relative z-20 flex h-full flex-1 items-center">
-					<Link href={links.homePage}>
-						<LogoIcon />
+					<Link href={links.homePage} aria-label="Przejdź do strony głównej">
+						<LogoIcon aria-hidden="true" />
 					</Link>
 				</div>
 
