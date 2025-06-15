@@ -84,7 +84,7 @@ const FAQSection = ({ faqs }: { faqs: FAQ[] }) => {
 								id={`faq-content-${faq.id}`}
 								className={twMerge(
 									"max-h-0 overflow-hidden transition-all duration-500 ease-in-out",
-									openFaq === faq.id && "max-h-[36rem]", // Dostosuj wartość max-h do najdłuższej odpowiedzi
+									openFaq === faq.id && "max-h-[150rem]", // Dostosuj wartość max-h do najdłuższej odpowiedzi
 								)}
 								aria-hidden={openFaq !== faq.id}
 							>

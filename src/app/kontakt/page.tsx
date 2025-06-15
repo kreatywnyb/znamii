@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import AddressSection from "../../ui/sections/contact/AddressSection";
 import ContactSection from "../../ui/sections/contact/ContactFormSection";
 
+const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
+
 export const metadata: Metadata = {
 	title: "Kontakt ▪ Znami Studio",
 	description:
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
 		],
 	},
 	robots: {
-		// index: true,
-		// follow: true,
+		index: isProduction ? true : false,
+		follow: isProduction ? true : false,
 	},
 };
 

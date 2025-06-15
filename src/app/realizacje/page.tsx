@@ -7,6 +7,8 @@ import { CaseStudyResponse } from "@/API/models/caseStudies";
 import API from "@/API";
 import { Metadata } from "next";
 
+const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
+
 export const metadata: Metadata = {
 	title: "Realizacje ▪ Znami Studio",
 	description:
@@ -28,8 +30,8 @@ export const metadata: Metadata = {
 		],
 	},
 	robots: {
-		// index: true,
-		// follow: true,
+		index: isProduction ? true : false,
+		follow: isProduction ? true : false,
 	},
 };
 
